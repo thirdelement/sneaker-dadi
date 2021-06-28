@@ -59,6 +59,23 @@
                     </div>
                 </div>
             </form>
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-none" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                    <i class="bi bi-person-fill"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Login</a></li>
+                    {% endif %}
+                  </ul>
+                  </div>
             <form class="d-flex d-lg-none me-1">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
@@ -100,6 +117,23 @@
                     </div>
                 </div>
             </form>
+            <div class="dropdown">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle me-2 d-none d-lg-block" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                <i class="bi bi-person-fill"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Login</a></li>
+                {% endif %}
+              </ul>
+              </div>
             <form class="d-flex d-none d-lg-block">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
