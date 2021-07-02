@@ -1,0 +1,22 @@
+/*body {
+  background: url('/media/sneaker-logo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: calc(100vh - 164px);
+  color: #555;
+  font-family: 'Lato', sans-serif;
+}*/
+
+/* Navbar */
+/* Match color for menu items */
+.text-nav {
+    color: rgba(0,0,0,.55);
+}
+
+
+/* Media Queries */
+/* Reduce margin on logo below 575px */
+@media (max-width: 575px) {
+  .navbar-brand {
+    margin-right: 0rem; 
+  }
+}
