@@ -19,7 +19,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Custome CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
@@ -46,21 +46,21 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{% url 'home' %}">Sneaker Dadi</a>
-            <form class="d-flex d-lg-none ms-auto" method="GET" action="">
-                <div class="input-group w-100 me-1">
-                    <input class="form-control" type="search" name="q" placeholder="Search our site">
-                    <div class="input-group-append">
-                        <button class="btn border" type="submit">
-                            <span class="icon">
-                                <i class="bi bi-search"></i>
-                            </span>
-                        </button>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/media/alternate-logo2.png" width="35" height="30"
+                    class="d-none d-sm-inline-block align-top logo" alt="Sneaker logo">
+                <span class="d-none d-md-inline-block">Sneaker Dadi</span></a>
+            <div class="list-inline-item  offset-sm-4 offset-lg-0">
+                <a class="text-nav nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <div class="text-center">
+                        <div><i class="bi bi-search"></i></div>
                     </div>
-                </div>
-            </form>
+                </a>
+            </div>
             <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-none" id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-none"
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown">
                     <i class="bi bi-person-fill"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -74,73 +74,20 @@
                     <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
                     <li><a class="dropdown-item" href="{% url 'account_signup' %}">Login</a></li>
                     {% endif %}
-                  </ul>
-                  </div>
+                </ul>
+            </div>
+
             <form class="d-flex d-lg-none me-1">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
-                    Cart
+                    <div class="d-none d-lg-block">Cart1</div>
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             </form>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-            </div>
-            <form class="d-flex d-none d-lg-block me-2" method="GET" action="">
-                <div class="input-group w-100 me-2">
-                    <input class="form-control" type="search" name="q" placeholder="Search our site">
-                    <div class="input-group-append">
-                        <button class="btn border" type="submit">
-                            <span class="icon">
-                                <i class="bi bi-search"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <div class="dropdown">
-            <button type="button" class="btn btn-outline-secondary dropdown-toggle me-2 d-none d-lg-block" id="dropdownMenuButton1" data-bs-toggle="dropdown">
-                <i class="bi bi-person-fill"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                {% if request.user.is_authenticated %}
-                {% if request.user.is_superuser %}
-                <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
-                {% endif %}
-                <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                {% else %}
-                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Login</a></li>
-                {% endif %}
-              </ul>
-              </div>
-            <form class="d-flex d-none d-lg-block">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
+            {% include 'includes/main-nav.html' %}
         </div>
     </nav>
     <!--<header class="container-fluid fixed-top"></header>-->
