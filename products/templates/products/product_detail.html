@@ -37,19 +37,29 @@
                     <div class="bi-star-fill"></div>
                     <div class="bi-star-fill"></div>
                     <div class="bi-star-fill"></div>
-                    <small class="text-muted">{{ product.rating }} / 5</small>
+                    <small class="text-muted">  {{ product.rating }} / 5</small>
                 </div>
                 {% else %}
                 <small class="text-muted">No Rating</small>
                 {% endif %}
-                <div class="fs-5 mb-5">
+                <div>
+                    <small class="text-muted">Price:</small>
                     {% if product.sale_price %}
-                    <span class="text-decoration-line-through">£{{ product.price }}</span>
+                    <span class="text-decoration-line-through fs-5">£{{ product.price }}</span>
                     <span>£{{ product.sale_price }}</span>
                     {% else %}
-                    <span>£{{ product.price }}</span>
+                    <span class="fs-5">£{{ product.price }}</span>
                     {% endif %}
                 </div>
+                {% if product.category %}
+                <p class="small mt-1 mb-5">
+                    <!--<i class="bi bi-collection"></i>-->
+                    <span id="text-category"><strong>Category:</strong></span>
+                    <a href="{% url 'products' %}?category={{ product.category.name }}">
+                         {{ product.category.friendly_name }}
+                    </a>
+                </p>
+                {% endif %}
                 <p class="lead">{{ product.description }}</p>     
                     <div class="d-flex">
                         <p class="mt-1 me-3 btn-outline-dark"><strong>Size:</strong></p>

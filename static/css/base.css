@@ -12,6 +12,11 @@
     color: rgba(0,0,0,.55);
 }
 
+/* Product Description */
+/* Category text color */
+#text-category {
+  color: #212529;
+}
 
 /* Media Queries */
 /* Reduce margin on logo below 575px */
