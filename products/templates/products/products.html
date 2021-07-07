@@ -29,9 +29,13 @@
                 <div class="card h-100">
                     <!-- Product image-->
                     {% if product.image1 %}
-                    <img class="card-img-top" src="{{ product.image1.url }}" alt="{{ product.name }}" />
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ product.image1.url }}" alt="{{ product.name }}" />
+                    </a>
                     {% else %}
-                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
+                    </a>
                     {% endif %}
                     <!-- Product details-->
                     <div class="card-body p-4">
@@ -52,7 +56,7 @@
                             <small class="text-muted">No Rating</small>
                             {% endif %}
                             <!-- Product price-->
-                           <p>£{{ product.price }}</p>
+                            <p>£{{ product.price }}</p>
                         </div>
                     </div>
                     <!-- Product actions-->
