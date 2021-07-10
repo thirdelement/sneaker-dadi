@@ -1,22 +1,107 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
+        <!-- Dropdown -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Shop-main</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Shop
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <hr class="dropdown-divider" />
+                    <a class="dropdown-item" href="#">
+                        Women &raquo;
+                    </a>
+                    <!--Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/-->
+                    <ul class="dropdown-menu dropdown-submenu">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=basketball&gender=f,u">Basketball</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=fashion&gender=f,u">Fashion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=gym&gender=f,u">Gym</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=hiking&gender=f,u">Hiking</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=run&gender=f,u">Running</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=sandal&gender=f,u">Sandals</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=skateboard&gender=f,u">Skateboard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=soccer&gender=f,u">Soccer</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=swim&gender=f,u">Swim</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=taekwondo&gender=f,u">Taekwondo</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=tennis&gender=f,u">Tennis</a>
+                        </li>
+                    </ul>
                 </li>
-                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Men &raquo;
+                    </a>
+                    <ul class="dropdown-menu dropdown-submenu">
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=basketball&gender=m,u">Basketball</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=fashion&gender=m,u">Fashion</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=gym&gender=m,u">Gym</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=hiking&gender=m,u">Hiking</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=run&gender=m,u">Running</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=sandal&gender=m,u">Sandals</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=skateboard&gender=m,u">Skateboard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=soccer&gender=m,u">Soccer</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=swim&gender=m,u">Swim</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                                href="{% url 'products' %}?category=taekwondo&gender=m,u">Taekwondo</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?category=tennis&gender=m,u">Tennis</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
+
         </li>
+        <!--Drop-down end-->
     </ul>
-    <form class="d-flex d-none d-lg-block ms-auto" method="GET" action="{% url 'products' %}">
-        <div class="input-group w-100 me-1">
+    <form class="d-flex d-none d-lg-block ms-auto me-1" method="GET" action="{% url 'products' %}">
+        <div class="input-group w-100">
             <input class="form-control" type="search" name="q" placeholder="Search our site">
             <div class="input-group-append">
                 <button class="btn border" type="submit">
