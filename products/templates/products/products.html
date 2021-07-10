@@ -108,6 +108,11 @@
             {% endfor %}
         </div>
     </div>
+    <div class="btt-button">
+        <a class="btt-link d-flex h-100 justify-content-end">
+            <i class="bi bi-caret-up-square-fill"></i>
+        </a>
+    </div>
 </section>
 {% endblock %}
 
@@ -136,7 +141,7 @@
             currentUrl.searchParams.set("direction", direction);
             //Replace the current location with the updated currentURL
             window.location.replace(currentUrl);
-        //If the reset selected  
+            //If the reset selected  
         } else {
             //Delete the sort & direction params
             currentUrl.searchParams.delete("sort");

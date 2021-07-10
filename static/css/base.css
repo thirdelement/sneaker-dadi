@@ -30,6 +30,28 @@
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
 }
+
+/* Products */
+/* Back to top button settings */
+.btt-button {
+  height: 42px;
+  width: 42px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+  cursor: pointer;
+}
+
+.bi-caret-up-square-fill {
+  font-size: 2rem;
+  color: #6c757d;
+}
+
 /* Product Description */
 /* Category text color */
 #text-category {
