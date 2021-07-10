@@ -14,16 +14,26 @@
 {% endblock %}
 
 {% block content %}
-<!-- <div class="container">
-    <div class="row">
-        <div class="col">
-            {{ products }}
-        </div>
-    </div>
-</div> -->
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <div class="sort-select-wrapper w-100">
+                    <div class="col-12 col-md-6 ms-auto mb-4">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select..</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-start">
+                <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center order-3">
             {% for product in products %}
             <div class="col mb-5">
                 <div class="card h-100">
@@ -61,7 +71,8 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                        </div>
                     </div>
                     {% if request.user.is_superuser %}
                     <small class="ml-3">
