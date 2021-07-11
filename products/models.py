@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 # Create your models here.
@@ -37,7 +38,7 @@ class Product(models.Model):
     sale_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     discount = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    size = models.CharField(max_length=10, choices=SIZE_CHOICES)
+    size = MultiSelectField(choices=SIZE_CHOICES)
     gender = models.CharField(max_length=1)
     image1 = models.ImageField(null=True, blank=True)
     image2 = models.ImageField(null=True, blank=True)
