@@ -141,7 +141,7 @@
     href="{% url 'view_cart' %}">
     <button class="btn btn-outline-dark d-none d-lg-block"><i class="bi-cart-fill me-1"></i>
         <span class="badge bg-dark text-white ms-1 rounded-pill">
-            {% if order_total %}
+            {% if order_total and product_count > 0 %}
             £{{ order_total|floatformat:2 }}
             {% else %}
             £0.00
