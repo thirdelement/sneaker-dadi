@@ -9,7 +9,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{% url 'products' %}?gender=f,u">
                         Women &raquo;
                     </a>
                     <!--Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/-->
@@ -53,7 +53,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{% url 'products' %}?gender=m,u">
                         Men &raquo;
                     </a>
                     <ul class="dropdown-menu dropdown-submenu">
@@ -95,6 +95,11 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="dropdown-item" href="{% url 'products' %}?gender=u">
+                        Unisex
+                    </a>
+                </li>
             </ul>
 
         </li>
@@ -120,7 +125,7 @@
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
-            <li><a class="dropdown-item" href="">Product Management</a></li>
+            <li><a class="dropdown-item" href="">Product Management1</a></li>
             {% endif %}
             <li><a class="dropdown-item" href="">My Profile</a></li>
             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
@@ -132,10 +137,14 @@
     </div>
 
 </div>
-<form class="d-flex">
-    <button class="btn btn-outline-dark d-none d-lg-block" type="submit">
-        <i class="bi-cart-fill me-1"></i>
-        Cart
-        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+<a class="{% if order_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+    href="{% url 'view_cart' %}">
+    <button class="btn btn-outline-dark d-none d-lg-block"><i class="bi-cart-fill me-1"></i>
+        <span class="badge bg-dark text-white ms-1 rounded-pill">
+            {% if order_total %}
+            £{{ order_total|floatformat:2 }}
+            {% else %}
+            £0.00
+            {% endif %}</span>
     </button>
-</form>
+</a>

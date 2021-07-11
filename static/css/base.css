@@ -12,6 +12,12 @@
     color: rgba(0,0,0,.55);
 }
 
+/* Remove padding on Nav link */
+.nav-link {
+  padding: 0;
+}
+
+
 /* mdbootstrap dropdown menu */
 /* Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/ */
 .dropdown-menu li {

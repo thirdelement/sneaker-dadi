@@ -83,21 +83,23 @@
                     {% endif %}
                 </ul>
             </div>
-
-            <form class="d-flex d-lg-none me-1">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    <div class="d-none d-lg-block">Cart1</div>
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            <a class="{% if order_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                href="{% url 'view_cart' %}">
+                <button class="btn btn-outline-dark d-block d-lg-none"><i class="bi-cart-fill me-1"></i>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">
+                        {% if order_total %}
+                        £{{ order_total|floatformat:2 }}
+                        {% else %}
+                        £0.00
+                        {% endif %}</span>
                 </button>
-            </form>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            </a>
+            <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             {% include 'includes/main-nav.html' %}
         </div>
     </nav>
-    <!--<header class="container-fluid fixed-top"></header>-->
 
     {% if messages %}
     <div class="message-container"></div>
