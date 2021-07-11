@@ -17,7 +17,6 @@
   padding: 0;
 }
 
-
 /* mdbootstrap dropdown menu */
 /* Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/ */
 .dropdown-menu li {
@@ -62,6 +61,14 @@
 /* Category text color */
 #text-category {
   color: #212529;
+}
+
+/* Shopping cart */
+/* Heading underline */
+.hr-heading {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Media Queries */
