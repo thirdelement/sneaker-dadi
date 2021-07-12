@@ -27,7 +27,99 @@
             <div class="col">
                 {% if cart_items %}
                 <div class="table-responsive rounded">
-                    {{ cart_items }}
+                    <p class="mb-2 text-center">FREE STANDARD UK DELIVERY WHEN YOU SPEND £50.</p>
+                    <table class="table table-sm table-borderless">
+
+                        <thead class="border-top border-bottom">
+
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">PRODUCT NAME</th>
+                                <th scope="col">SIZE</th>
+                                <th scope="col">QUANTITY</th>
+                                <th scope="col" class="text-end">PRICE</th>
+                            </tr>
+
+                        </thead>
+
+                        {% for item in cart_items %}
+                        <tr>
+                            <td class="p-3 cart-image">
+                                <img class="img-fluid rounded" src="{{ item.product.image1.url }}">
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">{{ item.product.name }}</p>
+                                <p class="my-0 small text-muted">Product ID: {{ item.product.product_id|upper }}</p>
+                                <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">{{ item.product.size }}</p>
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">{{ item.quantity }}</p>
+                            </td>
+                            <td class="py-3 text-end">
+                                <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr class="border-top">
+                            <td colspan="4" class="pt-3 text-end">
+                                <h6><strong>Cart Total:</strong></h6>
+                            </td>
+                            <td class="pt-3 text-end">
+                                <h6> <strong>£{{ total|floatformat:2 }}</strong></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end">
+                                <h6>Delivery:</h6>
+                            </td>
+                            <td class="text-end">
+                                <h6>£{{ delivery|floatformat:2 }}</h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end">
+                                <h4 class="mt-2"><strong>Order Total: </strong>
+                            </td>
+                            <td class="text-end">
+                                <h4 class="mt-2"><strong>£{{ order_total|floatformat:2 }}</strong></h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end">
+                                {% if free_delivery_delta > 0 %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end">
+                                <p class="mb-1 text-danger">
+                                    You could get free delivery by spending just
+                                    <strong>£{{ free_delivery_delta }}</strong> more!
+                                </p>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="text-end">
+                                <a href="{% url 'products' %}" class="btn btn-outline-dark btn-lg">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="text-uppercase">Keep Shopping</span>
+                                </a>
+                                <a href="" class="btn btn-dark btn-lg">
+                                    <span class="text-uppercase">Secure Checkout</span>
+                                    <span class="icon">
+                                        <i class="bi bi-lock-fill"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 {% else %}
                 <p class="lead mb-5 text-center">Your cart is empty.</p>

@@ -71,6 +71,16 @@
   margin-right: auto;
 }
 
+/* Product image size in cart */
+.cart-image {
+  width: 20%;
+}
+
+/* Reduce font-weight for table header */
+th {
+font-weight: 400;
+}
+
 /* Media Queries */
 /* Reduce margin on logo below 575px */
 @media (max-width: 575px) {
