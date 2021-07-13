@@ -57,10 +57,16 @@
   color: #6c757d;
 }
 
-/* Product Description */
+/* Product Details */
 /* Category text color */
 #text-category {
   color: #212529;
+}
+
+/* Show down arrow on select form for size */
+/* Credit: https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing */
+.form-control{
+-webkit-appearance: menulist;
 }
 
 /* Shopping cart */
