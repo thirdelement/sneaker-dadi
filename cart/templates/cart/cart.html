@@ -56,7 +56,38 @@
                                 <p class="my-0">{{ item.size }}</p>
                             </td>
                             <td class="py-3">
-                                <p class="my-0">{{ item.quantity }}</p>
+                                <!--<p class="my-0">{{ item.quantity }}</p>-->
+                                <form class="form update-form" method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-sm"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="decrement-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <small><i class="bi bi-dash-lg"></i></small>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control form-control-sm qty_input" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-sm"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="increment-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="bi bi-plus-lg"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="update-link text-info"><small>Update</small></a>
+                                <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
+                                    data-size="{{ item.size }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3 text-end">
                                 <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
@@ -135,4 +166,9 @@
 
     </div>
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'cart/includes/quantity_input_script.html' %}
 {% endblock %}
