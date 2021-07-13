@@ -87,6 +87,26 @@ th {
 font-weight: 400;
 }
 
+/* Hide increment/decrement arrows in quantity input box */
+/* Credit: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Quantity box settings for size and text alignment */
+.qty_input {
+  flex: none!important;
+  min-width: 40px!important;
+  text-align: center;
+}
+
 /* Media Queries */
 /* Reduce margin on logo below 575px */
 @media (max-width: 575px) {
