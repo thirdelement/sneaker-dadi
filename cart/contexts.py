@@ -8,8 +8,9 @@ def cart_contents(request):
     cart_items = []
     total = 0
     product_count = 0
+    # Get cart if it exists or initialize to an empty dict if not
     cart = request.session.get('cart', {})
-
+    # Iterate through all items in cart and tally total cost and product count.
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
         for size, quantity in quantity["items_by_size"].items():

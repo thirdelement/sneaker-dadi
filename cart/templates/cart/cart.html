@@ -57,7 +57,8 @@
                             </td>
                             <td class="py-3">
                                 <!--<p class="my-0">{{ item.quantity }}</p>-->
-                                <form class="form update-form" method="POST" action="">
+                                <form class="form update-form" method="POST"
+                                    action="{% url 'adjust_cart' item.item_id %}">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
@@ -66,7 +67,7 @@
                                                     data-item_id="{{ item.item_id }}"
                                                     id="decrement-qty_{{ item.item_id }}">
                                                     <span>
-                                                        <small><i class="bi bi-dash-lg"></i></small>
+                                                        <i class="bi bi-dash-lg"></i>
                                                     </span>
                                                 </button>
                                             </div>
@@ -82,6 +83,8 @@
                                                     </span>
                                                 </button>
                                             </div>
+                                            <!-- Hidden input for size -->
+                                            <input type="hidden" name="size" value="{{ item.size }}">
                                         </div>
                                     </div>
                                 </form>
@@ -173,23 +176,26 @@
 {% include 'cart/includes/quantity_input_script.html' %}
 <script type="text/javascript">
     // Update quantity on click
-    $('.update-link').click(function(e) {
+    $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
 
     // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var size = $(this).data('size');
         var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'size': size
+        };
 
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
+            .done(function () {
+                location.reload();
+            });
     })
 </script>
 {% endblock %}
