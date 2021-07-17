@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 # Create your views here.
 
@@ -50,8 +50,30 @@ def adjust_cart(request, item_id):
                 cart[item_id]['items_by_size'][size] = quantity
         else:
             del cart[item_id]['items_by_size'][size]
-            # if not cart[item_id]['items_by_size']:
-                # cart.pop(item_id)
+            if not cart[item_id]['items_by_size']:
+                cart.pop(item_id)
     
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
+
+def remove_from_cart(request, item_id):
+    """Remove the item from the shopping cart"""
+
+    try:
+        # product = get_object_or_404(Product, pk=item_id)
+        size = request.POST['size']
+        cart = request.session.get('cart', {})
+
+        # Delete the size key in the items_by_size dict
+        del cart[item_id]['items_by_size'][size]
+        # If items_by_size dict is now empty remove entire item
+        if not cart[item_id]['items_by_size']:
+            cart.pop(item_id)
+
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        ## messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)
