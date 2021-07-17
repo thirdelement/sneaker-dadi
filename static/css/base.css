@@ -63,6 +63,25 @@
   color: #212529;
 }
 
+/* Bootstrap toasts */
+#message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+}
+
+/* Remove opacity for messages */
+/* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
+#message-container > div {
+  opacity:1;
+}
+
+/*#message-container > div {
+  opacity: 1;
+ -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+ filter: alpha(opacity=100);
+}*/
+
 /* Show down arrow on select form for size */
 /* Credit: https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing */
 .form-control{
