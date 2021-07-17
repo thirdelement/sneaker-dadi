@@ -102,7 +102,11 @@
     </nav>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div id="message-container">
+        {% for message in messages %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
@@ -118,6 +122,11 @@
     </footer>
 
     {% block postloadjs %}
+    <script type="text/javascript">
+        $('#toast-close').click(function () {
+            document.querySelector('.toast').style.display = "none";
+        });
+    </script>
     {% endblock %}
 
 </body>
