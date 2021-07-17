@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cart_tools %}
 
 {% block page_header %}
 <!-- Header-->
@@ -93,7 +94,7 @@
                                     data-size="{{ item.size }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3 text-end">
-                                <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
+                                <p class="my-0"><strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong></p>
                             </td>
                         </tr>
                         {% endfor %}
