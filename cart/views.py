@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
+
+from products.models import Product
 
 # Create your views here.
 
@@ -10,6 +13,8 @@ def view_cart(request):
 
 def add_to_cart(request, item_id):
     """ Add a product to the shopping cart """
+
+    product = Product.objects.get(pk=item_id)
     # get quantity from form and convert to integer as string on form
     quantity = int(request.POST.get('quantity'))
     size = request.POST['size']
@@ -24,13 +29,17 @@ def add_to_cart(request, item_id):
         if size in cart[item_id]['items_by_size'].keys():
             # Increment quantity for that key
             cart[item_id]['items_by_size'][size] += quantity
+            messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {cart[item_id]["items_by_size"][size]}')
         else:
             # If item size does not exist set size amount equal to quantity
             cart[item_id]['items_by_size'][size] = quantity
+            messages.success(request, f'Added size {size.upper()} {product.name} to your cart')
     # If item not in cart
     else:
         # Add to item, size and quantity to cart 
         cart[item_id] = {'items_by_size': {size: quantity}}
+        messages.success(request, f'Added {product.name} to your cart')
+        
     # Overwrite the variable in the session with the updated version 
     request.session['cart'] = cart
     return redirect(redirect_url)
