@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 
 from products.models import Product
@@ -14,7 +14,7 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """ Add a product to the shopping cart """
 
-    product = Product.objects.get(pk=item_id)
+    product = get_object_or_404(Product, pk=item_id)
     # get quantity from form and convert to integer as string on form
     quantity = int(request.POST.get('quantity'))
     size = request.POST['size']
@@ -48,6 +48,7 @@ def add_to_cart(request, item_id):
 def adjust_cart(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
     size = request.POST['size']
@@ -57,10 +58,12 @@ def adjust_cart(request, item_id):
         if item_id in list(cart.keys()):
             if size in cart[item_id]['items_by_size'].keys():
                 cart[item_id]['items_by_size'][size] = quantity
+                messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {cart[item_id]["items_by_size"][size]}')
         else:
             del cart[item_id]['items_by_size'][size]
             if not cart[item_id]['items_by_size']:
                 cart.pop(item_id)
+                messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
     
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
@@ -70,7 +73,7 @@ def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
 
     try:
-        # product = get_object_or_404(Product, pk=item_id)
+        product = get_object_or_404(Product, pk=item_id)
         size = request.POST['size']
         cart = request.session.get('cart', {})
 
@@ -79,10 +82,11 @@ def remove_from_cart(request, item_id):
         # If items_by_size dict is now empty remove entire item
         if not cart[item_id]['items_by_size']:
             cart.pop(item_id)
+            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
 
     except Exception as e:
-        ## messages.error(request, f'Error removing item: {e}')
+        messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
