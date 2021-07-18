@@ -1,34 +1,64 @@
-<!--<div class="toast custom-toast rounded-0 border-top-0" role="alert" autohide="false">
-    <div class="arrow-up arrow-success"></div>
-    <div class="w-100 toast-capper bg-success"></div>
-    <div class="toast-header bg-white text-dark">
-        <strong class="mr-auto">Success!</strong>
-        <button type="button" class="me-2 mb-1 close text-dark" data-bs-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body bg-white">
-        {{ message }}        
-    </div>
-</div>-->
+{% load cart_tools %}
 
-<!--<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-    <div class="toast-header">
-        <strong class="me-auto">Success! - BS5</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-        Hello, world! This is a toast message.
-    </div>
-</div>-->
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
-        <strong class="me-auto">Success!</strong>
+        <strong class="me-auto">{% if product_count == 1 %}1 ITEM IN YOUR CART{% else %}
+            {{ product_count }} ITEMS IN YOUR CART{% endif %}</strong>
         <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
-        {{ message }}
+    <div class="toast-body bg-white">
+        {% if order_total > 0 %}
+        <div class="cart-notification-wrapper">
+            {% for item in cart_items %}
+            <div class="row">
+                <div class="col-3 my-1">
+                    <img class="w-100" src="{{ item.product.image1.url }}">
+                </div>
+                <div class="col-9">
+                    <p class="my-0 ms-1">{{ item.product.name }}</p>
+                    <p class="my-0 ms-1 small">Size: {{ item.size|upper }}
+                    </p>
+                    <p class="my-0 ms-1 small">Qty: {{ item.quantity }}</p>
+                    <p class="my-0 ms-1 small"><strong>
+                            £{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                    </p>
+                </div>
+                <hr class="mt-2 mb-3">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <p>
+                    Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:</p>
+            </div>
+            <div class="col-9">
+                <p>£{{ total|floatformat:2 }}</p>
+                </p>
+            </div>
+            {% if free_delivery_delta > 0 %}
+            <div class="d-grid gap-2">
+                <p class="mb-0 p-2 bg-warning shadow-sm text-center">
+                    Spend <strong>${{ free_delivery_delta }}</strong> more to get free next day delivery!
+                </p>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'view_cart' %}" class="btn btn-outline-dark d-block">
+                        <span class="text-uppercase">View Cart</span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'view_cart' %}" class="btn btn-dark d-block">
+                        <span class="text-uppercase">Checkout</span>
+                        <i class="bi bi-lock-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+    {% endif %}
+</div>
 </div>

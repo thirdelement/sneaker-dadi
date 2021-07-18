@@ -14,7 +14,6 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """ Add a product to the shopping cart """
 
-    product = get_object_or_404(Product, pk=item_id)
     # get quantity from form and convert to integer as string on form
     quantity = int(request.POST.get('quantity'))
     size = request.POST['size']
@@ -29,16 +28,16 @@ def add_to_cart(request, item_id):
         if size in cart[item_id]['items_by_size'].keys():
             # Increment quantity for that key
             cart[item_id]['items_by_size'][size] += quantity
-            messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {cart[item_id]["items_by_size"][size]}')
+            messages.success(request, ' ')
         else:
             # If item size does not exist set size amount equal to quantity
             cart[item_id]['items_by_size'][size] = quantity
-            messages.success(request, f'Added size {size.upper()} {product.name} to your cart')
+            messages.success(request, ' ')
     # If item not in cart
     else:
         # Add to item, size and quantity to cart 
         cart[item_id] = {'items_by_size': {size: quantity}}
-        messages.success(request, f'Added {product.name} to your cart')
+        messages.success(request, ' ')
         
     # Overwrite the variable in the session with the updated version 
     request.session['cart'] = cart
@@ -48,7 +47,6 @@ def add_to_cart(request, item_id):
 def adjust_cart(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
-    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
     size = request.POST['size']
@@ -58,12 +56,12 @@ def adjust_cart(request, item_id):
         if item_id in list(cart.keys()):
             if size in cart[item_id]['items_by_size'].keys():
                 cart[item_id]['items_by_size'][size] = quantity
-                messages.success(request, f'Updated size {size.upper()} {product.name} quantity to {cart[item_id]["items_by_size"][size]}')
+                messages.success(request, ' ')
         else:
             del cart[item_id]['items_by_size'][size]
             if not cart[item_id]['items_by_size']:
                 cart.pop(item_id)
-                messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
+                messages.success(request, ' ')
     
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
@@ -73,7 +71,6 @@ def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
 
     try:
-        product = get_object_or_404(Product, pk=item_id)
         size = request.POST['size']
         cart = request.session.get('cart', {})
 
@@ -82,7 +79,7 @@ def remove_from_cart(request, item_id):
         # If items_by_size dict is now empty remove entire item
         if not cart[item_id]['items_by_size']:
             cart.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your cart')
+        messages.success(request, ' ')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
