@@ -126,6 +126,21 @@ input[type=number] {
   text-align: center;
 }
 
+/* Toast Messages */
+.cart-notification-wrapper {
+  height: 105px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Change Checkout button color on mouseover */
+/* Credit: https://stackoverflow.com/questions/25923623/change-hover-color-on-a-button-with-bootstrap-customization */
+.btn-dark:hover {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107; 
+}
+
 /* Media Queries */
 /* Reduce margin on logo below 575px */
 @media (max-width: 575px) {
