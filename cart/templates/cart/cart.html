@@ -100,7 +100,7 @@
                         {% endfor %}
                         <tr class="border-top">
                             <td colspan="4" class="pt-3 text-end">
-                                <h6><strong>Cart Total:</strong></h6>
+                                <h6><strong>SUB TOTAL:</strong></h6>
                             </td>
                             <td class="pt-3 text-end">
                                 <h6> <strong>£{{ total|floatformat:2 }}</strong></h6>
@@ -108,7 +108,7 @@
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end">
-                                <h6>Delivery:</h6>
+                                <h6>DELIVERY:</h6>
                             </td>
                             <td class="text-end">
                                 <h6>£{{ delivery|floatformat:2 }}</h6>
@@ -116,7 +116,7 @@
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end">
-                                <h4 class="mt-2"><strong>Order Total: </strong>
+                                <h4 class="mt-2"><strong>ORDER TOTAL: </strong>
                             </td>
                             <td class="text-end">
                                 <h4 class="mt-2"><strong>£{{ order_total|floatformat:2 }}</strong></h4>
@@ -146,7 +146,7 @@
                                     </span>
                                     <span class="text-uppercase">Continue Shopping</span>
                                 </a>
-                                <a href="" class="btn btn-dark btn-lg">
+                                <a href="{% url 'checkout' %}" class="btn btn-dark btn-lg">
                                     <span class="text-uppercase">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="bi bi-lock-fill"></i>
