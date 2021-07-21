@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
 from .forms import OrderForm
+from cart.contexts import cart_contents
 
 
 def checkout(request):
@@ -10,6 +11,10 @@ def checkout(request):
         messages.error(request, "There's nothing in your cart at the moment")
         return redirect(reverse('products'))
 
+    current_cart = cart_contents(request)
+    total = current_cart['order_total']
+    stripe_total = round(total * 100)
+    
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
