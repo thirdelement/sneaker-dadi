@@ -47,3 +47,40 @@ card.addEventListener('change', function (event) {
         errorDiv.textContent = '';
     }
 });
+
+// Handle form submit
+var form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function(ev) {
+    //prevent the default action which is POST
+    ev.preventDefault();
+    //disable cart element & submit button to prevent multiple submissions
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
+    //confirm card payment method, provide card to stripe & execute function on result
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function(result) {
+        //if there's an error put this into the card error div
+        if (result.error) {
+            var errorDiv = document.getElementById('card-errors');
+            var html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+                //if error re-enable the card element and submit button to allow
+                //the user to fix it
+            $(errorDiv).html(html);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+            //else if status of the payment intent is succeeded submit the form
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});
