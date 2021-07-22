@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
@@ -93,6 +93,32 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+    }
+
+    return render(request, template, context)
+
+
+def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
+    # Get save info from the session to check if user wants to save details
+    save_info = request.session.get('save_info')
+    # Use the order number to get the order created and send back to the template
+    order = get_object_or_404(Order, order_number=order_number)
+    # Attach a success message
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    # Delete user shopping cart in the session as no longer needed
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    # Set template, context & render template
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
     }
 
     return render(request, template, context)
