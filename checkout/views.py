@@ -107,9 +107,8 @@ def checkout_success(request, order_number):
     # Use the order number to get the order created and send back to the template
     order = get_object_or_404(Order, order_number=order_number)
     # Attach a success message
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+    messages.success(request, f'Your order number is {order_number}. \
+        A confirmation email will be sent to {order.email}.')
 
     # Delete user shopping cart in the session as no longer needed
     if 'cart' in request.session:
@@ -119,6 +118,7 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'on_checkout_success': True,
     }
 
     return render(request, template, context)

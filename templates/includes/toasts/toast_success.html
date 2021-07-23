@@ -3,12 +3,22 @@
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
-        <strong class="me-auto">{% if product_count == 1 %}1 ITEM IN YOUR CART{% else %}
+        <strong class="me-auto">
+            {% if on_checkout_success %}Order successfully processed! 
+            {% elif product_count == 1 %}1 ITEM IN YOUR CART{% else %}
             {{ product_count }} ITEMS IN YOUR CART{% endif %}</strong>
         <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body bg-white">
-        {% if order_total > 0 %}
+        {% if message != " " %}
+        <div class="row">
+            <div class="col">
+                {{ message }}
+                <hr class="mt-1 mb-3">
+            </div>
+        </div>
+        {% endif %}
+        {% if total > 0 %}
         <div class="cart-notification-wrapper">
             {% for item in cart_items %}
             <div class="row">
