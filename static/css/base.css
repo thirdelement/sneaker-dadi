@@ -141,6 +141,14 @@ input[type=number] {
   border-color: #ffc107; 
 }
 
+/* Checkout Success */
+/* Heading underline */
+.hr-heading-short {
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Media Queries */
 /* Reduce margin on logo below 575px */
 @media (max-width: 575px) {

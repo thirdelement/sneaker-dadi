@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cart_tools %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-4 text-center">ORDER RECEIPT</h2>
+                <hr class="hr-heading-short">
+                <!--<p>A confirmation email has been sent to
+                    <strong>{{ order.email }}</strong>.</p>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 order-2 mb-5">
+                <h6 class="mb-2 mt-4">YOUR ORDER</h6>
+                <p class="text-muted"><small>{% if product_count == 1 %}1 item{% else %}
+                        {{ product_count }} items{% endif %}</small></p>
+                {% for item in order.lineitems.all %}
+                <div class="row">
+                    <div class="col-3 my-1">
+                        {% if item.product.image1 %}
+                        <img class="w-100" src="{{ item.product.image1.url }}" alt="{{ product.name }}">
+                        {% else %}
+                        <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-9">
+                        <p class="my-0 ms-1">{{ item.product.name }}</p>
+                        <p class="my-0 ms-1 small">Size: {{ item.size|upper }}
+                        </p>
+                        <p class="my-0 ms-1 small">Qty: {{ item.quantity }}</p>
+                        <p class="my-0 ms-1 small"><strong>
+                                £{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                        </p>
+                    </div>
+                    <hr class="mt-2 mb-3">
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-4">
+                        <p><strong>
+                                SUB TOTAL:</strong></p>
+                    </div>
+                    <div class="col-8 text-end">
+                        <p>£{{ order.sub_total }}</p>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p>
+                            DELIVERY:</p>
+                    </div>
+                    <div class="col-8 text-end">
+                        <p>£{{ order.delivery_cost }}</p>
+                        </p>
+                    </div>
+                    <hr class="mt-2 mb-3">
+                    <div class="col-4">
+                        <p><strong>
+                                ORDER TOTAL:</strong></p>
+                    </div>
+                    <div class="col-8 text-end">
+                        <p>£{{ order.order_total }}</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="row text-end">
+                    <div class="col">
+                        {% if from_profile %}
+                        <a href="{% url 'profile' %}" class="btn btn-dark my-2">
+                            <i class="bi bi-chevron-left"></i>
+                            <span class="text-uppercase">Back to Profile</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'products' %}" class="btn btn-dark my-2">
+                            <i class="bi bi-chevron-left"></i>
+                            <span class="text-uppercase">Continue Shopping</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 order-1">
+                <h5 class="text-center">ORDER DETAILS</h5>
+                <hr class="hr-heading">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <p class="mb-0 font-weight-bold">Order Number</p>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <p class="mb-0">{{ order.order_number }}</p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12 col-md-4">
+                        <p>Order Date</p>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <p>{{ order.date }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center">DELIVERY ADDRESS</h5>
+                        <hr class="hr-heading">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.full_name }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.street_address1 }}</p>
+                    </div>
+                </div>
+                {% if order.street_address2 %}
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.street_address2 }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% if order.county %}
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.county }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.town_or_city }}</p>
+                    </div>
+                </div>
+                {% if order.postcode %}
+                <div class="col-12">
+                    <p class="mb-0">{{ order.postcode }}</p>
+                </div>
+
+                {% endif %}
+                <div class="row">
+                    <div class="col">
+                        <p class="mb-0">{{ order.country }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center">CONTACT DETAILS</h5>
+                        <hr class="hr-heading">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+                    <div class="col-11">
+                        <p class="mb-0">{{ order.phone_number }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <div class="col-11">
+                        <p class="mb-0">{{ order.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
