@@ -33,8 +33,6 @@
         <div class="row">
             <div class="col-12 col-lg-6 order-2 mb-5">
                 <h6 class="mb-2 mt-4">YOUR ORDER</h6>
-                <p class="text-muted"><small>{% if product_count == 1 %}1 item{% else %}
-                        {{ product_count }} items{% endif %}</small></p>
                 {% for item in order.lineitems.all %}
                 <div class="row">
                     <div class="col-3 my-1">
@@ -83,21 +81,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="row text-end">
-                    <div class="col">
-                        {% if from_profile %}
-                        <a href="{% url 'profile' %}" class="btn btn-dark my-2">
-                            <i class="bi bi-chevron-left"></i>
-                            <span class="text-uppercase">Back to Profile</span>
-                        </a>
-                        {% else %}
-                        <a href="{% url 'products' %}" class="btn btn-dark my-2">
-                            <i class="bi bi-chevron-left"></i>
-                            <span class="text-uppercase">Continue Shopping</span>
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
+                
             </div>
             <div class="col-12 col-lg-6 order-1">
                 <h5 class="text-center">ORDER DETAILS</h5>
@@ -190,7 +174,21 @@
                 </div>
             </div>
         </div>
+        <div class="row text-end">
+            <div class="col">
+                {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-dark my-2">
+                    <i class="bi bi-chevron-left"></i>
+                    <span class="text-uppercase">Back to Profile</span>
+                </a>
+                {% else %}
+                <a href="{% url 'products' %}" class="btn btn-dark my-2">
+                    <i class="bi bi-chevron-left"></i>
+                    <span class="text-uppercase">Continue Shopping</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
-
 </section>
 {% endblock %}
