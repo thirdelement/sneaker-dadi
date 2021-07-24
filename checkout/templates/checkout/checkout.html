@@ -3,7 +3,7 @@
 {% load cart_tools %}
 
 {% block extra_css %}
-   <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -32,7 +32,7 @@
             <div class="col-12 col-lg-6 order-2 mb-5">
                 <h6 class="mb-2 mt-4">YOUR ORDER</h6>
                 <p class="text-muted"><small>{% if product_count == 1 %}1 item{% else %}
-                    {{ product_count }} items{% endif %}</small></p>
+                        {{ product_count }} items{% endif %}</small></p>
                 {% for item in cart_items %}
                 <div class="row">
                     <div class="col-3 my-1">
@@ -74,7 +74,7 @@
                     <hr class="mt-2 mb-3">
                     <div class="col-4">
                         <p><strong>
-                            ORDER TOTAL:</strong></p>
+                                ORDER TOTAL:</strong></p>
                     </div>
                     <div class="col-8 text-end">
                         <p>£{{ order_total|floatformat:2 }}</p>
@@ -161,12 +161,17 @@
             </div>
         </div>
     </div>
+    <div id="loading-overlay">
+        <div class="spinner-border text-light loading-spinner" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 </section>
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
