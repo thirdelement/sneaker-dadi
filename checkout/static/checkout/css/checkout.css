@@ -32,6 +32,8 @@
     border-radius: .25rem;
 }
 
+/* Checkout.html */
+/* Set countries to grey if not selected */
 select,
 select option {
     color: #000000;
@@ -42,7 +44,6 @@ select option[value=""] {
     color: #aab7c4 !important;
 }
 
-/* Checkout.html */
 /* Overlay whilst confirming payment */
 #loading-overlay {
 	display: none;
