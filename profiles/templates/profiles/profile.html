@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-4 text-center">PROFILE</h2>
+                <hr class="hr-heading">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
