@@ -53,15 +53,23 @@ def checkout(request):
         }
         # create an instance of the form using the form data
         order_form = OrderForm(form_data)
-        # if form is valid iterate through the cart items 
+        # if form is valid iterate through the cart items
         # to create each line item
         if order_form.is_valid():
-            order = order_form.save()
+            # adding Commit=False prevents first save from happening
+            order = order_form.save(commit=False)
+            # split client_secret to get the payment intent ID
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            # dump original cart to a JSON string,
+            # set on the order & save
+            order.original_cart = json.dumps(cart)
+            order.save()
             for item_id, quantity in cart.items():
                 try:
                     # Get product ID from the cart
                     product = Product.objects.get(id=item_id)
-                    # Iterate through each size and create a line item 
+                    # Iterate through each size and create a line item
                     # accordingly
                     for size, quantity in quantity['items_by_size'].items():
                         order_line_item = OrderLineItem(
@@ -127,7 +135,8 @@ def checkout_success(request, order_number):
     """
     # Get save info from the session to check if user wants to save details
     save_info = request.session.get('save_info')
-    # Use the order number to get the order created and send back to the template
+    # Use the order number to get the order created and
+    # send back to the template
     order = get_object_or_404(Order, order_number=order_number)
     # Attach a success message
     messages.success(request, f'Your order number is {order_number}. \
