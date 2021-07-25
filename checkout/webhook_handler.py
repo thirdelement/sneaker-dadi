@@ -86,7 +86,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
-                    user_profile=profile,
+                    # user_profile=profile,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
@@ -106,7 +106,7 @@ class StripeWH_Handler:
                             order=order,
                             product=product,
                             quantity=quantity,
-                            product_size=size,
+                            size=size,
                         )
                         order_line_item.save()
             # If anything goes wrong delete the order if created and return
