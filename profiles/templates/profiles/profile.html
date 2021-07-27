@@ -22,12 +22,51 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5">
         <div class="row">
-            <div class="col">
-                <h2 class="mb-4 text-center">PROFILE</h2>
-                <hr class="hr-heading">
+            <div class="col mb-1">
+                <h2 class="text-center">PROFILE</h2>
+                <hr class="hr-heading-short">
             </div>
         </div>
+    
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h3 class="text-center">DEFAULT DELIVERY INFO</h3>
+            <hr class="hr-heading">
+            <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                <fieldset class="rounded px-3 mb-3">
+                    <div class="mb-2">
+                        {{ form.default_street_address1 | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.default_street_address2 | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.default_town_or_city | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.default_county | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.default_postcode | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.default_country | as_crispy_field }}
+                    </div>
+                </fieldset>
+                <button class="btn btn-dark text-uppercase float-end me-3">Update Delivery Info</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h3 class="text-center">ORDER HISTORY</h3>
+            <hr class="hr-heading">
+            {{ orders }}
+        </div>
     </div>
-    {{ profile }}
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
