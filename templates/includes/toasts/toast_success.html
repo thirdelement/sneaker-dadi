@@ -5,12 +5,13 @@
     <div class="toast-header">
         <strong class="me-auto">
             {% if on_checkout_success %}Order placed successfully. 
+            {% elif on_profile %}Profile updated successfully.
             {% elif product_count == 1 %}1 ITEM IN YOUR CART{% else %}
             {{ product_count }} ITEMS IN YOUR CART{% endif %}</strong>
         <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body bg-white">
-        {% if message != " " %}
+        {% if not on_profile %}
         <div class="row">
             <div class="col">
                 {{ message }}
@@ -18,7 +19,7 @@
             </div>
         </div>
         {% endif %}
-        {% if total > 0 %}
+        {% if total > 0 and not on_profile %}
         <div class="cart-notification-wrapper">
             {% for item in cart_items %}
             <div class="row">

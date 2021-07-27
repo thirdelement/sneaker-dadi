@@ -13,7 +13,7 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, ' ')
 
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
@@ -22,7 +22,7 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile': True
     }
 
     return render(request, template, context)
