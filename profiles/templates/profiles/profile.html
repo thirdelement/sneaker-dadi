@@ -27,40 +27,75 @@
                 <hr class="hr-heading-short">
             </div>
         </div>
-    
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <h3 class="text-center">DEFAULT DELIVERY INFO</h3>
-            <hr class="hr-heading">
-            <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-                {% csrf_token %}
-                <fieldset class="rounded px-3 mb-3">
-                    <div class="mb-2">
-                        {{ form.default_street_address1 | as_crispy_field }}
-                    </div>
-                    <div class="mb-2">
-                        {{ form.default_street_address2 | as_crispy_field }}
-                    </div>
-                    <div class="mb-2">
-                        {{ form.default_town_or_city | as_crispy_field }}
-                    </div>
-                    <div class="mb-2">
-                        {{ form.default_county | as_crispy_field }}
-                    </div>
-                    <div class="mb-2">
-                        {{ form.default_postcode | as_crispy_field }}
-                    </div>
-                    <div class="mb-2">
-                        {{ form.default_country | as_crispy_field }}
-                    </div>
-                </fieldset>
-                <button class="btn btn-dark text-uppercase float-end me-3">Update Delivery Info</button>
-            </form>
-        </div>
-        <div class="col-12 col-lg-6">
-            <h3 class="text-center">ORDER HISTORY</h3>
-            <hr class="hr-heading">
-            {{ orders }}
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h3 class="text-center">DEFAULT DELIVERY INFO</h3>
+                <hr class="hr-heading">
+                <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                    {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-3">
+                        <div class="mb-2">
+                            {{ form.default_street_address1 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_street_address2 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_town_or_city | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_county | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_postcode | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_country | as_crispy_field }}
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-dark text-uppercase float-end me-3">Update Delivery Info</button>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6">
+                <h3 class="text-center">ORDER HISTORY</h3>
+                <hr class="hr-heading">
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th><h6>REF</h6></th>
+                                <th><h6>DATE</h6</th>
+                                <th><h6>ITEMS</h6></th>
+                                <th><h6>TOTAL</h6></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                        {{ order.order_number|truncatechars:6 }}
+                                    </a>
+                                </td>
+                                <td>{{ order.date }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                        <li class="small">
+                                            Size {{ item.size|upper }} {{ item.product.name }} x{{ item.quantity }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>£{{ order.order_total }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>
