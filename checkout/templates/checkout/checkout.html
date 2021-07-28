@@ -96,7 +96,9 @@
                         <div class="mb-2">
                             {{ order_form.email | as_crispy_field }}
                         </div>
-                        {{ order_form.phone_number | as_crispy_field }}
+                        <div class="mb-2">
+                            {{ order_form.phone_number | as_crispy_field }}
+                        </div>
                     </fieldset>
                     <fieldset class="rounded px-3 mb-3">
                         <legend class="fieldset-label small px-2 w-auto">Delivery address</legend>
