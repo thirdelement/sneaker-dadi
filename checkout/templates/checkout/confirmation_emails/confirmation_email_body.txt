@@ -1,0 +1,22 @@
+Hello {{ order.full_name }}!
+
+This is to confirm your Sneaker Dadi order. Your order details are below:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Sub Total: £{{ order.sub_total }}
+Delivery: £{{ order.delivery_cost }}
+Order Total: £{{ order.order_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+We have your phone number as {{ order.phone_number }}.
+
+Please contact us at {{ contact_email }} with any queries.
+
+Thank you for your order!
+
+Regards,
+
+Sneaker Dadi
