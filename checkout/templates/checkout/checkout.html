@@ -120,10 +120,10 @@
                         </div>
                         <div class="form-check form-check-inline d-flex flex-row-reverse">
                             {% if user.is_authenticated %}
+                            <input class="form-check-input ms-2 me-0" type="checkbox" id="id-save-info" name="save-info"
+                                checked>
                             <label class="form-check-label" for="id-save-info">Save delivery address to my
                                 profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info"
-                                checked>
                             {% else %}
                             <label class="form-check-label" for="id-save-info">
                                 <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
