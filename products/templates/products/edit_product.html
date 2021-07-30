@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-4 text-center">PRODUCT MANAGEMENT</h2>
+                <hr class="hr-heading">
+                <h5 class="text-center">EDIT A PRODUCT</h5>
+                <hr class="hr-heading-short">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-2">
+                        <div class="mb-2">
+                            {{ form.category | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.product_id | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.name | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.description | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.price | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.sale_price | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.discount | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.rating | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.size | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.gender | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.image1 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.image2 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.image3 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.image4 | as_crispy_field }}
+                        </div>
+                    </fieldset>
+                    <div class="text-end">
+                        <a class="btn btn-outline-dark" href="{% url 'products' %}">Cancel</a>
+                        <button class="btn btn-dark" type="submit">Update Product</button>
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+</section>
+{% endblock %}
