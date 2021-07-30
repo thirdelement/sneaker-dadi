@@ -56,7 +56,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="/media/alternate-logo2.png" width="35" height="30"
+                <img src="{{ MEDIA_URL }}alternate-logo2.png" width="35" height="30"
                     class="d-none d-sm-inline-block align-top logo" alt="Sneaker logo">
                 <span class="d-none d-md-inline-block">Sneaker Dadi</span></a>
             <div class="list-inline-item  offset-sm-4 offset-lg-0">
@@ -75,7 +75,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                    <li><a class="dropdown-item" href="">Product Management</a></li>
+                    <li><a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a></li>
                     {% endif %}
                     <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
                     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
