@@ -133,6 +133,10 @@ input[type=number] {
   overflow-y: auto;
 }
 
+.toast-capper {
+  height: 2px;
+}
+
 /* Change Checkout button color on mouseover */
 /* Credit: https://stackoverflow.com/questions/25923623/change-hover-color-on-a-button-with-bootstrap-customization */
 .btn-dark:hover {
