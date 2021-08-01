@@ -5,26 +5,24 @@
     <div class="w-100 toast-capper bg-success"></div>
     <div class="toast-header">
         <strong class="me-auto">
-            {% if on_checkout_success %}Order placed successfully. 
+            {% if on_checkout_success %}Order placed successfully.
             {% elif on_profile %}Profile updated successfully.
             {% elif message.extra_tags %}{{ message }}
+            <!-- Credit: https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages/43729673#43729673 -->
             {% elif product_count == 0 %}{{ message }}
             {% elif product_count == 1 %}1 ITEM IN YOUR CART
             {% else %}
             {{ product_count }} ITEMS IN YOUR CART{% endif %}</strong>
         <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    {% if not on_profile %}
-    {% elif not on_edit_product %}
-    {% elif message.extra_tags %}
-    {% elif not product_count == 0 %}
+    <!--Credit: https://stackoverflow.com/questions/23637846/grouping-conditions-in-django-template-if-statement -->
+    {% if not message.extra_tags or on_profile or on_edit_product or product_count == 0 %}
     <div class="toast-body bg-white">
         <div class="row">
             <div class="col">
                 {{ message }}
             </div>
         </div>
-        
         {% if total > 0 and not on_profile %}
         <div class="cart-notification-wrapper">
             {% for item in cart_items %}
