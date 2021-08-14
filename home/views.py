@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.db.models import Count
 
-# Create your views here.
+from products.models import Product
 
-def index(request):
-    """" A view to return the index page"""
+from datetime import datetime, timedelta
 
-    return render(request, 'home/index.html')
+
+def top_sellers(request):
+    top_sellers_male = Product.objects.filter(gender='m').filter(orderlineitem__order__date__gte=datetime.now()-timedelta(days=30)).annotate(num_quantity=Count('orderlineitem__quantity'))[:2]
+    top_sellers_female = Product.objects.filter(gender='f').filter(orderlineitem__order__date__gte=datetime.now()-timedelta(days=30)).annotate(num_quantity=Count('orderlineitem__quantity'))[:2]
+    return render(request, 'home/index.html', {'top_sellers_male': top_sellers_male, 'top_sellers_female': top_sellers_female})
