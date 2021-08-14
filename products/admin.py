@@ -15,6 +15,14 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('product_id',)
 
+    def clean(self):
+        cleaned_data = super(ProductAdmin, self).clean()
+        on_sale = cleaned_data.get("on_sale")
+        discount_percent = cleaned_data.get("discount_percent")
+        if on_sale and not discount_percent:
+            raise forms.ValidationError("Discount percent is a required field.")
+        return cleaned_data
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',

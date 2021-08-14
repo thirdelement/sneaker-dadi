@@ -12,7 +12,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     readonly_fields = ('order_number', 'date',
                        'delivery_cost', 'sub_total',
-                       'order_total', 'original_cart',
+                       'order_total', 'original_cart', 
                        'stripe_pid')
 
     fields = ('order_number', 'user_profile', 'date', 'full_name',
@@ -27,5 +27,6 @@ class OrderAdmin(admin.ModelAdmin):
                     'order_total',)
 
     ordering = ('-date',)
+        
 
 admin.site.register(Order, OrderAdmin)
