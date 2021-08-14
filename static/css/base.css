@@ -80,6 +80,7 @@ header.masthead h1, header.masthead .h1 {
   padding-top: 7rem;
   padding-bottom: 7rem;
 }
+
 .call-to-action:before {
   content: "";
   position: absolute;
@@ -89,6 +90,11 @@ header.masthead h1, header.masthead .h1 {
   top: 0;
   left: 0;
   opacity: 0.5;
+}
+
+/* Remove padding from card-body */
+.card-body-home {
+  padding: 0rem 0rem!important;
 }
 
 footer.footer {
