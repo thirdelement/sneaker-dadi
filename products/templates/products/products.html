@@ -95,7 +95,12 @@
                             </small>
                             {% endif %}
                             <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <span class="text-decoration-line-through">£{{ product.price }}</span>
+                            <span>£{{ product.get_sale_price }}</span>
+                            {% else %}
                             <p>£{{ product.price }}</p>
+                            {% endif %}
                         </div>
                     </div>
                     <!-- Product actions-->

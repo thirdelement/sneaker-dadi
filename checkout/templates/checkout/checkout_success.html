@@ -47,8 +47,14 @@
                         <p class="my-0 ms-1 small">Size: {{ item.size|upper }}
                         </p>
                         <p class="my-0 ms-1 small">Qty: {{ item.quantity }}</p>
-                        <p class="my-0 ms-1 small"><strong>
+                        <p class="my-0 ms-1 small">
+                            {% if item.product.on_sale is True %}
+                            <strong>
+                                £{{ item.product.get_sale_price | calc_subtotal_sale:item.quantity }}</strong>
+                            {% else %}
+                            <strong>
                                 £{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                            {% endif %}
                         </p>
                     </div>
                     <hr class="mt-2 mb-3">
@@ -81,7 +87,7 @@
                         </p>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-12 col-lg-6 order-1">
                 <h5 class="text-center">ORDER DETAILS</h5>

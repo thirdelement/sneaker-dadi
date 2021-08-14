@@ -56,7 +56,11 @@
                             <td class="py-3">
                                 <p class="my-0">{{ item.product.name }}</p>
                                 <p class="my-0 small text-muted">Product ID: {{ item.product.product_id|upper }}</p>
+                                {% if item.product.on_sale is True %}
+                                <p class="my-0"><strong>£{{ item.product.get_sale_price }}</strong></p>
+                                {% else %}
                                 <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
+                                {% endif %}
                             </td>
                             <td class="py-3">
                                 <p class="my-0">{{ item.size }}</p>
@@ -99,8 +103,13 @@
                                     data-size="{{ item.size }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3 text-end">
+                                {% if item.product.on_sale is True %}
+                                <p class="my-0"><strong>£{{ item.product.get_sale_price | calc_subtotal_sale:item.quantity }}</strong>
+                                </p>
+                                {% else %}
                                 <p class="my-0"><strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
                                 </p>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}

@@ -50,9 +50,9 @@
                 {% endif %}
                 <div>
                     <small class="text-muted">Price:</small>
-                    {% if product.sale_price %}
+                    {% if product.on_sale is True %}
                     <span class="text-decoration-line-through fs-5">£{{ product.price }}</span>
-                    <span class="fs-5">£{{ product.sale_price }}</span>
+                    <span class="fs-5">£{{ product.get_sale_price }}</span>
                     {% else %}
                     <span class="fs-5">£{{ product.price }}</span>
                     {% endif %}
