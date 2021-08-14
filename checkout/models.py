@@ -9,6 +9,8 @@ from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
 
+from decimal import Decimal
+
 
 # Create your models here.
 class Order(models.Model):
@@ -74,8 +76,13 @@ class OrderLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        self.lineitem_total = self.product.price * self.quantity
+        if self.product.on_sale is True:
+            self.lineitem_total = Decimal(self.product.price * (100 - self.product.discount_percent) / 100).quantize(Decimal('0.00')) * self.quantity
+        else:
+            self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'Product ID {self.product.product_id} on order {self.order.order_number}'
+        # return f'Product ID {self.product.product_id} on order {self.order.order_number}'
+        # return f'{self.product.product_id}, {self.quantity}'
+        return f'{self.product_id}, {self.quantity}'

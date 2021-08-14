@@ -3,8 +3,8 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
-def cart_contents(request):
 
+def cart_contents(request):
     cart_items = []
     total = 0
     product_count = 0
@@ -14,7 +14,11 @@ def cart_contents(request):
     for item_id, quantity in cart.items():
         product = get_object_or_404(Product, pk=item_id)
         for size, quantity in quantity["items_by_size"].items():
-            total += quantity * product.price
+            # If product is on sale use the sale price
+            if product.on_sale is True:
+                total += quantity * Decimal(product.price * (100 - product.discount_percent) / 100).quantize(Decimal('0.00'))
+            else:
+                total += quantity * product.price
             product_count += quantity
             cart_items.append({
                 'item_id': item_id,
@@ -24,8 +28,8 @@ def cart_contents(request):
                 })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        # delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-        delivery = 5.95
+        delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        # delivery = 5.95
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
         delivery = 0
