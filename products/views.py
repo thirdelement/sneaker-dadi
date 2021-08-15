@@ -112,6 +112,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
+            # Add extra_tags to identify message in toast_success.html
             messages.success(request, 'Successfully updated product!', extra_tags=' ')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
