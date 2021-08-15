@@ -174,13 +174,6 @@ footer.footer {
   color: #212529;
 }
 
-/* Bootstrap toasts */
-#message-container {
-  position: fixed;
-  top: 72px;
-  right: 15px;
-}
-
 /* Remove opacity for messages */
 /* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
 #message-container > div {
@@ -238,6 +231,17 @@ input[type=number] {
 }
 
 /* Toast Messages */
+#message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 1060;
+}
+
+/*.toast {
+  z-index: 999999;
+}*/
+
 .cart-notification-wrapper {
   height: 105px;
   overflow-x: hidden;
