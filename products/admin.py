@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, ProductReview
 
 # Register your models here.
+
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -23,11 +24,18 @@ class ProductAdmin(admin.ModelAdmin):
             raise forms.ValidationError("Discount percent is a required field.")
         return cleaned_data
 
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',
     )
 
+
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'review_text', 'get_review_rating', 'created_on')
+
+
+admin.site.register(ProductReview, ProductReviewAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
