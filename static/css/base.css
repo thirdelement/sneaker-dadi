@@ -174,11 +174,14 @@ footer.footer {
   color: #212529;
 }
 
+<<<<<<< HEAD
 /* To enable button next to Reviews heading */
 .review-heading{
   display: inline-block;
 }
 
+=======
+>>>>>>> ed992813bf5fa4d697e8590ab4ace14d1880e9db
 /* Remove opacity for messages */
 /* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
 #message-container > div {
@@ -243,6 +246,13 @@ input[type=number] {
   z-index: 1060;
 }
 
+<<<<<<< HEAD
+=======
+/*.toast {
+  z-index: 999999;
+}*/
+
+>>>>>>> ed992813bf5fa4d697e8590ab4ace14d1880e9db
 .cart-notification-wrapper {
   height: 105px;
   overflow-x: hidden;
