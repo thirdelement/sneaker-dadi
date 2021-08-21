@@ -69,9 +69,19 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     reviewForm = ReviewAdd()
 
+    # Check if user has added product review
+    # Credit: Code Artisan Lab - https://www.youtube.com/watch?v=kcMfRJ7AGJY&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=32
+    can_add_review = True
+    reviewCheck = ProductReview.objects.filter(user=request.user, product=product).count()
+    if request.user.is_authenticated:
+        if reviewCheck > 0:
+            can_add_review = False
+    # End check
+
     context = {
         'product': product,
         'reviewForm': reviewForm, 
+        'can_add_review': can_add_review
     }
 
     return render(request, 'products/product_detail.html', context)

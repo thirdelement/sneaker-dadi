@@ -109,11 +109,14 @@
     <div class="container px-4 px-lg-5 my-5">
         <h2 class="fw-bolder mb-4 review-heading">Reviews</h2>
         {% if user.is_authenticated %}
-        <button type="button" class="btn btn-warning btn-sm mb-4" data-bs-toggle="modal"
+        {% if can_add_review %}
+        <button type="button" id="btn-review" class="btn btn-warning btn-sm mb-4" data-bs-toggle="modal"
             data-bs-target="#productReview">Add Review</button>
+        {% endif %}
         {% endif %}
         <!-- Product Review Modal -->
         {% if user.is_authenticated %}
+        {% if can_add_review %}
         <div class="modal fade" id="productReview" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -140,6 +143,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endif %}
         <!-- End Product Review Modal -->
         <hr>

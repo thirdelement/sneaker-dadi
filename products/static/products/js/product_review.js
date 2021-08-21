@@ -1,5 +1,5 @@
 // Product Review Save
-// Credit: https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31
+// Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31
 $("#addForm").submit(function(e){
 	$.ajax({
 		data:$(this).serialize(),
@@ -9,11 +9,12 @@ $("#addForm").submit(function(e){
 		success:function(res){
 			if(res.bool==true){
 				$(".ajaxRes").html('Review has been added.');
+				// Reset form button
 				$("#reset").trigger('click');
 				console.log("test")
-				//// Hide Button
-				//$(".reviewBtn").hide();
-				//// End
+				// Hide Add Review button
+				$("#btn-review").hide();
+				// End
 
 				//// create data for review
 				//var _html='<blockquote class="blockquote text-right">';
