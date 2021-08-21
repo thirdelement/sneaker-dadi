@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from decimal import Decimal
 
@@ -65,4 +66,29 @@ class Product(models.Model):
         from django.core.exceptions import ValidationError
         if self.on_sale and not self.discount_percent:
             raise ValidationError("Discount percent is a required field.")
-        
+
+
+# Product review
+# Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31
+RATING = (
+    (1, '1'), 
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+)
+
+
+class ProductReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    review_text = models.TextField(max_length=250)
+    review_rating = models.CharField(choices=RATING, max_length=150)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'Reviews'
+
+    def get_review_rating(self):
+        return self.review_rating
+
