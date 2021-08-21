@@ -16,14 +16,15 @@
         <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <!--Credit: https://stackoverflow.com/questions/23637846/grouping-conditions-in-django-template-if-statement -->
-    {% if not message.extra_tags or on_profile or on_edit_product or product_count == 0 %}
+    {% if product_count == 0 or message.extra_tags or on_profile or on_edit_product %}
+    {% else %}
     <div class="toast-body bg-white">
         <div class="row">
             <div class="col">
                 {{ message }}
             </div>
         </div>
-        {% if total > 0 and not on_profile %}
+        {% if total not on_profile %}
         <div class="cart-notification-wrapper">
             {% for item in cart_items %}
             <div class="row">
