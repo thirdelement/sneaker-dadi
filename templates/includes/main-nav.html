@@ -8,6 +8,7 @@
                 Shop
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <!-- Female product links-->
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?gender=f,u">
                         Women &raquo;
@@ -52,6 +53,7 @@
                         </li>
                     </ul>
                 </li>
+                <!-- Male product links-->
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?gender=m,u">
                         Men &raquo;
@@ -93,8 +95,12 @@
                         <li>
                             <a class="dropdown-item" href="{% url 'products' %}?category=tennis&gender=m,u">Tennis</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'products' %}?topseller">TopSeller</a>
+                        </li>
                     </ul>
                 </li>
+                <!-- Unisex product links-->
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?gender=u">
                         Unisex
