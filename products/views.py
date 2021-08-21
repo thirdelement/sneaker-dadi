@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, ProductReview
+from .forms import ProductForm, ReviewAdd
 
 
 def all_products(request):
@@ -66,9 +67,11 @@ def product_detail(request, product_id):
     """" A view to show individual product details. """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviewForm = ReviewAdd()
 
     context = {
         'product': product,
+        'reviewForm': reviewForm, 
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -112,6 +115,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
+            # Add extra_tags to identify message in toast_success.html
             messages.success(request, 'Successfully updated product!', extra_tags=' ')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -141,3 +145,29 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+# Save Review
+# Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31
+@login_required
+def save_review(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    user = request.user
+    review = ProductReview.objects.create(
+        user=user,
+        product=product,
+        review_text=request.POST['review_text'],
+        review_rating=request.POST['review_rating'],
+        )
+    data = {
+        # 'user': user.username,
+        # 'review_text': request.POST['review_text'],
+        # 'review_rating': request.POST['review_rating']
+    }
+
+    # # Fetch avg rating for reviews
+    # avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating = Avg('review_rating'))
+    # # End
+
+    # return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
+    return JsonResponse({'bool': True, 'data': data})

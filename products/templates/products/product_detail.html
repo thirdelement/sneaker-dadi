@@ -15,7 +15,7 @@
 
 {% block content %}
 <!-- Product section-->
-<section class="py-5">
+<section class="pt-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
@@ -66,7 +66,7 @@
                     </a>
                 </p>
                 {% endif %}
-                
+
                 <p class="lead">{{ product.description }}</p>
                 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}
@@ -81,25 +81,98 @@
                             </select>
                         </div>
                     </div>
-                        <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                    <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                         style="max-width: 3rem" />-->
-                        <div class="col-12">
-                            <a href="{% url 'products' %}" class="btn btn-outline-dark">
-                                <span class="icon">
-                                    <i class="bi bi-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Continue Shopping</span>
-                            </a>
-                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                            <input type="hidden" name="quantity" value=1>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        </div>
+                    <div class="col-12">
+                        <a href="{% url 'products' %}" class="btn btn-outline-dark">
+                            <span class="icon">
+                                <i class="bi bi-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Continue Shopping</span>
+                        </a>
+                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                        <input type="hidden" name="quantity" value=1>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
-                </form>
             </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Product Review section-->
+<!-- Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31 -->
+<section>
+    <div class="container px-4 px-lg-5 my-5">
+        <h2 class="fw-bolder mb-4 review-heading">Reviews</h2>
+        {% if user.is_authenticated %}
+        <button type="button" class="btn btn-warning btn-sm mb-4" data-bs-toggle="modal"
+            data-bs-target="#productReview">Add Review</button>
+        {% endif %}
+        <!-- Product Review Modal -->
+        {% if user.is_authenticated %}
+        <div class="modal fade" id="productReview" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productReviewLabel">Add Product Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="addForm" action="{% url 'save-review' product.id %}">
+                            {% csrf_token %}
+                            <table class="table">
+                                {{reviewForm.as_table}}
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit"
+                                            class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                                        <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="ajaxRes"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- End Product Review Modal -->
+        <hr>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <h5 class="text-uppercase font-weight-bold">Write Your Review</h5>
+            <form class="review-form" method="GET" action="/review">
+                {% for product in products %}
+                <input type="hidden" name="prod_id" id="prod_id" value="{{prod.id}}" />
+                {% endfor %}
+                <div class="form-group">
+                    <textarea class="input" type="text" name="comment" placeholder="Your Review"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="input rating">
+                        <p class="text-uppercase font-weight-bold">Your Rating: </p>
+                        <div class="rating-wrapper">
+                            <input type="radio" id="star-5" name="rate" value="5" /><label for="star-5"
+                                class="bi bi-star-fill"></label>
+                            <input type="radio" id="star-4" name="rate" value="4" /><label for="star-4"
+                                class="bi bi-star-fill"></label>
+                            <input type="radio" id="star-3" name="rate" value="3" /><label for="star-3"
+                                class="bi bi-star-fill"></label>
+                            <input type="radio" id="star-2" name="rate" value="2" /><label for="star-2"
+                                class="bi bi-star-fill"></label>
+                            <input type="radio" id="star-1" name="rate" value="1" /><label for="star-1"
+                                class="bi bi-star-fill"></label>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Add review</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>
@@ -211,4 +284,9 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script src="{% static 'products/js/product_review.js' %}"></script>
 {% endblock %}
