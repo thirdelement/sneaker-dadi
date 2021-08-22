@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from django.db.models.functions import Lower
 
 from .models import Product, Category, ProductReview
 from .forms import ProductForm, ReviewAdd
+
+from datetime import datetime
 
 
 def all_products(request):
@@ -72,16 +75,23 @@ def product_detail(request, product_id):
     # Check if user has added product review
     # Credit: Code Artisan Lab - https://www.youtube.com/watch?v=kcMfRJ7AGJY&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=32
     can_add_review = True
-    reviewCheck = ProductReview.objects.filter(user=request.user, product=product).count()
     if request.user.is_authenticated:
+        reviewCheck = ProductReview.objects.filter(user=request.user, product=product).count()
         if reviewCheck > 0:
             can_add_review = False
-    # End check
+
+    # Get reviews
+    reviews = ProductReview.objects.filter(product=product)
+
+    # Get avg rating for reviews
+    avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
 
     context = {
         'product': product,
         'reviewForm': reviewForm, 
-        'can_add_review': can_add_review
+        'can_add_review': can_add_review,
+        'reviews': reviews,
+        'avg_reviews': avg_reviews
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -150,7 +160,7 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+      
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
@@ -163,6 +173,7 @@ def delete_product(request, product_id):
 def save_review(request, product_id):
     product = Product.objects.get(pk=product_id)
     user = request.user
+    date = datetime.now()
     review = ProductReview.objects.create(
         user=user,
         product=product,
@@ -170,14 +181,13 @@ def save_review(request, product_id):
         review_rating=request.POST['review_rating'],
         )
     data = {
-        # 'user': user.username,
-        # 'review_text': request.POST['review_text'],
-        # 'review_rating': request.POST['review_rating']
+        'user': user.username,
+        'review_text': request.POST['review_text'],
+        'review_rating': request.POST['review_rating'],
+        'created_on': date.strftime("%d %B %Y")
     }
 
-    # # Fetch avg rating for reviews
-    # avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating = Avg('review_rating'))
-    # # End
+    # Get avg rating for reviews
+    avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
 
-    # return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
-    return JsonResponse({'bool': True, 'data': data})
+    return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
