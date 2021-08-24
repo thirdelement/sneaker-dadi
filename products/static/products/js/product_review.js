@@ -13,6 +13,17 @@ $("#addForm").submit(function (e) {
 				$("#reset").trigger('click');
 				// Hide Add Review button
 				$("#btn-review").hide();
+				// create data for rating
+				var _html = '<span class="avg-stars">';
+				for (var i = 1; i <= res.avg_reviews.avg_rating.toFixed(1); i++) {
+					_html += '<i class="bi bi-star-fill text-warning"></i>';
+				}
+				_html += '</span>' 
+				_html += '<span class="text-muted small avg-rating ms-2">' + res.avg_reviews.avg_rating.toFixed(1)
+				_html += '</span>'
+				// Prepend Data and remove previous element
+				// Credit: https://stackoverflow.com/questions/24429015/jquery-append-text-only-once
+				$(".rating-title").empty().prepend(_html);
 				// create data for review
 				var _html = '<blockquote class="blockquote text-right">';
 				_html += '<cite title="Source Title">';
@@ -25,17 +36,20 @@ $("#addForm").submit(function (e) {
 				_html += '<footer class="blockquote-footer">'+ res.data.user.charAt(0).toUpperCase()+res.data.user.slice(1) 
 				_html += ', ';
 				_html += '<span>' + res.data.created_on;
+				_html += '</span>'
 				_html += '</footer>';
 				_html += '</blockquote>';
-				_html += '</hr>';
+				_html += '<hr />';
 				// Hide Add First Review text
 				$(".no-data").hide();
 				// Prepend Data
 				$(".review-list").prepend(_html);
 				// Hide Modal
 				$("#productReview").modal('hide');
-				// Avg Rating
-				$(".avg-rating").text(res.avg_reviews.avg_rating.toFixed(1))
+				// Add Avg Rating if no previous rating
+				$(".avg-rating").text(res.avg_reviews.avg_rating.toFixed(1)).after("<span class='text-muted small'>/5</span>");
+				// Remove No Rating text
+				$(".no-rating").remove();
 			}
 		}
 	});

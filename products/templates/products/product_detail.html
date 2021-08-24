@@ -26,28 +26,37 @@
                 <img class="card-img-top mb-5 mb-md-0" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
                 {% endif %}
             </div>
-            <div class="col-md-6">
-                <div class="small mb-1">Product ID: {{ product.product_id }}</div>
+
+            <div class="col-md-6 rating">
+                <div class="small mb-1">Product ID: {{ product.product_id }}
+                    {% if request.user.is_superuser %}
+                    <span class="ms-3">
+                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                    </span>
+                    {% endif %}
+
+                </div>
                 <h1 class="display-5 fw-bolder">{{ product.name }}</h1>
                 <!-- Product reviews-->
-                {% if product.rating %}
-                <div class="d-flex small text-warning mb-2">
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <div class="bi-star-fill"></div>
-                    <small class="text-muted"> {{ product.rating }} / 5</small>
+                <div class="rating-title">
+                    {% if reviews %}
+                    <small class="text-muted">
+                        <!-- Average star rating -->
+                        <!-- Credit: https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates/14389078#14389078 -->
+                        {% with ''|center:avg_reviews.avg_rating as range %}
+                        {% for _ in range %}
+                        <i class="bi bi-star-fill text-warning"></i>
+                        {% endfor %}
+                        {% endwith %}
+                        <!-- Average rating -->
+                        <span class="avg-rating ms-2">{{ avg_reviews.avg_rating|floatformat:"1" }}</span>/5</small>
+                    {% else %}
+                    <small class="text-muted">
+                        <i class="no-rating">No Rating</i><span class="avg-stars"></span><span
+                            class="avg-rating ms-2"></span></small>
+                    {% endif %}
                 </div>
-                {% else %}
-                <small class="text-muted">No Rating</small>
-                {% endif %}
-                {% if request.user.is_superuser %}
-                <small class="small ms-3">
-                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                </small>
-                {% endif %}
                 <div>
                     <small class="text-muted">Price:</small>
                     {% if product.on_sale is True %}
@@ -66,7 +75,6 @@
                     </a>
                 </p>
                 {% endif %}
-
                 <p class="lead">{{ product.description }}</p>
                 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}
@@ -108,14 +116,14 @@
 <section>
     <div class="container px-4 px-lg-5 my-5">
         <hr>
-        <h2 class="fw-bolder mb-4 review-heading">Reviews</h2>
-        <h5>Average rating - <span class="avg-rating">{{ avg_reviews.avg_rating }}</span>/5 <i class="bi bi-star-fill text-warning"></i></h5>
-        {% if user.is_authenticated %}
-        {% if can_add_review %}
-        <button type="button" id="btn-review" class="btn btn-warning btn-sm mb-4" data-bs-toggle="modal"
-            data-bs-target="#productReview">Add Review</button>
-        {% endif %}
-        {% endif %}
+        <h2 class="fw-bolder mb-4 review-heading">Reviews
+            {% if user.is_authenticated %}
+            {% if can_add_review %}
+            <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2" data-bs-toggle="modal"
+                    data-bs-target="#productReview">Add Review</button></span>
+            {% endif %}
+            {% endif %}
+        </h2>
         <!-- Product Review Modal -->
         {% if user.is_authenticated %}
         {% if can_add_review %}
@@ -162,7 +170,8 @@
                         {% endfor %}
                     </cite>
                     <p>{{ review.review_text }}</p>
-                    <footer class="blockquote-footer">{{ review.user|title }}, <span>{{ review.created_on|date:"d F Y" }}</span>
+                    <footer class="blockquote-footer">{{ review.user|title }},
+                        <span>{{ review.created_on|date:"d F Y" }}</span>
                     </footer>
                     <!--<footer class="blockquote-footer">{{ review.created_on }}
                     </footer>-->
@@ -170,7 +179,7 @@
                 <hr />
                 {% endfor %}
                 {% else %}
-                <p class="no-data">Add First Review</p>
+                <i class="no-data">No reviews yet.</i>
                 {% endif %}
             </div>
             <!--</div>-->

@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
-from django.db.models.functions import Lower
+from django.db.models.functions import Lower, Round
 
 from .models import Product, Category, ProductReview
 from .forms import ProductForm, ReviewAdd
@@ -191,3 +191,4 @@ def save_review(request, product_id):
     avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
 
     return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
+    
