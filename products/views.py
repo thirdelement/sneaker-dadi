@@ -86,12 +86,17 @@ def product_detail(request, product_id):
     # Get avg rating for reviews
     avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
 
+    # Get number of reviews
+    # Credit: Great Adib - https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s
+    num_reviews = ProductReview.objects.filter(product=product).count()
+
     context = {
         'product': product,
         'reviewForm': reviewForm, 
         'can_add_review': can_add_review,
         'reviews': reviews,
-        'avg_reviews': avg_reviews
+        'avg_reviews': avg_reviews,
+        'num_reviews': num_reviews
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -184,7 +189,8 @@ def save_review(request, product_id):
         'user': user.username,
         'review_text': request.POST['review_text'],
         'review_rating': request.POST['review_rating'],
-        'created_on': date.strftime("%d %B %Y")
+        'created_on': date.strftime("%d %B %Y"),
+        'review_id': review.id,
     }
 
     # Get avg rating for reviews
@@ -192,3 +198,12 @@ def save_review(request, product_id):
 
     return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
     
+
+# Delete review
+@login_required
+def delete_review(request, review_id):
+    review = ProductReview.objects.filter(pk=review_id).last()
+    product_id = review.product_id
+    review.delete()
+    messages.success(request, 'Review deleted!')
+    return redirect(reverse('product_detail', args=[product_id]))

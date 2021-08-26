@@ -116,7 +116,7 @@
 <section>
     <div class="container px-4 px-lg-5 my-5">
         <hr>
-        <h2 class="fw-bolder mb-4 review-heading">Reviews
+        <h2 class="fw-bolder mb-4 review-heading">Reviews ({{ num_reviews }})
             {% if user.is_authenticated %}
             {% if can_add_review %}
             <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2" data-bs-toggle="modal"
@@ -124,7 +124,7 @@
             {% endif %}
             {% endif %}
         </h2>
-        <!-- Product Review Modal -->
+        <!-- Add Product Review Modal -->
         {% if user.is_authenticated %}
         {% if can_add_review %}
         <div class="modal fade" id="productReview" tabindex="-1">
@@ -156,9 +156,40 @@
         {% endif %}
         {% endif %}
         <!-- End Product Review Modal -->
+        <!-- Edit Product Review Modal -->
+        {% if user.is_authenticated %}
+        <div class="modal fade" id="editReview" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productReviewLabel">Add Product Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="addForm" action="{% url 'save-review' product.id %}">
+                            {% csrf_token %}
+                            <table class="table">
+                                {{reviewForm.as_table}}
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit"
+                                            class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                                        <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--<p class="ajaxRes"></p>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- End Product Review Modal -->
         <div class="col-md-6">
             <!--<div class="card">-->
             <!--<div class="card-body review-list">-->
+            <!--<hr>-->
             <div class="review-list">
                 <!-- Detail -->
                 {% if reviews %}
@@ -168,6 +199,15 @@
                         {% for star in review.review_rating|ljust:review.review_rating %}
                         <i class="bi bi-star-fill text-warning"></i>
                         {% endfor %}
+                        {% if request.user.username == review.user.username %}
+                        <!--<button type="button" class="btn btn-secondary btn-sm mb-2 ms-2 float-end"
+                            data-bs-toggle="modal" data-bs-target="#editReview">Edit</button>-->
+                        <!--<button type="button" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
+                                data-bs-toggle="modal" data-bs-target="#editReview">Delete</button>-->
+                      
+                            <a href="{% url 'delete-review' review.id %}" id="delete-review" type="button"
+                            class="btn btn-danger btn-sm mb-2 ms-2 float-end">Delete</a>
+                        {% endif %}
                     </cite>
                     <p>{{ review.review_text }}</p>
                     <footer class="blockquote-footer">{{ review.user|title }},

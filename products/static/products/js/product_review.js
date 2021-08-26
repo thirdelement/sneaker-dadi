@@ -13,7 +13,7 @@ $("#addForm").submit(function (e) {
 				$("#reset").trigger('click');
 				// Hide Add Review button
 				$("#btn-review").hide();
-				// create data for rating
+				// Create data for rating
 				var _html = '<span class="avg-stars">';
 				for (var i = 1; i <= res.avg_reviews.avg_rating.toFixed(1); i++) {
 					_html += '<i class="bi bi-star-fill text-warning"></i>';
@@ -30,6 +30,10 @@ $("#addForm").submit(function (e) {
 				for (var i = 1; i <= res.data.review_rating; i++) {
 					_html += '<i class="bi bi-star-fill text-warning"></i>';
 				}
+				//Delete button & URL
+				//Credit for url: https://stackoverflow.com/questions/68721529/update-existing-post-called-using-dictionary-using-ajax-django
+				var url = "https://8000-aquamarine-panther-o9jbnzm2.ws-eu15.gitpod.io/products/delete-review/" +res.data.review_id; 
+				_html += '<a href='+ url +' type="button" class="btn btn-danger btn-sm mb-2 ms-2 float-end">Delete</a>';
 				_html += '</cite>';
 				_html += '<p>' + res.data.review_text + '</p>';
 				// Credit for first letter capitalize below: https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
