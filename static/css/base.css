@@ -174,14 +174,11 @@ footer.footer {
   color: #212529;
 }
 
-<<<<<<< HEAD
 /* To enable button next to Reviews heading */
 .review-heading{
   display: inline-block;
 }
 
-=======
->>>>>>> ed992813bf5fa4d697e8590ab4ace14d1880e9db
 /* Remove opacity for messages */
 /* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
 #message-container > div {
@@ -198,6 +195,12 @@ footer.footer {
 /* Credit: https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing */
 .form-control{
 -webkit-appearance: menulist;
+}
+
+/* Sales badge size */
+#badge-size{
+  font-size: 0.35em!important;
+  vertical-align: middle;
 }
 
 /* Shopping cart */
