@@ -62,6 +62,11 @@
             {% for product in top_sellers_female %}
             <div class="col mb-5">
                 <div class="card h-100">
+                    {% if product.on_sale is True %}
+                    <!-- Sale badge-->
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    </div>
+                    {% endif %}
                     <!-- Product image-->
                     {% if product.image1 %}
                     <a href="{% url 'product_detail' product.id %}">
@@ -85,7 +90,12 @@
                             </small>
                             {% endif %}
                             <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <span class="text-decoration-line-through">£{{ product.price }}</span>
+                            <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span>
+                            {% else %}
                             <p>£{{ product.price }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -94,6 +104,11 @@
             {% for product in top_sellers_male %}
             <div class="col mb-5">
                 <div class="card h-100">
+                    {% if product.on_sale is True %}
+                    <!-- Sale badge-->
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    </div>
+                    {% endif %}
                     <!-- Product image-->
                     {% if product.image1 %}
                     <a href="{% url 'product_detail' product.id %}">
@@ -117,7 +132,12 @@
                             </small>
                             {% endif %}
                             <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <span class="text-decoration-line-through">£{{ product.price }}</span>
+                            <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span>
+                            {% else %}
                             <p>£{{ product.price }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -168,6 +188,11 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for product in trending_female %}
             <div class="col mb-5">
+                {% if product.on_sale is True %}
+                <!-- Sale badge-->
+                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                </div>
+                {% endif %}
                 <div class="card h-100">
                     <!-- Product image-->
                     {% if product.image1 %}
@@ -192,7 +217,12 @@
                             </small>
                             {% endif %}
                             <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <span class="text-decoration-line-through">£{{ product.price }}</span>
+                            <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span>
+                            {% else %}
                             <p>£{{ product.price }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -200,6 +230,11 @@
             {% endfor %}
             {% for product in trending_male %}
             <div class="col mb-5">
+                {% if product.on_sale is True %}
+                <!-- Sale badge-->
+                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                </div>
+                {% endif %}
                 <div class="card h-100">
                     <!-- Product image-->
                     {% if product.image1 %}
@@ -224,7 +259,12 @@
                             </small>
                             {% endif %}
                             <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <span class="text-decoration-line-through">£{{ product.price }}</span>
+                            <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span>
+                            {% else %}
                             <p>£{{ product.price }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

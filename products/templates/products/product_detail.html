@@ -26,7 +26,6 @@
                 <img class="card-img-top mb-5 mb-md-0" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
                 {% endif %}
             </div>
-
             <div class="col-md-6 rating">
                 <div class="small mb-1">Product ID: {{ product.product_id }}
                     {% if request.user.is_superuser %}
@@ -35,9 +34,15 @@
                         <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                     </span>
                     {% endif %}
-
                 </div>
-                <h1 class="display-5 fw-bolder">{{ product.name }}</h1>
+              
+                <div class="h1 display-5 fw-bolder">{{ product.name }}
+                {% if product.on_sale is True %}
+                    <!-- Sale badge-->
+                    <span id="badge-size" class="badge bg-danger text-white ms-1">Sale
+                    </span>
+                    {% endif %}
+                </div>
                 <!-- Product reviews-->
                 <div class="rating-title">
                     {% if reviews %}
@@ -61,7 +66,7 @@
                     <small class="text-muted">Price:</small>
                     {% if product.on_sale is True %}
                     <span class="text-decoration-line-through fs-5">£{{ product.price }}</span>
-                    <span class="fs-5">£{{ product.get_sale_price }}</span>
+                    <span class="fs-5 text-danger">£{{ product.get_sale_price }}</span>
                     {% else %}
                     <span class="fs-5">£{{ product.price }}</span>
                     {% endif %}
@@ -156,36 +161,7 @@
         {% endif %}
         {% endif %}
         <!-- End Product Review Modal -->
-        <!-- Edit Product Review Modal -->
-        {% if user.is_authenticated %}
-        <div class="modal fade" id="editReview" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="productReviewLabel">Add Product Review</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" id="addForm" action="{% url 'save-review' product.id %}">
-                            {% csrf_token %}
-                            <table class="table">
-                                {{reviewForm.as_table}}
-                                <tr>
-                                    <td colspan="2">
-                                        <button type="submit"
-                                            class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                                        <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
-                                    </td>
-                                </tr>
-                            </table>
-                            <!--<p class="ajaxRes"></p>-->
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        <!-- End Product Review Modal -->
+
         <div class="col-md-6">
             <!--<div class="card">-->
             <!--<div class="card-body review-list">-->
@@ -204,8 +180,10 @@
                             data-bs-toggle="modal" data-bs-target="#editReview">Edit</button>-->
                         <!--<button type="button" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
                                 data-bs-toggle="modal" data-bs-target="#editReview">Delete</button>-->
-                      
-                            <a href="{% url 'delete-review' review.id %}" id="delete-review" type="button"
+
+                        <button type="button" id="" class="btn btn-warning btn-sm mb-2 ms-2" data-bs-toggle="modal"
+                            data-bs-target="#editReview">Edit Review</button>
+                        <a href="{% url 'delete-review' review.id %}" id="delete-review" type="button"
                             class="btn btn-danger btn-sm mb-2 ms-2 float-end">Delete</a>
                         {% endif %}
                     </cite>
@@ -223,6 +201,39 @@
                 {% endif %}
             </div>
             <!--</div>-->
+            <!-- Add Product Review Modal -->
+            {% if user.is_authenticated %}
+            
+            <div class="modal fade" id="editReview" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editReviewLabel">Add Product Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="editForm" action="">
+                                {% csrf_token %}
+                                <table class="table">
+                                    {{reviewForm.as_table}}
+                                    <tr>
+                                        <td colspan="2">
+                                            <button type="submit"
+                                                class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                                            <input type="reset" class="btn btn-dark float-end" value="Reset"
+                                                id="reset" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--<p class="ajaxRes"></p>-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            {% endif %}
+            <!-- End Edit Product Review Modal -->
         </div>
     </div>
 </section>
