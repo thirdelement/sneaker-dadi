@@ -7,6 +7,7 @@ from products.models import Product
 # Top two selling products for male and female
 def top_sellers(request):
     # Most sold male product
+    # Credit: https://stackoverflow.com/questions/9278796/ordering-a-query-by-aggregate-sum-in-django-but-not-getting-result-as-expected
     top_sellers_male = Product.objects.filter(gender='m').annotate(total_quantity=Sum('orderlineitem__quantity')).order_by('-total_quantity')[:2]
     # Most sold female product
     top_sellers_female = Product.objects.filter(gender='f').annotate(total_quantity=Sum('orderlineitem__quantity')).order_by('-total_quantity')[:2]
