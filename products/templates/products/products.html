@@ -76,22 +76,26 @@
                     </a>
                     {% endif %}
                     <!-- Product details-->
-                    <div class="card-body p-4">
+                    <div class="card-body card-body-home">
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
-                            {% if product.rating %}
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <small class="text-muted">{{ product.rating }} / 5</small>
-                            </div>
-                            {% else %}
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
                             <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                            {% endif %}
                             {% endif %}
                             {% if request.user.is_superuser %}
                             <small class="ms-3">
@@ -101,16 +105,12 @@
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
-                            <span class="text-decoration-line-through">£{{ product.price }}</span>
-                            <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span>
+                            <p>
+                                <span class="text-decoration-line-through">£{{ product.price }}</span>
+                                <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span></p>
                             {% else %}
                             <p>£{{ product.price }}</p>
                             {% endif %}
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
                         </div>
                     </div>
                 </div>

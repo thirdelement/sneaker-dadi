@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg, Count, Sum
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 from decimal import Decimal
@@ -41,7 +42,7 @@ class Product(models.Model):
     on_sale = models.BooleanField(default=False)
     # discount = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     discount_percent = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    average_rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     size = MultiSelectField(choices=SIZE_CHOICES)
     gender = models.CharField(max_length=1)
     image1 = models.ImageField(null=True, blank=True)
@@ -66,6 +67,21 @@ class Product(models.Model):
         from django.core.exceptions import ValidationError
         if self.on_sale and not self.discount_percent:
             raise ValidationError("Discount percent is a required field.")
+    
+    def get_average_rating(self):
+        """
+        Calculate average rating 
+        Credit: https://stackoverflow.com/questions/11255243/how-to-get-average-across-different-models-in-django
+        """
+        reviews = ProductReview.objects.filter(product=self)
+        count = len(reviews)
+        sum = 0
+        if count:
+            for review in reviews:
+                sum += int(review.review_rating)
+            return (sum/count)
+        else:
+            return (0)
 
 
 # Product review
@@ -81,7 +97,7 @@ RATING = (
 
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
     review_text = models.TextField(max_length=250)
     review_rating = models.CharField(choices=RATING, max_length=150)
     created_on = models.DateTimeField(auto_now_add=True)
