@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Sum
 
-from products.models import Product 
+from products.models import Product
 
 
 # Top two selling products for male and female

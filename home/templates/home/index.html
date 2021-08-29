@@ -54,13 +54,30 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
-                            {% if request.user.is_superuser %}
-                            <small class="ms-3">
-                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
+                            <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
                             {% endif %}
-                            <!-- Product price-->
+                            {% endif %}
+                            <!-- Superuser options -->
+                            {% if request.user.is_superuser %}
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
+                            {% endif %}
+                            <!-- Product price -->
                             {% if product.on_sale is True %}
                             <p>
                                 <span class="text-decoration-line-through">£{{ product.price }}</span>
@@ -97,11 +114,28 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
+                            <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                            {% endif %}
+                            {% endif %}
+                            <!-- Superuser options -->
                             {% if request.user.is_superuser %}
-                            <small class="ms-3">
-                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
@@ -183,11 +217,28 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
+                            <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                            {% endif %}
+                            {% endif %}
+                            <!-- Superuser options -->
                             {% if request.user.is_superuser %}
-                            <small class="ms-3">
-                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
@@ -226,11 +277,28 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
+                            <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                            {% endif %}
+                            {% endif %}
+                            <!-- Superuser options -->
                             {% if request.user.is_superuser %}
-                            <small class="ms-3">
-                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
