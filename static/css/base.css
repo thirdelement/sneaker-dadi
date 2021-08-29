@@ -117,6 +117,11 @@ footer.footer {
   color: inherit;
 }
 
+/* Remove bottom margin from paragraph */
+.remove-margin{
+  margin-bottom: 0!important;
+}
+
 /* Navbar */
 /* Match color for menu items */
 .text-nav {
