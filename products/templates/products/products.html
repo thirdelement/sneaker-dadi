@@ -98,10 +98,10 @@
                             {% endif %}
                             {% endif %}
                             {% if request.user.is_superuser %}
-                            <small class="ms-3">
-                                <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                            </small>
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
