@@ -79,7 +79,7 @@ def remove_from_cart(request, item_id):
         # If items_by_size dict is now empty remove entire item
         if not cart[item_id]['items_by_size']:
             cart.pop(item_id)
-        messages.success(request, ' ')
+        messages.success(request, 'Product removed from cart.')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
