@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
+from django.db.models import Avg, Sum
 from django.db.models.functions import Lower, Round
 
 from .models import Product, Category, ProductReview
@@ -61,6 +61,8 @@ def all_products(request):
         'current_categories': categories,
         'current_gender': gender, 
         'current_sorting': current_sorting,
+        # 'reviews': reviews,
+        # 'avg_reviews': avg_reviews,
     }
 
     return render(request, 'products/products.html', context)
@@ -90,13 +92,19 @@ def product_detail(request, product_id):
     # Credit: Great Adib - https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s
     num_reviews = ProductReview.objects.filter(product=product).count()
 
+    # Get related products
+    related_products_male = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('-gender')[:4]
+    related_products_female = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('gender')[:4]
+    print('Related products female', related_products_female)
     context = {
         'product': product,
         'reviewForm': reviewForm, 
         'can_add_review': can_add_review,
         'reviews': reviews,
         'avg_reviews': avg_reviews,
-        'num_reviews': num_reviews
+        'num_reviews': num_reviews,
+        'related_products_male': related_products_male,
+        'related_products_female': related_products_female
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -207,3 +215,15 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Review deleted!')
     return redirect(reverse('product_detail', args=[product_id]))
+
+
+# Delete review
+# @login_required
+# def edit_review(request, review_id):
+    # review = ProductReview.objects.filter(pk=review_id).last()
+    # product_id = review.product_id
+    # review.delete()
+    # messages.success(request, 'Review deleted!')
+    # return redirect(reverse('product_detail', args=[product_id]))
+
+
