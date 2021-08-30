@@ -85,7 +85,7 @@
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col-12">
-                            <p class="mt-1 me-3 btn-outline-dark"><strong>Size:</strong></p>
+                            <p class="mt-1 me-3"><strong>Size:</strong></p>
                             <select class="form-control mb-3" id="size" name="size" style="max-width: 6rem" required>
                                 <option value="" selected>Select</option>
                                 {% for size in product.size %}
