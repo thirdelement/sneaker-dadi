@@ -19,12 +19,60 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
-                <!-- Product image-->
-                {% if product.image1 %}
-                <img class="card-img-top mb-5 mb-md-0" src="{{ product.image1.url }}" alt="{{ product.name }}" />
-                {% else %}
-                <img class="card-img-top mb-5 mb-md-0" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
-                {% endif %}
+                <!-- Product image carousel-->
+                <div id="carouselIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if product.image1 %}
+                            <img src="{{ product.image1.url }}" class="d-block w-100" alt="{{ product.name }}">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" class="d-block w-100" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if product.image2 %}
+                            <img src="{{ product.image2.url }}" class="d-block w-100" alt="{{ product.name }} Image2">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" class="d-block w-100" alt="{{ product.name }">
+                        {% endif %}
+                      </div>
+                      <div class="carousel-item">
+                        {% if product.image3 %}
+                        <img src="{{ product.image3.url }}" class="d-block w-100" alt="{{ product.name }} Image3">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" class="d-block w-100" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if product.image4 %}
+                            <img src="{{ product.image4.url }}" class="d-block w-100" alt="{{ product.name }} Image4">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" class="d-block w-100" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- End Product image carousel-->
             </div>
             <div class="col-md-6 rating">
                 <div class="small mb-1">Product ID: {{ product.product_id }}
@@ -203,7 +251,6 @@
             <!--</div>-->
             <!-- Add Product Review Modal -->
             {% if user.is_authenticated %}
-
             <div class="modal fade" id="editReview" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -239,7 +286,7 @@
 </section>
 <!-- Related items section-->
 <section class="py-5 bg-light">
-    <div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5">
         <h2 class="fw-bolder mb-4">Related products</h2>
         {% if product.gender == "m" %}
         <!-- Check if no male related products -->
@@ -376,7 +423,7 @@
             </div>
             {% endfor %}
             {% endif %}
-        {% endif %}
+            {% endif %}
         </div>
     </div>
 </section>
