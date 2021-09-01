@@ -320,19 +320,19 @@
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
                             {% if product.reviews %}
-                            {% if product.get_average_rating == 0 %}
+                            {% if product.average_rating == null %}
                             <small class="text-muted">No Rating</small>
                             {% else %}
                             <small class="text-muted">
                                 <!-- Average star rating -->
-                                {% with ''|center:product.get_average_rating as range %}
+                                {% with ''|center:product.average_rating as range %}
                                 {% for _ in range %}
                                 <i class="bi bi-star-fill text-warning"></i>
                                 {% endfor %}
                                 {% endwith %}
                                 <!-- Average rating -->
                                 <span
-                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                                    class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
                             {% endif %}
                             {% endif %}
                             {% if request.user.is_superuser %}
@@ -388,19 +388,19 @@
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
                             {% if product.reviews %}
-                            {% if product.get_average_rating == 0 %}
+                            {% if product.average_rating == null %}
                             <small class="text-muted">No Rating</small>
                             {% else %}
                             <small class="text-muted">
                                 <!-- Average star rating -->
-                                {% with ''|center:product.get_average_rating as range %}
+                                {% with ''|center:product.average_rating as range %}
                                 {% for _ in range %}
                                 <i class="bi bi-star-fill text-warning"></i>
                                 {% endfor %}
                                 {% endwith %}
                                 <!-- Average rating -->
                                 <span
-                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                                    class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
                             {% endif %}
                             {% endif %}
                             {% if request.user.is_superuser %}
