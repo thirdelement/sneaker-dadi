@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg, Sum
+from django.db.models import Avg, Sum, Q
 from django.db.models.functions import Lower, Round
 
 from .models import Product, Category, ProductReview
 from .forms import ProductForm, ReviewAdd
 
 from datetime import datetime
+from decimal import Decimal
 
 
 def all_products(request):
@@ -53,7 +54,7 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
     
-    current_sorting = f'{sort}_{direction}'
+    current_sorting = f'{sort}+{direction}'
 
     context = {
         'products': products,
@@ -61,6 +62,7 @@ def all_products(request):
         'current_categories': categories,
         'current_gender': gender, 
         'current_sorting': current_sorting,
+        # 'products_on_sale': products_on_sale
         # 'reviews': reviews,
         # 'avg_reviews': avg_reviews,
     }
@@ -85,8 +87,36 @@ def product_detail(request, product_id):
     # Get reviews
     reviews = ProductReview.objects.filter(product=product)
 
+    # Get average rating in database
+    # product.average_rating = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
+    # print('Average_rating in views:', product.average_rating)
+    # product.average_rating.save()
+
+    # reviews = ProductReview.objects.filter(product=product)
+    # count = len(reviews)
+    ## sum = 0
+    # product.average_rating = 0
+    # if count:
+    #     for review in reviews:
+    #        product.average_rating += int(review.review_rating)
+    #         product.average_rating / count
+        ## return (sum/count)
+        ## product.average_rating = sum/count
+    #     product.average_rating.save()
+    # else:
+    #     product.average_rating.save(0)
+    
+    
     # Get avg rating for reviews
     avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
+    #average_rating = avg_reviews
+    #print('Average_rating in views:', average_rating)
+    #average_rating.save()
+    ## average_rating = Product.objects.create(
+        ## product=product,
+        ## avg_reviews=request.POST.['average_rating']
+    ## )
+
 
     # Get number of reviews
     # Credit: Great Adib - https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s
@@ -104,7 +134,8 @@ def product_detail(request, product_id):
         'avg_reviews': avg_reviews,
         'num_reviews': num_reviews,
         'related_products_male': related_products_male,
-        'related_products_female': related_products_female
+        'related_products_female': related_products_female,
+        # 'average_rating': average_rating
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -203,6 +234,8 @@ def save_review(request, product_id):
 
     # Get avg rating for reviews
     avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
+    # Save average rating to database
+    product.save_average_rating()
 
     return JsonResponse({'bool': True, 'data': data, 'avg_reviews': avg_reviews})
     
@@ -226,4 +259,30 @@ def delete_review(request, review_id):
     # messages.success(request, 'Review deleted!')
     # return redirect(reverse('product_detail', args=[product_id]))
 
+def products_on_sale(request):
+    """" A view to show all products on sale, including sorting. """
+    sort = None
+    direction = None
+    products = Product.objects.filter(on_sale=True)
 
+    if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            products = products.order_by(sortkey)
+
+    current_sorting = f'{sort}+{direction}'
+   
+    context = {
+        'products': products,
+        'current_sorting': current_sorting,
+    }
+
+    return render(request, 'products/products_on_sale.html', context)

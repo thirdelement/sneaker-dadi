@@ -49,7 +49,7 @@ class Product(models.Model):
     image2 = models.ImageField(null=True, blank=True)
     image3 = models.ImageField(null=True, blank=True)
     image4 = models.ImageField(null=True, blank=True)
-     
+    
     def __str__(self):
         return self.name
   
@@ -82,6 +82,13 @@ class Product(models.Model):
             return (sum/count)
         else:
             return (0)
+    
+    def save_average_rating(self):
+        """
+        Calculate average rating and save to database 
+        """
+        self.average_rating = self.reviews.all().aggregate(Avg("review_rating"))['review_rating__avg']
+        self.save()
 
 
 # Product review

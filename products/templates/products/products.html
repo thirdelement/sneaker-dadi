@@ -27,20 +27,20 @@
                             <option value="3">Three</option>
                         </select>-->
                         <select id="sort-selector"
-                            class="form-select form-select-sm border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
-                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
+                            class="form-select form-select-sm border border-{% if current_sorting != 'None+None' %}info{% else %}black{% endif %}">
+                            <option value="reset" {% if current_sorting == 'None+None' %}selected{% endif %}>Sort by...
                             </option>
-                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price
+                            <option value="price+asc" {% if current_sorting == 'price+asc' %}selected{% endif %}>Price
                                 (low to high)</option>
-                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price
+                            <option value="price+desc" {% if current_sorting == 'price+desc' %}selected{% endif %}>Price
                                 (high to low)</option>
-                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>
+                            <option value="average_rating+asc" {% if current_sorting == 'average_rating+asc' %}selected{% endif %}>
                                 Rating (low to high)</option>
-                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>
+                            <option value="average_rating+desc" {% if current_sorting == 'average_rating+desc' %}selected{% endif %}>
                                 Rating (high to low)</option>
-                            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name
+                            <option value="name+asc" {% if current_sorting == 'name+asc' %}selected{% endif %}>Name
                                 (A-Z)</option>
-                            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name
+                            <option value="name+desc" {% if current_sorting == 'name+desc' %}selected{% endif %}>Name
                                 (Z-A)</option>
                         </select>
                     </div>
@@ -144,8 +144,8 @@
         //If the value is not reset to the default on the products page
         if (selectedVal != "reset") {
             //Get the sort and direction by splitting selected value
-            var sort = selectedVal.split("_")[0];
-            var direction = selectedVal.split("_")[1];
+            var sort = selectedVal.split("+")[0];
+            var direction = selectedVal.split("+")[1];
             //Replace the params in the URL 
             currentUrl.searchParams.set("sort", sort);
             currentUrl.searchParams.set("direction", direction);
