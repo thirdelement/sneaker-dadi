@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <div class="sort-select-wrapper w-100">
+                    <div class="col-12 col-md-6 ms-auto mb-4">
+                        <!--<select class="form-select" aria-label="Default select example">
+                            <option selected>Select..</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>-->
+                        <select id="sort-selector"
+                            class="form-select form-select-sm border border-{% if current_sorting != 'None+None' %}info{% else %}black{% endif %}">
+                            <option value="reset" {% if current_sorting == 'None__None' %}selected{% endif %}>Sort by...
+                            </option>
+                            <option value="price+asc" {% if current_sorting == 'price+asc' %}selected{% endif %}>Price
+                                (low to high)</option>
+                            <option value="price+desc" {% if current_sorting == 'price+desc' %}selected{% endif %}>Price
+                                (high to low)</option>
+                            <option value="average_rating+asc" {% if current_sorting == 'average_rating+asc' %}selected{% endif %}>
+                                Rating (low to high)</option>
+                            <option value="average_rating+desc" {% if current_sorting == 'average_rating+desc' %}selected{% endif %}>
+                                Rating (high to low)</option>
+                            <option value="name+asc" {% if current_sorting == 'name+asc' %}selected{% endif %}>Name
+                                (A-Z)</option>
+                            <option value="name+desc" {% if current_sorting == 'name+desc' %}selected{% endif %}>Name
+                                (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-start">
+                {% if products|length == 1 %}
+                1 product {% if search_term %} found for
+                <strong>"{{ search_term }}"</strong>{% endif %}
+                {% else %}
+                {{ products|length }} products{% if search_term %} found for
+                <strong>"{{ search_term }}"</strong>{% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center order-3">
+            {% for product in products %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    {% if product.on_sale is True %}
+                    <!-- Sale badge-->
+                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    </div>
+                    {% endif %}
+                    <!-- Product image-->
+                    {% if product.image1 %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ product.image1.url }}" alt="{{ product.name }}" />
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
+                    </a>
+                    {% endif %}
+                    <!-- Product details-->
+                    <div class="card-body card-body-home">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ product.name }}</h5>
+                            <!-- Product reviews-->
+                            {% if product.reviews %}
+                            {% if product.get_average_rating == 0 %}
+                            <small class="text-muted">No Rating</small>
+                            {% else %}
+                            <small class="text-muted">
+                                <!-- Average star rating -->
+                                {% with ''|center:product.get_average_rating as range %}
+                                {% for _ in range %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                                {% endfor %}
+                                {% endwith %}
+                                <!-- Average rating -->
+                                <span
+                                    class="avg-rating ms-2">{{ product.get_average_rating|floatformat:"1" }}</span>/5</small>
+                            {% endif %}
+                            {% endif %}
+                            {% if request.user.is_superuser %}
+                            <p class="ms-3 remove-margin">
+                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
+                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                            </p>
+                            {% endif %}
+                            <!-- Product price-->
+                            {% if product.on_sale is True %}
+                            <p>
+                                <span class="text-decoration-line-through">£{{ product.price }}</span>
+                                <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span></p>
+                            {% else %}
+                            <p>£{{ product.price }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="btt-button">
+        <a class="btt-link d-flex h-100 justify-content-end">
+            <i class="bi bi-caret-up-square-fill"></i>
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
+
+<script type="text/javascript">
+    //Capture the change event from the sort-selector
+    $('#sort-selector').change(function () {
+        var selector = $(this);
+        var currentUrl = new URL(window.location);
+        //Get the selected value from the selector box
+        var selectedVal = selector.val();
+        //If the value is not reset to the default on the products page
+        if (selectedVal != "reset") {
+            //Get the sort and direction by splitting selected value
+            var sort = selectedVal.split("+")[0];
+            var direction = selectedVal.split("+")[1];
+            //Replace the params in the URL 
+            currentUrl.searchParams.set("sort", sort);
+            currentUrl.searchParams.set("direction", direction);
+            //Replace the current location with the updated currentURL
+            window.location.replace(currentUrl);
+            //If the reset selected  
+        } else {
+            //Delete the sort & direction params
+            currentUrl.searchParams.delete("sort");
+            currentUrl.searchParams.delete("direction");
+            //Replace the location
+            window.location.replace(currentUrl);
+        }
+    })
+</script>
+{% endblock %}
