@@ -62,9 +62,6 @@ def all_products(request):
         'current_categories': categories,
         'current_gender': gender, 
         'current_sorting': current_sorting,
-        # 'products_on_sale': products_on_sale
-        # 'reviews': reviews,
-        # 'avg_reviews': avg_reviews,
     }
 
     return render(request, 'products/products.html', context)
@@ -86,37 +83,9 @@ def product_detail(request, product_id):
 
     # Get reviews
     reviews = ProductReview.objects.filter(product=product)
-
-    # Get average rating in database
-    # product.average_rating = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
-    # print('Average_rating in views:', product.average_rating)
-    # product.average_rating.save()
-
-    # reviews = ProductReview.objects.filter(product=product)
-    # count = len(reviews)
-    ## sum = 0
-    # product.average_rating = 0
-    # if count:
-    #     for review in reviews:
-    #        product.average_rating += int(review.review_rating)
-    #         product.average_rating / count
-        ## return (sum/count)
-        ## product.average_rating = sum/count
-    #     product.average_rating.save()
-    # else:
-    #     product.average_rating.save(0)
-    
     
     # Get avg rating for reviews
     avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
-    #average_rating = avg_reviews
-    #print('Average_rating in views:', average_rating)
-    #average_rating.save()
-    ## average_rating = Product.objects.create(
-        ## product=product,
-        ## avg_reviews=request.POST.['average_rating']
-    ## )
-
 
     # Get number of reviews
     # Credit: Great Adib - https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s
@@ -135,7 +104,6 @@ def product_detail(request, product_id):
         'num_reviews': num_reviews,
         'related_products_male': related_products_male,
         'related_products_female': related_products_female,
-        # 'average_rating': average_rating
     }
 
     return render(request, 'products/product_detail.html', context)

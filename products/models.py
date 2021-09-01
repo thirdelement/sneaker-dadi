@@ -68,21 +68,6 @@ class Product(models.Model):
         if self.on_sale and not self.discount_percent:
             raise ValidationError("Discount percent is a required field.")
     
-    def get_average_rating(self):
-        """
-        Calculate average rating 
-        Credit: https://stackoverflow.com/questions/11255243/how-to-get-average-across-different-models-in-django
-        """
-        reviews = ProductReview.objects.filter(product=self)
-        count = len(reviews)
-        sum = 0
-        if count:
-            for review in reviews:
-                sum += int(review.review_rating)
-            return (sum/count)
-        else:
-            return (0)
-    
     def save_average_rating(self):
         """
         Calculate average rating and save to database 
