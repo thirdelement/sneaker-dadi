@@ -226,7 +226,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "EE9797",
-   "name": "Men's adidas Sport Inspired Run 70s Shoes\"",
+   "name": "Men's adidas Sport Inspired Run 70s Shoes",
    "description": "These running-inspired shoes are designed with a mesh upper and a textile lining for flexible, all-day comfort. 3-Stripes and a rubber outsole give the shoes a stylish sign-off.",
    "price": 125.99,
    "discount_percent": 10,
