@@ -165,7 +165,6 @@
     </div>
 </section>
 <!-- Product Review section-->
-<!-- Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31 -->
 <section>
     <div class="container px-4 px-lg-5 my-5">
         <hr>
@@ -188,19 +187,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" id="addForm" action="{% url 'save-review' product.id %}">
+                        <form method="POST" action="{% url 'add_review' product.id %}">
                             {% csrf_token %}
-                            <table class="table">
-                                {{reviewForm.as_table}}
-                                <tr>
-                                    <td colspan="2">
-                                        <button type="submit"
-                                            class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                                        <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
-                                    </td>
-                                </tr>
-                            </table>
-                            <!--<p class="ajaxRes"></p>-->
+                            <fieldset class="rounded px-3 mb-2">
+                                <div class="mb-2">
+                                    {{ form.review_text | as_crispy_field }}
+                                </div>
+                                <div class="mb-2 col-6">
+                                    {{ form.review_rating | as_crispy_field }}
+                                </div>
+                            </fieldset>
+
+                            <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                            <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
                         </form>
                     </div>
                 </div>
@@ -211,9 +210,6 @@
         <!-- End Product Review Modal -->
 
         <div class="col-md-6">
-            <!--<div class="card">-->
-            <!--<div class="card-body review-list">-->
-            <!--<hr>-->
             <div class="review-list">
                 <!-- Detail -->
                 {% if reviews %}
@@ -224,14 +220,9 @@
                         <i class="bi bi-star-fill text-warning"></i>
                         {% endfor %}
                         {% if request.user.username == review.user.username %}
-                        <!--<button type="button" class="btn btn-secondary btn-sm mb-2 ms-2 float-end"
-                            data-bs-toggle="modal" data-bs-target="#editReview">Edit</button>-->
-                        <!--<button type="button" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
-                                data-bs-toggle="modal" data-bs-target="#editReview">Delete</button>-->
-
-                        <button type="button" id="" class="btn btn-warning btn-sm mb-2 ms-2" data-bs-toggle="modal"
-                            data-bs-target="#editReview">Edit Review</button>
-                        <a href="{% url 'delete-review' review.id %}" id="delete-review" type="button"
+                        <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2"
+                            data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit Review</button>
+                        <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
                             class="btn btn-danger btn-sm mb-2 ms-2 float-end">Delete</a>
                         {% endif %}
                     </cite>
@@ -239,48 +230,44 @@
                     <footer class="blockquote-footer">{{ review.user|title }},
                         <span>{{ review.created_on|date:"d F Y" }}</span>
                     </footer>
-                    <!--<footer class="blockquote-footer">{{ review.created_on }}
-                    </footer>-->
                 </blockquote>
                 <hr />
+                <!-- Add Edit Product Review Modal -->
+                {% if user.is_authenticated %}
+                <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editReviewLabel">Edit Product Review</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST" action="{% url 'edit_review' review.id %}">
+                                    {% csrf_token %}
+                                    <fieldset class="rounded px-3 mb-2">
+                                        <div class="mb-2">
+                                            {{ form.review_text | as_crispy_field }}
+                                        </div>
+                                        <div class="mb-2 col-6">
+                                            {{ form.review_rating | as_crispy_field }}
+                                        </div>
+                                    </fieldset>
+                                    <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                                    <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
                 {% endfor %}
                 {% else %}
                 <i class="no-data">No reviews yet.</i>
                 {% endif %}
             </div>
-            <!--</div>-->
-            <!-- Add Product Review Modal -->
-            {% if user.is_authenticated %}
-            <div class="modal fade" id="editReview" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editReviewLabel">Add Product Review</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" id="editForm" action="">
-                                {% csrf_token %}
-                                <table class="table">
-                                    {{reviewForm.as_table}}
-                                    <tr>
-                                        <td colspan="2">
-                                            <button type="submit"
-                                                class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                                            <input type="reset" class="btn btn-dark float-end" value="Reset"
-                                                id="reset" />
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!--<p class="ajaxRes"></p>-->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% endif %}
-            <!-- End Edit Product Review Modal -->
         </div>
     </div>
 </section>
