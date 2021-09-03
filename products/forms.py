@@ -19,9 +19,8 @@ class ProductForm(forms.ModelForm):
         self.fields['category'].choices = friendly_names
 
 
-# Review Add Form
-# Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31
-class ReviewAdd(forms.ModelForm):
+# Review Form
+class ReviewForm(forms.ModelForm):
     class Meta:
         model = ProductReview
-        fields = ('review_text', 'review_rating')
+        exclude = ('user', 'product', 'created_on')
