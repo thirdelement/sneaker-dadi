@@ -93,17 +93,17 @@
                 </div>
                 <!-- Product reviews-->
                 <div class="rating-title">
-                    {% if reviews %}
+                    {% if product.average_rating %}
                     <small class="text-muted">
                         <!-- Average star rating -->
                         <!-- Credit: https://stackoverflow.com/questions/1107737/numeric-for-loop-in-django-templates/14389078#14389078 -->
-                        {% with ''|center:avg_reviews.avg_rating as range %}
+                        {% with ''|center:product.average_rating as range %}
                         {% for _ in range %}
                         <i class="bi bi-star-fill text-warning"></i>
                         {% endfor %}
                         {% endwith %}
                         <!-- Average rating -->
-                        <span class="avg-rating ms-2">{{ avg_reviews.avg_rating|floatformat:"1" }}</span>/5</small>
+                        <span class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
                     {% else %}
                     <small class="text-muted">
                         <i class="no-rating">No Rating</i><span class="avg-stars"></span><span

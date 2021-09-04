@@ -34,9 +34,11 @@
                                 (low to high)</option>
                             <option value="price+desc" {% if current_sorting == 'price+desc' %}selected{% endif %}>Price
                                 (high to low)</option>
-                            <option value="average_rating+asc" {% if current_sorting == 'average_rating+asc' %}selected{% endif %}>
+                            <option value="average_rating+asc"
+                                {% if current_sorting == 'average_rating+asc' %}selected{% endif %}>
                                 Rating (low to high)</option>
-                            <option value="average_rating+desc" {% if current_sorting == 'average_rating+desc' %}selected{% endif %}>
+                            <option value="average_rating+desc"
+                                {% if current_sorting == 'average_rating+desc' %}selected{% endif %}>
                                 Rating (high to low)</option>
                             <option value="name+asc" {% if current_sorting == 'name+asc' %}selected{% endif %}>Name
                                 (A-Z)</option>
@@ -81,10 +83,7 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">{{ product.name }}</h5>
                             <!-- Product reviews-->
-                            {% if product.reviews %}
-                            {% if product.average_rating == null %}
-                            <small class="text-muted">No Rating</small>
-                            {% else %}
+                            {% if product.average_rating %}
                             <small class="text-muted">
                                 <!-- Average star rating -->
                                 {% with ''|center:product.average_rating as range %}
@@ -95,7 +94,8 @@
                                 <!-- Average rating -->
                                 <span
                                     class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
-                            {% endif %}
+                            {% else %}
+                            <small class="text-muted">No Rating</small>
                             {% endif %}
                             {% if request.user.is_superuser %}
                             <p class="ms-3 remove-margin">
