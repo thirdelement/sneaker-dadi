@@ -33,6 +33,11 @@ class Product(models.Model):
         ('11/45', '11/45'),
         ('11.5/46', '11.5/46'),
     )
+    GENDER = [
+        ('f', 'f'), 
+        ('m', 'm'),
+        ('u', 'u'),
+    ]
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     product_id = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
@@ -44,7 +49,8 @@ class Product(models.Model):
     discount_percent = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     average_rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     size = MultiSelectField(choices=SIZE_CHOICES)
-    gender = models.CharField(max_length=1)
+    # gender = models.CharField(max_length=1)
+    gender = models.CharField(max_length=1, choices=GENDER)
     image1 = models.ImageField(null=True, blank=True)
     image2 = models.ImageField(null=True, blank=True)
     image3 = models.ImageField(null=True, blank=True)
@@ -86,7 +92,6 @@ RATING = (
     (5, '5'),
 )
 
-
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
@@ -94,8 +99,8 @@ class ProductReview(models.Model):
     review_rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        verbose_name_plural = 'Reviews'
+    # class Meta:
+        # verbose_name_plural = 'Reviews'
 
     def get_review_rating(self):
         return self.review_rating
