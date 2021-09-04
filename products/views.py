@@ -69,14 +69,42 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     form = ReviewForm()
 
-    # Check if user has added product review
     can_add_review = True
-    if request.user.is_authenticated:
+
+    # To enable superuser to see review text
+    if request.user.is_superuser:
+        # review = get_object_or_404(ProductReview, product=product)
+        # user = ProductReview.user
+        # review = ProductReview.objects.filter(product=product, user=user)
+        ## for review in ProductReview.objects.filter(product=product):
+            ## review = get_object_or_404(ProductReview, product=product)
+            # review = ProductReview.objects.filter(all)
+        for review in product.reviews.all():
+            # if review.user:
+            # print('superuserreview test:', test, 'test.user:', test.user)
+            # review = ProductReview.objects.filter(product=product, user=user)
+            # review = get_object_or_404(ProductReview, product=product)
+            print('superuserreview:', review, 'review.user:', review.user)
+            form = ReviewForm(instance=review)
+        # review = ProductReview.objects.filter(product=product).first()
+        
+    # Check if user has added product review
+    elif request.user.is_authenticated:
         reviewCheck = ProductReview.objects.filter(user=request.user, product=product).count()
         if reviewCheck > 0:
             can_add_review = False
             review = get_object_or_404(ProductReview, product=product, user=request.user)
+            print('Authuserreview:', review)
             form = ReviewForm(instance=review)
+            # if request.user.is_superuser:
+                # review1 = get_object_or_404(ProductReview, product=product, user=user)
+                # print('review1:', review1)
+                # form = ReviewForm(instance=review1)
+    # if request.user.is_authenticated:
+        # review = get_object_or_404(ProductReview, product=product, user=request.user)
+        # if review.request.user == request.user.is_authenticated or request.user.is_superuser:
+            # can_add_review = False
+            # form = ReviewForm(instance=review)
 
     # Get reviews
     reviews = ProductReview.objects.filter(product=product)
@@ -88,7 +116,6 @@ def product_detail(request, product_id):
     # Get related products
     related_products_male = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('-gender')[:4]
     related_products_female = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('gender')[:4]
-    print('Related products female', related_products_female)
     context = {
         'product': product,
         'form': form, 
@@ -176,22 +203,27 @@ def delete_product(request, product_id):
 def add_review(request, product_id):
     """ Add a review for a product """
     product = get_object_or_404(Product, pk=product_id)
-    # if request.user.is_authenticated:
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.product = product
-            review.user = request.user
-            review.save()
-            # Save average rating to database
-            product.save_average_rating()
-            messages.success(request, 'You have successfully added a review.')
-            return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(
-                request,
-                "There was a problem adding the review.  Please check and try again.")
+
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to be logged in to do that.')
+        return redirect(reverse('product_detail', args=[product.id]))
+
+    elif request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.product = product
+                review.user = request.user
+                review.save()
+                # Save average rating to database
+                product.save_average_rating()
+                messages.success(request, 'You have successfully added a review.')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                messages.error(
+                    request,
+                    "There was a problem adding the review.  Please check and try again.")
     else:
         form = ReviewForm()
     context = {
@@ -204,13 +236,18 @@ def add_review(request, product_id):
 # Delete review
 @login_required
 def delete_review(request, review_id):
-    review = ProductReview.objects.filter(pk=review_id).last()
-    product_id = review.product_id
-    review.delete()
-    # Save average rating to database
-    review.product.save_average_rating()
-    messages.success(request, 'Your review has been deleted.')
-    return redirect(reverse('product_detail', args=[product_id]))
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    elif request.user.is_superuser:
+        review = ProductReview.objects.filter(pk=review_id).last()
+        # review = ProductReview.objects.filter(pk=review_id)
+        product_id = review.product_id
+        review.delete()
+        # Save average rating to database
+        review.product.save_average_rating()
+        messages.success(request, 'Your review has been deleted.')
+        return redirect(reverse('product_detail', args=[product_id]))
 
 
 # Edit review
@@ -218,28 +255,33 @@ def delete_review(request, review_id):
 def edit_review(request, review_id):
     review = get_object_or_404(ProductReview, pk=review_id)
     product = review.product
-    if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review)
-        if form.is_valid():
-            form.save()
-            # Save average rating to database
-            product.save_average_rating()
-            messages.success(request, 'Your review has been updated.')
-            return redirect(reverse('product_detail', args=[product.id]))
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, you have to be logged in to do that.')
+        return redirect(reverse('product_detail', args=[product.id]))
+
+    elif request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                # Save average rating to database
+                product.save_average_rating()
+                messages.success(request, 'Your review has been updated.')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                messages.error(
+                    request,
+                    "The review update failed.  Please check and try again.")
         else:
-            messages.error(
-                request,
-                "The review update failed.  Please check and try again.")
-    else:
-        form = ReviewForm(instance=review)
+            form = ReviewForm(instance=review)
 
-    context = {
-        'form': form,
-        'review': review,
-        'product': product
-    }
+        context = {
+            'form': form,
+            'review': review,
+            'product': product
+        }
 
-    return render(request, 'products/product_detail.html', context)
+        return render(request, 'products/product_detail.html', context)
 
 
 # Products on sale
