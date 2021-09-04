@@ -107,7 +107,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "B75990",
-   "name": "WOMEN'S ADIDAS RUNNING DURAMO 9 SHOES",
+   "name": "Women's adidas Running Duramo 9 Shoes",
    "description": "These women's neutral running shoes will get you on the road to your goals. A sandwich mesh upper offers lightweight breathability, while a seamless print overlay adds support for a stable stride. The midsole offers pillow-soft Cloudfoam cushioning that eases every stride.",
    "price": 35.99,
    "discount_percent": 10,
@@ -243,7 +243,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "CJ0082",
-   "name": "men's ADIDAS RUNNING NEBULAR 1.0 SHOES",
+   "name": "Men's adidas Running Nebular 1.0 Shoes",
    "description": "The premium looking adidas Nebular 1.0 Running shoes for men crafted with Mesh overlays which make it lightweight. The breathable sandwich Mesh offer extended ventilation and comfort. Light strike IMEVA midsole with full Rubber outsole provides durability.",
    "price": 149.99,
    "discount_percent": 10,
@@ -736,7 +736,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "F36418",
-   "name": "MEN'S ADIDAS SPORT INSPIRED COURT ADAPT SHOES",
+   "name": "Men's adidas Sport Inspired Court Adapt Shoes",
    "description": "These tennis-inspired shoes elevate their style game off the court with a knit upper and decorative laces. The slip-on look has a seamless, sock-like construction with an ultra-soft Cloudfoam sockliner for added comfort throughout your day.",
    "price": 69.99,
    "discount_percent": 10,
@@ -753,7 +753,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "CG6065",
-   "name": "WOMEN'S ADIDAS ORIGINALS GAZELLE SHOES",
+   "name": "Women's adidas Originals Gazelle Shoes",
    "description": "Once a top pick for football and handball players in the '60s, the Gazelle was built for swift moves and sure-footed grip. These shoes are a reissue of the 1991 version. They come with the same materials and clean lines. Made of soft nubuck, the trainers are lined in a neutral tone to complement the classic low-key style.",
    "price": 79.99,
    "discount_percent": 10,
@@ -787,7 +787,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "D98056",
-   "name": "MEN'S ADIDAS FOOTBALL PREDATOR 19.1 TRAINERS",
+   "name": "Men's adidas Football Predator 19.1 Trainers",
    "description": "If you can't step up when life spins out of control, step away from the Predators. These football trainers take design cues from their iconic on-pitch counterparts. The knit textile upper wraps around your foot for added stability. A layer of responsive cushioning helps deliver the energy to make sure you're ready for anything.",
    "price": 85,
    "discount_percent": 10,
@@ -838,7 +838,7 @@
    "model": "products.product",
    "fields": {
    "product_id": "DB1370",
-   "name": "WOMEN'S ADIDAS SPORT INSPIRED ADVANTAGE CLEAN QT SHOES",
+   "name": "Women's adidas Sport Inspired Advantage Clean QT Shoes",
    "description": "Clean court style just for her. These girls' shoes feature an elegant leather-look upper. Detailed with perforated and stitched-on 3-Stripes for a subtle feminine touch.",
    "price": 69.99,
    "discount_percent": 10,
