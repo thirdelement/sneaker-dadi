@@ -221,17 +221,19 @@
             <!-- Detail -->
             {% if reviews %}
             {% for review in reviews reversed %}
-            <!--Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31--> 
+            <!--Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31-->
             <blockquote class="blockquote text-right">
                 <cite title="Source Title">
                     {% for star in review.review_rating|ljust:review.review_rating %}
                     <i class="bi bi-star-fill text-warning"></i>
                     {% endfor %}
-                    {% if request.user.username == review.user.username %}
+                    {% if request.user.is_superuser %}
+                    <button type="button" id="delete_review" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
+                        data-bs-toggle="modal" data-bs-target="#deleteReview{{ review.id }}">Delete</button>
+                    {% endif %}
+                    {% if request.user.username == review.user.username or request.user.is_superuser %}
                     <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2 float-end"
-                        data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit Review</button>
-                    <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
-                        class="btn btn-danger btn-sm mb-2 ms-2 float-end font-normal">Delete</a>
+                        data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit</button>
                     {% endif %}
                 </cite>
                 <p>{{ review.review_text }}</p>
@@ -240,7 +242,7 @@
                 </footer>
             </blockquote>
             <hr />
-            <!-- Add Edit Product Review Modal -->
+            <!-- Edit Product Review Modal -->
             {% if user.is_authenticated %}
             <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">
                 <div class="modal-dialog">
@@ -268,6 +270,29 @@
                 </div>
             </div>
             {% endif %}
+            <!-- End Edit Product Review Modal -->
+            <!-- Delete Product Review Modal -->
+            {% if user.is_superuser %}
+            <div class="modal fade" id="deleteReview{{ review.id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteReviewLabel">Delete Product Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete {{ review.user }}'s review?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
+                                    class="btn btn-danger float-end font-normal">Delete</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- End Delete Product Review Modal -->
             {% endfor %}
             {% else %}
             <i class="no-data">No reviews yet.</i>
