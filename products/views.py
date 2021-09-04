@@ -77,15 +77,9 @@ def product_detail(request, product_id):
             can_add_review = False
             review = get_object_or_404(ProductReview, product=product, user=request.user)
             form = ReviewForm(instance=review)
-    
-    # else:
-        # form = ReviewForm()
 
     # Get reviews
     reviews = ProductReview.objects.filter(product=product)
-    
-    # Get avg rating for reviews
-    avg_reviews = ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
 
     # Get number of reviews
     # Credit: Great Adib - https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s
@@ -100,7 +94,6 @@ def product_detail(request, product_id):
         'form': form, 
         'can_add_review': can_add_review,
         'reviews': reviews,
-        'avg_reviews': avg_reviews,
         'num_reviews': num_reviews,
         'related_products_male': related_products_male,
         'related_products_female': related_products_female,
@@ -191,6 +184,8 @@ def add_review(request, product_id):
             review.product = product
             review.user = request.user
             review.save()
+            # Save average rating to database
+            product.save_average_rating()
             messages.success(request, 'You have successfully added a review.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -212,6 +207,8 @@ def delete_review(request, review_id):
     review = ProductReview.objects.filter(pk=review_id).last()
     product_id = review.product_id
     review.delete()
+    # Save average rating to database
+    review.product.save_average_rating()
     messages.success(request, 'Your review has been deleted.')
     return redirect(reverse('product_detail', args=[product_id]))
 
@@ -225,6 +222,8 @@ def edit_review(request, review_id):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
+            # Save average rating to database
+            product.save_average_rating()
             messages.success(request, 'Your review has been updated.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
