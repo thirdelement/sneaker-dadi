@@ -208,6 +208,11 @@ footer.footer {
   vertical-align: middle;
 }
 
+/* Remove italic from Delete button */
+.font-normal{
+  font-style: normal!important;
+}
+
 /* Shopping cart */
 /* Heading underline */
 .hr-heading {
@@ -254,13 +259,10 @@ input[type=number] {
   z-index: 1060;
 }
 
-<<<<<<< HEAD
-=======
 /*.toast {
   z-index: 999999;
 }*/
 
->>>>>>> ed992813bf5fa4d697e8590ab4ace14d1880e9db
 .cart-notification-wrapper {
   height: 105px;
   overflow-x: hidden;

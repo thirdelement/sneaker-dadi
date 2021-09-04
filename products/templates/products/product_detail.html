@@ -121,7 +121,6 @@
                 </div>
                 {% if product.category %}
                 <p class="small mt-1 mb-5">
-                    <!--<i class="bi bi-collection"></i>-->
                     <span id="text-category"><strong>Category:</strong></span>
                     <a href="{% url 'products' %}?category={{ product.category.name }}">
                         {{ product.category.friendly_name }}
@@ -142,15 +141,15 @@
                             </select>
                         </div>
                     </div>
-                    <!--<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
-                        style="max-width: 3rem" />-->
                     <div class="col-12">
+                        <!-- Continue shopping button -->
                         <a href="{% url 'products' %}" class="btn btn-outline-dark">
                             <span class="icon">
                                 <i class="bi bi-chevron-left"></i>
                             </span>
                             <span class="text-uppercase">Continue Shopping</span>
                         </a>
+                        <!-- Add to cart button -->
                         <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
@@ -168,14 +167,23 @@
 <section>
     <div class="container px-4 px-lg-5 my-5">
         <hr>
-        <h2 class="fw-bolder mb-4 review-heading">Reviews ({{ num_reviews }})
-            {% if user.is_authenticated %}
-            {% if can_add_review %}
-            <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2" data-bs-toggle="modal"
-                    data-bs-target="#productReview">Add Review</button></span>
-            {% endif %}
-            {% endif %}
-        </h2>
+        <div class="row">
+            <div class="col-6">
+                <h2 class="fw-bolder mb-4 review-heading">Reviews ({{ num_reviews }})
+                    {% if user.is_authenticated %}
+                    {% if can_add_review %}
+                    <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2"
+                            data-bs-toggle="modal" data-bs-target="#productReview">Add Review</button></span>
+                    {% endif %}
+                    {% endif %}
+                </h2>
+            </div>
+            <div class="col-6">
+                <p class="ms-3 align-bottom lead">Please <a class="link-secondary"
+                        href="{% url 'account_login' %}">login</a> or <a class="link-secondary"
+                        href="{% url 'account_signup' %}">register</a> to add a review.</p>
+            </div>
+        </div>
         <!-- Add Product Review Modal -->
         {% if user.is_authenticated %}
         {% if can_add_review %}
@@ -197,9 +205,8 @@
                                     {{ form.review_rating | as_crispy_field }}
                                 </div>
                             </fieldset>
-
                             <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                            <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
+                            <input type="reset" class="btn btn-dark float-end" value="Reset" />
                         </form>
                     </div>
                 </div>
@@ -210,64 +217,62 @@
         <!-- End Product Review Modal -->
 
         <div class="col-md-6">
-            <div class="review-list">
-                <!-- Detail -->
-                {% if reviews %}
-                {% for review in reviews reversed %}
-                <blockquote class="blockquote text-right">
-                    <cite title="Source Title">
-                        {% for star in review.review_rating|ljust:review.review_rating %}
-                        <i class="bi bi-star-fill text-warning"></i>
-                        {% endfor %}
-                        {% if request.user.username == review.user.username %}
-                        <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2"
-                            data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit Review</button>
-                        <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
-                            class="btn btn-danger btn-sm mb-2 ms-2 float-end">Delete</a>
-                        {% endif %}
-                    </cite>
-                    <p>{{ review.review_text }}</p>
-                    <footer class="blockquote-footer">{{ review.user|title }},
-                        <span>{{ review.created_on|date:"d F Y" }}</span>
-                    </footer>
-                </blockquote>
-                <hr />
-                <!-- Add Edit Product Review Modal -->
-                {% if user.is_authenticated %}
-                <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editReviewLabel">Edit Product Review</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
 
-                                <form method="POST" action="{% url 'edit_review' review.id %}">
-                                    {% csrf_token %}
-                                    <fieldset class="rounded px-3 mb-2">
-                                        <div class="mb-2">
-                                            {{ form.review_text | as_crispy_field }}
-                                        </div>
-                                        <div class="mb-2 col-6">
-                                            {{ form.review_rating | as_crispy_field }}
-                                        </div>
-                                    </fieldset>
-                                    <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                                    <input type="reset" class="btn btn-dark float-end" value="Reset" id="reset" />
-
-                                </form>
-                            </div>
+            <!-- Detail -->
+            {% if reviews %}
+            {% for review in reviews reversed %}
+            <!--Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31--> 
+            <blockquote class="blockquote text-right">
+                <cite title="Source Title">
+                    {% for star in review.review_rating|ljust:review.review_rating %}
+                    <i class="bi bi-star-fill text-warning"></i>
+                    {% endfor %}
+                    {% if request.user.username == review.user.username %}
+                    <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2 float-end"
+                        data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit Review</button>
+                    <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
+                        class="btn btn-danger btn-sm mb-2 ms-2 float-end font-normal">Delete</a>
+                    {% endif %}
+                </cite>
+                <p>{{ review.review_text }}</p>
+                <footer class="blockquote-footer">{{ review.user|title }},
+                    <span>{{ review.created_on|date:"d F Y" }}</span>
+                </footer>
+            </blockquote>
+            <hr />
+            <!-- Add Edit Product Review Modal -->
+            {% if user.is_authenticated %}
+            <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editReviewLabel">Edit Product Review</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{% url 'edit_review' review.id %}">
+                                {% csrf_token %}
+                                <fieldset class="rounded px-3 mb-2">
+                                    <div class="mb-2">
+                                        {{ form.review_text | as_crispy_field }}
+                                    </div>
+                                    <div class="mb-2 col-6">
+                                        {{ form.review_rating | as_crispy_field }}
+                                    </div>
+                                </fieldset>
+                                <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
+                                <input type="reset" class="btn btn-dark float-end" value="Reset" />
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                {% endif %}
-                {% endfor %}
-                {% else %}
-                <i class="no-data">No reviews yet.</i>
-                {% endif %}
             </div>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <i class="no-data">No reviews yet.</i>
+            {% endif %}
+
         </div>
     </div>
 </section>
