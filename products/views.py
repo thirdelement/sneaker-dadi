@@ -222,7 +222,7 @@ def edit_review(request, review_id):
     review = get_object_or_404(ProductReview, pk=review_id)
     product = review.product
     if request.method == 'POST':
-        form = ReviewForm(request.POST, instance=review, initial={"review_text": review.review_text, "review_rating": review.review_rating})
+        form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your review has been updated.')
