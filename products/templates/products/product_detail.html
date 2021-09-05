@@ -20,7 +20,8 @@
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
                 <!-- Product image carousel-->
-                <div id="carouselIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div id="carouselIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel"
+                    data-bs-interval="false">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
@@ -79,8 +80,10 @@
                     {% if request.user.is_superuser %}
                     <span class="ms-3">
                         <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        <button type="button" class="delete-link text-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
                     </span>
+                    {% include 'products/includes/modals.html' %}
                     {% endif %}
                 </div>
 
@@ -174,6 +177,7 @@
                     {% if can_add_review %}
                     <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2"
                             data-bs-toggle="modal" data-bs-target="#productReview">Add Review</button></span>
+                    {% include 'products/includes/modals.html' %}
                     {% endif %}
                     {% endif %}
                 </h2>
@@ -184,40 +188,7 @@
                         href="{% url 'account_signup' %}">register</a> to add a review.</p>
             </div>
         </div>
-        <!-- Add Product Review Modal -->
-        {% if user.is_authenticated %}
-        {% if can_add_review %}
-        <div class="modal fade" id="productReview" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="productReviewLabel">Add Product Review</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" action="{% url 'add_review' product.id %}">
-                            {% csrf_token %}
-                            <fieldset class="rounded px-3 mb-2">
-                                <div class="mb-2">
-                                    {{ form.review_text | as_crispy_field }}
-                                </div>
-                                <div class="mb-2 col-6">
-                                    {{ form.review_rating | as_crispy_field }}
-                                </div>
-                            </fieldset>
-                            <button type="submit" class="btn btn-primary float-end ms-1 me-4">Submit</button>
-                            <input type="reset" class="btn btn-dark float-end" value="Reset" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% endif %}
-        <!-- End Product Review Modal -->
-
         <div class="col-md-6">
-
             <!-- Detail -->
             {% if reviews %}
             {% for review in reviews reversed %}
@@ -230,6 +201,7 @@
                     {% if request.user.is_superuser %}
                     <button type="button" id="delete_review" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
                         data-bs-toggle="modal" data-bs-target="#deleteReview{{ review.id }}">Delete</button>
+
                     {% endif %}
                     {% if request.user.username == review.user.username or request.user.is_superuser %}
                     <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2 float-end"
@@ -241,7 +213,7 @@
                     <span>{{ review.created_on|date:"d F Y" }}</span>
                 </footer>
             </blockquote>
-            <hr />
+            <hr /> 
             <!-- Edit Product Review Modal -->
             {% if user.is_authenticated %}
             <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">
@@ -282,12 +254,12 @@
                         </div>
                         <div class="modal-body">
                             Are you sure you want to delete {{ review.user }}'s review?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
-                                    class="btn btn-danger float-end font-normal">Delete</a>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
+                                class="btn btn-danger float-end font-normal">Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -355,8 +327,10 @@
                             {% if request.user.is_superuser %}
                             <p class="ms-3 remove-margin">
                                 <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                <button type="button" class="small delete-link text-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
                             </p>
+                            {% include 'products/includes/modals.html' %}
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}
@@ -423,8 +397,10 @@
                             {% if request.user.is_superuser %}
                             <p class="ms-3 remove-margin">
                                 <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <a class="small text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                <button type="button" class="small delete-link text-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
                             </p>
+                            {% include 'products/includes/modals.html' %}
                             {% endif %}
                             <!-- Product price-->
                             {% if product.on_sale is True %}

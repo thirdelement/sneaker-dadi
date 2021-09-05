@@ -173,6 +173,14 @@ footer.footer {
   color: #6c757d;
 }
 
+/* Remove button features from Product Delete link */
+/* Credit: https://stackoverflow.com/questions/9467504/html-make-text-clickable-without-making-it-a-hyperlink/9467534 */
+.delete-link {
+  text-decoration: underline;
+  background:none;
+  border:none;
+}
+
 /* Product Details */
 /* Category text color */
 #text-category {
