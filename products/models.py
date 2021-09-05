@@ -98,6 +98,7 @@ class ProductReview(models.Model):
     review_text = models.TextField(max_length=250)
     review_rating = models.IntegerField(choices=RATING)
     created_on = models.DateTimeField(auto_now_add=True)
+    verified_purchase = models.BooleanField(default=False)
 
     # class Meta:
         # verbose_name_plural = 'Reviews'
