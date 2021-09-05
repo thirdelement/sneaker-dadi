@@ -48,7 +48,7 @@ class Product(models.Model):
     # discount = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     discount_percent = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
     average_rating = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
-    size = MultiSelectField(choices=SIZE_CHOICES)
+    size = MultiSelectField(choices=SIZE_CHOICES, null=True, blank=True)
     # gender = models.CharField(max_length=1)
     gender = models.CharField(max_length=1, choices=GENDER)
     image1 = models.ImageField(null=True, blank=True)
