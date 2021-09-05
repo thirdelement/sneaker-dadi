@@ -177,10 +177,12 @@
                     {% if can_add_review %}
                     <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2"
                             data-bs-toggle="modal" data-bs-target="#productReview">Add Review</button></span>
-                    {% include 'products/includes/modals.html' %}
                     {% endif %}
                     {% endif %}
                 </h2>
+                {% if user.is_authenticated %}
+                {% include 'products/includes/modals.html' %}
+                {% endif %}
             </div>
             <div class="col-6">
                 <p class="ms-3 align-bottom lead">Please <a class="link-secondary"
@@ -192,20 +194,22 @@
             <!-- Detail -->
             {% if reviews %}
             {% for review in reviews reversed %}
-            <!--Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31-->
+            <!-- Credit: Code Artisan Lab - https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31 -->
             <blockquote class="blockquote text-right">
                 <cite title="Source Title">
                     {% for star in review.review_rating|ljust:review.review_rating %}
                     <i class="bi bi-star-fill text-warning"></i>
                     {% endfor %}
+                    <!-- Credit: https://github.com/Edb83/moose-juice/blob/master/products/views.py -->
+                    {% if review.verified_purchase %}<span class="ms-2 verified">Verified purchase</span>
+                    {% endif %}
                     {% if request.user.is_superuser %}
-                    <button type="button" id="delete_review" class="btn btn-danger btn-sm mb-2 ms-2 float-end"
-                        data-bs-toggle="modal" data-bs-target="#deleteReview{{ review.id }}">Delete</button>
-
+                    <i id="delete_review" class="bi bi-trash-fill mb-2 ms-2 float-end text-danger pointer-size"
+                        data-bs-toggle="modal" data-bs-target="#deleteReview{{ review.id }}"></i>
                     {% endif %}
                     {% if request.user.username == review.user.username or request.user.is_superuser %}
-                    <button type="button" id="edit_review" class="btn btn-warning btn-sm mb-2 ms-2 float-end"
-                        data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}">Edit</button>
+                    <i id="edit_review" class="bi bi-pencil-fill mb-2 ms-2 float-end text-secondary pointer-size"
+                        data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}"></i>
                     {% endif %}
                 </cite>
                 <p>{{ review.review_text }}</p>
@@ -213,7 +217,7 @@
                     <span>{{ review.created_on|date:"d F Y" }}</span>
                 </footer>
             </blockquote>
-            <hr /> 
+            <hr />
             <!-- Edit Product Review Modal -->
             {% if user.is_authenticated %}
             <div class="modal fade" id="editReview{{ review.id }}" tabindex="-1">

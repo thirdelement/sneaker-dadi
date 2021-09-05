@@ -181,6 +181,21 @@ footer.footer {
   border:none;
 }
 
+/* Change cursor to pointer & size for Product Review icons */
+.pointer-size {
+  cursor: pointer;
+  font-size: 1.1em
+}
+
+/* Verified purchase text */
+.verified {
+  color: #c45500;
+  font-size: 0.75em;
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 /* Product Details */
 /* Category text color */
 #text-category {

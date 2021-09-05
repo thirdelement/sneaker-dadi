@@ -5,7 +5,9 @@ from django.db.models import Avg, Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category, ProductReview
+from profiles.models import UserProfile
 from .forms import ProductForm, ReviewForm
+from checkout.models import OrderLineItem
 
 
 def all_products(request):
@@ -201,8 +203,12 @@ def delete_product(request, product_id):
 
 @login_required
 def add_review(request, product_id):
-    """ Add a review for a product """
+    """ Add product review """
     product = get_object_or_404(Product, pk=product_id)
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user_id=request.user)
+    else:
+        profile = None
 
     if not request.user.is_authenticated:
         messages.error(request, 'Sorry, you have to be logged in to do that.')
@@ -215,6 +221,12 @@ def add_review(request, product_id):
                 review = form.save(commit=False)
                 review.product = product
                 review.user = request.user
+                # Check whether user has ordered product previously 
+                # Credit: https://github.com/Edb83/moose-juice/blob/master/products/views.py
+                if OrderLineItem.objects.filter(
+                    order__user_profile=profile).filter(
+                        product=product).exists():
+                    review.verified_purchase = True
                 review.save()
                 # Save average rating to database
                 product.save_average_rating()
@@ -228,14 +240,15 @@ def add_review(request, product_id):
         form = ReviewForm()
     context = {
         'form': form,
+        'profile': profile
     }
 
     return render(request, context)
 
 
-# Delete review
 @login_required
 def delete_review(request, review_id):
+    """ Delete review """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -250,9 +263,9 @@ def delete_review(request, review_id):
         return redirect(reverse('product_detail', args=[product_id]))
 
 
-# Edit review
 @login_required
 def edit_review(request, review_id):
+    """ Edit product review """
     review = get_object_or_404(ProductReview, pk=review_id)
     product = review.product
     if not request.user.is_authenticated:
@@ -284,9 +297,8 @@ def edit_review(request, review_id):
         return render(request, 'products/product_detail.html', context)
 
 
-# Products on sale
 def products_on_sale(request):
-    """" A view to show all products on sale, including sorting. """
+    """ A view to show all products on sale, including sorting. """
     sort = None
     direction = None
     products = Product.objects.filter(on_sale=True)
