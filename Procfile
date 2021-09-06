@@ -1,1 +1,1 @@
-web: gunicorn sneaker-dadi.wsgi:application
+web: gunicorn sneaker_dadi.wsgi:application
