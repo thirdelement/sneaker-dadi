@@ -1,0 +1,1 @@
+web: gunicorn sneaker-dadi.wsgi:application
