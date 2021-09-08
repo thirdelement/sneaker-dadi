@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
- 
+
 ALLOWED_HOSTS = ['sneaker-dadi.herokuapp.com', 'localhost']
 
 
@@ -81,7 +81,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  
+                'django.template.context_processors.request',
                 # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -180,6 +180,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+    
     # Bucket config
     AWS_STORAGE_BUCKET_NAME = 'sneaker-dadi'
     AWS_S3_REGION_NAME = 'eu-west-2'
@@ -205,7 +211,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 50
-STANDARD_DELIVERY_PERCENTAGE = 10 
+STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
