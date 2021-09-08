@@ -11,10 +11,10 @@
    "category": 5,
    "average_rating": 0,
    "gender": "f",
-   "image1": "/image1/AH2430_1.webp",
-   "image2": "/image2/AH2430_2.webp",
-   "image3": "/image3/AH2430_5.webp",
-   "image4": "/image4/AH2430_6.webp"
+   "image1": "image1/AH2430_1.webp",
+   "image2": "image2/AH2430_2.webp",
+   "image3": "image3/AH2430_5.webp",
+   "image4": "image4/AH2430_6.webp"
    }
  },
  {
@@ -28,10 +28,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/G27341_1.webp",
-   "image2": "/image2/G27341_2.jpg",
-   "image3": "/image3/G27341_5.jpg",
-   "image4": "/image4/G27341_6.webp"
+   "image1": "image1/G27341_1.webp",
+   "image2": "image2/G27341_2.jpg",
+   "image3": "image3/G27341_5.jpg",
+   "image4": "image4/G27341_6.webp"
    }
  },
  {
@@ -45,10 +45,10 @@
    "discount_percent": 10,
    "category": 9,
    "gender": "f",
-   "image1": "/image1/CM0081_1.webp",
-   "image2": "/image2/CM0081_2.jpg",
-   "image3": "/image3/CM0081_5.jpg",
-   "image4": "/image4/CM0081_6.webp"
+   "image1": "image1/CM0081_1.webp",
+   "image2": "image2/CM0081_2.jpg",
+   "image3": "image3/CM0081_5.jpg",
+   "image4": "image4/CM0081_6.webp"
    }
  },
  {
@@ -62,10 +62,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/B44832_1.webp",
-   "image2": "/image2/B44832_2.jpg",
-   "image3": "/image3/B44832_5.jpg",
-   "image4": "/image4/B44832_6.webp"
+   "image1": "image1/B44832_1.webp",
+   "image2": "image2/B44832_2.jpg",
+   "image3": "image3/B44832_5.jpg",
+   "image4": "image4/B44832_6.webp"
    }
  },
  {
@@ -79,10 +79,10 @@
    "discount_percent": 10,
    "category": 10,
    "gender": "f",
-   "image1": "/image1/D98205_1.webp",
-   "image2": "/image2/D98205_2.jpg",
-   "image3": "/image3/D98205_5.jpg",
-   "image4": "/image4/D98205_6.webp"
+   "image1": "image1/D98205_1.webp",
+   "image2": "image2/D98205_2.jpg",
+   "image3": "image3/D98205_5.jpg",
+   "image4": "image4/D98205_6.webp"
    }
  },
  {
@@ -96,10 +96,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/B75586_1.webp",
-   "image2": "/image2/B75586_2.jpg",
-   "image3": "/image3/B75586_5.jpg",
-   "image4": "/image4/B75586_5.webp"
+   "image1": "image1/B75586_1.webp",
+   "image2": "image2/B75586_2.jpg",
+   "image3": "image3/B75586_5.jpg",
+   "image4": "image4/B75586_5.webp"
    }
  },
  {
@@ -113,10 +113,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/B75990_1.webp",
-   "image2": "/image2/B75990_2.jpg",
-   "image3": "/image3/B75990_5.jpg",
-   "image4": "/image4/B75990_6.webp"
+   "image1": "image1/B75990_1.webp",
+   "image2": "image2/B75990_2.jpg",
+   "image3": "image3/B75990_5.jpg",
+   "image4": "image4/B75990_6.webp"
    }
  },
  {
@@ -130,10 +130,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/EE5761_1.webp",
-   "image2": "/image2/EE5761_2.jpg",
-   "image3": "/image3/EE5761_5.jpg",
-   "image4": "/image4/EE5761_6.webp"
+   "image1": "image1/EE5761_1.webp",
+   "image2": "image2/EE5761_2.jpg",
+   "image3": "image3/EE5761_5.jpg",
+   "image4": "image4/EE5761_6.webp"
    }
  },
  {
@@ -147,10 +147,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/EG0000_1.webp",
-   "image2": "/image2/EG0000_2.jpg",
-   "image3": "/image3/EG0000_5.jpg",
-   "image4": "/image4/EG0000_6.webp"
+   "image1": "image1/EG0000_1.webp",
+   "image2": "image2/EG0000_2.jpg",
+   "image3": "image3/EG0000_5.jpg",
+   "image4": "image4/EG0000_6.webp"
    }
  },
  {
@@ -164,10 +164,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/B44889_1.webp",
-   "image2": "/image2/B44889_2.webp",
-   "image3": "/image3/B44889_5.jpg",
-   "image4": "/image4/B44889_6.webp"
+   "image1": "image1/B44889_1.webp",
+   "image2": "image2/B44889_2.webp",
+   "image3": "image3/B44889_5.jpg",
+   "image4": "image4/B44889_6.webp"
    }
  },
  {
@@ -181,10 +181,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/CL7417_1.webp",
-   "image2": "/image2/CL7417_2.webp",
-   "image3": "/image3/CL7417_5.jpg",
-   "image4": "/image4/CL7417_6.webp"
+   "image1": "image1/CL7417_1.webp",
+   "image2": "image2/CL7417_2.webp",
+   "image3": "image3/CL7417_5.jpg",
+   "image4": "image4/CL7417_6.webp"
    }
  },
  {
@@ -198,10 +198,10 @@
    "discount_percent": 10,
    "category": 9,
    "gender": "m",
-   "image1": "/image1/CM0057_1.webp",
-   "image2": "/image2/CM0057_2.jpg",
-   "image3": "/image3/CM0057_5.jpg",
-   "image4": "/image4/CM0057_6.webp"
+   "image1": "image1/CM0057_1.webp",
+   "image2": "image2/CM0057_2.jpg",
+   "image3": "image3/CM0057_5.jpg",
+   "image4": "image4/CM0057_6.webp"
    }
  },
  {
@@ -215,10 +215,10 @@
    "discount_percent": 10,
    "category": 9,
    "gender": "m",
-   "image1": "/image1/CL0206_1.webp",
-   "image2": "/image2/CL0206_2.jpg",
-   "image3": "/image3/CL0206_5.jpg",
-   "image4": "/image4/CL0206_6.webp"
+   "image1": "image1/CL0206_1.webp",
+   "image2": "image2/CL0206_2.jpg",
+   "image3": "image3/CL0206_5.jpg",
+   "image4": "image4/CL0206_6.webp"
    }
  },
  {
@@ -232,10 +232,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "m",
-   "image1": "/image1/EE9797_1.webp",
-   "image2": "/image2/EE9797_2.jpg",
-   "image3": "/image3/EE9797_5.jpg",
-   "image4": "/image4/EE9797_6.webp"
+   "image1": "image1/EE9797_1.webp",
+   "image2": "image2/EE9797_2.jpg",
+   "image3": "image3/EE9797_5.jpg",
+   "image4": "image4/EE9797_6.webp"
    }
  },
  {
@@ -249,10 +249,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/CJ0082_1.webp",
-   "image2": "/image2/CJ0082_2.jpg",
-   "image3": "/image3/CJ0082_5.jpg",
-   "image4": "/image4/CJ0082_6.webp"
+   "image1": "image1/CJ0082_1.webp",
+   "image2": "image2/CJ0082_2.jpg",
+   "image3": "image3/CJ0082_5.jpg",
+   "image4": "image4/CJ0082_6.webp"
    }
  },
  {
@@ -266,10 +266,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "m",
-   "image1": "/image1/EE6660_1.jpg",
-   "image2": "/image2/EE6660_2.jpg",
-   "image3": "/image3/EE6660_5.jpg",
-   "image4": "/image4/EE6660_6.jpg"
+   "image1": "image1/EE6660_1.jpg",
+   "image2": "image2/EE6660_2.jpg",
+   "image3": "image3/EE6660_5.jpg",
+   "image4": "image4/EE6660_6.jpg"
    }
  },
  {
@@ -283,10 +283,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "m",
-   "image1": "/image1/EG4957_1.webp",
-   "image2": "/image2/EG4957_2.jpg",
-   "image3": "/image3/EG4957_5.jpg",
-   "image4": "/image4/EG4957_6.webp"
+   "image1": "image1/EG4957_1.webp",
+   "image2": "image2/EG4957_2.jpg",
+   "image3": "image3/EG4957_5.jpg",
+   "image4": "image4/EG4957_6.webp"
    }
  },
  {
@@ -300,10 +300,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/F36159_1.webp",
-   "image2": "/image2/F36159_2.jpg",
-   "image3": "/image3/F36159_5.jpg",
-   "image4": "/image4/F36159_6.jpg"
+   "image1": "image1/F36159_1.webp",
+   "image2": "image2/F36159_2.jpg",
+   "image3": "image3/F36159_5.jpg",
+   "image4": "image4/F36159_6.jpg"
    }
  },
  {
@@ -317,10 +317,10 @@
    "discount_percent": 10,
    "category": 7,
    "gender": "m",
-   "image1": "/image1/EE6128_1.webp",
-   "image2": "/image2/EE6128_2.jpg",
-   "image3": "/image3/EE6128_5.jpg",
-   "image4": "/image4/EE6128_6.jpg"
+   "image1": "image1/EE6128_1.webp",
+   "image2": "image2/EE6128_2.jpg",
+   "image3": "image3/EE6128_5.jpg",
+   "image4": "image4/EE6128_6.jpg"
    }
  },
  {
@@ -334,10 +334,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "m",
-   "image1": "/image1/F36718_1.webp",
-   "image2": "/image2/F36718_2.jpg",
-   "image3": "/image3/F36718_5.jpg",
-   "image4": "/image4/F36718_6.jpg"
+   "image1": "image1/F36718_1.webp",
+   "image2": "image2/F36718_2.jpg",
+   "image3": "image3/F36718_5.jpg",
+   "image4": "image4/F36718_6.jpg"
    }
  },
  {
@@ -351,10 +351,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "f",
-   "image1": "/image1/FV4070_1.webp",
-   "image2": "/image2/FV4070_2.jpg",
-   "image3": "/image3/FV4070_5.jpg",
-   "image4": "/image4/FV4070_6.jpg"
+   "image1": "image1/FV4070_1.webp",
+   "image2": "image2/FV4070_2.jpg",
+   "image3": "image3/FV4070_5.jpg",
+   "image4": "image4/FV4070_6.jpg"
    }
  },
  {
@@ -368,10 +368,10 @@
    "discount_percent": 10,
    "category": 3,
    "gender": "f",
-   "image1": "/image1/FV3918_1.webp",
-   "image2": "/image2/FV3918_2.jpg",
-   "image3": "/image3/FV3918_5.jpg",
-   "image4": "/image4/FV3918_6.jpg"
+   "image1": "image1/FV3918_1.webp",
+   "image2": "image2/FV3918_2.jpg",
+   "image3": "image3/FV3918_5.jpg",
+   "image4": "image4/FV3918_6.jpg"
    }
  },
  {
@@ -385,10 +385,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "f",
-   "image1": "/image1/CM6626_1.webp",
-   "image2": "/image2/CM6626_2.jpg",
-   "image3": "/image3/CM6626_5.jpg",
-   "image4": "/image4/CM6626_6.jpg"
+   "image1": "image1/CM6626_1.webp",
+   "image2": "image2/CM6626_2.jpg",
+   "image3": "image3/CM6626_5.jpg",
+   "image4": "image4/CM6626_6.jpg"
    }
  },
  {
@@ -402,10 +402,10 @@
    "discount_percent": 10,
    "category": 9,
    "gender": "f",
-   "image1": "/image1/CM0072_1.webp",
-   "image2": "/image2/CM0072_2.jpg",
-   "image3": "/image3/CM0072_5.jpg",
-   "image4": "/image4/CM0072_6.jpg"
+   "image1": "image1/CM0072_1.webp",
+   "image2": "image2/CM0072_2.jpg",
+   "image3": "image3/CM0072_5.jpg",
+   "image4": "image4/CM0072_6.jpg"
    }
  },
  {
@@ -419,10 +419,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/EE7155_1.webp",
-   "image2": "/image2/EE7155_2.jpg",
-   "image3": "/image3/EE7155_5.jpg",
-   "image4": "/image4/EE7155_6.jpg"
+   "image1": "image1/EE7155_1.webp",
+   "image2": "image2/EE7155_2.jpg",
+   "image3": "image3/EE7155_5.jpg",
+   "image4": "image4/EE7155_6.jpg"
    }
  },
  {
@@ -436,10 +436,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "f",
-   "image1": "/image1/EF5925_1.webp",
-   "image2": "/image2/EF5925_2.jpg",
-   "image3": "/image3/EF5925_5.jpg",
-   "image4": "/image4/EF5925_6.jpg"
+   "image1": "image1/EF5925_1.webp",
+   "image2": "image2/EF5925_2.jpg",
+   "image3": "image3/EF5925_5.jpg",
+   "image4": "image4/EF5925_6.jpg"
    }
  },
  {
@@ -453,10 +453,10 @@
    "discount_percent": 10,
    "category": 6,
    "gender": "m",
-   "image1": "/image1/CK9843_1.webp",
-   "image2": "/image2/CK9843_2.jpg",
-   "image3": "/image3/CK9843_5.jpg",
-   "image4": "/image4/CK9843_6.jpg"
+   "image1": "image1/CK9843_1.webp",
+   "image2": "image2/CK9843_2.jpg",
+   "image3": "image3/CK9843_5.jpg",
+   "image4": "image4/CK9843_6.jpg"
    }
  },
  {
@@ -470,10 +470,10 @@
    "discount_percent": 10,
    "category": 6,
    "gender": "m",
-   "image1": "/image1/CK9831_1.webp",
-   "image2": "/image2/CK9831_2.jpg",
-   "image3": "/image3/CK9831_5.jpg",
-   "image4": "/image4/CK9831_6.jpg"
+   "image1": "image1/CK9831_1.webp",
+   "image2": "image2/CK9831_2.jpg",
+   "image3": "image3/CK9831_5.jpg",
+   "image4": "image4/CK9831_6.jpg"
    }
  },
  {
@@ -487,10 +487,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "m",
-   "image1": "/image1/EE7885_1.webp",
-   "image2": "/image2/EE7885_2.jpg",
-   "image3": "/image3/EE7885_5.jpg",
-   "image4": "/image4/EE7885_6.jpg"
+   "image1": "image1/EE7885_1.webp",
+   "image2": "image2/EE7885_2.jpg",
+   "image3": "image3/EE7885_5.jpg",
+   "image4": "image4/EE7885_6.jpg"
    }
  },
  {
@@ -504,10 +504,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/F34340_1.webp",
-   "image2": "/image2/F34340_2.jpg",
-   "image3": "/image3/F34340_5.jpg",
-   "image4": "/image4/F34340_6.jpg"
+   "image1": "image1/F34340_1.webp",
+   "image2": "image2/F34340_2.jpg",
+   "image3": "image3/F34340_5.jpg",
+   "image4": "image4/F34340_6.jpg"
    }
  },
  {
@@ -521,10 +521,10 @@
    "discount_percent": 10,
    "category": 7,
    "gender": "u",
-   "image1": "/image1/EE6080_1.webp",
-   "image2": "/image2/EE6080_2.jpg",
-   "image3": "/image3/EE6080_5.jpg",
-   "image4": "/image4/EE6080_6.jpg"
+   "image1": "image1/EE6080_1.webp",
+   "image2": "image2/EE6080_2.jpg",
+   "image3": "image3/EE6080_5.jpg",
+   "image4": "image4/EE6080_6.jpg"
    }
  },
  {
@@ -538,10 +538,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/EF4965_1.webp",
-   "image2": "/image2/EF4965_2.jpg",
-   "image3": "/image3/EF4965_5.jpg",
-   "image4": "/image4/EF4965_6.jpg"
+   "image1": "image1/EF4965_1.webp",
+   "image2": "image2/EF4965_2.jpg",
+   "image3": "image3/EF4965_5.jpg",
+   "image4": "image4/EF4965_6.jpg"
    }
  },
  {
@@ -555,10 +555,10 @@
    "discount_percent": 10,
    "category": 1,
    "gender": "f",
-   "image1": "/image1/EE7068_1.jpg",
-   "image2": "/image2/EE7068_2.jpg",
-   "image3": "/image3/EE7068_5.jpg",
-   "image4": "/image4/EE7068_6.jpg"
+   "image1": "image1/EE7068_1.jpg",
+   "image2": "image2/EE7068_2.jpg",
+   "image3": "image3/EE7068_5.jpg",
+   "image4": "image4/EE7068_6.jpg"
    }
  },
  {
@@ -572,10 +572,10 @@
    "discount_percent": 10,
    "category": 3,
    "gender": "u",
-   "image1": "/image1/EF2437_1.webp",
-   "image2": "/image2/EF2437_2.jpg",
-   "image3": "/image3/EF2437_5.jpg",
-   "image4": "/image4/EF2437_6.jpg"
+   "image1": "image1/EF2437_1.webp",
+   "image2": "image2/EF2437_2.jpg",
+   "image3": "image3/EF2437_5.jpg",
+   "image4": "image4/EF2437_6.jpg"
    }
  },
  {
@@ -589,10 +589,10 @@
    "discount_percent": 10,
    "category": 7,
    "gender": "u",
-   "image1": "/image1/EE7292_1.webp",
-   "image2": "/image2/EE7292_2.jpg",
-   "image3": "/image3/EE7292_5.jpg",
-   "image4": "/image4/EE7292_6.jpg"
+   "image1": "image1/EE7292_1.webp",
+   "image2": "image2/EE7292_2.jpg",
+   "image3": "image3/EE7292_5.jpg",
+   "image4": "image4/EE7292_6.jpg"
    }
  },
  {
@@ -606,10 +606,10 @@
    "discount_percent": 10,
    "category": 4,
    "gender": "m",
-   "image1": "/image1/CM0015_1.webp",
-   "image2": "/image2/CM0015_2.jpg",
-   "image3": "/image3/CM0015_5.jpg",
-   "image4": "/image4/CM0015_6.jpg"
+   "image1": "image1/CM0015_1.webp",
+   "image2": "image2/CM0015_2.jpg",
+   "image3": "image3/CM0015_5.jpg",
+   "image4": "image4/CM0015_6.jpg"
    }
  },
  {
@@ -623,10 +623,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "f",
-   "image1": "/image1/EG9825_1.webp",
-   "image2": "/image2/EG9825_2.jpg",
-   "image3": "/image3/EG9825_5.jpg",
-   "image4": "/image4/EG9825_6.jpg"
+   "image1": "image1/EG9825_1.webp",
+   "image2": "image2/EG9825_2.jpg",
+   "image3": "image3/EG9825_5.jpg",
+   "image4": "image4/EG9825_6.jpg"
    }
  },
  {
@@ -640,10 +640,10 @@
    "discount_percent": 10,
    "category": 6,
    "gender": "m",
-   "image1": "/image1/CL9915_1.webp",
-   "image2": "/image2/CL9915_2.jpg",
-   "image3": "/image3/CL9915_5.jpg",
-   "image4": "/image4/CL9915_6.jpg"
+   "image1": "image1/CL9915_1.webp",
+   "image2": "image2/CL9915_2.jpg",
+   "image3": "image3/CL9915_5.jpg",
+   "image4": "image4/CL9915_6.jpg"
    }
  },
  {
@@ -657,10 +657,10 @@
    "discount_percent": 10,
    "category": 10,
    "gender": "f",
-   "image1": "/image1/EE6822_1.webp",
-   "image2": "/image2/EE6822_2.jpg",
-   "image3": "/image3/EE6822_5.jpg",
-   "image4": "/image4/EE6822_6.jpg"
+   "image1": "image1/EE6822_1.webp",
+   "image2": "image2/EE6822_2.jpg",
+   "image3": "image3/EE6822_5.jpg",
+   "image4": "image4/EE6822_6.jpg"
    }
  },
  {
@@ -674,10 +674,10 @@
    "discount_percent": 10,
    "category": 3,
    "gender": "f",
-   "image1": "/image1/F36389_1.webp",
-   "image2": "/image2/F36389_2.jpg",
-   "image3": "/image3/F36389_5.jpg",
-   "image4": "/image4/F36389_6.jpg"
+   "image1": "image1/F36389_1.webp",
+   "image2": "image2/F36389_2.jpg",
+   "image3": "image3/F36389_5.jpg",
+   "image4": "image4/F36389_6.jpg"
    }
  },
  {
@@ -691,10 +691,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "u",
-   "image1": "/image1/EF3533_1.webp",
-   "image2": "/image2/EF3533_2.jpg",
-   "image3": "/image3/EF3533_5.jpg",
-   "image4": "/image4/EF3533_6.jpg"
+   "image1": "image1/EF3533_1.webp",
+   "image2": "image2/EF3533_2.jpg",
+   "image3": "image3/EF3533_5.jpg",
+   "image4": "image4/EF3533_6.jpg"
    }
  },
  {
@@ -708,10 +708,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/CM4909_1.webp",
-   "image2": "/image2/CM4909_2.jpg",
-   "image3": "/image3/CM4909_5.jpg",
-   "image4": "/image4/CM4909_6.jpg"
+   "image1": "image1/CM4909_1.webp",
+   "image2": "image2/CM4909_2.jpg",
+   "image3": "image3/CM4909_5.jpg",
+   "image4": "image4/CM4909_6.jpg"
    }
  },
  {
@@ -725,10 +725,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/D96552_1.webp",
-   "image2": "/image2/D96552_2.jpg",
-   "image3": "/image3/D96552_5.jpg",
-   "image4": "/image4/D96552_6.jpg"
+   "image1": "image1/D96552_1.webp",
+   "image2": "image2/D96552_2.jpg",
+   "image3": "image3/D96552_5.jpg",
+   "image4": "image4/D96552_6.jpg"
    }
  },
  {
@@ -742,10 +742,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "m",
-   "image1": "/image1/F36418_1.webp",
-   "image2": "/image2/F36418_2.jpg",
-   "image3": "/image3/F36418_5.jpg",
-   "image4": "/image4/F36418_6.jpg"
+   "image1": "image1/F36418_1.webp",
+   "image2": "image2/F36418_2.jpg",
+   "image3": "image3/F36418_5.jpg",
+   "image4": "image4/F36418_6.jpg"
    }
  },
  {
@@ -759,10 +759,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/CG6065_1.webp",
-   "image2": "/image2/CG6065_2.jpg",
-   "image3": "/image3/CG6065_5.jpg",
-   "image4": "/image4/CG6065_6.jpg"
+   "image1": "image1/CG6065_1.webp",
+   "image2": "image2/CG6065_2.jpg",
+   "image3": "image3/CG6065_5.jpg",
+   "image4": "image4/CG6065_6.jpg"
    }
  },
  {
@@ -776,10 +776,10 @@
    "discount_percent": 10,
    "category": 8,
    "gender": "m",
-   "image1": "/image1/F34411_1.webp",
-   "image2": "/image2/F34411_2.jpg",
-   "image3": "/image3/F34411_5.jpg",
-   "image4": "/image4/F34411_6.jpg"
+   "image1": "image1/F34411_1.webp",
+   "image2": "image2/F34411_2.jpg",
+   "image3": "image3/F34411_5.jpg",
+   "image4": "image4/F34411_6.jpg"
    }
  },
  {
@@ -793,10 +793,10 @@
    "discount_percent": 10,
    "category": 8,
    "gender": "m",
-   "image1": "/image1/D98056_1.webp",
-   "image2": "/image2/D98056_2.jpg",
-   "image3": "/image3/D98056_5.jpg",
-   "image4": "/image4/D98056_6.jpg"
+   "image1": "image1/D98056_1.webp",
+   "image2": "image2/D98056_2.jpg",
+   "image3": "image3/D98056_5.jpg",
+   "image4": "image4/D98056_6.jpg"
    }
  },
  {
@@ -810,10 +810,10 @@
    "discount_percent": 10,
    "category": 2,
    "gender": "f",
-   "image1": "/image1/CG6066_1.webp",
-   "image2": "/image2/CG6066_2.jpg",
-   "image3": "/image3/CG6066_5.jpg",
-   "image4": "/image4/CG6066_6.jpg"
+   "image1": "image1/CG6066_1.webp",
+   "image2": "image2/CG6066_2.jpg",
+   "image3": "image3/CG6066_5.jpg",
+   "image4": "image4/CG6066_6.jpg"
    }
  },
  {
@@ -827,10 +827,10 @@
    "discount_percent": 10,
    "category": 3,
    "gender": "u",
-   "image1": "/image1/EE8498_1.webp",
-   "image2": "/image2/EE8498_2.jpg",
-   "image3": "/image3/EE8498_5.jpg",
-   "image4": "/image4/EE8498_6.jpg"
+   "image1": "image1/EE8498_1.webp",
+   "image2": "image2/EE8498_2.jpg",
+   "image3": "image3/EE8498_5.jpg",
+   "image4": "image4/EE8498_6.jpg"
    }
  },
  {
@@ -844,10 +844,10 @@
    "discount_percent": 10,
    "category": 11,
    "gender": "f",
-   "image1": "/image1/DB1370_1.webp",
-   "image2": "/image2/DB1370_2.webp",
-   "image3": "/image3/DB1370_5.jpg",
-   "image4": "/image4/DB1370_6.jpg"
+   "image1": "image1/DB1370_1.webp",
+   "image2": "image2/DB1370_2.webp",
+   "image3": "image3/DB1370_5.jpg",
+   "image4": "image4/DB1370_6.jpg"
    }
  },
  {
@@ -861,10 +861,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/EG1727_1.webp",
-   "image2": "/image2/EG1727_2.jpg",
-   "image3": "/image3/EG1727_5.jpg",
-   "image4": "/image4/EG1727_6.jpg"
+   "image1": "image1/EG1727_1.webp",
+   "image2": "image2/EG1727_2.jpg",
+   "image3": "image3/EG1727_5.jpg",
+   "image4": "image4/EG1727_6.jpg"
    }
  },
  {
@@ -878,10 +878,10 @@
    "discount_percent": 10,
    "category": 5,
    "gender": "m",
-   "image1": "/image1/FV5358_1.webp",
-   "image2": "/image2/FV5358_2.jpg",
-   "image3": "/image3/FV5358_5.jpg",
-   "image4": "/image4/FV5358_6.jpg"
+   "image1": "image1/FV5358_1.webp",
+   "image2": "image2/FV5358_2.jpg",
+   "image3": "image3/FV5358_5.jpg",
+   "image4": "image4/FV5358_6.jpg"
    }
  }
 ]
