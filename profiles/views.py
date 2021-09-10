@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 
 
 @login_required
@@ -32,18 +32,23 @@ def profile(request):
 
     return render(request, template, context)
 
-
+@login_required
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
-
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
-    ))
+    profile = get_object_or_404(UserProfile, user=request.user)
+    # Check profile is the same as profile that ordered
+    if profile == order.user_profile:
+        messages.info(request, (
+            f'This is a past confirmation for order number {order_number}. '
+            'A confirmation email was sent on the order date.'
+        ))
+    else:
+        messages.error(request, 'Sorry, that order is not available.')
+        return redirect(reverse('home'))
 
     template = 'checkout/checkout_success.html'
     context = {
-        'order': order,
+        'order': order, 
         'from_profile': True,
     }
 
