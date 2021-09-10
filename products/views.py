@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg, Q
+from django.db.models import F
 from django.db.models.functions import Lower
 
 from .models import Product, Category, ProductReview
@@ -24,14 +24,21 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            if sortkey == 'average_rating' and direction == 'desc':
+                # Sorting nulls last using F expression
+                # Credit: https://docs.djangoproject.com/en/3.1/ref/models/expressions/#using-f-to-sort-null-values
+                # Credit: https://github.com/Edb83/moose-juice/blob/master/products/views.py
+                products = products.order_by(F(
+                    'average_rating').desc(nulls_last=True))
+            else:
+                if sortkey == 'name':
+                    sortkey = 'lower_name'
+                    products = products.annotate(lower_name=Lower('name'))
+                if 'direction' in request.GET:
+                    direction = request.GET['direction']
+                    if direction == 'desc':
+                        sortkey = f'-{sortkey}'
+                products = products.order_by(sortkey)
         
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
@@ -76,18 +83,39 @@ def product_detail(request, product_id):
     # To enable superuser to see review text
     if request.user.is_superuser:
         # review = get_object_or_404(ProductReview, product=product)
+        # user = OrderLineItem.objects.filter('order__user_profile__user')
         # user = ProductReview.user
         # review = ProductReview.objects.filter(product=product, user=user)
-        ## for review in ProductReview.objects.filter(product=product):
+        # review = ProductReview.objects.filter(product=product, user=user, id=product_id)
+        # review = ProductReview.objects.filter(product=product)
+        # profile = UserProfile.objects.filter(user='order__user_profile')
+        # review = get_object_or_404(ProductReview, product=product, profile=profile)
+        # for review in ProductReview.objects.all():
             ## review = get_object_or_404(ProductReview, product=product)
             # review = ProductReview.objects.filter(all)
         for review in product.reviews.all():
+            # user = UserProfile.objects.filter('orders__user_profile')
+            # print('User:', review.user)
+            # user = review.user
+            for user in product.reviews.all():
+                # review1 = get_object_or_404(ProductReview, product=product, user=review.user)
+                review1 = ProductReview.objects.filter(product=product, user=review.user).first()
+                # review_text = ProductReview.objects.filter(product=product, user=review.user).first()
+                print('Review.review_text:', review.review_text)
+                print('Review.user:', review.user)
+            # review1 = ProductReview.objects.filter(review_rating=int('review_rating'), review_text=('review_text')).annotate(user=review.user)
+            
+                print('Review1:', review1)
+
             # if review.user:
             # print('superuserreview test:', test, 'test.user:', test.user)
             # review = ProductReview.objects.filter(product=product, user=user)
             # review = get_object_or_404(ProductReview, product=product)
-            print('superuserreview:', review, 'review.user:', review.user)
-            form = ReviewForm(instance=review)
+            # print('superuserreview:', review, 'review.user:', review.user)
+            #print('superuserreview:', review)
+        # print('ProductReview.user:', review, ProductReview.user)
+        
+                form = ReviewForm(instance=review1)
         # review = ProductReview.objects.filter(product=product).first()
         
     # Check if user has added product review
@@ -307,14 +335,19 @@ def products_on_sale(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            if sortkey == 'average_rating' and direction == 'desc':
+                # Sorting nulls last using F expression
+                products = products.order_by(F(
+                    'average_rating').desc(nulls_last=True))
+            else:
+                if sortkey == 'name':
+                    sortkey = 'lower_name'
+                    products = products.annotate(lower_name=Lower('name'))
+                if 'direction' in request.GET:
+                    direction = request.GET['direction']
+                    if direction == 'desc':
+                        sortkey = f'-{sortkey}'
+                products = products.order_by(sortkey)
 
     current_sorting = f'{sort}+{direction}'
    
