@@ -184,11 +184,13 @@
                 {% include 'products/includes/modals.html' %}
                 {% endif %}
             </div>
+            {% if not user.is_authenticated %}
             <div class="col-6">
                 <p class="ms-3 align-bottom lead">Please <a class="link-secondary"
                         href="{% url 'account_login' %}">login</a> or <a class="link-secondary"
                         href="{% url 'account_signup' %}">register</a> to add a review.</p>
             </div>
+            {% endif %}
         </div>
         <div class="col-md-6">
             <!-- Detail -->
