@@ -190,6 +190,19 @@ footer.footer {
   font-style: normal!important;
 }
 
+/* Add margin-top to Add to Cart button on wrap */
+/* Credit: https://stackoverflow.com/questions/30887071/margin-top-only-when-the-flex-item-is-wrapped */
+.shop-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -10px; 
+}
+
+/* Add margin-top to Add to Cart button on wrap */
+.shop-button {
+  margin-top: 10px;
+}
+
 /* Shopping cart */
 /* Heading underline */
 .hr-heading {
@@ -360,3 +373,7 @@ margin-bottom: 1rem;
     margin-right: 0rem; 
   }
 }
+
+
+ 
+
