@@ -209,7 +209,7 @@
                     <i id="delete_review" class="bi bi-trash-fill mb-2 ms-2 float-end text-danger pointer-size"
                         data-bs-toggle="modal" data-bs-target="#deleteReview{{ review.id }}"></i>
                     {% endif %}
-                    {% if request.user.username == review.user.username or request.user.is_superuser %}
+                    {% if request.user.username == review.user.username %}
                     <i id="edit_review" class="bi bi-pencil-fill mb-2 ms-2 float-end text-secondary pointer-size"
                         data-bs-toggle="modal" data-bs-target="#editReview{{ review.id }}"></i>
                     {% endif %}
