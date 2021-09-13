@@ -9,15 +9,18 @@
 
 {% block page_header %}
 <!-- Masthead-->
-<header class="masthead" style="background-image: url('{{ MEDIA_URL}}sneakers-black-background.webp')">
+<!--<header class="masthead" style="background-image: url('{{ MEDIA_URL}}sneakers-black-background.webp')">-->
+<header class="masthead">
     <div class="container position-relative">
         <div class="ms-2 row">
             <div class="col">
                 <div class="text-white">
                     <!-- Page heading-->
-                    <h1 class="fw-bold display-4">Get your adi from the Dadi..</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
-                    <a href="{% url 'products' %}" class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP NOW</a>
+                    <h1 class="fw-bold one-line-strap">Get your adi from Dadi..</h1>
+                    <h1 class="fw-bold two-line-strap">Get your adi</h1>
+                    <h1 class="fw-bold two-line-strap">from Dadi..</h1>
+                    <p class="lead fw-normal text-white-50 mb-0 sub-title">Check out our fantastic Adidas footwear deals!</p>
+                    <a href="{% url 'products' %}" class="btn btn-danger btn-sm me-lg-5 me-md-4 mt-4">SHOP NOW</a>
                 </div>
             </div>
         </div>
@@ -29,7 +32,7 @@
 <section class="pt-5 bg-light">
     <div class="container px-4 px-lg-5">
         <h2 class="mb-4 text-center">BEST SELLERS</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
             {% for product in top_sellers_female %}
             <div class="col mb-5">
                 <div class="card h-100">

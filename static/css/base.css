@@ -3,13 +3,15 @@ header.masthead {
   position: relative;
   background-color: #000;
   /*background-size: cover;*/
+  background-image: url('/media/sneakers-black-background.webp');
   background-repeat: no-repeat;
   background-position: right;
   height: 250px;
   width: 100%;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 3rem;
+  padding-bottom: 16rem;
 }
+
 /*header.masthead:before {
   content: "";
   position: absolute;
@@ -20,26 +22,20 @@ header.masthead {
   left: 0;
   opacity: 0.5;
 }*/
-header.masthead h1, header.masthead .h1 {
-  font-size: 2rem;
-}
-@media (min-width: 768px) {
-  header.masthead {
-    /*padding-top: 8rem;*/
-    padding-bottom: 16rem;
-  }
-  header.masthead h1, header.masthead .h1 {
-    font-size: 3rem;
-  }
+header.masthead h1,
+header.masthead .h1 {
+  font-size: 3rem;
 }
 
 .showcase .showcase-text {
   padding: 3rem;
 }
+
 .showcase .showcase-img {
   min-height: 30rem;
   background-size: cover;
 }
+
 @media (min-width: 768px) {
   .showcase .showcase-text {
     padding: 7rem;
@@ -48,7 +44,7 @@ header.masthead h1, header.masthead .h1 {
 
 /* Remove padding from card-body */
 .card-body-home {
-  padding: 0rem 0rem!important;
+  padding: 0rem 0rem !important;
 }
 
 footer.footer {
@@ -66,20 +62,20 @@ footer.footer {
 
 /* Home page */
 /* Remove formatting for card links */
-.no-underline{
+.no-underline {
   text-decoration: none;
   color: inherit;
 }
 
 /* Remove bottom margin from paragraph */
-.remove-margin{
-  margin-bottom: 0!important;
+.remove-margin {
+  margin-bottom: 0 !important;
 }
 
 /* Navbar */
 /* Match color for menu items */
 .text-nav {
-  color: rgba(0,0,0,.55);
+  color: rgba(0, 0, 0, .55);
 }
 
 /* Remove padding on Nav link */
@@ -92,17 +88,20 @@ footer.footer {
 .dropdown-menu li {
   position: relative;
 }
+
 .dropdown-menu .dropdown-submenu {
   display: none;
   position: absolute;
   left: 100%;
   top: -7px;
 }
+
 .dropdown-menu .dropdown-submenu-left {
   right: 100%;
   left: auto;
 }
-.dropdown-menu > li:hover > .dropdown-submenu {
+
+.dropdown-menu>li:hover>.dropdown-submenu {
   display: block;
 }
 
@@ -131,8 +130,8 @@ footer.footer {
 /* Credit: https://stackoverflow.com/questions/9467504/html-make-text-clickable-without-making-it-a-hyperlink/9467534 */
 .delete-link {
   text-decoration: underline;
-  background:none;
-  border:none;
+  background: none;
+  border: none;
 }
 
 /* Change cursor to pointer & size for Product Review icons */
@@ -157,14 +156,14 @@ footer.footer {
 }
 
 /* To enable button next to Reviews heading */
-.review-heading{
+.review-heading {
   display: inline-block;
 }
 
 /* Remove opacity for messages */
 /* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
-#message-container > div {
-  opacity:1;
+#message-container>div {
+  opacity: 1;
 }
 
 /*#message-container > div {
@@ -175,19 +174,19 @@ footer.footer {
 
 /* Show down arrow on select form for size */
 /* Credit: https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing */
-.form-control{
--webkit-appearance: menulist;
+.form-control {
+  -webkit-appearance: menulist;
 }
 
 /* Sales badge size */
-#badge-size{
-  font-size: 0.35em!important;
+#badge-size {
+  font-size: 0.35em !important;
   vertical-align: middle;
 }
 
 /* Remove italic from Delete button */
-.font-normal{
-  font-style: normal!important;
+.font-normal {
+  font-style: normal !important;
 }
 
 /* Add margin-top to Add to Cart button on wrap */
@@ -195,7 +194,7 @@ footer.footer {
 .shop-button-wrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -10px; 
+  margin-top: -10px;
 }
 
 /* Add margin-top to Add to Cart button on wrap */
@@ -218,7 +217,7 @@ footer.footer {
 
 /* Reduce font-weight for table header */
 th {
-font-weight: 400;
+  font-weight: 400;
 }
 
 /* Hide increment/decrement arrows in quantity input box */
@@ -229,6 +228,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
@@ -236,8 +236,8 @@ input[type=number] {
 
 /* Quantity box settings for size and text alignment */
 .qty_input {
-  flex: none!important;
-  min-width: 40px!important;
+  flex: none !important;
+  min-width: 40px !important;
   text-align: center;
 }
 
@@ -268,7 +268,7 @@ input[type=number] {
 .btn-dark:hover {
   color: #212529;
   background-color: #ffc107;
-  border-color: #ffc107; 
+  border-color: #ffc107;
 }
 
 /* Checkout Success */
@@ -281,8 +281,10 @@ input[type=number] {
 
 /* Allauth form formatting */
 .allauth-form-inner-content p {
-  margin-top: 1.5rem; /* mt-4 */
-  color: #6c757d; /* text-secondary */
+  margin-top: 1.5rem;
+  /* mt-4 */
+  color: #6c757d;
+  /* text-secondary */
 }
 
 .allauth-form-inner-content input {
@@ -305,8 +307,8 @@ input[type=number] {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-/* btn */
-/*display: inline-block;
+  /* btn */
+  /*display: inline-block;
   font-weight: 400;
   color: #fff;
   text-align: center;
@@ -324,19 +326,20 @@ input[type=number] {
   margin-bottom: 1rem;
 
   /* standard bootstrap btn transitions */
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
+.allauth-form-inner-content input[type='submit']:hover {
   color: #fff;
   background-color: #343a40;
   border-color: #343a40;
 }
 
 .allauth-form-inner-content a {
-color: #212529; /* text-info */
-margin-bottom: 1rem;
+  color: #212529;
+  /* text-info */
+  margin-bottom: 1rem;
 }
 
 /* Product Form */
@@ -367,13 +370,92 @@ margin-bottom: 1rem;
 }
 
 /* Media Queries */
-/* Reduce margin on logo below 575px */
-@media (max-width: 575px) {
-  .navbar-brand {
-    margin-right: 0rem; 
+@media (max-width: 1200px) {
+
+  /* Resize strapline font */
+  header.masthead h1,
+  header.masthead .h1 {
+    font-size: 2.5rem;
   }
 }
 
+@media (max-width: 992px) {
 
- 
+  /* Resize Shop Now button */
+  .btn-group-lg>.btn,
+  .btn-lg {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+  }
 
+  /* Remove sub-title */
+  .sub-title {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Landing Page */
+  /* Resize image */
+  header.masthead {
+    background-image: url('/media/sneakers-black-background-md.webp');
+    background-position: center;
+    padding-top: 1rem;
+    padding-bottom: 10rem;
+  }
+
+  /* Resize strapline font */
+  header.masthead h1,
+  header.masthead .h1 {
+    font-size: 2rem;
+  }
+
+  /* Resize Shop Now button */
+  .btn-group-lg>.btn,
+  .btn-lg {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    border-radius: .2rem;
+  }
+
+}
+
+/* Reduce margin on logo below 575px */
+@media (max-width: 575px) {
+  .navbar-brand {
+    margin-right: 0rem;
+  }
+
+  /* Resize image */
+  header.masthead {
+    background-image: url('/media/sneakers-black-background-sm.webp');
+  }
+
+  /* Strapline over two rows */
+  .two-line-strap {
+    display: none;
+  }
+
+  /* Increase margin-top */
+  .mt-4 {
+    margin-top: 5rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+
+  /* Strapline over two rows */
+  .two-line-strap {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px){
+
+  /* Strapline over two rows */
+  .one-line-strap {
+    display: none;
+  }
+}
