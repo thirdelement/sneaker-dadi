@@ -47,6 +47,11 @@ header.masthead .h1 {
   padding: 0rem 0rem !important;
 }
 
+.card-img-top {
+  max-height: 235px;
+  max-width: 235px;
+}
+
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -452,10 +457,61 @@ input[type=number] {
   }
 }
 
-@media (min-width: 576px) and (max-width: 991px){
+@media (min-width: 576px) and (max-width: 991px) {
 
   /* Strapline over two rows */
   .one-line-strap {
     display: none;
+  }
+}
+
+/*Carousel test*/
+.carousel-cell {
+  margin-right: 20px;
+  height: 375px;
+}
+
+
+@media screen and (min-width: 360px) {
+
+  /* half-width cells for larger devices */
+  .carousel-cell {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  /* half-width cells for larger devices */
+  .carousel-cell {
+    width: 33%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  /* half-width cells for larger devices */
+  .carousel-cell {
+    width: 25%;
+  }
+}
+
+  /* disable Flickity for large devices */
+  /*.carousel:after {
+      content: '';
+    }*/
+
+
+@media screen and (max-width: 576px) {
+  /*.carousel-cell {
+    height: 325px;
+  }*/
+}
+
+@media screen and (max-width: 360px) {
+
+  /* half-width cells for larger devices */
+  .carousel-cell {
+    width: 100%;
   }
 }
