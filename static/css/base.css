@@ -57,6 +57,16 @@ footer.footer {
   padding-bottom: 4rem;
 }
 
+/*Carousel margine */
+.carousel-cell {
+  margin-right: 20px;
+}
+
+/* Center align carousel image */
+.carousel-img {
+  text-align: center;
+}
+
 /*body {
   background: url('/media/sneaker-logo.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -459,22 +469,15 @@ input[type=number] {
 
 @media (min-width: 576px) and (max-width: 991px) {
 
-  /* Strapline over two rows */
-  .one-line-strap {
+/* Strapline over two rows */
+.one-line-strap {
     display: none;
   }
 }
 
-/*Carousel test*/
-.carousel-cell {
-  margin-right: 20px;
-  height: 375px;
-}
-
-
 @media screen and (min-width: 360px) {
 
-  /* half-width cells for larger devices */
+  /* Two carousel cells for small devices */
   .carousel-cell {
     width: 50%;
   }
@@ -482,7 +485,7 @@ input[type=number] {
 
 @media screen and (min-width: 768px) {
 
-  /* half-width cells for larger devices */
+  /* Three carousel cells for medium sized devices */
   .carousel-cell {
     width: 33%;
   }
@@ -490,27 +493,35 @@ input[type=number] {
 
 @media screen and (min-width: 992px) {
 
-  /* half-width cells for larger devices */
+  /* Four carousel cells for larger devices */
   .carousel-cell {
     width: 25%;
   }
 }
 
-  /* disable Flickity for large devices */
-  /*.carousel:after {
-      content: '';
-    }*/
-
-
 @media screen and (max-width: 576px) {
-  /*.carousel-cell {
-    height: 325px;
-  }*/
+
+  /* Carousel font size changes */
+  .fw-bolder {
+    font-size: 1.05rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .rating {
+    font-size: 0.775em;
+  }
+
+  .carousel-cell {
+    margin-right: 10px;
+  }
 }
 
 @media screen and (max-width: 360px) {
 
-  /* half-width cells for larger devices */
+  /* One carousel cell for extra small devices */
   .carousel-cell {
     width: 100%;
   }
