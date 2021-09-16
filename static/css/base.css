@@ -45,6 +45,7 @@ header.masthead .h1 {
 /* Remove padding from card-body */
 .card-body-home {
   padding: 0rem 0rem !important;
+  height: 135px;
 }
 
 .card-img-top {
@@ -65,6 +66,11 @@ footer.footer {
 /* Center align carousel image */
 .carousel-img {
   text-align: center;
+}
+
+/* Remove bottom margin from carousel product names */
+.product-name {
+  margin-bottom: 0rem;
 }
 
 /*body {

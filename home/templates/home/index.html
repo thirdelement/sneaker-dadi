@@ -21,7 +21,7 @@
                     <h1 class="fw-bold two-line-strap">from Dadi..</h1>
                     <p class="lead fw-normal text-white-50 mb-0 sub-title">Check out our fantastic Adidas footwear
                         deals!</p>
-                    <a href="{% url 'products' %}" class="btn btn-danger btn-sm me-lg-5 me-md-4 mt-4">SHOP NOW</a>
+                    <a href="{% url 'products' %}" class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP NOW</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <h2 class="mb-4 text-center">BEST SELLERS</h2>
         <div class="row mb-1">
             <!-- Flickity carousel -->
-            <div class="carousel" data-flickity='{ "contain": "true" }'>
+            <div class="carousel" data-flickity='{ "wrapAround": "true" }'>
                 {% for product in top_sellers_female %}
                 <div class="carousel-cell">
                         <div class="card h-100">
@@ -60,7 +60,7 @@
                             <div class="card-body card-body-home">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ product.name }}</h5>
+                                    <h5 class="product-name fw-bolder">{{ product.name }}</h5>
                                     <!-- Product reviews-->
                                     {% if product.average_rating %}
                                     <small class="rating text-muted">
@@ -321,7 +321,4 @@
     </div>
 </section>
 {% endblock %}
-{% block postloadjs %}
-{{ block.super }}
-<script src="{% static 'home/js/carousel.js' %}"></script>
-{% endblock %}
+
