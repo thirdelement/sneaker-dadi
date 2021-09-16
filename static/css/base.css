@@ -34,6 +34,7 @@ header.masthead .h1 {
 .showcase .showcase-img {
   min-height: 30rem;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 768px) {
@@ -475,8 +476,8 @@ input[type=number] {
 
 @media (min-width: 576px) and (max-width: 991px) {
 
-/* Strapline over two rows */
-.one-line-strap {
+  /* Strapline over two rows */
+  .one-line-strap {
     display: none;
   }
 }
@@ -505,6 +506,15 @@ input[type=number] {
   }
 }
 
+@media screen and (max-width: 768px) {
+
+  /* Four carousel cells for larger devices */
+  .showcase-img {
+    /*max-height: 350px;*/
+
+  }
+}
+
 @media screen and (max-width: 576px) {
 
   /* Carousel font size changes */
@@ -523,6 +533,22 @@ input[type=number] {
   .carousel-cell {
     margin-right: 10px;
   }
+
+  /* Align showcase images */
+  .showcase-img {
+    min-height: 20rem !important;
+  }
+
+  /* Reduce showcase caps size */
+  .showcase-caps {
+    font-size: calc(1rem + .8vw);
+  }
+
+  /* Reduce showcase text size */
+  .sales-text {
+    font-size: 1.0rem;
+    font-weight: 300;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -530,5 +556,10 @@ input[type=number] {
   /* One carousel cell for extra small devices */
   .carousel-cell {
     width: 100%;
+  }
+
+  /* Align showcase images */
+  .showcase-img {
+    min-height: 15rem !important;
   }
 }

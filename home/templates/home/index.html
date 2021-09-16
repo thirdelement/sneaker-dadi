@@ -32,10 +32,10 @@
 <!-- Best sellers section-->
 <section class="pt-5 bg-light">
     <div class="container px-4 px-lg-5 pb-5">
-        <h2 class="mb-4 text-center">BEST SELLERS</h2>
+        <h2 class="mb-4 text-center showcase-caps">BEST SELLERS</h2>
         <div class="row mb-1">
             <!-- Flickity carousel -->
-            <div class="carousel" data-flickity='{ "wrapAround": "true" }'>
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
                 {% for product in top_sellers_female %}
                 <div class="carousel-cell">
                         <div class="card h-100">
@@ -164,32 +164,32 @@
 <!-- Image Showcases-->
 <section class="showcase">
     <div class="container-fluid p-0">
-        <div class="row g-0">
+        <div class="row showcase-row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img"
                 style="background-image: url('{{ MEDIA_URL }}couple-on-bench2.webp')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>FASHION & GYM</h2>
-                <p class="lead mb-0">Style starts from the bottom up. Make a statement with the lastest Sneaker Dadi
+                <h2 class="showcase-caps">FASHION & GYM</h2>
+                <p class="lead sales-text mb-0">Style starts from the bottom up. Make a statement with the lastest Sneaker Dadi
                     fashion footwear range. For the gym we have the shoes to support even the toughest workout!</p>
             </div>
         </div>
-        <div class="row g-0">
+        <div class="row showcase-row g-0">
             <div class="col-lg-6 text-white showcase-img"
                 style="background-image: url('{{ MEDIA_URL }}orange-black-sneakers.webp')">
             </div>
             <div class="col-lg-6 my-auto showcase-text">
-                <h2>RUNNING, HIKING, SANDALS & SLIPPERS</h2>
-                <p class="lead mb-0">Smash that 5km run time with our newest running shoes. Get set for all conditions
+                <h2 class="showcase-caps">RUNNING, HIKING, SANDALS & SLIPPERS</h2>
+                <p class="lead sales-text mb-0">Smash that 5km run time with our newest running shoes. Get set for all conditions
                     with our hiking footwear options. If you have that holiday or trip to the beach planned we have the
                     shoes you need.</p>
             </div>
         </div>
-        <div class="row g-0">
+        <div class="row showcase-row g-0">
             <div class="col-lg-6 order-lg-2 text-white showcase-img"
                 style="background-image: url('{{ MEDIA_URL }}athlete-grey-sneakers.webp')"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2>SPORTS</h2>
-                <p class="lead mb-0">The latest sports collection has arrived. Stay on top of your game with our shoe
+                <h2 class="showcase-caps">SPORTS</h2>
+                <p class="lead sales-text mb-0">The latest sports collection has arrived. Stay on top of your game with our shoe
                     ranges for soccer,
                     tennis, basketball, taekwondo and much more. </p>
             </div>
@@ -199,7 +199,7 @@
 <!-- Trending section-->
 <section class="pt-5 bg-light">
     <div class="container px-4 px-lg-5">
-        <h2 class="mb-4 text-center">TRENDING RIGHT NOW</h2>
+        <h2 class="mb-4 text-center showcase-caps">TRENDING RIGHT NOW</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for product in trending_female %}
             <div class="col mb-5">
