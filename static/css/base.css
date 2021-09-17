@@ -70,9 +70,9 @@ footer.footer {
 }
 
 /* Remove bottom margin from carousel product names */
-.product-name {
+/*.product-name {
   margin-bottom: 0rem;
-}
+}*/
 
 /*body {
   background: url('/media/sneaker-logo.jpg') no-repeat center center fixed;
