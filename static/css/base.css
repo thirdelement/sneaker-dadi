@@ -1,3 +1,8 @@
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
 /* Landing Page */
 header.masthead {
   position: relative;
@@ -506,6 +511,31 @@ input[type=number] {
   }
 }
 
+@media (min-width: 992px) and (max-width: 1200px) {
+
+  /*@media screen and (max-width: 1200px) {*/
+  /* Margin for Account icon and search on collapse */
+  .collapse-margin {
+    margin-left: 1rem !important;
+  }
+
+  /* Adjust search box width and add margin on collapse */
+  .collapse-search {
+    width: 25% !important;
+    margin-bottom: .25rem !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+
+  /* Adjust search box width and add margin on collapse */
+  .collapse-search {
+    margin-left: 0rem !important;
+    width: 50% !important;
+    margin-bottom: .25rem !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
 
   /* Four carousel cells for larger devices */
@@ -516,6 +546,13 @@ input[type=number] {
 }
 
 @media screen and (max-width: 576px) {
+
+  /* Adjust search box width and add margin on collapse */
+  .collapse-search {
+    /*margin-left: 0rem!important;*/
+    width: 100% !important;
+    /*margin-bottom: .25rem!important;*/
+  }
 
   /* Carousel font size changes */
   .fw-bolder {

@@ -84,7 +84,7 @@
         <!-- Sale -->
         <a class="nav-link text-danger fw-bold" href="{% url 'products_on_sale' %}">SALE</a>
     </ul>
-    <form class="d-flex d-none d-lg-block ms-auto me-1" method="GET" action="{% url 'products' %}">
+    <form class="d-flex d-lg-block ms-auto me-1 collapse-margin collapse-search" method="GET" action="{% url 'products' %}">
         <div class="input-group w-100">
             <input class="form-control" type="search" name="q" placeholder="Search our site">
             <div class="input-group-append">
@@ -97,7 +97,7 @@
         </div>
     </form>
     <div class="dropdown">
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-none d-lg-block"
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-block collapse-margin"
             id="dropdownMenuButton1" data-bs-toggle="dropdown">
             <i class="bi bi-person-fill"></i>
         </button>
