@@ -63,22 +63,22 @@
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{{ MEDIA_URL }}adidas-logo.png" width="35" height="30"
                     class="d-sm-inline-block align-top logo" alt="Sneaker logo">
                 <span class="d-none d-md-inline-block">Sneaker Dadi</span></a>
-            <div class="list-inline-item  offset-sm-4 offset-lg-0">
-                <a class="text-nav nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown"
+            <div class="list-inline-item ms-auto">
+                <!--<a class="text-nav nav-link d-block" href="#" id="mobile-search" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <div class="text-center">
                         <div><i class="bi bi-search"></i></div>
                     </div>
-                </a>
+                </a>-->
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-none"
+            <!--<div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-none d-sm-block"
                     id="dropdownMenuButton1" data-bs-toggle="dropdown">
                     <i class="bi bi-person-fill"></i>
                 </button>
@@ -94,9 +94,9 @@
                     <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
                     {% endif %}
                 </ul>
-            </div>
+            </div>-->
             <a class="nav-link" href="{% url 'view_cart' %}">
-                <button class="btn btn-outline-dark d-block d-lg-none"><i class="bi-cart-fill me-1"></i>
+                <button class="btn btn-outline-dark d-block me-lg-1 d-xl-none"><i class="bi-cart-fill me-1"></i>
                     <span
                         class="badge {% if product_count > 0 %}bg-warning text-dark{% else %}bg-dark text-white{% endif %} ms-1 rounded-pill">
                         {% if order_total and product_count > 0 %}
@@ -106,7 +106,7 @@
                         {% endif %}</span>
                 </button>
             </a>
-            <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler ms-1 ms-lg-0 me-1" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             {% include 'includes/main-nav.html' %}

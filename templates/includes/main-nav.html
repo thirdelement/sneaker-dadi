@@ -10,8 +10,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
-                    <a class="dropdown-item"
-                        href="{% url 'products' %}?category=basketball&gender=f,u">Basketball</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category=basketball&gender=f,u">Basketball</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?category=fashion&gender=f,u">Fashion</a>
@@ -23,18 +22,13 @@
                     <a class="dropdown-item" href="{% url 'products' %}?category=run&gender=f,u">Running</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="{% url 'products' %}?category=sandal&gender=f,u">Sandals</a>
-                </li>
-                <li>
-                    <a class="dropdown-item"
-                        href="{% url 'products' %}?category=skateboard&gender=f,u">Skateboard</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category=skateboard&gender=f,u">Skateboard</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?category=swim&gender=f,u">Swim</a>
                 </li>
                 <li>
-                    <a class="dropdown-item"
-                        href="{% url 'products' %}?category=taekwondo&gender=f,u">Taekwondo</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category=taekwondo&gender=f,u">Taekwondo</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?category=tennis&gender=f,u">Tennis</a>
@@ -120,10 +114,9 @@
             {% endif %}
         </ul>
     </div>
-
 </div>
 <a class="nav-link" href="{% url 'view_cart' %}">
-    <button class="btn btn-outline-dark d-none d-lg-block"><i class="bi-cart-fill me-1"></i>
+    <button class="btn btn-outline-dark d-none d-xl-block"><i class="bi-cart-fill me-1"></i>
         <span
             class="badge {% if product_count > 0 %}bg-warning text-dark{% else %}bg-dark text-white{% endif %} ms-1 rounded-pill">
             {% if order_total and product_count > 0 %}
