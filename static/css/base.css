@@ -60,11 +60,18 @@ header.masthead .h1 {
 }
 
 footer.footer {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  /*padding-top: 4rem;
+  padding-bottom: 4rem;*/
+
 }
 
-/*Carousel margine */
+/* Part of solution to keep footer at bottom of page*/
+/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+footer {
+  margin-top: auto;
+}
+
+/* Carousel margin */
 .carousel-cell {
   margin-right: 20px;
 }
@@ -79,13 +86,14 @@ footer.footer {
   margin-bottom: 0rem;
 }*/
 
-/*body {
-  background: url('/media/sneaker-logo.jpg') no-repeat center center fixed;
-  background-size: cover;
-  height: calc(100vh - 164px);
-  color: #555;
-  font-family: 'Lato', sans-serif;
-}*/
+/* Part of solution to keep footer at bottom of page*/
+/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
 /* Home page */
 /* Remove formatting for card links */
