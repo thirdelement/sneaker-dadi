@@ -63,7 +63,7 @@ header.masthead .h1 {
   max-height: 235px;
   max-width: 235px;
 }
- 
+
 footer.footer {
   /*padding-top: 4rem;
   padding-bottom: 4rem;*/
@@ -460,6 +460,10 @@ input[type=number] {
     border-radius: .2rem;
   }
 
+  /* Add margin to heading shop buttons */
+  #strap-margin {
+    margin-top: 0.75rem !important;
+  }
 }
 
 /* Reduce margin on logo below 575px */
@@ -483,6 +487,7 @@ input[type=number] {
     margin-top: 5rem !important;
   }
 }
+
 
 @media screen and (min-width: 360px) {
 
@@ -511,6 +516,12 @@ input[type=number] {
   .related-sm-carousel {
     display: none;
   }
+
+  /* Remove line break to heading shop buttons */
+  .strap-break {
+    display: none;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -525,8 +536,8 @@ input[type=number] {
     width: 25%;
   }
 
-   /* Enable correct Related products carousel slide number */
-   .related-md-carousel {
+  /* Enable correct Related products carousel slide number */
+  .related-md-carousel {
     display: none;
   }
 }
@@ -586,7 +597,7 @@ input[type=number] {
 
   /* Align margin for Add Review button */
   #btn-review {
-    margin-left: 0rem!important;
+    margin-left: 0rem !important;
     margin-top: 0.25rem;
   }
 }
@@ -633,6 +644,18 @@ input[type=number] {
     font-weight: 300;
   }
 
+}
+
+@media screen and (max-width: 424px) {
+
+  #strap-margin {
+    margin-top: 5rem !important;
+  }
+
+  /* Remove line break to heading shop buttons */
+  .strap-break {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 359px) {

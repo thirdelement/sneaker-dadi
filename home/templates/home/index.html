@@ -21,7 +21,9 @@
                     <h1 class="fw-bold two-line-strap">from Dadi..</h1>
                     <p class="lead fw-normal text-white-50 mb-0 sub-title">Check out our fantastic Adidas footwear
                         deals!</p>
-                    <a href="{% url 'products' %}" class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP NOW</a>
+                    <a href="{% url 'products' %}?gender=f,u" class="btn btn-danger btn-lg me-md-2 mt-4">SHOP WOMEN'S</a>
+                    <br class="strap-break">
+                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin" class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP MEN'S</a>
                 </div>
             </div>
         </div>
