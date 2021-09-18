@@ -1,7 +1,7 @@
-#page-container {
+/*#page-container {
   position: relative;
   min-height: 100vh;
-}
+}*/
 
 /* Landing Page */
 header.masthead {
@@ -48,17 +48,22 @@ header.masthead .h1 {
   }
 }
 
-/* Remove padding from card-body */
+/* Remove padding & add fixed height for card-body */
 .card-body-home {
   padding: 0rem 0rem !important;
   height: 135px;
+}
+
+/* Remove padding from card-body */
+.card-body-products {
+  padding: 0rem 0rem !important;
 }
 
 .card-img-top {
   max-height: 235px;
   max-width: 235px;
 }
-
+ 
 footer.footer {
   /*padding-top: 4rem;
   padding-bottom: 4rem;*/
@@ -479,10 +484,31 @@ input[type=number] {
   }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 360px) {
+
+  /* Two carousel cells for small devices */
+  .carousel-cell {
+    width: 50%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+  /* Strapline over two rows */
+  .one-line-strap {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  /* Three carousel cells for medium sized devices */
+  .carousel-cell {
+    width: 33%;
+  }
 
   /* Enable correct Related products carousel slide number */
-  .related-lg-carousel {
+  .related-sm-carousel {
     display: none;
   }
 }
@@ -505,47 +531,13 @@ input[type=number] {
   }
 }
 
-@media screen and (min-width: 768px) {
-
-  /* Three carousel cells for medium sized devices */
-  .carousel-cell {
-    width: 33%;
-  }
+@media (min-width: 1200px) {
 
   /* Enable correct Related products carousel slide number */
-  .related-sm-carousel {
+  .related-lg-carousel {
     display: none;
   }
 }
-
-@media (min-width: 576px) and (max-width: 991px) {
-
-  /* Strapline over two rows */
-  .one-line-strap {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 360px) {
-
-  /* Two carousel cells for small devices */
-  .carousel-cell {
-    width: 50%;
-  }
-}
-
-/*@media screen and (min-width: 992px) {
-
-  /* Four carousel cells for larger devices 
-  .carousel-cell {
-    width: 25%;
-  }
-
-   /* Enable correct Related products carousel slide number 
-   .related-md-carousel {
-    display: none;
-  }
-}*/
 
 @media (min-width: 992px) and (max-width: 1200px) {
 
@@ -592,9 +584,10 @@ input[type=number] {
     display: none;
   }
 
-  /* Remove margin-left for Add Review button */
+  /* Align margin for Add Review button */
   #btn-review {
     margin-left: 0rem!important;
+    margin-top: 0.25rem;
   }
 }
 
@@ -607,7 +600,7 @@ input[type=number] {
     /*margin-bottom: .25rem!important;*/
   }
 
-  /* Carousel font size changes */
+  /* Carousel & product list font size changes */
   .product-name {
     font-size: 1.05rem;
   }
@@ -616,7 +609,7 @@ input[type=number] {
     font-size: 0.9rem;
   }
 
-  .rating {
+  .product-text {
     font-size: 0.775em;
   }
 
