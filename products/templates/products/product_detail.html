@@ -16,7 +16,7 @@
 {% block content %}
 <!-- Product section-->
 <section class="pt-5">
-    <div class="container px-4 px-lg-5 mb-5">
+    <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
                 <!-- Product image carousel-->
@@ -279,153 +279,218 @@
         </div>
     </div>
 </section>
-<!-- Related items section-->
+<!-- Related Items section -->
 <section class="py-5 bg-light">
-    <div class="container px-4 px-lg-5">
+    <!-- Related Items XL -->
+    <div class="container px-4 px-lg-5 related-xl-carousel">
         <h2 class="fw-bolder mb-4">Related products</h2>
         {% if product.gender == "m" %}
         <!-- Check if no male related products -->
         {% if not related_products_male %}
         <i>No related products.</i>
+        {% elif related_products_male.count > 4 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_male %}
+                <!-- Male related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
         {% else %}
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for product in related_products_male %}
             <!-- Male related products -->
-            <div class="col mb-5">
-                <div class="card h-100">
-                    {% if product.on_sale is True %}
-                    <!-- Sale badge-->
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    {% endif %}
-                    <!-- Product image-->
-                    {% if product.image1 %}
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top" src="{{ product.image1.url }}" alt="{{ product.name }}" />
-                    </a>
-                    {% else %}
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
-                    </a>
-                    {% endif %}
-                    <!-- Product details-->
-                    <div class="card-body">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">{{ product.name }}</h5>
-                            <!-- Product reviews-->
-                            {% if product.reviews %}
-                            {% if product.average_rating == null %}
-                            <small class="text-muted">No Rating</small>
-                            {% else %}
-                            <small class="text-muted">
-                                <!-- Average star rating -->
-                                {% with ''|center:product.average_rating as range %}
-                                {% for _ in range %}
-                                <i class="bi bi-star-fill text-warning"></i>
-                                {% endfor %}
-                                {% endwith %}
-                                <!-- Average rating -->
-                                <span
-                                    class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
-                            {% endif %}
-                            {% endif %}
-                            {% if request.user.is_superuser %}
-                            <p class="ms-3 remove-margin">
-                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <button type="button" class="small delete-link text-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
-                            </p>
-                            {% include 'products/includes/modals.html' %}
-                            {% endif %}
-                            <!-- Product price-->
-                            {% if product.on_sale is True %}
-                            <p>
-                                <span class="text-decoration-line-through">£{{ product.price }}</span>
-                                <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span></p>
-                            {% else %}
-                            <p>£{{ product.price }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include 'products/includes/related-items.html' %}
             {% endfor %}
-            {% endif %}
         </div>
+        {% endif %}
         {% else %}
         <!-- Check if no female related products -->
         {% if not related_products_female %}
         <i>No related products.</i>
+        {% elif related_products_female.count > 4 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_female %}
+                <!-- Female related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
         {% else %}
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for product in related_products_female %}
+            {% for product in related_products_male %}
             <!-- Female related products -->
-            <div class="col mb-5">
-                <div class="card h-100">
-                    {% if product.on_sale is True %}
-                    <!-- Sale badge-->
-                    <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    {% endif %}
-                    <!-- Product image-->
-                    {% if product.image1 %}
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top" src="{{ product.image1.url }}" alt="{{ product.name }}" />
-                    </a>
-                    {% else %}
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" />
-                    </a>
-                    {% endif %}
-                    <!-- Product details-->
-                    <div class="card-body card-body-home">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">{{ product.name }}</h5>
-                            <!-- Product reviews-->
-                            {% if product.reviews %}
-                            {% if product.average_rating == null %}
-                            <small class="text-muted">No Rating</small>
-                            {% else %}
-                            <small class="text-muted">
-                                <!-- Average star rating -->
-                                {% with ''|center:product.average_rating as range %}
-                                {% for _ in range %}
-                                <i class="bi bi-star-fill text-warning"></i>
-                                {% endfor %}
-                                {% endwith %}
-                                <!-- Average rating -->
-                                <span
-                                    class="avg-rating ms-2">{{ product.average_rating|floatformat:"1" }}</span>/5</small>
-                            {% endif %}
-                            {% endif %}
-                            {% if request.user.is_superuser %}
-                            <p class="ms-3 remove-margin">
-                                <a class="small" href="{% url 'edit_product' product.id %}">Edit</a> |
-                                <button type="button" class="small delete-link text-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
-                            </p>
-                            {% include 'products/includes/modals.html' %}
-                            {% endif %}
-                            <!-- Product price-->
-                            {% if product.on_sale is True %}
-                            <p>
-                                <span class="text-decoration-line-through">£{{ product.price }}</span>
-                                <span class="text-danger fw-bold">£{{ product.get_sale_price }}</span></p>
-                            {% else %}
-                            <p>£{{ product.price }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include 'products/includes/related-items.html' %}
             {% endfor %}
-            {% endif %}
-            {% endif %}
         </div>
+        {% endif %}
+        {% endif %}
     </div>
+    <!-- End Related Items XL -->
+    <!-- Related Items LG -->
+    <div class="container px-4 px-lg-5 related-lg-carousel">
+        <h2 class="fw-bolder mb-4">Related products</h2>
+        {% if product.gender == "m" %}
+        <!-- Check if no male related products -->
+        {% if not related_products_male %}
+        <i>No related products.</i>
+        {% elif related_products_male.count > 3 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_male %}
+                <!-- Male related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Male related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% else %}
+        <!-- Check if no female related products -->
+        {% if not related_products_female %}
+        <i>No related products.</i>
+        {% elif related_products_female.count > 3 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_female %}
+                <!-- Female related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Female related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <!-- End Related Items LG -->
+    <!-- Related Items MD -->
+    <div class="container px-4 px-lg-5 related-md-carousel">
+        <h2 class="fw-bolder mb-4">Related products</h2>
+        {% if product.gender == "m" %}
+        <!-- Check if no male related products -->
+        {% if not related_products_male %}
+        <i>No related products.</i>
+        {% elif related_products_male.count > 2 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_male %}
+                <!-- Male related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Male related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% else %}
+        <!-- Check if no female related products -->
+        {% if not related_products_female %}
+        <i>No related products.</i>
+        {% elif related_products_female.count > 2 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_female %}
+                <!-- Female related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Female related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <!-- End Related Items MD -->
+    <!-- Related Items SM -->
+    <div class="container px-4 px-lg-5 related-sm-carousel">
+        <h2 class="fw-bolder mb-4">Related products</h2>
+        {% if product.gender == "m" %}
+        <!-- Check if no male related products -->
+        {% if not related_products_male %}
+        <i>No related products.</i>
+        {% elif related_products_male.count > 1 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_male %}
+                <!-- Male related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Male related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% else %}
+        <!-- Check if no female related products -->
+        {% if not related_products_female %}
+        <i>No related products.</i>
+        {% elif related_products_female.count > 1 %}
+        <div class="row mb-1">
+            <!-- Flickity carousel -->
+            <div class="carousel" data-flickity='{ "wrapAround": "true", "imagesLoaded": "true" }'>
+                {% for product in related_products_female %}
+                <!-- Female related products -->
+                {% include 'products/includes/related-carousel.html' %}
+                {% endfor %}
+            </div>
+            <!-- End Flickity carousel-->
+        </div>
+        {% else %}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in related_products_male %}
+            <!-- Female related products -->
+            {% include 'products/includes/related-items.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <!-- End Related Items SM -->
 </section>
+
 {% endblock %}
 
 {% block postloadjs %}

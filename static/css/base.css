@@ -479,10 +479,41 @@ input[type=number] {
   }
 }
 
+@media (min-width: 1200px) {
+
+  /* Enable correct Related products carousel slide number */
+  .related-lg-carousel {
+    display: none;
+  }
+}
+
 @media (min-width: 992px) {
 
   /* Strapline over two rows */
   .two-line-strap {
+    display: none;
+  }
+
+  /* Four carousel cells for larger devices */
+  .carousel-cell {
+    width: 25%;
+  }
+
+   /* Enable correct Related products carousel slide number */
+   .related-md-carousel {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  /* Three carousel cells for medium sized devices */
+  .carousel-cell {
+    width: 33%;
+  }
+
+  /* Enable correct Related products carousel slide number */
+  .related-sm-carousel {
     display: none;
   }
 }
@@ -503,21 +534,18 @@ input[type=number] {
   }
 }
 
-@media screen and (min-width: 768px) {
+/*@media screen and (min-width: 992px) {
 
-  /* Three carousel cells for medium sized devices */
-  .carousel-cell {
-    width: 33%;
-  }
-}
-
-@media screen and (min-width: 992px) {
-
-  /* Four carousel cells for larger devices */
+  /* Four carousel cells for larger devices 
   .carousel-cell {
     width: 25%;
   }
-}
+
+   /* Enable correct Related products carousel slide number 
+   .related-md-carousel {
+    display: none;
+  }
+}*/
 
 @media (min-width: 992px) and (max-width: 1200px) {
 
@@ -534,7 +562,15 @@ input[type=number] {
   }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1199px) {
+
+  /* Adjust Related products carousel to display if more than 4 items on extra large display */
+  .related-xl-carousel {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 991px) {
 
   /* Adjust search box width and add margin on collapse */
   .collapse-search {
@@ -542,18 +578,27 @@ input[type=number] {
     width: 50% !important;
     margin-bottom: .25rem !important;
   }
-}
 
-@media screen and (max-width: 768px) {
-
-  /* Four carousel cells for larger devices */
-  .showcase-img {
-    /*max-height: 350px;*/
-
+  /* Adjust Related products carousel to display if more than 3 items on large display */
+  .related-lg-carousel {
+    display: none;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 767px) {
+
+  /* Adjust Related products carousel to display if more than 2 items on medium display */
+  .related-md-carousel {
+    display: none;
+  }
+
+  /* Remove margin-left for Add Review button */
+  #btn-review {
+    margin-left: 0rem!important;
+  }
+}
+
+@media screen and (max-width: 575px) {
 
   /* Adjust search box width and add margin on collapse */
   .collapse-search {
@@ -594,9 +639,10 @@ input[type=number] {
     font-size: 1.0rem;
     font-weight: 300;
   }
+
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 359px) {
 
   /* One carousel cell for extra small devices */
   .carousel-cell {

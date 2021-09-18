@@ -96,8 +96,8 @@ def product_detail(request, product_id):
     num_reviews = ProductReview.objects.filter(product=product).count()
 
     # Get related products
-    related_products_male = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('-gender')[:4]
-    related_products_female = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('gender')[:4]
+    related_products_male = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('-gender')
+    related_products_female = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('gender')
     context = {
         'product': product,
         'form': form, 
