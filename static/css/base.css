@@ -5,16 +5,21 @@
 
 /* Landing Page */
 header.masthead {
-  position: relative;
   background-color: #000;
-  /*background-size: cover;*/
-  background-image: url('/media/sneakers-black-background.webp');
-  background-repeat: no-repeat;
-  background-position: right;
   height: 250px;
   width: 100%;
   padding-top: 3rem;
   padding-bottom: 16rem;
+}
+
+/* Home header image */
+.image-home {
+  position: relative;
+  /*background-size: cover;*/
+  background-image: url('/media/sneakers-black-background.webp');
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 240px;
 }
 
 /*header.masthead:before {
@@ -27,8 +32,12 @@ header.masthead {
   left: 0;
   opacity: 0.5;
 }*/
-header.masthead h1,
+/*header.masthead h1,
 header.masthead .h1 {
+  font-size: 3rem;
+}*/
+
+.masthead-title {
   font-size: 3rem;
 }
 
@@ -40,6 +49,29 @@ header.masthead .h1 {
   min-height: 30rem;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+/* Format sales text on home page */
+.sales-link,
+.sales-link:hover {
+  text-decoration: none;
+  color: #212529;
+  /*background: none;
+  border: none;*/
+}
+
+/* Showcase button colors */
+.btn-showcase {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
+/* Showcase button colors */
+.btn-showcase:hover {
+  color: #212529;
+  background-color: #fff;
+  border-color: #212529;
 }
 
 @media (min-width: 768px) {
@@ -146,6 +178,46 @@ body {
 }
 
 /* Products */
+header.masthead-products {
+  background-color: #ECEDEF;
+  height: 250px;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 16rem;
+}
+
+/* Products header image */
+.image-products {
+  position: relative;
+  /*background-size: cover;*/
+  background-image: url('/media/white-sneaker.webp');
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 240px;
+}
+
+/* Products on sale */
+header.masthead-sale {
+  /*position: relative;*/
+  background-color: #080808;
+  /*background-image: url('/media/white-sneaker-black2.webp');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: right;*/
+  height: 250px;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 16rem;
+}
+
+/* Products on sale header image */
+.image-sale {
+  position: relative;
+  background-image: url('/media/white-sneaker-black3.webp');
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 250px;
+}
+
 /* Back to top button settings */
 .btt-button {
   height: 42px;
@@ -413,8 +485,11 @@ input[type=number] {
 @media (max-width: 1200px) {
 
   /* Resize strapline font */
-  header.masthead h1,
+  /*header.masthead h1,
   header.masthead .h1 {
+    font-size: 2.5rem;
+  }*/
+  .masthead-title {
     font-size: 2.5rem;
   }
 }
@@ -440,15 +515,46 @@ input[type=number] {
   /* Landing Page */
   /* Resize image */
   header.masthead {
+    padding-top: 1rem;
+    padding-bottom: 15rem;
+  }
+
+  /* Resize image Home page */
+  .image-home {
     background-image: url('/media/sneakers-black-background-md.webp');
     background-position: center;
+  }
+
+  /* Resize image Products page */
+  header.masthead-products {
     padding-top: 1rem;
-    padding-bottom: 10rem;
+    padding-bottom: 15rem;
+  }
+
+  /* Resize image Products page */
+  .image-products {
+    background-image: url('/media/white-sneaker-md.webp');
+    background-position: right;
+  }
+
+  /* Resize image Products page */
+  header.masthead-sale {
+    padding-top: 1rem;
+    padding-bottom: 15rem;
+  }
+
+  /* Resize image Sale page */
+  .image-sale {
+    background-image: url('/media/white-sneaker-black3-md.webp');
+    background-position: right;
   }
 
   /* Resize strapline font */
-  header.masthead h1,
+  /*header.masthead h1,
   header.masthead .h1 {
+    font-size: 2rem;
+  }*/
+  .masthead-title {
     font-size: 2rem;
   }
 
@@ -464,6 +570,11 @@ input[type=number] {
   #strap-margin {
     margin-top: 0.75rem !important;
   }
+
+  /* Add margin to heading shop buttons */
+  .strap-margin-products {
+    margin-top: 0.75rem !important;
+  }
 }
 
 /* Reduce margin on logo below 575px */
@@ -473,8 +584,20 @@ input[type=number] {
   }
 
   /* Resize image */
-  header.masthead {
+  .image-home {
     background-image: url('/media/sneakers-black-background-sm.webp');
+  }
+
+  /* Resize image */
+  .image-products {
+    background-image: url('/media/white-sneaker-sm.webp');
+    background-position: top;
+  }
+
+  /* Resize image */
+  .image-sale {
+    background-image: url('/media/white-sneaker-black3-sm.webp');
+    background-position: center;
   }
 
   /* Strapline over two rows */
@@ -485,6 +608,26 @@ input[type=number] {
   /* Increase margin-top */
   .mt-4 {
     margin-top: 5rem !important;
+  }
+
+  /* Add margin to heading shop buttons */
+  #strap-margin-products {
+    margin-top: 8.5rem !important;
+  }
+
+  /* Add margin to heading shop buttons */
+  #strap-products-women {
+    margin-top: 8.5rem !important;
+  }
+
+  /* Add margin to heading shop buttons */
+  #strap-margin-sale {
+    margin-top: 8.5rem !important;
+  }
+
+  /* Add margin to heading shop buttons */
+  #strap-sale-women {
+    margin-top: 8.5rem !important;
   }
 }
 
@@ -519,6 +662,11 @@ input[type=number] {
 
   /* Remove line break to heading shop buttons */
   .strap-break {
+    display: none;
+  }
+
+  /* Remove line break to heading shop buttons */
+  .strap-break-products {
     display: none;
   }
 
@@ -644,12 +792,21 @@ input[type=number] {
     font-weight: 300;
   }
 
+  /* Remove line break to heading shop buttons on Products page*/
+  .strap-break-products {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 424px) {
 
   #strap-margin {
-    margin-top: 5rem !important;
+    margin-top: 6.5rem !important;
+  }
+
+  #strap-margin-women {
+    margin-top: 6.5rem !important;
   }
 
   /* Remove line break to heading shop buttons */

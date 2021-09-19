@@ -11,19 +11,21 @@
 <!-- Masthead-->
 <!--<header class="masthead" style="background-image: url('{{ MEDIA_URL}}sneakers-black-background.webp')">-->
 <header class="masthead">
-    <div class="container position-relative">
+    <div class="container position-relative image-home">
         <div class="ms-2 row">
             <div class="col">
                 <div class="text-white">
                     <!-- Page heading-->
-                    <h1 class="fw-bold one-line-strap">Get your adi from Dadi..</h1>
-                    <h1 class="fw-bold two-line-strap">Get your adi</h1>
-                    <h1 class="fw-bold two-line-strap">from Dadi..</h1>
+                    <h1 class="fw-bold one-line-strap masthead-title">Get your adi from Dadi..</h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">Get your adi</h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">from Dadi..</h1>
                     <p class="lead fw-normal text-white-50 mb-0 sub-title">Check out our fantastic Adidas footwear
                         deals!</p>
-                    <a href="{% url 'products' %}?gender=f,u" class="btn btn-danger btn-lg me-md-2 mt-4">SHOP WOMEN'S</a>
+                    <a href="{% url 'products' %}?gender=f,u" id="strap-margin-women" class="btn btn-danger btn-lg me-md-2 mt-4">SHOP
+                        WOMEN'S</a>
                     <br class="strap-break">
-                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin" class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP MEN'S</a>
+                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin"
+                        class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4">SHOP MEN'S</a>
                 </div>
             </div>
         </div>
@@ -53,35 +55,44 @@
 <section class="showcase">
     <div class="container-fluid p-0">
         <div class="row showcase-row g-0">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                style="background-image: url('{{ MEDIA_URL }}couple-on-bench2.webp')"></div>
+            <a href="{% url 'products' %}?category=gym,fashion&gender=m,f,u"
+                class="col-lg-6 order-lg-2 text-white showcase-img"
+                style="background-image: url('{{ MEDIA_URL }}couple-on-bench2.webp')"></a>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2 class="showcase-caps">FASHION & GYM</h2>
+                <a href="{% url 'products' %}?category=gym,fashion&gender=m,f,u" class="sales-link">
+                    <h2 class="showcase-caps">FASHION & GYM</h2>
+                </a>
                 <p class="lead sales-text mb-0">Make a statement with the lastest
                     Sneaker Dadi
                     fashion footwear range. For the gym we have the shoes to support even the toughest workout!</p>
+                <a href="{% url 'products' %}?category=gym,fashion&gender=m,f,u" class="btn btn-showcase me-1 mt-3">See Fashion & Gym</a>
             </div>
         </div>
         <div class="row showcase-row g-0">
-            <div class="col-lg-6 text-white showcase-img"
+            <a href="{% url 'products' %}?category=run,hiking,sandal,swim&gender=m,f,u" class="col-lg-6 text-white showcase-img"
                 style="background-image: url('{{ MEDIA_URL }}orange-black-sneakers.webp')">
-            </div>
+        </a>
             <div class="col-lg-6 my-auto showcase-text">
-                <h2 class="showcase-caps">RUNNING, HIKING, SANDALS & SLIPPERS</h2>
+                <a href="{% url 'products' %}?category=run,hiking,sandal,swim&gender=m,f,u" class="sales-link">
+                <h2 class="showcase-caps">RUNNING, HIKING, SANDALS & SWIMMING</h2></a>
                 <p class="lead sales-text mb-0">Get set for all
                     conditions
-                    with our newest running shoes and hiking footwear.  We also have the shoes you need for that holiday or trip to the beach.</p>
+                    with our newest running shoes and hiking footwear. We also have the shoes you need for that holiday
+                    or trip to the beach.</p>
+                    <a href="{% url 'products' %}?category=run,hiking,sandal,swim&gender=m,f,u" class="btn btn-showcase me-1 mt-3">See Running, Hiking, Sandals & Swimming</a>
             </div>
         </div>
         <div class="row showcase-row g-0">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                style="background-image: url('{{ MEDIA_URL }}athlete-grey-sneakers.webp')"></div>
+            <a href="{% url 'products' %}?category=skateboard,soccer,tennis,taekwondo,basketball&gender=m,f,u" class="col-lg-6 order-lg-2 text-white showcase-img"
+                style="background-image: url('{{ MEDIA_URL }}athlete-grey-sneakers.webp')"></a>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                <h2 class="showcase-caps">SPORTS</h2>
+                <a href="{% url 'products' %}?category=skateboard,soccer,tennis,taekwondo,basketball&gender=m,f,u" class="sales-link">
+                <h2 class="showcase-caps">SPORTS</h2></a>
                 <p class="lead sales-text mb-0">The latest sports collection has arrived. Stay on top of your game with
                     our shoe
                     ranges for soccer,
                     tennis, basketball, taekwondo and much more. </p>
+                    <a href="{% url 'products' %}?category=skateboard,soccer,tennis,taekwondo,basketball&gender=m,f,u" class="btn btn-showcase me-1 mt-3">See Sports</a>
             </div>
         </div>
     </div>
