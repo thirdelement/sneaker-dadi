@@ -96,10 +96,6 @@ header.masthead .h1 {
   max-width: 235px;
 }
 
-footer.footer {
-  /*padding-top: 4rem;
-  padding-bottom: 4rem;*/
-
 }
 
 /* Part of solution to keep footer at bottom of page*/
@@ -813,6 +809,10 @@ input[type=number] {
   .strap-break {
     display: none;
   }
+
+  .product-name {
+    font-size: 1.0rem;
+}
 }
 
 @media screen and (max-width: 359px) {
@@ -826,4 +826,8 @@ input[type=number] {
   .showcase-img {
     min-height: 15rem !important;
   }
+
+  .product-name {
+    font-size: 0.9rem;
+}
 }
