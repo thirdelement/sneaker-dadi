@@ -135,6 +135,19 @@ header.masthead .h1 {
   padding: 0;
 }
 
+/* Color & padding for cart link */
+.btn-cart {
+  padding: .375rem .75rem!important;
+  color: #212529!important;
+  background-color: #fff;
+  }
+
+/* Color for cart link on hover */
+.btn-cart:hover {
+  color: #fff!important;
+  background-color: #212529;
+}
+
 /* mdbootstrap dropdown menu */
 /* Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/ */
 .dropdown-menu li {

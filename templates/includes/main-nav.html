@@ -84,7 +84,8 @@
         <!-- Sale -->
         <a class="nav-link text-danger fw-bold" href="{% url 'products_on_sale' %}">SALE</a>
     </ul>
-    <form class="d-flex d-lg-block ms-auto me-1 collapse-margin collapse-search" method="GET" action="{% url 'products' %}">
+    <form class="d-flex d-lg-block ms-auto me-1 collapse-margin collapse-search" method="GET"
+        action="{% url 'products' %}">
         <div class="input-group w-100">
             <input class="form-control" type="search" name="q" placeholder="Search our site">
             <div class="input-group-append">
@@ -96,6 +97,7 @@
             </div>
         </div>
     </form>
+    <!-- Account/Product management link -->
     <div class="dropdown">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle me-1 d-lg-block collapse-margin"
             id="dropdownMenuButton1" data-bs-toggle="dropdown">
@@ -115,14 +117,14 @@
         </ul>
     </div>
 </div>
-<a class="nav-link" href="{% url 'view_cart' %}">
-    <button class="btn btn-outline-dark d-none d-xl-block"><i class="bi-cart-fill me-1"></i>
-        <span
-            class="badge {% if product_count > 0 %}bg-warning text-dark{% else %}bg-dark text-white{% endif %} ms-1 rounded-pill">
-            {% if order_total and product_count > 0 %}
-            {{ product_count }}
-            {% else %}
-            0
-            {% endif %}</span>
-    </button>
+<!-- Cart link -->
+<a class="nav-link btn btn-outline-dark d-none d-xl-block btn-cart" href="{% url 'view_cart' %}">
+    <i class="bi-cart-fill me-1"></i>
+    <span
+        class="badge {% if product_count > 0 %}bg-warning text-dark{% else %}bg-dark text-white{% endif %} ms-1 rounded-pill">
+        {% if order_total and product_count > 0 %}
+        {{ product_count }}
+        {% else %}
+        0
+        {% endif %}</span>
 </a>
