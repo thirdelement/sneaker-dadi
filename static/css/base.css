@@ -179,7 +179,7 @@ header.masthead-products {
 }
 
 /* Products on sale */
-header.masthead-sale {
+header.masthead-sale-admin {
   /*position: relative;*/
   background-color: #080808;
   /*background-image: url('/media/white-sneaker-black2.webp');*/
@@ -192,7 +192,7 @@ header.masthead-sale {
 }
 
 /* Products on sale header image */
-.image-sale {
+.image-sale-admin {
   position: relative;
   background-image: url('/media/white-sneaker-black3.webp');
   background-repeat: no-repeat;
@@ -587,13 +587,13 @@ input[type=number] {
   }
 
   /* Resize image Products page */
-  header.masthead-sale {
+  header.masthead-sale-admin {
     padding-top: 1rem;
     padding-bottom: 15rem;
   }
 
   /* Resize image Sale page */
-  .image-sale {
+  .image-sale-admin {
     background-image: url('/media/white-sneaker-black3-md.webp');
     background-position: right;
   }
@@ -668,7 +668,7 @@ input[type=number] {
   }
 
   /* Resize image */
-  .image-sale {
+  .image-sale-admin {
     background-image: url('/media/white-sneaker-black3-sm.webp');
     background-position: center;
   }
