@@ -300,7 +300,7 @@ header.masthead-sale {
 /* Add margin-top to Add to Cart button on wrap */
 /* Credit: https://stackoverflow.com/questions/30887071/margin-top-only-when-the-flex-item-is-wrapped */
 .shop-button-wrapper {
-  display: flex;
+  /*display: flex;*/
   flex-wrap: wrap;
   margin-top: -10px;
 }
@@ -664,6 +664,11 @@ input[type=number] {
   /* Remove line break to heading shop buttons */
   .strap-break-products {
     display: none;
+  }
+
+  /* Add display settings to Cart table */
+  .d-md-table-header-group {
+    display:table-header-group!important;
   }
 
 }
