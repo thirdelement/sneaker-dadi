@@ -28,14 +28,18 @@
 {% block content %}
 <section class="py-5">
     <div class="container px-4 px-lg-5">
-        <div class="row make-center">
-            <h1>Sorry..page not found!</h1>
-            <col>
-            <a class="btn btn-outline-dark" href="{% url 'products' %}">
-                <i class="bi bi-chevron-left"></i><span> Back to
-                    Dadi</span></a>
-                </col>
+        <div class="row gx-4 gx-lg-5">
+            <div class="col">
+            <h2>Oooh...we can't find that page.</h2>
         </div>
+        </div>
+        <div class="row gx-4 gx-lg-5">
+            <div class="col">
+                <a class="btn btn-showcase mt-2" href="{% url 'products' %}">
+                <i class="bi bi-chevron-left"></i><span> Continue shopping</span></a>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
 {% block page_footer %}
