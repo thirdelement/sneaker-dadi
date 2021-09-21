@@ -542,6 +542,11 @@ input[type=number] {
   border-radius: 0;
 }
 
+/* Hide title on Product Detail page */
+.hidden {
+  display: none;
+}
+
 /* Media Queries */
 @media (max-width: 1200px) {
 
