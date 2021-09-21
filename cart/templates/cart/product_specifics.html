@@ -1,0 +1,7 @@
+<p class="my-0">{{ item.product.name }}</p>
+<p class="my-0 small text-muted">Product ID: {{ item.product.product_id|upper }}</p>
+{% if item.product.on_sale is True %}
+<p class="my-0"><strong>£{{ item.product.get_sale_price }}</strong></p>
+{% else %}
+<p class="my-0"><strong>£{{ item.product.price }}</strong></p>
+{% endif %}

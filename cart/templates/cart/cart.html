@@ -13,7 +13,6 @@
     </div>
 </header>
 {% endblock %}
-
 {% block content %}
 <!-- Section-->
 <section class="py-5">
@@ -26,13 +25,42 @@
         </div>
         <div class="row">
             <div class="col">
-                {% if cart_items %}
+                <div class="d-block d-md-none">
+                    <div class="row">
+                        <p class="mb-2 text-center d-block d-md-none">FREE STANDARD UK DELIVERY WHEN YOU SPEND £50.</p>
+                        <hr>
+                        {% if cart_items %}
+                        {% for item in cart_items %}
+                        <div class="col-12 col-sm-6 text-center">
+                            {% include "cart/product_image.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            {% include "cart/product_specifics.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 text-sm-center">
+                            <p class="my-0">{{ item.size }}</p>
+                        </div>
+                        <div class="col-12 col-sm-3">
+                            {% include "cart/quantity_form.html" %}
+                        </div>
+                        <div class="col-12 col-sm-3 order-sm-last text-end">
+                            {% if item.product.on_sale is True %}
+                            <p class="my-0">
+                                <strong>£{{ item.product.get_sale_price | calc_subtotal_sale:item.quantity }}</strong>
+                            </p>
+                            {% else %}
+                            <p class="my-0">
+                                <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                            </p>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
                 <div class="table-responsive rounded">
-                    <p class="mb-2 text-center">FREE STANDARD UK DELIVERY WHEN YOU SPEND £50.</p>
+                    <p class="mb-2 text-center d-none d-md-block">FREE STANDARD UK DELIVERY WHEN YOU SPEND £50.</p>
                     <table class="table table-sm table-borderless">
-
-                        <thead class="border-top border-bottom">
-
+                        <thead class="border-top border-bottom d-none d-md-table-header-group">
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">PRODUCT NAME</th>
@@ -40,74 +68,35 @@
                                 <th scope="col">QUANTITY</th>
                                 <th scope="col" class="text-end">PRICE</th>
                             </tr>
-
                         </thead>
-
                         {% for item in cart_items %}
-                        <tr>
+                        <tr class="d-none d-md-table-row">
                             <td class="p-3 cart-image">
                                 {% if item.product.image1 %}
                                 <img class="img-fluid rounded" src="{{ item.product.image1.url }}"
                                     alt="{{ item.product.name }}">
                                 {% else %}
-                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png"
+                                    alt="{{ item.product.name }}">
                                 {% endif %}
                             </td>
                             <td class="py-3">
-                                <p class="my-0">{{ item.product.name }}</p>
-                                <p class="my-0 small text-muted">Product ID: {{ item.product.product_id|upper }}</p>
-                                {% if item.product.on_sale is True %}
-                                <p class="my-0"><strong>£{{ item.product.get_sale_price }}</strong></p>
-                                {% else %}
-                                <p class="my-0"><strong>£{{ item.product.price }}</strong></p>
-                                {% endif %}
+                                {% include "cart/product_specifics.html" %}
                             </td>
                             <td class="py-3">
                                 <p class="my-0">{{ item.size }}</p>
                             </td>
                             <td class="py-3">
-                                <!--<p class="my-0">{{ item.quantity }}</p>-->
-                                <form class="form update-form" method="POST"
-                                    action="{% url 'adjust_cart' item.item_id %}">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="decrement-qty btn btn-sm"
-                                                    data-item_id="{{ item.item_id }}"
-                                                    id="decrement-qty_{{ item.item_id }}">
-                                                    <span>
-                                                        <i class="bi bi-dash-lg"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <input class="form-control form-control-sm qty_input" type="number"
-                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                            <div class="input-group-append">
-                                                <button class="increment-qty btn btn-sm"
-                                                    data-item_id="{{ item.item_id }}"
-                                                    id="increment-qty_{{ item.item_id }}">
-                                                    <span>
-                                                        <i class="bi bi-plus-lg"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <!-- Hidden input for size -->
-                                            <input type="hidden" name="size" value="{{ item.size }}">
-                                        </div>
-                                    </div>
-                                </form>
-                                <a class="update-link text-info"><small>Update</small></a>
-                                <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
-                                    data-size="{{ item.size }}"><small>Remove</small></a>
+                                {% include "cart/quantity_form.html" %}
                             </td>
                             <td class="py-3 text-end">
                                 {% if item.product.on_sale is True %}
-                                <p class="my-0"><strong>£{{ item.product.get_sale_price | calc_subtotal_sale:item.quantity }}</strong>
+                                <p class="my-0">
+                                    <strong>£{{ item.product.get_sale_price | calc_subtotal_sale:item.quantity }}</strong>
                                 </p>
                                 {% else %}
-                                <p class="my-0"><strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
+                                <p class="my-0">
+                                    <strong>£{{ item.product.price | calc_subtotal:item.quantity }}</strong>
                                 </p>
                                 {% endif %}
                             </td>
@@ -143,7 +132,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4" class="text-end">
+                            <td colspan="5" class="text-end">
                                 <p class="mb-1 text-danger">
                                     You could get free delivery by spending just
                                     <strong>£{{ free_delivery_delta }}</strong> more!
@@ -151,17 +140,15 @@
                             </td>
                         </tr>
                         {% endif %}
-                        </td>
-                        </tr>
                         <tr>
-                            <td colspan="5" class="text-end">
-                                <a href="{% url 'products' %}" class="btn btn-outline-dark btn-lg">
+                            <td colspan="5" class="text-end shop-button-wrapper">
+                                <a href="{% url 'products' %}" class="btn btn-outline-dark btn-lg shop-button">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="text-uppercase">Continue Shopping</span>
                                 </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-dark btn-lg">
+                                <a href="{% url 'checkout' %}" class="btn btn-dark btn-lg shop-button">
                                     <span class="text-uppercase">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="bi bi-lock-fill"></i>
