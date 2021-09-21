@@ -98,12 +98,6 @@ header.masthead .h1 {
 
 }
 
-/* Part of solution to keep footer at bottom of page*/
-/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
-footer {
-  margin-top: auto;
-}
-
 /* Carousel margin */
 .carousel-cell {
   margin-right: 20px;
@@ -119,14 +113,6 @@ footer {
   margin-bottom: 0rem;
 }*/
 
-/* Part of solution to keep footer at bottom of page*/
-/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
-body {
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
 
 /* Home page */
 /* Remove formatting for card links */
@@ -212,6 +198,74 @@ header.masthead-sale {
   background-repeat: no-repeat;
   background-position: right;
   height: 250px;
+}
+
+/* Cart & Checkout*/
+header.masthead-shop {
+  background-color: #ECEDEF;
+  height: 250px;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 16rem;
+}
+
+/* Cart & Checkout header image */
+.image-shop {
+  position: relative;
+  /*background-size: cover;*/
+  background-image: url('/media/blue-sneaker.webp');
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 240px;
+}
+
+/* Checkout success */
+header.masthead-success {
+  background-color: #000;
+  height: 250px;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 16rem;
+}
+
+/* Checkout success header image */
+.image-success {
+  position: relative;
+  /*background-size: cover;*/
+  background-image: url('/media/black-sneakers.webp');
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 240px;
+}
+
+/* Part of solution to keep footer at bottom of page*/
+/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+footer {
+  margin-top: auto;
+}
+
+/* Part of solution to keep footer at bottom of page*/
+/* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adjust footer background color*/
+.bg-grey {
+  background-color: #ECEDEF;
+}
+
+/* Adjust social media link color */
+.social-black {
+  color: #212529;
+}
+
+/* Adjust social media link color */
+.social-white {
+  color: #fff;
 }
 
 /* Back to top button settings */
@@ -508,8 +562,7 @@ input[type=number] {
 
 @media (max-width: 768px) {
 
-  /* Landing Page */
-  /* Resize image */
+  /* Resize image home page*/
   header.masthead {
     padding-top: 1rem;
     padding-bottom: 15rem;
@@ -543,6 +596,30 @@ input[type=number] {
   .image-sale {
     background-image: url('/media/white-sneaker-black3-md.webp');
     background-position: right;
+  }
+
+  /* Resize image Products page */
+  header.masthead-shop {
+    padding-top: 1rem;
+    padding-bottom: 15rem;
+  }
+
+  /* Resize image Products page */
+  .image-shop {
+    background-image: url('/media/blue-sneaker-md.webp');
+    background-position: right;
+  }
+
+  /* Resize image checkout success*/
+  header.masthead-success {
+    padding-top: 1rem;
+    padding-bottom: 15rem;
+  }
+
+  /* Resize image checkout success */
+  .image-success {
+    background-image: url('/media/black-sneakers-md.webp');
+    background-position: center;
   }
 
   /* Resize strapline font */
@@ -596,6 +673,18 @@ input[type=number] {
     background-position: center;
   }
 
+  /* Resize image */
+  .image-shop {
+    background-image: url('/media/blue-sneaker-sm.webp');
+    background-position: top;
+  }
+
+  /* Resize image */
+  .image-success {
+    background-image: url('/media/black-sneakers-sm.webp');
+    background-position: top;
+  }
+
   /* Strapline over two rows */
   .two-line-strap {
     display: none;
@@ -624,6 +713,16 @@ input[type=number] {
   /* Add margin to heading shop buttons */
   #strap-sale-women {
     margin-top: 8.5rem !important;
+  }
+
+   /* Add margin to heading shop buttons */
+   #strap-margin-success {
+    margin-top: 7rem !important;
+  }
+
+  /* Add margin to heading shop buttons */
+  #strap-success-women {
+    margin-top: 7rem !important;
   }
 }
 
@@ -668,7 +767,7 @@ input[type=number] {
 
   /* Add display settings to Cart table */
   .d-md-table-header-group {
-    display:table-header-group!important;
+    display: table-header-group !important;
   }
 
 }
@@ -749,6 +848,11 @@ input[type=number] {
     margin-left: 0rem !important;
     margin-top: 0.25rem;
   }
+
+  /* Adjust font size for title on cart & checkout header */
+ /* header.masthead-success h1.masthead-title {
+    font-size: 1.815rem;
+  }*/
 }
 
 @media screen and (max-width: 575px) {
@@ -803,11 +907,11 @@ input[type=number] {
 @media screen and (max-width: 424px) {
 
   #strap-margin {
-    margin-top: 6.5rem !important;
+    margin-top: 8.25rem !important;
   }
 
   #strap-margin-women {
-    margin-top: 6.5rem !important;
+    margin-top: 8.25rem !important;
   }
 
   /* Remove line break to heading shop buttons */
@@ -815,9 +919,25 @@ input[type=number] {
     display: none;
   }
 
+  /* Adjust product name font size */
   .product-name {
     font-size: 1.0rem;
-}
+  }
+
+  /* Adjust font size for title on cart & checkout header */
+  header.masthead h1.masthead-title {
+    font-size: 1.5rem;
+  }
+
+  /* Adjust font size for title on cart & checkout header */
+  header.masthead-shop h1.masthead-title {
+    font-size: 1.7rem;
+  }
+
+  /* Adjust font size for title on cart & checkout header */
+  header.masthead-success h1.masthead-title {
+    font-size: 1.7rem;
+  }
 }
 
 @media screen and (max-width: 359px) {
@@ -834,5 +954,5 @@ input[type=number] {
 
   .product-name {
     font-size: 0.9rem;
-}
+  }
 }

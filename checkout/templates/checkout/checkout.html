@@ -8,11 +8,22 @@
 
 {% block page_header %}
 <!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+<header class="masthead-shop">
+    <div class="container position-relative image-shop">
+        <div class="ms-2 row">
+            <div class="col">
+                <div class="text-dark">
+                    <!-- Page heading-->
+                    <h1 class="fw-bold one-line-strap masthead-title">Dadi's impressed..</h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">Dadi's impressed..</h1>
+                    <p class="lead fw-normal text-dark-50 mb-0 sub-title">There's no better place for Adidas deals</p>
+                    <a href="{% url 'products' %}?gender=f,u" id="strap-products-women" class="btn btn-danger btn-lg me-md-2 mt-4">SHOP
+                        WOMEN'S</a>
+                    <br class="strap-break-products">
+                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin-products"
+                        class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4 strap-margin-products">SHOP MEN'S</a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -30,7 +41,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-lg-6 order-2 mb-5">
-                <h6 class="mb-2 mt-4">YOUR ORDER</h6>
+                <h6 class="mb-2 mt-md-4">YOUR ORDER</h6>
                 <p class="text-muted"><small>{% if product_count == 1 %}1 item{% else %}
                         {{ product_count }} items{% endif %}</small></p>
                 {% for item in cart_items %}
@@ -151,12 +162,12 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
-                    <div class="submit-button text-end mt-5 mb-2 me-3">
-                        <a href="{% url 'view_cart' %}" class="btn btn-outline-dark">
+                    <div class="submit-button text-end mt-2 mb-2 me-3 shop-button-wrapper">
+                        <a href="{% url 'view_cart' %}" class="btn btn-outline-dark shop-button">
                             <i class="bi bi-chevron-left"></i>
                             <span class="font-weight-bold">Go Back</span>
                         </a>
-                        <button id="submit-button" class="btn btn-dark">
+                        <button id="submit-button" class="btn btn-dark shop-button">
                             <span class="font-weight-bold">Complete Order</span>
                             <i class="bi bi-lock-fill"></i>
                         </button>
@@ -176,7 +187,33 @@
     </div>
 </section>
 {% endblock %}
-
+{% block page_footer %}
+<!-- Footer-->
+<footer class="py-5 bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg text-center my-auto">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item me-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-black"><i class="bi-facebook fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item me-4">
+                        <a href="https://twitter.com/" target="_blank" class="social-black"><i class="bi-twitter fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank" class="social-black"><i class="bi-instagram fs-3"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center my-auto">
+                <p class="mt-2 m-0 text-dark">Copyright &copy; Sneaker Dadi 2021</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
 {% block postloadjs %}
 {{ block.super }}
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
