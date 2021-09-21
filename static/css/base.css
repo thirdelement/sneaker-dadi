@@ -902,6 +902,11 @@ input[type=number] {
     display: none;
   }
 
+  /* Add margin-top to Your Order title on checkout success page*/
+  .order-margin {
+    margin-top: 3rem!important; 
+    }
+
 }
 
 @media screen and (max-width: 424px) {
