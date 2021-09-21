@@ -531,6 +531,15 @@ input[type=number] {
   border-radius: 0;
 }
 
+/* Center align elements in 404 & 500.html pages */
+.make-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Media Queries */
 @media (max-width: 1200px) {
 
