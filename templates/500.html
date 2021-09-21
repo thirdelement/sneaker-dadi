@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+<header class="masthead-products">
+    <div class="container position-relative image-products">
+        <div class="ms-2 row">
+            <div class="col">
+                <div class="text-dark">
+                    <!-- Page heading-->
+                    <h1 class="fw-bold one-line-strap masthead-title">Come to Dadi..</h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">Come to Dadi..</h1>
+                    <p class="lead fw-normal text-dark-50 mb-0 sub-title">Amazing choice in Adidas sneakers, sandals and
+                        more</p>
+                    <a href="{% url 'products' %}?gender=f,u" id="strap-products-women"
+                        class="btn btn-danger btn-lg me-md-2 mt-4">SHOP
+                        WOMEN'S</a>
+                    <br class="strap-break-products">
+                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin-products"
+                        class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4 strap-margin-products">SHOP MEN'S</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row">
+            <h1>Oops..page not found!</h1>
+            <a class="btn btn-outline-dark" href="{% url 'products' %}">
+                <i class="bi bi-chevron-left"></i><span> Back to
+                    Dadi</span></a>
+        </div>
+</section>
+{% endblock %}
+{% block page_footer %}
+<!-- Footer-->
+<footer class="py-5 bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg text-center my-auto">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item me-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="social-black"><i
+                                class="bi-facebook fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item me-4">
+                        <a href="https://twitter.com/" target="_blank" class="social-black"><i
+                                class="bi-twitter fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank" class="social-black"><i
+                                class="bi-instagram fs-3"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center my-auto">
+                <p class="mt-2 m-0 text-dark">Copyright &copy; Sneaker Dadi 2021</p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
