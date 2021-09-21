@@ -1,14 +1,16 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <!-- All products -->
-        <a class="nav-link" href="{% url 'products' %}">All Sneakers</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}">All Sneakers</a>
+        </li>
         <!-- Female Dropdown -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuFemale" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Female
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuFemale">
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?category=basketball&gender=f,u">Basketball</a>
                 </li>
@@ -38,11 +40,11 @@
         <!-- End Female Drop-down -->
         <!-- Male Dropdown -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuMale" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Male
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuMale">
                 <li>
                     <a class="dropdown-item" href="{% url 'products' %}?category=fashion&gender=m,u">
                         Fashion
@@ -80,9 +82,13 @@
         </li>
         <!-- End Male Drop-down -->
         <!-- Unisex -->
-        <a class="nav-link" href="{% url 'products' %}?gender=u">Unisex</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}?gender=u">Unisex</a>
+        </li>
         <!-- Sale -->
-        <a class="nav-link text-danger fw-bold" href="{% url 'products_on_sale' %}">SALE</a>
+        <li class="nav-item">
+            <a class="nav-link text-danger fw-bold" href="{% url 'products_on_sale' %}">SALE</a>
+        </li>
     </ul>
     <form class="d-flex d-lg-block ms-auto me-1 collapse-margin collapse-search" method="GET"
         action="{% url 'products' %}">
