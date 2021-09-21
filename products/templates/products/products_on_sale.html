@@ -31,12 +31,7 @@
             <div class="col-12 col-md-6 order-1 order-md-2">
                 <div class="sort-select-wrapper w-100">
                     <div class="col-12 col-md-6 ms-auto mb-4">
-                        <!--<select class="form-select" aria-label="Default select example">
-                            <option selected>Select..</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>-->
+                        <!-- Sort products -->
                         <select id="sort-selector"
                             class="form-select form-select-sm border border-{% if current_sorting != 'None+None' %}info{% else %}black{% endif %}">
                             <option value="reset" {% if current_sorting == 'None__None' %}selected{% endif %}>Sort by...
@@ -57,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Product total -->
             <div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-start mb-2">
                 {% if products|length == 1 %}
                 1 product {% if search_term %} found for
@@ -84,13 +80,13 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<script>
     $('.btt-link').click(function (e) {
         window.scrollTo(0, 0)
     })
 </script>
 
-<script type="text/javascript">
+<script>
     //Capture the change event from the sort-selector
     $('#sort-selector').change(function () {
         var selector = $(this);
