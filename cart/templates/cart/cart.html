@@ -131,7 +131,7 @@
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end">
-                                <h4 class="mt-2"><strong>ORDER TOTAL: </strong>
+                                <h4 class="mt-2"><strong>ORDER TOTAL: </strong></h4>
                             </td>
                             <td class="text-end">
                                 <h4 class="mt-2"><strong>£{{ order_total|floatformat:2 }}</strong></h4>
@@ -215,7 +215,7 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'cart/includes/quantity_input_script.html' %}
-<script type="text/javascript">
+<script>
     // Update quantity on click
     $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
