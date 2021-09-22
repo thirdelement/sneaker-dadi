@@ -137,14 +137,14 @@ header.masthead .h1 {
 
 /* Color & padding for cart link */
 .btn-cart {
-  padding: .375rem .75rem!important;
-  color: #212529!important;
+  padding: .375rem .75rem !important;
+  color: #212529 !important;
   background-color: #fff;
-  }
+}
 
 /* Color for cart link on hover */
 .btn-cart:hover {
-  color: #fff!important;
+  color: #fff !important;
   background-color: #212529;
 }
 
@@ -547,6 +547,18 @@ input[type=number] {
   display: none;
 }
 
+/* H6 sizing used on Profile Order History title */
+.title-h6 {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  display: block;
+}
+
 /* Media Queries */
 @media (max-width: 1200px) {
 
@@ -731,8 +743,8 @@ input[type=number] {
     margin-top: 8.5rem !important;
   }
 
-   /* Add margin to heading shop buttons */
-   #strap-margin-success {
+  /* Add margin to heading shop buttons */
+  #strap-margin-success {
     margin-top: 7rem !important;
   }
 
@@ -866,7 +878,7 @@ input[type=number] {
   }
 
   /* Adjust font size for title on cart & checkout header */
- /* header.masthead-success h1.masthead-title {
+  /* header.masthead-success h1.masthead-title {
     font-size: 1.815rem;
   }*/
 }
@@ -920,8 +932,8 @@ input[type=number] {
 
   /* Add margin-top to Your Order title on checkout success page*/
   .order-margin {
-    margin-top: 3rem!important; 
-    }
+    margin-top: 3rem !important;
+  }
 
 }
 

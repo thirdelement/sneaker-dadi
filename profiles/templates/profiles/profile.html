@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-<!-- Section-->
+<!-- Section -->
 <section class="py-5">
     <div class="container px-4 px-lg-5">
         <div class="row">
@@ -27,7 +27,7 @@
                 <hr class="hr-heading-short">
             </div>
         </div>
-
+        <!-- Delivery Info -->
         <div class="row">
             <div class="col-12 col-lg-6">
                 <h3 class="text-center">DEFAULT DELIVERY INFO</h3>
@@ -48,28 +48,29 @@
                     </fieldset>
                     <fieldset class="rounded px-3 mb-3">
                         <legend class="fieldset-label small px-2 w-auto">Delivery address</legend>
-                            <div class="mb-2">
-                                {{ form.default_street_address1 | as_crispy_field }}
-                            </div>
-                            <div class="mb-2">
-                                {{ form.default_street_address2 | as_crispy_field }}
-                            </div>
-                            <div class="mb-2">
-                                {{ form.default_town_or_city | as_crispy_field }}
-                            </div>
-                            <div class="mb-2">
-                                {{ form.default_county | as_crispy_field }}
-                            </div>
-                            <div class="mb-2">
-                                {{ form.default_postcode | as_crispy_field }}
-                            </div>
-                            <div class="mb-2">
-                                {{ form.default_country | as_crispy_field }}
-                            </div>
-                        </fieldset>
-                        <button class="btn btn-dark text-uppercase float-end me-3 mb-5">Update Delivery Info</button>
+                        <div class="mb-2">
+                            {{ form.default_street_address1 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_street_address2 | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_town_or_city | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_county | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_postcode | as_crispy_field }}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.default_country | as_crispy_field }}
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-dark text-uppercase float-end me-3 mb-5">Update Delivery Info</button>
                 </form>
             </div>
+            <!-- Order History -->
             <div class="col-12 col-lg-6">
                 <h3 class="text-center">ORDER HISTORY</h3>
                 <hr class="hr-heading">
@@ -78,15 +79,15 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>REF</h6>
+                                    <div class="title-h6">REF</div>
                                 </th>
                                 <th>
-                                    <h6>DATE</h6>
+                                    <div class="title-h6">DATE</div>
                                 <th>
-                                    <h6>ITEMS</h6>
+                                    <div class="title-h6">ITEMS</div>
                                 </th>
                                 <th>
-                                    <h6>TOTAL</h6>
+                                    <div class="title-h6">TOTAL</div>
                                 </th>
                             </tr>
                         </thead>
@@ -123,5 +124,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+<script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
