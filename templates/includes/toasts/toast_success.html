@@ -34,6 +34,7 @@
                 {{ message }}
             </div>
         </div>
+        <!-- Show order details if there are any -->
         {% if total and not on_profile %}
         <div class="cart-notification-wrapper">
             {% for item in cart_items %}
@@ -71,7 +72,6 @@
             </div>
             <div class="col-9">
                 <p>£{{ total|floatformat:2 }}</p>
-                </p>
             </div>
             {% if free_delivery_delta > 0 %}
             <div class="d-grid gap-2">
@@ -97,5 +97,4 @@
     </div>
     {% endif %}
     {% endif %}
-</div>
 </div>
