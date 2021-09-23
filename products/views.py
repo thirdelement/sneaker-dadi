@@ -25,9 +25,13 @@ def all_products(request):
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'average_rating' and direction == 'desc':
-                # Sorting nulls last using F expression
-                # Credit: https://docs.djangoproject.com/en/3.1/ref/models/expressions/#using-f-to-sort-null-values
-                # Credit: https://github.com/Edb83/moose-juice/blob/master/products/views.py
+                """
+                Sorting nulls last using F expression
+                Credit: 
+                https://docs.djangoproject.com/en/3.1/ref/models/
+                expressions/#using-f-to-sort-null-values
+                https://github.com/Edb83/moose-juice/blob/master/products/views.py
+                """
                 products = products.order_by(F(
                     'average_rating').desc(nulls_last=True))
             else:
@@ -53,7 +57,8 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, 
+                "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
