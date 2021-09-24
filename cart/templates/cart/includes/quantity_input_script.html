@@ -7,9 +7,6 @@
         var plusDisabled = currentValue > 98;
         $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled);
         $(`.increment-qty_${itemId}`).prop('disabled', plusDisabled);
-        console.log('handleEnableDisable', `#id_qty_${itemId}`, `.decrement-qty_${itemId}`, `.increment-qty_${itemId}`)
-        console.log('current value:', parseInt($(`#id_qty_${itemId}`).val()))
-        console.log('decrement disabled:', $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled)[0])
     }
 
     // Ensure proper enabling/disabling of all inputs on page load
@@ -17,9 +14,6 @@
     for(var i = 0; i < allQtyInputs.length; i++){
         var itemId = $(allQtyInputs[i]).data('item_id');
         handleEnableDisable(itemId);
-        console.log('allQtyinputs item')
-        console.log('allQtyInputs:', $('.qty_input')[0])
-        console.log('allQtyInputs itemId:', $(allQtyInputs[i]).data('item_id'))
     }
 
     // Check enable/disable every time the input is changed
@@ -38,10 +32,6 @@
        var currentValue = parseInt($(closestInput).val());
        $(allQuantityInputs).val(currentValue + 1);
        handleEnableDisable(itemId);
-       console.log('increment-qty itemid:', $(this).data('item_id'))
-       console.log('increment-qty closesInput:', $(this).closest('.input-group').find('.qty_input')[0])
-       console.log('allQuantityInputs:', $(`.input-group-${itemId} input[name='quantity']`))
-       console.log('increment-qty currentValue:', parseInt($(closestInput).val()))
     });
 
     // Decrement quantity
@@ -53,9 +43,5 @@
        var currentValue = parseInt($(closestInput).val());
        $(allQuantityInputs).val(currentValue - 1);
        handleEnableDisable(itemId);
-       console.log('Decrement currentValue:', parseInt($(closestInput).val()))
-       console.log('Decrement closestInput:', $(this).closest('.input-group').find('.qty_input')[0])
-       console.log('allQuantityInputs', $(`.input-group-${itemId} input[name='quantity']`))
-       console.log('Decrement itemid:', $(this).data('item_id'))
     });
 </script>
