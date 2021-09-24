@@ -606,7 +606,7 @@ input[type=number] {
 
   .image-success {
     background-image: url('/media/black-sneakers-sm.webp');
-    background-position: top;
+    background-position: center;
   }
 
   /* Strapline over two rows */
@@ -621,11 +621,11 @@ input[type=number] {
 
   /* Add margin to heading shop buttons */
   #strap-margin-products {
-    margin-top: 8.5rem !important;
+    margin-top: 9rem !important;
   }
 
   #strap-products-women {
-    margin-top: 8.5rem !important;
+    margin-top: 9rem !important;
   }
 
   #strap-margin-sale {
