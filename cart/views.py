@@ -51,8 +51,8 @@ def adjust_cart(request, item_id):
     cart = request.session.get('cart', {})
     size = request.POST['size']
  
-    # If quantity is greater than zero set the item size quantity
-    if quantity > 0:
+    # If quantity is greater than zero and less than 100 set the item size quantity
+    if 0 < quantity < 100:
         if item_id in list(cart.keys()):
             if size in cart[item_id]['items_by_size'].keys():
                 cart[item_id]['items_by_size'][size] = quantity
