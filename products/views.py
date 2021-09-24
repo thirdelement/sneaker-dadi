@@ -24,7 +24,7 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'average_rating' and direction == 'desc':
+            if sortkey == 'average_rating2':
                 """
                 Sorting nulls last using F expression.
                 Credit: 
@@ -307,7 +307,7 @@ def products_on_sale(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'average_rating' and direction == 'desc':
+            if sortkey == 'average_rating2':
                 # Sorting nulls last using F expression
                 products = products.order_by(F(
                     'average_rating').desc(nulls_last=True))
