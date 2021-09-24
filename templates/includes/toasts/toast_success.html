@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <!--  Show no message body if product count is 0, there are extra message tags or on the profile or edit product page -->
+    <!-- Show no message body if product count is 0, there are extra message tags or on the profile or edit product page -->
     <!-- Credit: https://stackoverflow.com/questions/23637846/grouping-conditions-in-django-template-if-statement -->
     {% elif product_count == 0 or message.extra_tags or on_profile or on_edit_product %}
     {% else %}
