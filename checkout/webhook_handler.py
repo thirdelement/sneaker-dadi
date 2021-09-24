@@ -25,7 +25,7 @@ class StripeWH_Handler:
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
-            # add contact email to the body
+        # add contact email to the body
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
@@ -57,14 +57,17 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         order_total = round(intent.charges.data[0].amount / 100, 2)
-
-        # Clean data in the shipping details & replace empty strings with 'None'
+        """
+        Clean data in the shipping details & 
+        replace empty strings with 'None'
+        """
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
-        
-        # Update profile information if save_info was checked
-        # Make profile = None to create order for anonymous users
+        """
+        Update profile information if save_info was checked
+        Make profile = None to create order for anonymous users
+        """
         profile = None
         username = intent.metadata.username
         # If username is not anonymous then they are authenticated
@@ -77,8 +80,10 @@ class StripeWH_Handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_street_address1\
+                    = shipping_details.address.line1
+                profile.default_street_address2\
+                    = shipping_details.address.line2
                 profile.default_county = shipping_details.address.state
                 # save profile
                 profile.save()
@@ -120,7 +125,8 @@ class StripeWH_Handler:
             # completed at this point
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]}\
+                         | SUCCESS: Verified order already in database',
                 status=200)
         # If order does not exist create it as if the form were submitted
         else:
@@ -161,7 +167,8 @@ class StripeWH_Handler:
                     status=500)
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]}\
+                 | SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):
