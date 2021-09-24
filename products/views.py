@@ -26,7 +26,7 @@ def all_products(request):
             sort = sortkey
             if sortkey == 'average_rating' and direction == 'desc':
                 """
-                Sorting nulls last using F expression
+                Sorting nulls last using F expression.
                 Credit: 
                 https://docs.djangoproject.com/en/3.1/ref/models/
                 expressions/#using-f-to-sort-null-values
@@ -207,7 +207,7 @@ def add_review(request, product_id):
         profile = None
 
     if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to be logged in to do that.')
+        messages.error(request, 'Sorry, you have to be logged in to do that.', extra_tags=' ')
         return redirect(reverse('product_detail', args=[product.id]))
 
     elif request.user.is_authenticated:
@@ -228,7 +228,7 @@ def add_review(request, product_id):
                 # Save average rating to database
                 product.save_average_rating()
                 messages.success(request, 'You have successfully added a \
-                    review.')
+                    review.', extra_tags=' ')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
                 messages.error(
@@ -259,7 +259,7 @@ def delete_review(request, review_id):
         # Save average rating to database
         review.product.save_average_rating()
         messages.success(request, f"{ review.user }'s review has been \
-        deleted.")
+        deleted.", extra_tags=' ')
         return redirect(reverse('product_detail', args=[product_id]))
 
 
@@ -269,7 +269,7 @@ def edit_review(request, review_id):
     review = get_object_or_404(ProductReview, pk=review_id)
     product = review.product
     if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to be logged in to do that.')
+        messages.error(request, 'Sorry, you have to be logged in to do that.', extra_tags=' ')
         return redirect(reverse('product_detail', args=[product.id]))
 
     elif request.user.is_authenticated:
@@ -279,12 +279,12 @@ def edit_review(request, review_id):
                 form.save()
                 # Save average rating to database
                 product.save_average_rating()
-                messages.success(request, 'Your review has been updated.')
+                messages.success(request, 'Your review has been updated.', extra_tags=' ')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
                 messages.error(
                     request,
-                    "The review update failed.  Please check and try again.")
+                    "The review update failed.  Please check and try again.", extra_tags=' ')
         else:
             form = ReviewForm(instance=review)
 
