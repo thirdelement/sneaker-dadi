@@ -9,7 +9,8 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    image1 = forms.ImageField(label='Image1', required=False, widget=CustomClearableFileInput)
+    image1 = forms.ImageField(
+        label='Image1', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

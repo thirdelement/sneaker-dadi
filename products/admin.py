@@ -21,7 +21,8 @@ class ProductAdmin(admin.ModelAdmin):
         on_sale = cleaned_data.get("on_sale")
         discount_percent = cleaned_data.get("discount_percent")
         if on_sale and not discount_percent:
-            raise forms.ValidationError("Discount percent is a required field.")
+            raise forms.ValidationError(
+                "Discount percent is a required field.")
         return cleaned_data
 
 
@@ -33,7 +34,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductReviewAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'review_text', 'get_review_rating', 'created_on')
+    list_display = (
+        'user', 'product', 'review_text', 'get_review_rating', 'created_on')
 
 
 admin.site.register(ProductReview, ProductReviewAdmin)

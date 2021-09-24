@@ -57,11 +57,12 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, 
-                "You didn't enter any search criteria!")
+                messages.error(request, "You didn't enter\
+                     any search criteria!")
                 return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) |
+            Q(description__icontains=query)
             products = products.filter(queries)
     
     current_sorting = f'{sort}+{direction}'
@@ -87,10 +88,12 @@ def product_detail(request, product_id):
  
     # Check if user has added product review and if so show this on form
     if request.user.is_authenticated:
-        reviewCheck = ProductReview.objects.filter(user=request.user, product=product).count()
+        reviewCheck = ProductReview.objects.filter(
+            user=request.user, product=product).count()
         if reviewCheck > 0:
             can_add_review = False
-            review = get_object_or_404(ProductReview, product=product, user=request.user)
+            review = get_object_or_404(
+                ProductReview, product=product, user=request.user)
             form = ReviewForm(instance=review)
 
     # Get reviews
@@ -101,8 +104,12 @@ def product_detail(request, product_id):
     num_reviews = ProductReview.objects.filter(product=product).count()
 
     # Get related products
-    related_products_male = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('-gender')
-    related_products_female = Product.objects.filter(category=product.category).exclude(product_id=product.product_id).order_by('gender')
+    related_products_male = Product.objects.filter(
+        category=product.category).exclude(
+            product_id=product.product_id).order_by('-gender')
+    related_products_female = Product.objects.filter(
+        category=product.category).exclude(
+            product_id=product.product_id).order_by('gender')
     context = {
         'product': product,
         'form': form, 
@@ -156,7 +163,8 @@ def edit_product(request, product_id):
         if form.is_valid():
             form.save()
             # Add extra_tags to identify message in toast_success.html
-            messages.success(request, 'Successfully updated product!', extra_tags=' ')
+            messages.success(
+                request, 'Successfully updated product!', extra_tags=' ')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to update product. Please ensure \
