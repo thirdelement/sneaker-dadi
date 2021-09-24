@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render,\
+    redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -17,12 +18,18 @@ import json
 @require_POST
 def cache_checkout_data(request):
     try:
-        # split the client secret to obtain the payment intent id and store in variable pid
+        """
+        Split the client secret to obtain the payment 
+        intent id and store in variable pid
+        """
         pid = request.POST.get('client_secret').split('_secret')[0]
         # set up stripe with the secret key so we can modify the payment intent
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        # call stripe.PaymentIntent.modify and tell it what we want to modify
-        # add user placing order, if they wanted to save their info & JSON dump of cart
+        """
+        Call stripe.PaymentIntent.modify and tell 
+        it what we want to modifyadd user placing order, 
+        if they wanted to save their info & JSON dump of cart
+        """
         stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
@@ -81,7 +88,8 @@ def checkout(request):
                             size=size,
                             )
                         order_line_item.save()
-                # in case product is not found add an error msg & return user to cart
+                # in case product is not found add an 
+                # error msg & return user to cart
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "A product in your cart was not found in our database."
@@ -93,7 +101,8 @@ def checkout(request):
             # Attach whether the user wanted to save their profile info & 
             # redirect to checkout_success 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             # If order is not valid attach below message
             messages.error(request, 'There was an error with your form. \
@@ -103,7 +112,8 @@ def checkout(request):
 
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(
+                request, "There's nothing in your cart at the moment")
             return redirect(reverse('products'))
 
         current_cart = cart_contents(request)
@@ -114,8 +124,10 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        # Attempt to prefill the form with any info the user maintains in their profile
+        """
+        Attempt to prefill the form with any info 
+        the user maintains in their profile.
+        """
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
