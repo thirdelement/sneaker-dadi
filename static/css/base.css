@@ -319,6 +319,19 @@ body {
   display: none;
 }
 
+/* Submit button for Product review modals */
+.btn-modal {
+  color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+}
+
+.btn-modal:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
 /* Shopping cart ---------------------------*/
 /* Heading underline */
 .hr-heading {
