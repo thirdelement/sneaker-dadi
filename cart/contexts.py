@@ -16,7 +16,10 @@ def cart_contents(request):
         for size, quantity in quantity["items_by_size"].items():
             # If product is on sale use the sale price
             if product.on_sale is True:
-                total += quantity * Decimal(product.price * (100 - product.discount_percent) / 100).quantize(Decimal('0.00'))
+                total += quantity * Decimal(
+                    product.price * (
+                        100 - product.discount_percent) / 100).quantize(
+                            Decimal('0.00'))
             else:
                 total += quantity * product.price
             product_count += quantity

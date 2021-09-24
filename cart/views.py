@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render,\
+     redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 
 from products.models import Product
 
-# Create your views here.
 
 def view_cart(request):
     """ A view that renders the cart contents page """
@@ -17,7 +17,10 @@ def add_to_cart(request, item_id):
     # get quantity from form and convert to integer as string on form
     quantity = int(request.POST.get('quantity'))
     size = request.POST['size']
-    # get the redirect URL from the form so where know where to redirect once finished
+    """
+    Get the redirect URL from the form so 
+    we know where to redirect once finished
+    """
     redirect_url = request.POST.get('redirect_url')
     # get the cart if it exists or initialize to an empty dict if it doesn't
     cart = request.session.get('cart', {})
@@ -50,8 +53,11 @@ def adjust_cart(request, item_id):
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
     size = request.POST['size']
- 
-    # If quantity is greater than zero and less than 100 set the item size quantity
+    
+    """
+    If quantity is greater than zero and 
+    less than 100 set the item size quantity
+    """
     if 0 < quantity < 100:
         if item_id in list(cart.keys()):
             if size in cart[item_id]['items_by_size'].keys():
