@@ -1,9 +1,5 @@
-/*#page-container {
-  position: relative;
-  min-height: 100vh;
-}*/
-
-/* Landing Page */
+/* Home page ---------------------------*/
+/* Home page header */
 header.masthead {
   background-color: #000;
   height: 250px;
@@ -15,32 +11,18 @@ header.masthead {
 /* Home header image */
 .image-home {
   position: relative;
-  /*background-size: cover;*/
   background-image: url('/media/sneakers-black-background.webp');
   background-repeat: no-repeat;
   background-position: right;
   height: 240px;
 }
 
-/*header.masthead:before {
-  content: "";
-  position: absolute;
-  background-color: #1c375e;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
-}*/
-/*header.masthead h1,
-header.masthead .h1 {
-  font-size: 3rem;
-}*/
-
+/* header title */
 .masthead-title {
   font-size: 3rem;
 }
 
+/* Home page showcase text */
 .showcase .showcase-text {
   padding: 3rem;
 }
@@ -51,13 +33,11 @@ header.masthead .h1 {
   background-repeat: no-repeat;
 }
 
-/* Format sales text on home page */
+/* Sales text on home page */
 .sales-link,
 .sales-link:hover {
   text-decoration: none;
   color: #212529;
-  /*background: none;
-  border: none;*/
 }
 
 /* Showcase button colors */
@@ -67,19 +47,14 @@ header.masthead .h1 {
   border-color: #212529;
 }
 
-/* Showcase button colors */
+/* Showcase button colors on hover */
 .btn-showcase:hover {
   color: #212529;
   background-color: #fff;
   border-color: #212529;
 }
 
-@media (min-width: 768px) {
-  .showcase .showcase-text {
-    padding: 7rem;
-  }
-}
-
+/* Product_carousel & product_info.html ---------------------------*/
 /* Remove padding & add fixed height for card-body */
 .card-body-home {
   padding: 0rem 0rem !important;
@@ -91,6 +66,7 @@ header.masthead .h1 {
   padding: 0rem 0rem !important;
 }
 
+/* Card image dimensions */
 .card-img-top {
   max-height: 235px;
   max-width: 235px;
@@ -106,25 +82,12 @@ header.masthead .h1 {
   text-align: center;
 }
 
-/* Remove bottom margin from carousel product names */
-/*.product-name {
-  margin-bottom: 0rem;
-}*/
-
-
-/* Home page */
-/* Remove formatting for card links */
-.no-underline {
-  text-decoration: none;
-  color: inherit;
-}
-
 /* Remove bottom margin from paragraph */
 .remove-margin {
   margin-bottom: 0 !important;
 }
 
-/* Navbar */
+/* Navbar ---------------------------*/
 /* Match color for menu items */
 .text-nav {
   color: rgba(0, 0, 0, .55);
@@ -148,12 +111,6 @@ header.masthead .h1 {
   background-color: #212529;
 }
 
-/* mdbootstrap dropdown menu */
-/* Credit: https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/ */
-.dropdown-menu li {
-  position: relative;
-}
-
 .dropdown-menu .dropdown-submenu {
   display: none;
   position: absolute;
@@ -170,7 +127,7 @@ header.masthead .h1 {
   display: block;
 }
 
-/* Products */
+/* Products ---------------------------*/
 header.masthead-products {
   background-color: #ECEDEF;
   height: 250px;
@@ -182,20 +139,15 @@ header.masthead-products {
 /* Products header image */
 .image-products {
   position: relative;
-  /*background-size: cover;*/
   background-image: url('/media/white-sneaker.webp');
   background-repeat: no-repeat;
   background-position: right;
   height: 240px;
 }
 
-/* Products on sale */
+/* Products on sale ---------------------------*/
 header.masthead-sale-admin {
-  /*position: relative;*/
   background-color: #080808;
-  /*background-image: url('/media/white-sneaker-black2.webp');*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: right;*/
   height: 250px;
   width: 100%;
   padding-top: 3rem;
@@ -211,7 +163,7 @@ header.masthead-sale-admin {
   height: 250px;
 }
 
-/* Cart & Checkout*/
+/* Cart & Checkout ---------------------------*/
 header.masthead-shop {
   background-color: #ECEDEF;
   height: 250px;
@@ -223,7 +175,6 @@ header.masthead-shop {
 /* Cart & Checkout header image */
 .image-shop {
   position: relative;
-  /*background-size: cover;*/
   background-image: url('/media/blue-sneaker.webp');
   background-repeat: no-repeat;
   background-position: right;
@@ -242,13 +193,13 @@ header.masthead-success {
 /* Checkout success header image */
 .image-success {
   position: relative;
-  /*background-size: cover;*/
   background-image: url('/media/black-sneakers.webp');
   background-repeat: no-repeat;
   background-position: right;
   height: 240px;
 }
 
+/* Footer ---------------------------*/
 /* Part of solution to keep footer at bottom of page*/
 /* Credit: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
 footer {
@@ -299,6 +250,7 @@ body {
   color: #6c757d;
 }
 
+/* Edit_product ---------------------------*/
 /* Remove button features from Product Delete link */
 /* Credit: https://stackoverflow.com/questions/9467504/html-make-text-clickable-without-making-it-a-hyperlink/9467534 */
 .delete-link {
@@ -307,6 +259,7 @@ body {
   border: none;
 }
 
+/* Product_detail ---------------------------*/
 /* Change cursor to pointer & size for Product Review icons */
 .pointer-size {
   cursor: pointer;
@@ -321,8 +274,6 @@ body {
   font-style: normal;
 }
 
-
-/* Product Details */
 /* Category text color */
 #text-category {
   color: #212529;
@@ -332,18 +283,6 @@ body {
 .review-heading {
   display: inline-block;
 }
-
-/* Remove opacity for messages */
-/* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
-#message-container>div {
-  opacity: 1;
-}
-
-/*#message-container > div {
-  opacity: 1;
- -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
- filter: alpha(opacity=100);
-}*/
 
 /* Show down arrow on select form for size */
 /* Credit: https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing */
@@ -375,7 +314,12 @@ body {
   margin-top: 10px;
 }
 
-/* Shopping cart */
+/* Hide title on Product Detail page */
+.hidden {
+  display: none;
+}
+
+/* Shopping cart ---------------------------*/
 /* Heading underline */
 .hr-heading {
   width: 25%;
@@ -414,17 +358,49 @@ input[type=number] {
   text-align: center;
 }
 
-/* Toast Messages */
+/* Change Checkout button color on mouseover */
+/* Credit: https://stackoverflow.com/questions/25923623/change-hover-color-on-a-button-with-bootstrap-customization */
+.btn-dark:hover {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+/* Checkout Success ---------------------------*/
+/* Heading underline */
+.hr-heading-short {
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Profile ---------------------------*/
+/* H6 sizing used on Profile Order History title */
+.title-h6 {
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  display: block;
+}
+
+/* Toast notifications ---------------------------*/
+/* Remove opacity for messages */
+/* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
+#message-container>div {
+  opacity: 1;
+}
+
+/* Toast container settings */
 #message-container {
   position: fixed;
   top: 72px;
   right: 15px;
   z-index: 1060;
 }
-
-/*.toast {
-  z-index: 999999;
-}*/
 
 .cart-notification-wrapper {
   height: 105px;
@@ -436,33 +412,14 @@ input[type=number] {
   height: 2px;
 }
 
-/* Change Checkout button color on mouseover */
-/* Credit: https://stackoverflow.com/questions/25923623/change-hover-color-on-a-button-with-bootstrap-customization */
-.btn-dark:hover {
-  color: #212529;
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
-/* Checkout Success */
-/* Heading underline */
-.hr-heading-short {
-  width: 15%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* Allauth ---------------------------*/
 /* Allauth form formatting */
 .allauth-form-inner-content p {
   margin-top: 1.5rem;
-  /* mt-4 */
   color: #6c757d;
-  /* text-secondary */
 }
 
 .allauth-form-inner-content input {
-  /*border-color: #000;
-  border-radius: 0;*/
   margin-bottom: 1rem;
 }
 
@@ -480,26 +437,7 @@ input[type=number] {
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-  /* btn */
-  /*display: inline-block;
-  font-weight: 400;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: #000;
-  border: 1px solid #000;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0;*/
   margin-bottom: 1rem;
-
-  /* standard bootstrap btn transitions */
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .allauth-form-inner-content button:hover,
@@ -515,58 +453,10 @@ input[type=number] {
   margin-bottom: 1rem;
 }
 
-/* Product Form */
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.custom-checkbox .custom-control-label::before {
-  border-radius: 0;
-  border-color: #dc3545;
-}
-
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-  background-color: #dc3545;
-  border-color: #dc3545;
-  border-radius: 0;
-}
-
-/* Hide title on Product Detail page */
-.hidden {
-  display: none;
-}
-
-/* H6 sizing used on Profile Order History title */
-.title-h6 {
-  font-size: 1rem;
-  margin-top: 0;
-  margin-bottom: .5rem;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  display: block;
-}
-
-/* Media Queries */
+/* Media Queries ---------------------------*/
 @media (max-width: 1200px) {
 
   /* Resize strapline font */
-  /*header.masthead h1,
-  header.masthead .h1 {
-    font-size: 2.5rem;
-  }*/
   .masthead-title {
     font-size: 2.5rem;
   }
@@ -574,7 +464,7 @@ input[type=number] {
 
 @media (max-width: 992px) {
 
-  /* Resize Shop Now button */
+  /* Resize Shop Men's & Shop Women's button on header */
   .btn-group-lg>.btn,
   .btn-lg {
     padding: .375rem .75rem;
@@ -582,7 +472,7 @@ input[type=number] {
     border-radius: .25rem;
   }
 
-  /* Remove sub-title */
+  /* Remove sub-title on header */
   .sub-title {
     display: none;
   }
@@ -614,7 +504,7 @@ input[type=number] {
     background-position: right;
   }
 
-  /* Resize image Products page */
+  /* Resize image Sale page */
   header.masthead-sale-admin {
     padding-top: 1rem;
     padding-bottom: 15rem;
@@ -632,7 +522,7 @@ input[type=number] {
     padding-bottom: 15rem;
   }
 
-  /* Resize image Products page */
+  /* Resize image Cart page */
   .image-shop {
     background-image: url('/media/blue-sneaker-md.webp');
     background-position: right;
@@ -651,15 +541,11 @@ input[type=number] {
   }
 
   /* Resize strapline font */
-  /*header.masthead h1,
-  header.masthead .h1 {
-    font-size: 2rem;
-  }*/
   .masthead-title {
     font-size: 2rem;
   }
 
-  /* Resize Shop Now button */
+  /* Resize Shop Men's & Shop Women's button */
   .btn-group-lg>.btn,
   .btn-lg {
     padding: .25rem .5rem;
@@ -678,36 +564,33 @@ input[type=number] {
   }
 }
 
-/* Reduce margin on logo below 575px */
 @media (max-width: 575px) {
+
+  /* Reduce margin on logo */
   .navbar-brand {
     margin-right: 0rem;
   }
 
-  /* Resize image */
+  /* Resize header image */
   .image-home {
     background-image: url('/media/sneakers-black-background-sm.webp');
   }
 
-  /* Resize image */
   .image-products {
     background-image: url('/media/white-sneaker-sm.webp');
     background-position: top;
   }
 
-  /* Resize image */
   .image-sale-admin {
     background-image: url('/media/white-sneaker-black3-sm.webp');
     background-position: center;
   }
 
-  /* Resize image */
   .image-shop {
     background-image: url('/media/blue-sneaker-sm.webp');
     background-position: top;
   }
 
-  /* Resize image */
   .image-success {
     background-image: url('/media/black-sneakers-sm.webp');
     background-position: top;
@@ -728,32 +611,26 @@ input[type=number] {
     margin-top: 8.5rem !important;
   }
 
-  /* Add margin to heading shop buttons */
   #strap-products-women {
     margin-top: 8.5rem !important;
   }
 
-  /* Add margin to heading shop buttons */
   #strap-margin-sale {
     margin-top: 8.5rem !important;
   }
 
-  /* Add margin to heading shop buttons */
   #strap-sale-women {
     margin-top: 8.5rem !important;
   }
 
-  /* Add margin to heading shop buttons */
   #strap-margin-success {
     margin-top: 7rem !important;
   }
 
-  /* Add margin to heading shop buttons */
   #strap-success-women {
     margin-top: 7rem !important;
   }
 }
-
 
 @media screen and (min-width: 360px) {
 
@@ -772,6 +649,11 @@ input[type=number] {
 }
 
 @media screen and (min-width: 768px) {
+
+  /* Home page showcase text */
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
 
   /* Three carousel cells for medium sized devices */
   .carousel-cell {
@@ -828,7 +710,6 @@ input[type=number] {
 
 @media (min-width: 992px) and (max-width: 1200px) {
 
-  /*@media screen and (max-width: 1200px) {*/
   /* Margin for Account icon and search on collapse */
   .collapse-margin {
     margin-left: 1rem !important;
@@ -876,20 +757,13 @@ input[type=number] {
     margin-left: 0rem !important;
     margin-top: 0.25rem;
   }
-
-  /* Adjust font size for title on cart & checkout header */
-  /* header.masthead-success h1.masthead-title {
-    font-size: 1.815rem;
-  }*/
 }
 
 @media screen and (max-width: 575px) {
 
-  /* Adjust search box width and add margin on collapse */
+  /* Adjust search box width on collapse */
   .collapse-search {
-    /*margin-left: 0rem!important;*/
     width: 100% !important;
-    /*margin-bottom: .25rem!important;*/
   }
 
   /* Carousel & product list font size changes */
@@ -934,11 +808,11 @@ input[type=number] {
   .order-margin {
     margin-top: 3rem !important;
   }
-
 }
 
 @media screen and (max-width: 424px) {
 
+  /* Add margin to heading shop buttons */
   #strap-margin {
     margin-top: 8.25rem !important;
   }
