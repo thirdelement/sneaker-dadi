@@ -319,19 +319,6 @@ body {
   display: none;
 }
 
-/* Submit button for Product review modals */
-.btn-modal {
-  color: #fff;
-    background-color: #212529;
-    border-color: #212529;
-}
-
-.btn-modal:hover {
-  color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
-}
-
 /* Shopping cart ---------------------------*/
 /* Heading underline */
 .hr-heading {
@@ -467,15 +454,20 @@ input[type=number] {
 }
 
 /* Media Queries ---------------------------*/
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
 
   /* Resize strapline font */
   .masthead-title {
     font-size: 2.5rem;
   }
+
+  /* Adjust Related products carousel to display if more than 4 items on extra large display */
+  .related-xl-carousel {
+    display: none;
+  }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 
   /* Resize Shop Men's & Shop Women's button on header */
   .btn-group-lg>.btn,
@@ -489,9 +481,21 @@ input[type=number] {
   .sub-title {
     display: none;
   }
+
+  /* Adjust search box width and add margin on collapse */
+  .collapse-search {
+    margin-left: 0rem !important;
+    width: 50% !important;
+    margin-bottom: .25rem !important;
+  }
+
+  /* Adjust Related products carousel to display if more than 3 items on large display */
+  .related-lg-carousel {
+    display: none;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
   /* Resize image home page*/
   header.masthead {
@@ -575,6 +579,17 @@ input[type=number] {
   .strap-margin-products {
     margin-top: 0.75rem !important;
   }
+
+  /* Adjust Related products carousel to display if more than 2 items on medium display */
+  .related-md-carousel {
+    display: none;
+  }
+
+  /* Align margin for Add Review button */
+  #btn-review {
+    margin-left: 0rem !important;
+    margin-top: 0.25rem;
+  }
 }
 
 @media (max-width: 575px) {
@@ -643,136 +658,6 @@ input[type=number] {
   #strap-success-women {
     margin-top: 7rem !important;
   }
-}
-
-@media screen and (min-width: 360px) {
-
-  /* Two carousel cells for small devices */
-  .carousel-cell {
-    width: 50%;
-  }
-}
-
-@media (min-width: 576px) and (max-width: 991px) {
-
-  /* Strapline over two rows */
-  .one-line-strap {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-
-  /* Home page showcase text */
-  .showcase .showcase-text {
-    padding: 7rem;
-  }
-
-  /* Three carousel cells for medium sized devices */
-  .carousel-cell {
-    width: 33%;
-  }
-
-  /* Enable correct Related products carousel slide number */
-  .related-sm-carousel {
-    display: none;
-  }
-
-  /* Remove line break to heading shop buttons */
-  .strap-break {
-    display: none;
-  }
-
-  /* Remove line break to heading shop buttons */
-  .strap-break-products {
-    display: none;
-  }
-
-  /* Add display settings to Cart table */
-  .d-md-table-header-group {
-    display: table-header-group !important;
-  }
-
-}
-
-@media (min-width: 992px) {
-
-  /* Strapline over two rows */
-  .two-line-strap {
-    display: none;
-  }
-
-  /* Four carousel cells for larger devices */
-  .carousel-cell {
-    width: 25%;
-  }
-
-  /* Enable correct Related products carousel slide number */
-  .related-md-carousel {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-
-  /* Enable correct Related products carousel slide number */
-  .related-lg-carousel {
-    display: none;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-
-  /* Margin for Account icon and search on collapse */
-  .collapse-margin {
-    margin-left: 1rem !important;
-  }
-
-  /* Adjust search box width and add margin on collapse */
-  .collapse-search {
-    width: 25% !important;
-    margin-bottom: .25rem !important;
-  }
-}
-
-@media screen and (max-width: 1199px) {
-
-  /* Adjust Related products carousel to display if more than 4 items on extra large display */
-  .related-xl-carousel {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 991px) {
-
-  /* Adjust search box width and add margin on collapse */
-  .collapse-search {
-    margin-left: 0rem !important;
-    width: 50% !important;
-    margin-bottom: .25rem !important;
-  }
-
-  /* Adjust Related products carousel to display if more than 3 items on large display */
-  .related-lg-carousel {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 767px) {
-
-  /* Adjust Related products carousel to display if more than 2 items on medium display */
-  .related-md-carousel {
-    display: none;
-  }
-
-  /* Align margin for Add Review button */
-  #btn-review {
-    margin-left: 0rem !important;
-    margin-top: 0.25rem;
-  }
-}
-
-@media screen and (max-width: 575px) {
 
   /* Adjust search box width on collapse */
   .collapse-search {
@@ -860,7 +745,12 @@ input[type=number] {
   }
 }
 
-@media screen and (max-width: 359px) {
+@media screen and (min-width: 359px) {
+
+  /* Two carousel cells for small devices */
+  .carousel-cell {
+    width: 50%;
+  }
 
   /* One carousel cell for extra small devices */
   .carousel-cell {
@@ -874,5 +764,87 @@ input[type=number] {
 
   .product-name {
     font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+  /* Strapline over two rows */
+  .one-line-strap {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  /* Home page showcase text */
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+
+  /* Three carousel cells for medium sized devices */
+  .carousel-cell {
+    width: 33%;
+  }
+
+  /* Enable correct Related products carousel slide number */
+  .related-sm-carousel {
+    display: none;
+  }
+
+  /* Remove line break to heading shop buttons */
+  .strap-break {
+    display: none;
+  }
+
+  /* Remove line break to heading shop buttons */
+  .strap-break-products {
+    display: none;
+  }
+
+  /* Add display settings to Cart table */
+  .d-md-table-header-group {
+    display: table-header-group !important;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  /* Strapline over two rows */
+  .two-line-strap {
+    display: none;
+  }
+
+  /* Four carousel cells for larger devices */
+  .carousel-cell {
+    width: 25%;
+  }
+
+  /* Enable correct Related products carousel slide number */
+  .related-md-carousel {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  /* Enable correct Related products carousel slide number */
+  .related-lg-carousel {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+
+  /* Margin for Account icon and search on collapse */
+  .collapse-margin {
+    margin-left: 1rem !important;
+  }
+
+  /* Adjust search box width and add margin on collapse */
+  .collapse-search {
+    width: 25% !important;
+    margin-bottom: .25rem !important;
   }
 }
