@@ -1,17 +1,17 @@
-<!-- Delete Product Review Modal -->
+<!-- Delete Product Modal -->
 {% if user.is_superuser %}
 <div class="modal fade" id="deleteProduct{{ product.id }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteProductLabel">Delete Product Review</h5>
+                <h5 class="modal-title" id="deleteProductLabel">Delete Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 Are you sure you want to delete {{ product.name }}?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
                     <a href="{% url 'delete_product' product.id %}" id="delete_review" type="button"
                         class="btn btn-danger float-end font-normal">Delete</a>
                 </div>
@@ -19,7 +19,7 @@
     </div>
 </div>
 {% endif %}
-<!-- End Delete Product Review Modal -->
+<!-- End Delete Product Modal -->
  <!-- Add Product Review Modal -->
  {% if user.is_authenticated %}
  {% if can_add_review %}
