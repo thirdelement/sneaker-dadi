@@ -7,13 +7,24 @@
 
 {% block page_header %}
 <!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Sneaker Dadi's got you covered..</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Check out our fantastic Adidas footwear deals!</p>
+<header class="masthead-success">
+    <div class="container position-relative image-success">
+        <div class="ms-2 row">
+            <div class="col">
+                <div class="text-white">
+                    <!-- Page heading-->
+                    <h1 class="fw-bold one-line-strap masthead-title">Sneaker dreaming</h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">Dreaming of </h1>
+                    <h1 class="fw-bold two-line-strap masthead-title">sneakers..</h1>
+                    <p class="lead fw-normal text-white-50 mb-0 sub-title">Grab the shoes you deserve</p>
+                    <a href="{% url 'products' %}?gender=f,u" id="strap-products-women" class="btn btn-danger btn-lg me-md-2 mt-4">SHOP
+                        WOMEN'S</a>
+                    <br class="strap-break-products">
+                    <a href="{% url 'products' %}?gender=m,u" id="strap-margin-products"
+                        class="btn btn-danger btn-lg me-lg-5 me-md-4 mt-4 strap-margin-products">SHOP MEN'S</a>
+                </div>
+            </div>
         </div>
-    </div>
 </header>
 {% endblock %}
 
