@@ -46,34 +46,60 @@ Sneaker Dadi is an online shopping site for Adidas footwear.  It seeks to provid
 ### Design 
 A conventional Bootstrap light-coloured navbar is available on all pages.  On Desktop view, a brand logo and site name have been added on the left followed by shopping links for all products, female, male, unisex and sale.  From the right, there is the cart, sign in options and search bar.  Below this is a contrasting darker header section with hero image, call-to-action with Shop Women’s and Shop Men’s buttons.
 <div align="left"><img src="media/readme/header-get-your.webp"></div>
-There are four other different header sections used throughout the site.  
+
+There are four other different header sections used throughout the site. 
+
 <div align="left"><img src="media/readme/header-come-to.webp"></div>
 <div align="left"><img src="media/readme/header-got-sole.webp"></div>
 <div align="left"><img src="media/readme/header-impressed.webp"></div>
 <div align="left"><img src="media/readme/header-dreaming.webp"></div>
+
 The home page was created using the ‘Landing Page’ template from startbootstrap.com.  This provides an attractive and informative initial showcase for the product range.  The Best Sellers are shown using Bootstrap cards in a carousel at the top of the page in a carousel.  As with all product cards throughout the site, these show whether the product is on sale and if so show the original price with a strikethrough and the sale price in red.  The rating for each product will also be shown if given.
+
 <div align="left"><img src="media/readme/home-bestsellers.webp"></div>
+
 Below Best Sellers there are some showcase images, text and link to the mentioned products.  This section shows the products in real-life situations to encourage the customer to explore the different product ranges.
+
 <div align="left"><img src="media/readme/home-showcase.webp"></div>
+
 Following the product range showcase, the most recent male and female products bought by customers are shown in the Trending Right Now carousel.  
+
 <div align="left"><img src="media/readme/home-trending.webp"></div>
+
 The footer on the home page is dark to match the header with social media links.
+
 <div align="left"><img src="media/readme/footer-dark.webp"></div>
+
 A light footer is used on other pages to correspond to the light header.
+
 <div align="left"><img src="media/readme/footer-light.webp"></div>
+
 When a customer clicks on any of the navbar product links, the resulting product pages are based on the startbootstrap.com ‘Shop Homepage’ template.   The page body shows four products across on larger screens which is reduced in number for smaller devices.  The same Bootstrap cards are used as in the carousel on the home page so there is consistency.   
 <div align="left"><img src="media/readme/products.webp"></div>
+
 The product detail page is based on the ‘Shop Item’ template also from startbootstrap.com.  The header section is removed to allow screen space for the item image.  There is a plain white background to ensure the product is the main focus.  The layout includes a product title, description, size selector , ‘Add to cart’ and ‘Continue Shopping buttons.  There is a carousel showing four images of the product from different angles.
+
 <div align="left"><img src="media/readme/product_detail.webp"></div>
+
 Below there is a Reviews section with the same light grey background colour as the navbar to distinguish this area from the product description.
+
 <div align="left"><img src="media/readme/product-review.webp"></div>
+
 Followed by a Related products section showing male and female products from the same category.
+
 <div align="left"><img src="media/readme/related-products.webp"></div>
-The Registration, Sign-up, email confirmation, login and profile pages all use the same functional design incorporating the aforementioned header and footer.
-<div align="left"><img src="media/readme/related-profile.webp"></div>
+
+The Registration, Sign-up, email confirmation, login and profile pages all use the same functional design 
+incorporating the aforementioned header and footer.
+
+<div align="left"><img src="media/readme/profile.webp"></div>
+
 The shopping cart, checkout and checkout success pages are along the same lines.
+
 <div align="left"><img src="media/readme/cart.webp"></div>
+
 <div align="left"><img src="media/readme/checkout.webp"></div>
+
 <div align="left"><img src="media/readme/checkout-success.webp"></div>
 
 ### Colour Scheme
@@ -86,32 +112,56 @@ The font color is generally dark with differences in some areas.  For example, t
 
 ### Buttons
 A dark button with yellow background on hover was used to take the customer forward for all purchase actions, profile and site owner product updates.  To go back in the purchase process a button with black outline with black background on hover.
+
 <div align="left"><img src="media/readme/add-to-cart-button.webp"></div>
+
 A yellow button was used to Add a Review with the standard purchase button in the Add Product Review modal.
+
 <div align="left"><img src="media/readme/add-review-button.webp"></div>
+
 For all customer admin functions such as register, login, password reset, etc. there is a dark button with contrasting dark background.
+
 <div align="left"><img src="media/readme/sign-in-button.webp"></div>
+
 The links from the homepage are dark buttons with a white background on hover.  These provide more impact but without the yellow hover from the purchase process.
+
 <div align="left"><img src="media/readme/showcase-button.webp"></div>
+
 The usual red is used for Delete buttons with black outline for Cancel.
+
 <div align="left"><img src="media/readme/delete-button.webp"></div>
+
 Product review authors have a pen icon to launch the Edit Product Review modal.  The site owner has a trash can icon to launch the Delete Product Review modal.
+
 <div align="left"><img src="media/readme/header-button.webp"></div>
+
 The shopping cart icon is in black outline with black background on hover.
+
 <div align="left"><img src="media/readme/cart-empty-button.webp"></div>
+
 If there are items in the cart the number is highlighted yellow.
+
 <div align="left"><img src="media/readme/cart-full-button.webp"></div> 
+
 The search box and profile/product management button is in grey to match the other navbar links.
+
 <div align="left"><img src="media/readme/search-box.webp"></div> 
+
 The account management button has a grey (change to black?) background on hover as it’s secondary to the cart button.
+
 <div align="left"><img src="media/readme/profile-button.webp"></div> 
+
 There’s a back to the top button on the product pages.
+
 <div align="left"><img src="media/readme/btt-button.webp"></div> 
 
 ### Imagery
 The homepage header image features different sneaker types.  This is to make it clear this is what the website sells.  The imagery is paired with a humorous strap-line in order to build a fun Sneaker Dadi brand.  The Sneaker Dadi logo is an Adidas brand logo to reinforce that the site specialises in Adidas footwear.  The logo was found in an image search on Google using the Creative Commons licenses filter.
+
 <div align="left"><img src="media/readme/logo.webp"></div>   
+
 The product description includes a main display image carousel.  As is standard with most ecommerce sites, it is important to show the product from different angles to improve the user experience and ease the buying decision.  The product image is also shown in the ‘Add to cart’ notification message and Order Confirmation page again to help the customer buy more easily.  Product images were either webp or jpg file types to reduce data size and ease website loading.
+
 <div align="left"><img src="media/readme/toast-cart.webp"></div> 
 
 #### Icons
@@ -135,7 +185,6 @@ The Product Review table has a foreign key to the product and user tables.  It c
 Initially, average_rating was calculated via a function using the ProductReview model as shown:
 <div align="left"><img src="media/readme/get-average-rating.webp"></div>
 
-
 The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/media/readme/sneaker-dadi-database-diagram.pdf)
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="feat"></span>
@@ -155,17 +204,18 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
   - Flickity carousel was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allowed multiple frames to be displayed and has flexible configuration options.
 
 - [Django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
- - In order for the site owner to add in size availability according to stock levels, the Django Multiselectfield was used.  This provides checkboxes for each size option that can be purchased.
- <div align="left"><img src="media/readme/multiselectfield.webp"></div>
+  - In order for the site owner to add in size availability according to stock levels, the Django Multiselectfield was used.  This provides checkboxes for each size option that can be purchased.
+  <div align="left"><img src="media/readme/multiselectfield.webp"></div>
 
 - Notifications
- - Bootstrap toasts were used to feedback to the user on success (green toast capper), informational (blue toast capper) and error purposes (red toast capper).  
- Successful
- <div align="left"><img src="media/readme/toast-success.webp"></div>
- Informational
- <div align="left"><img src="media/readme/toast-info.webp"></div>
- Error
- <div align="left"><img src="media/readme/toast-error.webp"></div>
+  - Bootstrap toasts were used to feedback to the user on success (green toast capper), informational (blue toast capper) and error purposes (red toast capper).  
+
+  Successful
+  <div align="left"><img src="media/readme/toast-successful.webp"></div>
+  Informational
+  <div align="left"><img src="media/readme/toast-info.webp"></div>
+  Error
+  <div align="left"><img src="media/readme/toast-error.webp"></div>
 
 Responsive on all device sizes tested.
   - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
