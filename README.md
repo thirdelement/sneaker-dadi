@@ -20,8 +20,8 @@ Sneaker Dadi is an online shopping site for Adidas footwear.  It seeks to provid
 ## User Experience (UX)
 ### User stories
 #### Goals per user type
-|**No**||**User type**|**I want to..**|**So that I can..**|
-|:-----|:-----|:-----|:-----|
+|**No**|**User type**|**I want to..**|**So that I can..**|
+|---|---|---|---|
 |1|First time visitor|Quickly understand what the site is about|Decide to stay longer|
 |2||Browse products easily |Find products to buy|
 |3||Search for sale products|Save money|
@@ -32,16 +32,16 @@ Sneaker Dadi is an online shopping site for Adidas footwear.  It seeks to provid
 |8||Receive feedback throughout order process|So I can buy easily|
 |9||Recover my password if needed|Log back in if forgotten password.|
 |10||Ensure my account is secure|Have peace of mind|
-|Returning visitor|Log in and out easily|To use saved details and add a review|
-||Save my contact details|Save time|
-||See previous orders|See what I have purchased|
-||Shop easily on all devices|Shop conveniently|
-||Add a review|To show appreciation or complain|
-||Receive free delivery|Save money|
-|Site Owner|Ensure site is secure|Secure my business and reputation|
-||CRUD for shopping items|Change stock according to popularity|
-||CRUD for sale items|Control sales strategy|
-||Delete reviews |Remove inappropriate reviews|
+|1|Returning visitor|Log in and out easily|To use saved details and add a review|
+|2||Save my contact details|Save time|
+|3||See previous orders|See what I have purchased|
+|4||Shop easily on all devices|Shop conveniently|
+|5||Add a review|To show appreciation or complain|
+|6||Receive free delivery|Save money|
+|1|Site Owner|Ensure site is secure|Secure my business and reputation|
+|2||CRUD for shopping items|Change stock according to popularity|
+|3||CRUD for sale items|Control sales strategy|
+|4||Delete reviews |Remove inappropriate reviews|
 
 ### Design 
 A conventional Bootstrap light-coloured navbar is available on all pages.  On Desktop view, a brand logo and site name have been added on the left followed by shopping links for all products, female, male, unisex and sale.  From the right, there is the cart, sign in options and search bar.  Below this is a contrasting darker header section with hero image, call-to-action with Shop Women’s and Shop Men’s buttons.
@@ -58,62 +58,114 @@ Below Best Sellers there are some showcase images, text and link to the mentione
 Following the product range showcase, the most recent male and female products bought by customers are shown in the Trending Right Now carousel.  
 <div align="left"><img src="media/readme/home-trending.webp"></div>
 The footer on the home page is dark to match the header with social media links.
+<div align="left"><img src="media/readme/footer-dark.webp"></div>
+A light footer is used on other pages to correspond to the light header.
+<div align="left"><img src="media/readme/footer-light.webp"></div>
+When a customer clicks on any of the navbar product links, the resulting product pages are based on the startbootstrap.com ‘Shop Homepage’ template.   The page body shows four products across on larger screens which is reduced in number for smaller devices.  The same Bootstrap cards are used as in the carousel on the home page so there is consistency.   
+<div align="left"><img src="media/readme/products.webp"></div>
+The product detail page is based on the ‘Shop Item’ template also from startbootstrap.com.  The header section is removed to allow screen space for the item image.  There is a plain white background to ensure the product is the main focus.  The layout includes a product title, description, size selector , ‘Add to cart’ and ‘Continue Shopping buttons.  There is a carousel showing four images of the product from different angles.
+<div align="left"><img src="media/readme/product_detail.webp"></div>
+Below there is a Reviews section with the same light grey background colour as the navbar to distinguish this area from the product description.
+<div align="left"><img src="media/readme/product-review.webp"></div>
+Followed by a Related products section showing male and female products from the same category.
+<div align="left"><img src="media/readme/related-products.webp"></div>
+The Registration, Sign-up, email confirmation, login and profile pages all use the same functional design incorporating the aforementioned header and footer.
+<div align="left"><img src="media/readme/related-profile.webp"></div>
+The shopping cart, checkout and checkout success pages are along the same lines.
+<div align="left"><img src="media/readme/cart.webp"></div>
+<div align="left"><img src="media/readme/checkout.webp"></div>
+<div align="left"><img src="media/readme/checkout-success.webp"></div>
 
 ### Colour Scheme
-The Heroic-features colour scheme was not altered.  This provided a dark menu bar and footer which was distinct to the grey header and footer for the feature boxes.  The main colour interest for each page is from the Jumbotron image.  Bold, bright imagery was preferred in order to inject some energy and excitement into the goal setting process. 
+The template colour schemes were not altered.  The products stand out well against the plain white background with contrasting shaded areas for product review, related products and contrasting header and footer. 
 ### Typography
-It did not seem necessary to change the default Bootstrap fonts as these were clear and easy to read.  There was no other specific stylistic requirement to fulfil other than this. 
+The template typography was also unchanged.  The default Bootstrap font was used throughout to be clear and readable.
+
+The font color is generally dark with differences in some areas.  For example, the product review shows dark text for the comment set against grey text for the comment author and date.  The verified purchase text is brown/gold similarly used by Amazon.
+<div align="left"><img src="media/readme/verified-purchase.webp"></div>
+
 ### Buttons
-The default Bootstrap button colours were used.  It was considered that the default colours again provided the clarity and consistency needed.  This usage corresponded with Bootstrap recommendations as follows:
-- Btn-info – More Info
-- Btn-success – Done 
-- Btn-warning – Delete (when proceeding a Confirm Delete modal) and Cancel
-- Btn-primary – Submit, Edit or Find Out More!
-    <div align="left"><img src="static/images/readme-images/buttons-four.png"></div>
-- Btn-danger – Delete, Start now! 
-- Btn-secondary – Cancel, In Progress or Back
-    <div align="left"><img src="static/images/readme-images/buttons-two.png"></div>
+A dark button with yellow background on hover was used to take the customer forward for all purchase actions, profile and site owner product updates.  To go back in the purchase process a button with black outline with black background on hover.
+<div align="left"><img src="media/readme/add-to-cart-button.webp"></div>
+A yellow button was used to Add a Review with the standard purchase button in the Add Product Review modal.
+<div align="left"><img src="media/readme/add-review-button.webp"></div>
+For all customer admin functions such as register, login, password reset, etc. there is a dark button with contrasting dark background.
+<div align="left"><img src="media/readme/sign-in-button.webp"></div>
+The links from the homepage are dark buttons with a white background on hover.  These provide more impact but without the yellow hover from the purchase process.
+<div align="left"><img src="media/readme/showcase-button.webp"></div>
+The usual red is used for Delete buttons with black outline for Cancel.
+<div align="left"><img src="media/readme/delete-button.webp"></div>
+Product review authors have a pen icon to launch the Edit Product Review modal.  The site owner has a trash can icon to launch the Delete Product Review modal.
+<div align="left"><img src="media/readme/header-button.webp"></div>
+The shopping cart icon is in black outline with black background on hover.
+<div align="left"><img src="media/readme/cart-empty-button.webp"></div>
+If there are items in the cart the number is highlighted yellow.
+<div align="left"><img src="media/readme/cart-full-button.webp"></div> 
+The search box and profile/product management button is in grey to match the other navbar links.
+<div align="left"><img src="media/readme/search-box.webp"></div> 
+The account management button has a grey (change to black?) background on hover as it’s secondary to the cart button.
+<div align="left"><img src="media/readme/profile-button.webp"></div> 
+There’s a back to the top button on the product pages.
+<div align="left"><img src="media/readme/btt-button.webp"></div> 
+
 ### Imagery
-Vector graphics have been selected throughout in an effort to appeal to the user’s imagination rather than photos depicting stark reality.  Success with one’s life goals is often related to mental strength and leaps of faith. A vector graphic is the creator’s own version of reality and likewise Goal Getter is encouraging users to bring their own ambitions and versions of reality into being. 
+The homepage header image features different sneaker types.  This is to make it clear this is what the website sells.  The imagery is paired with a humorous strap-line in order to build a fun Sneaker Dadi brand.  The Sneaker Dadi logo is an Adidas brand logo to reinforce that the site specialises in Adidas footwear.  The logo was found in an image search on Google using the Creative Commons licenses filter.
+<div align="left"><img src="media/readme/logo.webp"></div>   
+The product description includes a main display image carousel.  As is standard with most ecommerce sites, it is important to show the product from different angles to improve the user experience and ease the buying decision.  The product image is also shown in the ‘Add to cart’ notification message and Order Confirmation page again to help the customer buy more easily.  Product images were either webp or jpg file types to reduce data size and ease website loading.
+<div align="left"><img src="media/readme/toast-cart.webp"></div> 
 
-The images have been picked to portray inspirational activities such as climbing towards a goal and reaching a mountain peak.  There are also motivational images featuring objects such as a rocket taking off and dart stuck in the bull’s eye of a dart board.  When people have been shown there has been an effort to show ethnic and gender diversity.
+#### Icons
+Bootstrap Icons were used for all site icons such as star ratings, chevrons, trash can, pen, etc.
+
 ### Wireframes 
-The wireframes for Desktop, Tablet and Mobile versions are [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_wireframes.pdf)
+The wireframes for Desktop, Tablet and Mobile versions are [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/media/readme/sneaker-dadi-wireframes.pdf)
 
-These were created at the start of the project.  The resulting website is very similar but it does diverge from the wireframes in some areas.  These include:
-  - The website uses Tabs for the Add Goal form rather than separate web pages. 
-  - The profile page does not provide the capability to change your username and password.
-  - The Shared Goals and Profiles page use Bootstrap cards rather than an Accordion.
-  - The images shown have been changed in some cases.
-  - The website does not include a Contact form.
+These wireframes were created at the start of the project and although very similar to the resulting website include some features that were not implemented:
+  - Wish List 
+  - Add to Cart button on the product card 
+  - Profile menu 
+  - Change password
 ### Database model 
-The database model was a non-relational database structure with three collections for categories, goals and users.  A separate collection for each form section corresponding to Goal, Reality, Options and Way Forward was originally considered.  This was abandoned due to improved performance and reduction in database transactions with one goals collection.
+The database model uses a relational structure with tables for Product, ProductReview, Order, OrderLineItem, User, UserProfile and Categories.
 
-The goals document is created when the user submits a new goal from the Options tab on the Add Goal page.  This saves options back to the database so they can be presented in a drop-down menu on the Way Forward tab.  Prior to this point the Way Forward tab is disabled.
+As shoes are the only product sold, sizes are relatively straightforward and so could be held on the Product table.  The product table also holds a Boolean field to show whether the product was on sale, the discount percentage, average rating, gender and images.  The home page Best Sellers carousel is created from a query on the Product table filtering products by gender in descending order of the total sum of quantity sold for each from the OrderLineItem table.  Similarly, the Trending Right Now carousel is created from a query on the Product table filtering for products by gender ordered by descending purchase date from the Order table.
 
-On submission the user is directed from the Add Goal page to the Edit Goal page landing on the active Way Forward tab.  The user then selects a chosen option from the drop-down menu and updates the remaining fields before submitting again.
+The Product Review table has a foreign key to the product and user tables.  It contains a text field for user comments, a rating from 1 to 5 and a Boolean field for verified purchase.  In order to check for a verified purchase an the ‘add_review’ view checks whether the same user profile has purchased the product from the OrderLineItem table.
 
-Therefore, there are two submissions to the database for each goal.  The original website design included a separate web page for each GROW section with four submissions per goal.  This design leverages an improved result with less database communication and fewer resources.
+Initially, average_rating was calculated via a function using the ProductReview model as shown:
+<div align="left"><img src="media/readme/get-average-rating.webp"></div>
 
-The database schema is [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_Database-schema.pdf)
-### Site map
-The public website includes Home, About, Shared Goals, Log In and Register pages.  Once logged in, the standard user has additional pages for Profile, Add Goal, Edit Goal pages.  The Admin user has access to Categories, Add and Edit Categories.
 
-The site map is [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_sitemap.pdf)
+The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/media/readme/sneaker-dadi-database-diagram.pdf)
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="feat"></span>
 
 ## Features
-The Bootstrap toolkit was used throughout including:
-  - [Grid](https://getbootstrap.com/docs/4.6/layout/grid/)
-  - [Nav bar](https://getbootstrap.com/docs/4.6/components/navbar/)
-  - [Modal](https://getbootstrap.com/docs/4.6/components/modal/)
-  - [Tabs](https://getbootstrap.com/docs/4.6/components/navs/#tabs)
-  - [Cards](https://getbootstrap.com/docs/4.6/components/card/)
-  - [Collapse](https://getbootstrap.com/docs/4.6/components/collapse/)
-  - [Forms](https://getbootstrap.com/docs/4.6/components/forms/)
-  - [Alert](https://getbootstrap.com/docs/4.6/components/alerts/)
-  - [Buttons](https://getbootstrap.com/docs/4.6/components/buttons/)
+- The Bootstrap toolkit was used throughout including:
+  - [Grid](https://getbootstrap.com/docs/5.1/layout/grid/)
+  - [Navbar](https://getbootstrap.com/docs/5.1/components/navbar/)
+  - [Modal](https://getbootstrap.com/docs/5.1/components/modal/)
+  - [Cards](https://getbootstrap.com/docs/5.1/components/card/)
+  - [Carousel](https://getbootstrap.com/docs/5.1/components/carousel/)
+  - [Forms](https://getbootstrap.com/docs/5.1/forms/overview/)
+  - [Buttons](https://getbootstrap.com/docs/5.1/components/buttons/)
+  - [Toasts](https://getbootstrap.com/docs/5.1/components/toasts/)
+
+- [Flickity carousel](https://flickity.metafizzy.co/)
+  - Flickity carousel was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allowed multiple frames to be displayed and has flexible configuration options.
+
+- [Django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
+ - In order for the site owner to add in size availability according to stock levels, the Django Multiselectfield was used.  This provides checkboxes for each size option that can be purchased.
+ <div align="left"><img src="media/readme/multiselectfield.webp"></div>
+
+- Notifications
+ - Bootstrap toasts were used to feedback to the user on success (green toast capper), informational (blue toast capper) and error purposes (red toast capper).  
+ Successful
+ <div align="left"><img src="media/readme/toast-success.webp"></div>
+ Informational
+ <div align="left"><img src="media/readme/toast-info.webp"></div>
+ Error
+ <div align="left"><img src="media/readme/toast-error.webp"></div>
 
 Responsive on all device sizes tested.
   - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
