@@ -446,100 +446,144 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
 21.	Click Enable Automatic Deploys
     <div align="left"><img src="media/readme/heroku-enable-deploys.webp"></div>
 
-### Heroku - create app
-1.	Log in to Heroku and click New, Create new app (also required to add name and region).
-2.	In the Deploy menu, Deployment method select GitHub.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-3.	Check GitHub profile is displayed then add repository name and click Connect.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-    Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
+### Configuring S3
+1.	Create an AWS account
+2.	Create a bucket for S3
+    <div align="left"><img src="media/readme/s3-create-bucket.webp"></div>
+3.	Uncheck Block all public access and acknowledge settings
+    <div align="left"><img src="media/readme/s3-block-access.webp"></div>
+    <div align="left"><img src="media/readme/s3-acknowledge.webp"></div>
+4.	Enable static website hosting & Save changes.
+    <div align="left"><img src="media/readme/s3-enable-static.webp"></div>
+5.	Add default values for index, error doc & click Save.
+    <div align="left"><img src="media/readme/s3-default-values.webp"></div>
+6.	In Permissions on CORS paste the following:
+    <div align="left"><img src="media/readme/s3-cors.webp"></div>
+7.	Click Edit in Bucket policy to create a security policy
+    <div align="left"><img src="media/readme/s3-edit-bucket.webp"></div>
+8.	Click Policy Generator and for Principal enter * and actions add Get Object
+    <div align="left"><img src="media/readme/s3-get-object.webp"></div>
+9.	Enter the ARN as above.
+10.	Click Add statement
+    <div align="left"><img src="media/readme/s3-add-statement.webp"></div>
+11.	Click Generate Policy
+12.	Copy Policy JSON Document
+    <div align="left"><img src="media/readme/s3-policy-json.webp"></div>
+13.	Paste into Bucket policy (with slash & asterisk at end of Reource for full access) & Save changes.
+14.	Click Edit in Access Control List, check box for List access for Everyone & Save changes.
+    <div align="left"><img src="media/readme/acl.webp"></div>
 
-4.	Click Settings, Reveal Config Vars and add details from env.py:
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
-6.	Enable Automatic Deploys.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-7.	Click Deploy Branch.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-8.	Check app was deployed ok.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-    
-### Gitpod - Connect Flask to Mongodb
-1.	Install flask-pymongo which is a third party library required for Flask to communicate with Mongodb.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-2.	Install dnspython in order to use the Mongo SRV connection string.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-3.	Update requirements.txt and save.
-    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
-4.	Add additional imports to app.py to reflect new installations.  This includes BSON which is a JSON-like format in which Mongodb stores data.
-5.	Update connection settings in app.py.
-    <div align="left"><img src="static/images/readme-images/app-config.png"></div>
-### Mongodb - Connect to application
-1.	In Mongodb go to Clusters, Overview, Connect, Connect your application.
-    <div align="left"><img src="static/images/readme-images/connect-firstcluster.png"></div>
-    <div align="left"><img src="static/images/readme-images/connect-firstcluster2.png"></div>
-### Gitpod - Additional settings
-1.	Copy the connection string and add to MONGO URI value in env.py:
-    <div align="left"><img src="static/images/readme-images/os-environ.png"></div>
-2.	Add to MONGO_URI in ConfigVars in Heroku.
-    <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
-3.	In app.py set up an instance of PyMongo and add the app using a constructor method.
-    <div align="left"><img src="static/images/readme-images/mongo-pymongo.png"></div>
-4.	Add initial get_goals function.
-    <div align="left"><img src="static/images/readme-images/route-getgoals.png"></div>
-5.	Add additional functionality from Flask.
-    <div align="left"><img src="static/images/readme-images/from-flask.png"></div>
-6.	Create the templates.
-    <div align="left"><img src="static/images/readme-images/mkdir.png"></div>
-7.	Create base.html as a parent template for all views and templates.  This contains all references to external files and third party libraries for Bootstrap, JS and CSS.
-8.	Add Werkzeug to app.py and requirements.txt.
-    <div align="left"><img src="static/images/readme-images/werkzeug.png"></div>
-### Gitpod - Additional settings
-1.	Log into GitHub and locate the goal-getter repository
-2.	Under the repository name, click ‘Clone or download’.
-3.	To clone the repository using HTTPS, under ‘Clone with HTTPS’, copy the link.
-4.	Opt Git Bash
-5.	Change the current working directory to the location where you want the cloned directory to be made.
-6.	Type git clone, and then paste the URL you copied in step 3.<br>
-`$ git clone https://github.com/thirdelement/goal-getter`<br>
-7.	Click Enter.  Your local clone will be created.
+### AWS IAM (Identity & Access Management)
+1.	Navigate to IAM, User groups, Create user group
+2.	Enter a name and click Create group
+    <div align="left"><img src="media/readme/iam-create-group.webp"></div>
+3.	In Policies, click Create Policy
+    <div align="left"><img src="media/readme/iam-create-policy.webp"></div>
+4.	On the JSON tab, click Import managed policy
+    <div align="left"><img src="media/readme/iam-json.webp"></div>
+5.	Search for S3 and import the AmazonS3FullAccess policy
+    <div align="left"><img src="media/readme/iam-import-policies.webp"></div>
+6.	Add in the ARN from the AWS Policy Generator page
+    <div align="left"><img src="media/readme/iam-add-arn.webp"></div>
+7.	Click Next Tags and Review
+    <div align="left"><img src="media/readme/iam-next-tags.webp"></div>
+    <div align="left"><img src="media/readme/iam-next-review.webp"></div>
+8.	Add a name, Description and click Create policy
+    <div align="left"><img src="media/readme/iam-review-policy.webp"></div>
+9.	Attach the policy to the group created.
+10.	In User Groups select your group
+    <div align="left"><img src="media/readme/iam-user-groups.webp"></div>
+11.	In Permissions, click Attach Policies
+    <div align="left"><img src="media/readme/iam-permissions.webp"></div>
+12.	Select the policy created & click Add permissions
+    <div align="left"><img src="media/readme/iam-other-permissions.webp"></div>
+13.	In Users, click Add users
+    <div align="left"><img src="media/readme/iam-add-users.webp"></div>
+14.	Add username and Access Type as Programmatic access & click Next
+    <div align="left"><img src="media/readme/iam-add-username.webp"></div>
+15.	Select to add user to our policy, click Next and Create User
+    <div align="left"><img src="media/readme/iam-add-user-to-policy.webp"></div>
+16.	Click Download.csv to get your access credentials.
+    <div align="left"><img src="media/readme/iam-download.webp"></div>
 
-Please see [this link](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop) for more detailed explanation.
+### Connect Django to S3
+1.	Install boto3
+    <div align="left"><img src="media/readme/django-boto.webp"></div>
+2.	Install Django Storages
+    <div align="left"><img src="media/readme/django-storages.webp"></div>
+3.	Freeze requirements
+    <div align="left"><img src="media/readme/heroku-freeze.webp"></div>
+4.	Add the following settings for Django to connect to S3
+    <div align="left"><img src="media/readme/django-settings.webp"></div>
+5.	In Heroku Config Vars add the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and delete the DISABLE_COLLECTSTATIC variable
+6.	In settings.py tell Django where static files are located
+    <div align="left"><img src="media/readme/django-static-files.webp"></div>
+7.	Create a media folder on S3 and upload files
+    <div align="left"><img src="media/readme/django-upload.webp"></div>
+8.	Select Grant Public Read Access to the objects
+    <div align="left"><img src="media/readme/django-permissions.webp"></div>
+
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="cred"></span>
 
 ## Credits
 ### Code
-- The site was based on the Code Institute Task Manager project.
-- Bootstrap 4.6 was used throughout the site so that it is responsive to different devices and viewport sizes..
+- The site was based on the Code Institute Boutique Ado project.
+- Bootstrap 5.1 was used throughout the site so that it is responsive to different devices and viewport sizes.
 - Code was used from external sources in the following instances:
-  - [Show HTML validity messages](https://stackoverflow.com/questions/32829776/setting-custom-html5-validity-message-property-ignores-pattern-regex)
-  - [Display message if Add Goal form does not meet validity requirements](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752)
-  - [Bootstrap Tab buttons](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752) 
-  - [jQuery Datepicker](https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior)
-  - [Several submit buttons on the same form](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form)
-  - [Error 404 handling](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/)
-  - [Use background image and background color together](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
-  - [Correct regex usage](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
-  - [Regex pattern](https://regexr.com/)
-  - [User login check](https://github.com/Edb83/self-isolution)
+
+#### Home - views
+  - [Most sold male product](https://stackoverflow.com/questions/9278796/ordering-a-query-by-aggregate-sum-in-django-but-not-getting-result-as-expected)
+  - [Get top three distinct products](https://stackoverflow.com/questions/19283225/how-can-i-remove-duplicate-objects-in-an-order-by-query)
+
+#### Product - views
+  - [Sorting nulls last using F expression](https://helperbyte.com/questions/77886/django-how-to-make-a-discount-for-the-item) 
+  - [Applying F expression](https://github.com/Edb83/moose-juice/blob/master/products/views.py) 
+
+  - [Number of reviews](https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s)
+  - [Check whether user has ordered product previously](https://github.com/Edb83/moose-juice/blob/master/products/views.py)
+
+#### Product - model
+  - [Calculate cost with discount percentage](https://helperbyte.com/questions/77886/django-how-to-make-a-discount-for-the-item)
+  - [Raise validation error if on_sale is True and discount_percent field is empty](https://stackoverflow.com/questions/13440097/django-modelform-booleanfield-required-field-is-not-working)
+
+#### ProductReview
+  - [Create product reviews](https://www.youtube.com/watch?v=7tyMyLCjKVg&list=PLgnySyq8qZmrxJvJbZC1eb7PD4bu0a-sB&index=31)
+
+#### Toasts
+  - [Add additional data to Django messages](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages/43729673#43729673)
+  - [Grouping conditions in Django if statement](https://stackoverflow.com/questions/23637846/grouping-conditions-in-django-template-if-statement)
+
+#### CSS
+  - [Toast opacity](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages/43729673#43729673)
+  - [Keep footer at bottom of page](https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b)
+  - [Remove button features from Product Delete link](https://stackoverflow.com/questions/9467504/html-make-text-clickable-without-making-it-a-hyperlink/9467534)
+  - [Show down arrow on select form for size](https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing)
+  - [Add margin-top to Add to Cart button on wrap](https://stackoverflow.com/questions/30887071/margin-top-only-when-the-flex-item-is-wrapped)
+  - [Hide increment/decrement arrows in quantity input box](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
+  - [Change Checkout button color on mouseover](https://stackoverflow.com/questions/25923623/change-hover-color-on-a-button-with-bootstrap-customization)
+  - [Spinner alignment](https://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-of-parent-container)
+
+#### Settings
+  - [Define media URL not set in template](https://stackoverflow.com/questions/31925009/django-media-url-not-set-in-template)
+  - [Timezone settings](https://stackoverflow.com/questions/18622007/runtimewarning-datetimefield-received-a-naive-datetime)
+
 ### Content
 - All content was written by the developer.
-### Content
-The images used all had Creative Commons licences:
-  - [Cogs](https://pixabay.com/vectors/gear-options-preferences-settings-149292/)
-  - [Grow-diagram](https://commons.wikimedia.org/wiki/File:GROW_cycle.png)
-  - [Man-crossroads](https://commons.wikimedia.org/wiki/File:Cartoon_Man_Arriving_At_A_Career_Crossroad.svg)
-  - [Man-woman-trophy1](https://pixabay.com/vectors/business-competition-trophy-cup-5820660/)
-  - [Mountains-success](https://pixabay.com/illustrations/success-customer-achievement-goal-4369215/)
-  - [People1](https://pixabay.com/illustrations/people-cartoon-man-comic-fun-4879060/)
-  - [Rocket](https://pixabay.com/vectors/rocket-rocket-launch-launch-space-4984618/)
-  - [Woman-mountaintop](https://pixabay.com/vectors/success-woman-mountain-top-concept-5836546/)
-  - [World-growth6](https://pixabay.com/vectors/world-growth-statistics-chart-6158920/)
-  - [Target-arrow](http://www.mepixels.com/photo/target-2880)
-  - [Favicon](https://pixabay.com/vectors/target-arrow-bulls-eye-bullseye-2070972/)
+
+### Media
+The images used were sourced as follows:
+  - [Adidas logo](https://legal-patent.com/international-intellectual-property/adidas-3-stripe-design-likelihood-confusion-not-trefoil-logo/)
+  - [Athlete-grey-sneakers](https://unsplash.com/photos/Jc-UCKGhIlU)
+  - [Black-sneakers](https://unsplash.com/photos/pFzxaKhdFME)
+  - [Blue-sneaker](https://www.adidas.fr/chaussure-sl-72/EG6849.html?af_channel=Shopping_Search&af_reengagement_window=30d&c=GS-OPT-FR-Best_Performers&cm_mmc=AdieSEM_PLA_Google-_-GS-OPT-FR-Best_Performers-_-NEW%20Best%20Performing%20Products%20-%20single%20ad%20group-_-PRODUCT_GROUP&cm_mmca1=FR&cm_mmca2=&ds_agid=58700006641870291&gclid=EAIaIQobChMIzb6irNWP8wIVyMLVCh04mww5EAQYECABEgIHj_D_BwE&gclsrc=aw.ds&is_retargeting=true&pid=googleadwords_temp)
+  - [Couple-on-bench2](https://pixabay.com/illustrations/success-customer-achievement-goal-4369215/)
+  - [Orange-black-sneakers](https://pixabay.com/illustrations/people-cartoon-man-comic-fun-4879060/)
+  - [Sneakers-black-background](https://pixabay.com/vectors/rocket-rocket-launch-launch-space-4984618/)
+  - [White-sneaker-black3](https://pixabay.com/vectors/success-woman-mountain-top-concept-5836546/)
+  - [All product images and data](https://data.world/data-hut/product-data-from-adidas)
+ 
 ### Acknowledgements
 -	Anto Rodriguez for his mentoring and advice.
--	Code Institute Tutors for assistance with structure and routing. 
--	Ed Bradley for MS3 prep session and useful example project.
+-	Code Institute Tutors for assistance with feature implementation and bug fixes. 
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
