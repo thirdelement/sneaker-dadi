@@ -343,8 +343,8 @@ The following items have been successfully tested on each page or component:
 - Attempted to use context.py but could only receive subtotal for the last round of iteration.
 <div align="left"><img src="media/testing/bug4-loop.webp"></div>
 
-- Researching the issue shows this can be done in the template using [django-mathfilters](https://pypi.org/project/django-mathfilters/) module.  However, it seems not best practice to work with data in the template.
-- **Fix:** After checking Django docs and reviewing Code Institute Boutique Ado videos, added `{% load cart_tools %}` at the top of the toast.   Therefore, could call cart_tools.py template tag and the calc_subtotal function. 
+- Research shows this can be done in the template using the [django-mathfilters](https://pypi.org/project/django-mathfilters/) module.  However, it seems not best practice to work with data in the template.
+- **Fix:** After checking Django docs and reviewing Code Institute videos, added `{% load cart_tools %}` at the top of the toast.   Therefore, could call cart_tools.py template tag and the calc_subtotal function. 
 
 **5.	Unable to position bootstrap spinner in centre page.**
 - The spinner was not aligned correctly with settings below settings from Code Institute example project:
@@ -356,47 +356,47 @@ The following items have been successfully tested on each page or component:
 - **Fix:** Add the settings below:
 <div align="left"><img src="media/testing/bug5-fix.webp"></div>
 
-6.	Receive error when attempting to login after creating profile app on website and admin.
+**6.	Receive error when attempting to login after creating profile app on website and admin.**
 <div align="left"><img src="media/testing/bug6-related-object.webp"></div>
 
 - The traceback showed the following:
 <div align="left"><img src="media/testing/bug6-traceback.webp"></div>
 
-- Commenting out the above line enabled login with no error.
 - **Fix:** Comment out the above code so a profile is created. 
 <div align="left"><img src="media/testing/bug6-fix1.webp"></div>
 
 - Login and set signal back to the way it was.
 <div align="left"><img src="media/testing/bug6-fix2.webp"></div>
 
-7.	The template does not pick up MEDIA_URL.
+**7.	The template does not pick up MEDIA_URL.**
 <div align="left"><img src="media/testing/bug7-failed.webp"></div>
 
 - **Fix:** Define the django.template.context_processors.media template context processor in settings.py.  See this [StackOverflow article](https://stackoverflow.com/questions/31925009/django-media-url-not-set-in-template)
 <div align="left"><img src="media/testing/bug7-fix.webp"></div>
 
-8.	If the Boolean field ‘on_sale’ in the Product model is True but nothing is entered for ‘discount_percent’ the following error is displayed.
+**8.	If the Boolean field ‘on_sale’ in the Product model is True but nothing is entered for ‘discount_percent’ the following error is displayed.**
 <div align="left"><img src="media/testing/bug8-type-error.webp"></div>
 
-- **Fix:** Add clean() method to Product model as described in this [StackOverflow article](https://stackoverflow.com/questions/13440097/django-modelform-booleanfield-required-field-is-not-working)
+- **Fix:** Add the clean() method to the Product model as described in this [StackOverflow article](https://stackoverflow.com/questions/13440097/django-modelform-booleanfield-required-field-is-not-working)
 <div align="left"><img src="media/testing/bug8-fix.webp"></div>
 
-- Once fix implemented receive a form validation error:
+- On implementation, same behaviour produces the desired form validation warning:
 <div align="left"><img src="media/testing/bug8-fix2.webp"></div>
 
-9.	For style purposes attempted to configure allauth messages to display in the toast header only.  To do this implemented an if statement:
+**9.	For style purposes attempted to configure allauth messages to display in the toast header only.**  
+-To do this implemented an if statement:
 <div align="left"><img src="media/testing/bug9-if-statement.webp"></div>
 
 - This appears to work apart from the last ‘or’ condition.
 - **Fix:** Reverse if statement to following:
 <div align="left"><img src="media/testing/bug9-fix.webp"></div>
 
-10.	Receive the following time zone error:
+**10.	Receive the following time zone error:**
 <div align="left"><img src="media/testing/bug10-error.webp"></div>
 
 - **Fix:** Set USE_TZ in settings.py to False.  See this [StackOverflow article](https://stackoverflow.com/questions/18622007/runtimewarning-datetimefield-received-a-naive-datetime)
 
-11.	Problem retrieving image when using values() on queryset to retrieve top selling products on index.html.
+**11.	Problem retrieving image when using values() on queryset to retrieve top selling products on index.html.**
 <div align="left"><img src="media/testing/bug11-queryset.webp"></div>
 
 <div align="left"><img src="media/testing/bug11-best-sellers.webp"></div>
@@ -404,54 +404,54 @@ The following items have been successfully tested on each page or component:
 <div align="left"><img src="media/testing/bug11-inspector.webp"></div>
 
 - The URL is not accessible due to the issue described in this [StackOverflow article](https://stackoverflow.com/questions/42729979/accessing-url-of-imagefield-via-values-method-on-django-queryset)
-- With CI tutor assistance created a second queryset for adding the image.  This worked but realised the initial query returned quantity of single purchases rather than total quantity sold.
+- With CI tutor assistance created a second queryset for adding the image.  This worked but found the initial query returned the total quantity of single purchases rather than total quantity sold.
 <div align="left"><img src="media/testing/bug11-loop.webp"></div>
 
-- **Fix:** Followed the fix in this [StackOverflow article](https://stackoverflow.com/questions/9278796/ordering-a-query-by-aggregate-sum-in-django-but-not-getting-result-as-expected)
+- **Fix:** Followed the fix in this [StackOverflow article](https://stackoverflow.com/questions/9278796/ordering-a-query-by-aggregate-sum-in-django-but-not-getting-result-as-expected) to get the total quantity sold.
 
-12.	Receive TypeError join()argument error
+**12.	Receive TypeError join()argument error**
 <div align="left"><img src="media/testing/bug12-type-error.webp"></div>
 
 - **Fix:** Update review_rating field from CharField to IntegerField.
 <div align="left"><img src="media/testing/bug12-fix.webp"></div>
 
-13.	Unable to see existing text and rating when editing a review.
+**13.	Unable to see existing text and rating when editing a review.**
 
 - **Fix:** Add the Edit Product Review modal into the Product Review for loop and update the product_detail view as follows:
 <div align="left"><img src="media/testing/bug13-fix.webp"></div>
 
-14.	Customers' order history is accessible to anyone with the correct URL.
+**14.	Customers' order history is accessible to anyone with the correct URL.**
 
 - **Fix:** In the order_history view check if request is from the user who created the order: 
 <div align="left"><img src="media/testing/bug14-fix.webp"></div>
 
-15.	Unable to purchase product after migrating to Postgres database.
+**15.	Unable to purchase product after migrating to Postgres database.**
 - Receive following error when clicking ‘Complete Order’ after adding address details in check out:
 <div align="left"><img src="media/testing/bug15-data-error.webp"></div>
 
 - **Fix:** Update size in OrderLineItem from max_length 2 to 4
 <div align="left"><img src="media/testing/bug15-fix.webp"></div>
 
-16.	Carousel slides only half displaying on first load. 
+**16.	Carousel slides only half displaying on first load.** 
 <div align="left"><img src="media/testing/bug16-carousel.webp"></div> 
 
 - After refresh the cards display normally.
-- **Fix:** Update size in OrderLineItem from max_length 2 to 4.
+- **Fix:** Add the Flicikity [imagesLoaded option](https://flickity.metafizzy.co/options.html#imagesloaded).
 <div align="left"><img src="media/testing/bug16-fix.webp"></div> 
 
-17.	Unable to disable increment/decrement buttons on cart.html
-- **Fix:** With help from CI tutors changed Ids to classes to disable input below 2 and above 99.
+**17.	Unable to disable increment/decrement buttons on cart.html**
+- **Fix:** With help from CI tutors changed IDs to classes to disable input below 2 and above 99.
 <div align="left"><img src="media/testing/bug17-fix.webp"></div> 
 <div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
 
 ### Unresolved bugs
-1.	Original_cart is displayed in json format in the admin area which is not user friendly.
+**1.	Original_cart is displayed in json format in the admin area which is not user friendly.**
 <div align="left"><img src="media/testing/unresolved1-cart.webp"></div> 
 
 - Installed [django-flat-json-widget](https://pypi.org/project/django-flat-json-widget/) but this could not deal with multiple key pairs and would not work if original_cart was set to read only.
 <div align="left"><img src="media/testing/unresolved1-error.webp"></div> 
 
-2.	Delete ProductReview modal launches within Flickity carousel.
+**2.	Delete ProductReview modal launches within Flickity carousel.**
 <div align="left"><img src="media/testing/unresolved2.webp"></div> 
 
 - Workaround: Remove superuser options from modal.
