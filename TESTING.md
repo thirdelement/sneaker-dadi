@@ -14,12 +14,12 @@
 [View the live project](https://sneaker-dadi.herokuapp.com/)
 <span id="stories"></span>
 
-This document describes testing of the Sneaker Dadi site against the User Stories mentioned in the ReadMe file, manual tests and other automated tests for code validation and performance.
+This document describes testing of the Sneaker Dadi ecommerce site against the User Stories mentioned in the ReadMe file, manual tests and other automated tests for code validation and performance.
 
 ## User Stories
 ### First Time Visitor Goals
 #### Quickly understand what the site is about
-- The site is called Sneaker Dadi and a customer is immediately shown images of sneakers in the header and carousel below.  The strap line in the header on Desktop view mentions ‘Check out our fantastic Adidas footwear deals!’  In a glance, a customer should be left in no doubt what the site is selling.
+- The site is called Sneaker Dadi and a customer is immediately shown images of sneakers in the header and carousel below.  The strap line in the header on Desktop view mentions ‘Check out our fantastic Adidas footwear deals!’  At a glance, a customer should be left in no doubt what the site is selling.
 
 <div align="left"><img src="media/testing/story-homepage.webp"></div>
 
@@ -28,9 +28,6 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 <div align="left"><img src="media/testing/story-drop-down.webp"></div>
 
 - The navbar also features a search function which will find keywords from product titles and descriptions.  
-<div align="left"><img src="media/testing/story-drop-down.webp"></div>
-
-- The user proceeds to set their goal, describe their reality, determine options and select at least one of these to work towards their goal.
 <div align="left"><img src="media/testing/story-search.webp"></div>
 
 - There is a ‘Sort by’ option on all the products pages from which the customer can order by price, rating and name from high to low and vice versa.
@@ -47,16 +44,17 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 
 #### Read item reviews which show verified user
 - Product reviews are viewable below the product description on the product detail page.
-- If customer who left the review has previously purchased the product the review will show as ‘Verified Purchase’.
+- If the customer who left the review has previously purchased the product the review will show as ‘Verified Purchase’.
 
 #### Show related products
-- In the product detail page related products are shown below the reviews section in a carousel.
-- These are products from the same product category.  Products with the same gender as that of the main product on the page will be shown first.  
+- In the product detail page related products are shown below the Reviews section in a carousel.
+- Related products are from the same product category.  
+- Products with the same gender as the main product on the page will be shown first.  
 <div align="left"><img src="media/testing/story-related-products.webp"></div>
 
 #### Buy an item without registering
 - Items can be purchased without registering.  
-- However, in order to save contact and address details as well as leave a review registration is required.
+- Registration is required save contact and address details as well as leave a review.
 - On the checkout page, there is a message to ‘Create an account or login to save this information’.
 <div align="left"><img src="media/testing/story-create-account.webp"></div>
 
@@ -74,43 +72,45 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 - A verification email is sent with a link to confirm this is correct.  
 <div align="left"><img src="media/testing/story-verify-email.webp"></div>
 
-- The link returns the customer to the Sneaker Dadi site where they need to click Confirm button to complete the process. 
+- The link returns the customer to the Sneaker Dadi site where they are required to click the Confirm button to complete the process. 
 <div align="left"><img src="media/testing/story-confirm-email.webp"></div>
 
 #### Receive feedback throughout
-- The customer receives success, informational or error messages to confirm actions throughout the site.  The success messages have a green cap, informational have a blue cap and error messages have a red cap.
+- The customer receives success, informational or error messages to confirm actions throughout the site.  
+- The success messages have a green cap, informational have a blue cap and error messages have a red cap.
 - For example, when a customer has entered registration details an informational notification is shown:
 <div align="left"><img src="media/testing/story-toast-success.webp"></div>
 
 - Once the email address is confirmed a success message is displayed:
 <div align="left"><img src="media/testing/story-toast-info.webp"></div>
 
-- If a customer clicks the search button but without entering any text the following error is shown:
+- If a customer clicks the search button but without entering any text an error is shown:
 <div align="left"><img src="media/testing/story-toast-error.webp"></div>
 
 #### Recover my password if needed
 - There is a ‘Forgot Password?’ link on the login screen.  
 <div align="left"><img src="media/testing/story-forgot-password.webp"></div>
 
-- The customer needs to re-enter their email address and click Reset My Password.  
+- The customer is required to re-enter their email address and click Reset My Password.  
 <div align="left"><img src="media/testing/story-reset-password.webp"></div>
 
-- A confirmatory message is displayed. 
+- A confirmatory message is displayed and email sent. 
 <div align="left"><img src="media/testing/story-confirmatory-message.webp"></div>
 
-- The customer is sent a link to enter a new password. 
+- The customer has to click the link in the email to set a new password. 
 <div align="left"><img src="media/testing/story-new-password.webp"></div>
 
 #### Ensure my account is secure
-- Customers accounts are protected by Django Allauth.
-- Payments are secured by Stripe and webhooks to ensure the process completes in spite of connection issues.
-- Order history can only be seen by the customer who submitted the order.  If an attempt is made to access another customer’s order history an error is displayed.
+- Customer accounts are protected by Django Allauth.
+- Payments are secured by Stripe and webhooks to ensure the process completes.
+- Order history can only be seen by the customer who submitted the order.  
+- If an attempt is made to access another customer’s order history an error is displayed.
 <div align="left"><img src="media/testing/story-toast-error-order.webp"></div>
 
 ### Returning Visitor Goals
 #### Log in and out easily
 - As mentioned, authentication is managed by Django Allauth.  
-- The login and logout button is located in a standard position in the top right of the navbar in Desktop view or from the collapsible menu button on smaller devices.
+- The login and logout button is located in a standard position in the top right of the navbar in desktop view or from the collapsible menu button on smaller devices.
 
 #### Save my contact details 
 - At checkout there is a checkbox to ‘Save delivery address to my profile’ for authorised users.
@@ -126,10 +126,11 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 - The site can be used conveniently across a range of device types.  It is responsive due to the use of Bootstrap and media queries.  See the Responsiveness section for more details. 
 
 #### Add a review 
-- The Add Review button is displayed in the Reviews section if the customer is authenticated and has not left a review already.  There is a one review limit per product for each customer.    
+- The Add Review button is displayed in the Reviews section if the customer is authenticated and has not left a review already.  
+- There is a one review limit per product for each customer.    
 - An Edit option is available if the customer has already left a review.
 - If the customer has previously purchased the product the review will show as ‘Verified Purchase’.
-- The customer is unable to delete their review once created.  It is only Site Owners that have permissions to do this.
+- Only Site Owners have permissions to delete reviews.
 <div align="left"><img src="media/testing/story-siteowner-review.webp"></div>
 
 #### Receive free delivery
@@ -141,11 +142,11 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 ### Site Owner
 #### Ensure site is secure
 - See ‘Ensure my account is secure’ in First time visitor goals.
-- Django @login_required decorators added to ensure authenticated access only to secure site areas.
-- Allow superuser access only to admin areas via checks in views.py.
+- Django @login_required decorators added to maintain authenticated access only to secure site areas.
+- Allow superuser access only to admin areas is configured via checks in views.py.
 
 #### CRUD for shopping items
-- A site owner has access to Product Management to create add new products.
+- A site owner has access to Product Management to add new products.
 <div align="left"><img src="media/testing/story-product-management.webp"></div>
 
 - Existing products can be updated or deleted using the links in the cards on the product listings or on the product detail page. 
@@ -156,13 +157,15 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 - Items can be added to the sale via the check box on the Edit Product page.
 - A discount percent can be set as desired.
 <div align="left"><img src="media/testing/story-discount.webp"></div>
-- If ‘On sale’ is selected but a discount percent is not added an error will appear.
+
+- If ‘On sale’ is selected and a discount percent is not added an error will appear.
 <div align="left"><img src="media/testing/story-toast-failed-update.webp"></div>
 
 #### Delete reviews
 - A site owner has permissions to delete any review.  This is done using the Delete button on each review.
 - The site owner has permissions to update reviews created by themselves only.
 <div align="left"><img src="media/testing/story-review-delete.webp"></div>
+
 - When the Delete button is clicked a modal appears to confirm deletion.
 <div align="left"><img src="media/testing/story-delete-product-review.webp"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
@@ -177,7 +180,7 @@ The following items have been successfully tested on each page or component:
 - The search box shows an error if no search term entered.
 - The cart button is highlighted yellow if products are present and shows the correct number of items.
 - The Profile/Product Management drop-down menu shows Profile for authenticated users and Product Management for Site Owners.
-- The navbar togger is shown on smaller screen sizes and menu items display correctly.
+- The navbar toggler is shown on smaller screen sizes and menu items display correctly.
 
 ### Header
 - Shop Women’s and Shop Men’s buttons link correctly.
@@ -193,6 +196,7 @@ The following items have been successfully tested on each page or component:
 - The products displayed match those with the most quantity sold in the admin area.
 - The Sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
 - The carousel shows the appropriate number of images on smaller screens with responsive card sizes.
+- Product cards link through to the product detail page for the product shown.
 
 #### Showcase text, buttons & images
 - The showcase titles, texts, images and buttons are responsive and link correctly.
@@ -200,13 +204,15 @@ The following items have been successfully tested on each page or component:
 #### Trending Right Now Carousel
 - The products displayed match those sold most recently.
 - The sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+- Product cards link through to the product detail page for the product shown.
 
 ### Products
 - All products are displayed correctly at different screen sizes.
 - Product number is shown correctly.
-- Sort for price, rating and name orders products correctly.
+- Sort for price, rating and name orders items correctly.
 - Back to top button works.
 - The sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+- Product cards link through to the product detail page for the product shown.
 
 ### Product detail
 - The ‘no image’ graphic is displayed if a product image is missing
@@ -244,7 +250,7 @@ The following items have been successfully tested on each page or component:
 - Order History is shown correctly.
 <div align="left"><img src="media/testing/manual-profile.webp"></div>
 
-- Reference link opens to correct order.
+- Reference link for each order opens correctly.
 - An informational notification is displayed to confirm this is a past order.
 <div align="left"><img src="media/testing/manual-past-confirmation.webp"></div>
 
@@ -252,7 +258,7 @@ The following items have been successfully tested on each page or component:
 
 ### Cart
 - Displays product name, size, quantity and price correctly.
-- Unable to update quantity to below 1 and above 99 via increment/decrement buttons or manual entry.
+- Quantity is disabled below 1 and above 99 via increment/decrement buttons and manual entry.
 - Remove link removes product from cart.
 - The same product with different sizes is shown separately.
 - The sub-total for each size is correct. 
@@ -263,7 +269,7 @@ The following items have been successfully tested on each page or component:
 - Secure Checkout and Continue Shopping buttons link correctly.
 <div align="left"><img src="media/testing/manual-cart.webp"></div>
 
-### Cart
+### Checkout
 - Pre-populated contact and address details are shown.
 - The checkbox to save address details back to the profile works.
 - A message is displayed advising the customer the correct amount will be taken from their card.
@@ -275,9 +281,9 @@ The following items have been successfully tested on each page or component:
 - Complete Order button submits form and processing graphic is displayed.
 
 ### Checkout success
-- Order number, date, delivery address, contact and order details are shown correct.
+- Order number, date, delivery address, contact and order details are correct.
 - Continue shopping button links correctly.
-- Order placed successfully notification is shown.
+- Order placed successfully and notification is shown.
 <div align="left"><img src="media/testing/manual-checkout-success.webp"></div>
 
 - Order appears in Admin area.
@@ -305,14 +311,14 @@ The following items have been successfully tested on each page or component:
 <span id="issue"></span>
 
 ## Issues and Bugs
-1.	Unable to update size in cart.html.
+**1.	Unable to update size in cart.html.**
 - Received MultiDictKeyError from:
 <div align="left"><img src="media/testing/bug1-multidict.webp"></div>
 
 - **Fix:** Add hidden input value for size:
 <div align="left"><img src="media/testing/bug1-fix.webp"></div>
 
-2.	Unable to reach the cart/remove/<item_id> URL
+**2.	Unable to reach the cart/remove/<item_id> URL**
 <div align="left"><img src="media/testing/bug2-404.webp"></div>
 <div align="left"><img src="media/testing/bug2-page-not-found.webp"></div>
 
@@ -322,23 +328,25 @@ The following items have been successfully tested on each page or component:
 - **Fix:** Add forward slash to end of path.
 <div align="left"><img src="media/testing/bug2-fix.webp"></div>
 
-3.	Unable to close a toast.
+**3.	Unable to close a toast.**
 - Using Bootstrap 5.0, copied the correct toast HTML and attempted to launch with jQuery, however, the toast would not dismiss.
 - With assistance from tutor support used following code:
 <div align="left"><img src="media/testing/bug3-toast-show.webp"></div>
+
 - The toast dismissed, however, received error on page refresh:
 <div align="left"><img src="media/testing/bug3-type-error.webp"></div>
+
 - **Fix:** The message started to show without the above code so removed it and added some JavaScript to set the message display to none.
 <div align="left"><img src="media/testing/bug3-fix.webp"></div>
 
-4.	Unable to calculate the sub total for each product size in the message
+**4.	Unable to calculate the sub total for each product size in the message.**
 - Attempted to use context.py but could only receive subtotal for the last round of iteration.
 <div align="left"><img src="media/testing/bug4-loop.webp"></div>
 
 - Researching the issue shows this can be done in the template using [django-mathfilters](https://pypi.org/project/django-mathfilters/) module.  However, it seems not best practice to work with data in the template.
 - **Fix:** After checking Django docs and reviewing Code Institute Boutique Ado videos, added `{% load cart_tools %}` at the top of the toast.   Therefore, could call cart_tools.py template tag and the calc_subtotal function. 
 
-5.	Unable to position bootstrap spinner in centre page.
+**5.	Unable to position bootstrap spinner in centre page.**
 - The spinner was not aligned correctly with settings below settings from Code Institute example project:
 <div align="left"><img src="media/testing/bug5-spinner-css.webp"></div>
 
