@@ -190,6 +190,7 @@ The following items have been successfully tested on each page or component:
 - Footer dark or light colour matches header.
 - Social media links work.
 - Text and icons are centralized on all screensizes.
+- Check footer stays at bottom of the viewport on all pages.
 
 ### Home page
 #### Best Seller Carousel
