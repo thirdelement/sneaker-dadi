@@ -200,11 +200,11 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
   - [Buttons](https://getbootstrap.com/docs/5.1/components/buttons/)
   - [Toasts](https://getbootstrap.com/docs/5.1/components/toasts/)
 
-- [Flickity carousel](https://flickity.metafizzy.co/)
-  - Flickity carousel was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allowed multiple frames to be displayed and has flexible configuration options.
+- Flickity carousel
+  - [Flickity carousel](https://flickity.metafizzy.co/) was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allowed multiple frames to be displayed and has flexible configuration options.
 
-- [Django-multiselectfield](https://pypi.org/project/django-multiselectfield/)
-  - In order for the site owner to add in size availability according to stock levels, the Django Multiselectfield was used.  This provides checkboxes for each size option that can be purchased.
+- Django-multiselectfield
+  - In order for the site owner to add in size availability according to stock levels, the [Django Multiselectfield](https://pypi.org/project/django-multiselectfield/) was used.  This provides checkboxes for each size option that can be purchased.
   <div align="left"><img src="media/readme/multiselectfield.webp"></div>
 
 - Notifications
@@ -217,45 +217,83 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
   Error
   <div align="left"><img src="media/readme/toast-error.webp"></div>
 
-Responsive on all device sizes tested.
+- Product Reviews
+  - If they are logged in a customer can add comments and a star rating for any product.  Once created, they can edit this review but not delete.  A site owner can create and delete any review but not edit.  The average star and numeric rating out of five is shown in the product detail and product listings pages.
+
+- Verified purchase
+  - A product review will show as ‘verified purchase’ if the customer who has left a review has previously purchased the product.
+
+- Related products
+  - On the product detail page related products are shown in the same category.  Products for the same gender will show in the carousel first followed by the other gender and unisex.
+
+- Best Sellers
+  - On the home page the Best Sellers carousel shows the top three male and female products sold by quantity.
+
+- Trending Right Now
+  - Also on the home page the Trending Right Now carousel shows the top three distinct male and female products most recently sold.
+
+- Sale
+  - A site owner can select whether a product is on sale with a check box and set the percent discount to the original price.  The product will then show from the Sale link on the navbar with the Sale badge, original price with a strike through and sales price.
+
+- Cart/Checkout/Checkout success
+  - The site has separate pages for cart, checkout and checkout success corresponding to each stage of the purchase process.  The customer is able to alter the quantity in the cart between 1 and 98.  The price for individual products, sub-total of quantity for each product size, overall cart total and order total after shipping cost is shown.
+
+- Checkout
+  - Name, email, phone, address and card details are required on the checkout page.  A checkbox provides an option to save the contact and address details back to the profile.
+
+- Free shipping
+  - A purchase below £50 will incur a flat £5.95 shipping cost.  If the purchase is over the £50 threshold then the shipping cost is waived.
+
+- Profile
+  - Customer’s contact details and order history are saved in their profile.  Contact details can be updated on the profile or check out pages.
+  - Security is in place to ensure only the customer who submitted the order can see the order history.
+
+- Add/Edit products
+  - A site owner can create new product for the Product Management link on the navbar.  Existing products can be updated via the Edit and Delete links on each item in the product views.
+
+- Search box
+  - Full search capability on product titles and description.
+
+- Defensive programming
+  - Confirm Deletion
+  - HTML validity
+  - Non-public pages protected from non-authorised access.
+  - Admin pages protected from non-admin access
+  - Errors 404 and 500 handled by pages within the site.
+  - Comprehensive user notifications
+
+- CRUD
+  - Site owners have full CRUD capability for products.
+
+- Crispy forms
+  - Used to improve function and style of forms.
+
+- AWS S3 hosting
+  - Static and media files hosted on AWS S3.
+
+- Responsive on all device sizes tested
   - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
   - iPhone X
-    <div align="left"><img src="static/images/readme-images/iphonex.png"></div>
+    <div align="left"><img src="media/readme/iphone-x.jpg"></div>
   - iPad 768px
-    <div align="left"><img src="static/images/readme-images/ipad.png"></div>
-  - Secure registration and login 
-    - Werkzeug security has been used to encrypt passwords.
-  - CRUD
-    - Users have the ability to create, update and delete their goals as well as read/view their own and shared goals.
-    - The Admin has the same permissions as users with additional CRUD rights for categories and shared goals.
-  - Sharing
-    - Users have the ability to share and un-share goals.
-  - User confirmation messages for all CRUD functions to ensure feedback at all time.
-  - Defensive programming
-    - Confirm Deletion
-    - HTML validity reporting.
-    - Comprehensive user error reporting.
-    - Non-public pages protected from non-authorised access.
-    - Admin pages protected from non-admin access.
-    - The Way Forward tab in Add Goals form can be reached via the submit button only.  This ensures options are saved to database prior to presentation in drop-down list. 
-  - Search
-    - Full search capability on the Shared Goals page for goal name and chosen course of action fields.
-  - 404 error handling
-    - User are kept within the site with several return options available.
-  - Datepicker
-    - jQuery Datepicker was used within the Add Goal form.
-  - Fully editable Add Goal form. 
+    <div align="left"><img src="media/readme/ipad-768.jpg"></div>
+  
 ### Future development
--   Admin feature to view and edit other user non-shared goals.
--   Account recovery and password reset using email.
--   Add function to choose additional options in the Way Forward tab. 
--   Add function to add small steps for achieving each option.
--   Add function to copy a goal.
+-   Features not implemented from Wireframes:
+    - Wish List 
+    - Add to Cart button on the product card 
+    - Profile menu 
+    - Change password
+-   Filter on products page 
+-   Calculations for VAT & postage in different countries 
+-   Staff page to check all orders
+-   Notification if no product stock
 -   Graphical display to show goal progress.
--   Pagination for Shared Goals and Profile.
--   Messaging between site users.
--   Use of WTForms for validation.
--   User session timeout.
+-   Cart products saved to profile
+-   Title on products page for categories
+-   Magnification on product images
+-   Use of AJAX to remove page refresh
+-   Pagination
 -   Contact form.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="tech"></span>
@@ -267,22 +305,21 @@ Responsive on all device sizes tested.
 -   [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 -   [Python](https://www.python.org/)
 ### Frameworks
-1. [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+1. [Bootstrap 5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
     - Bootstrap layout, content, components and utilities were used to structure the site and make it responsive.
-1. [Flask](https://flask.palletsprojects.com/en/2.0.x/)
-    - Flask was used to create the application and routes.
+1. [Django](https://www.djangoproject.com/)
+    - Django was used to struture the site.
 ### Libraries  
-1. [Werkzeug](https://jquery.com/)
-    - Werkzeug was used for password encryption.
 1. [jQuery](https://jquery.com/)
     - jQuery has been used for the DatePicker, Bootstrap Tabs buttons and to check validity. 
-1. [Font Awesome](https://fontawesome.com/)
-    - Font Awesome was used for the search icon.
+1. [Bootstrap Icons](https://icons.getbootstrap.com/)
+    - Bootstrap Icons was used for all site icons.
 ### Templates
-1. [Jinja](https://palletsprojects.com/p/jinja/)
-    - Jinja was used for its templating engine.
 1. [Start Bootstrap](https://startbootstrap.com/template/heroic-features)
-    - Start Bootstrap Heroic-Features template was used as a basis for the site structure.
+    - The following Start Bootstrap templates were used:
+        - [Landing Page](https://startbootstrap.com/theme/landing-page)
+        - [Shop Homepage](https://startbootstrap.com/template/shop-homepage)
+        - [Shop Item](https://startbootstrap.com/template/shop-item)
 ### Development & production platforms
 1. [GitPod](https://gitpod.io/)
     - GitPod was used for code editing, version control, committing and pushing to GitHub.
@@ -290,84 +327,150 @@ Responsive on all device sizes tested.
     - GitHub was used to store and manage project code pushed from GitPod.
 1. [Heroku](https://www.heroku.com/about)
     - Heroku was used for hosting the deployed web application.
-1. [Mongodb](https://www.mongodb.com/)
-    - Mongodb was used for Database creation and hosting.
+1. [Postgres](https://www.postgresql.org/)
+    - Live database
+1. [SQLite](https://www.sqlite.org/index.html)
+    - Demo database
+1. [AWS S3](https://aws.amazon.com/s3/)
+    - Hosting live static and media files.
 ### Other applications
 1. [Irfanview](https://www.irfanview.com/)
     - Irfanview was used to resize, edit and add filters to images.
 1. [Balsamiq](https://balsamiq.com/)
     - Balsamiq was used for [wireframes](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_wireframes.pdf) created during the design process. 
-1. [Microsoft Word](https://www.microsoft.com/en-gb/microsoft-365/word)
-    - Microsoft Word was used to create the database schema and site map.
 1. [RGB to Hex converter](https://www.rgbtohex.net/)
     - This website helped with converting RGB colours to Hex for Jumbotron images.
 1. [Favicon.io](https://favicon.io/favicon-converter/)
     - This website provided the capability for Favicon generation.
-1. [Regexr](https://regexr.com/)
-    - This website assisted with configuring the HTML validation pattern.
+1. [DB Diagram](https://dbdiagram.io/home)
+    - Creation of database diagram.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="test"></span>
 
 ## Testing
-See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/TESTING.md)
+See Test report [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/TESTING.md)
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="deploy"></span>
 
 ## Deployment
-### MongoDB - create database
-1.	Login to MongoDB.
-2.	In Collections, click Create Database with initial collection name.
-    <div align="left"><img src="static/images/readme-images/mgo-createdb.png"></div>
-3.	Create collections for categories, goals and users
-    <div align="left"><img src="static/images/readme-images/mgo-collections.png"></div>
-4.	Create a document in each collection for initial setup purposes: 
-    Categories
-    <div align="left"><img src="static/images/readme-images/mgo-insert-to-collection.png"></div>
-    Goals
-    <div align="left"><img src="static/images/readme-images/mgo-goals.png"></div>
-    Users
-    <div align="left"><img src="static/images/readme-images/mgo-users.png"></div>
-### GitHub/Gitpod - create app
-1.	Create a GitHub repository and open via Gitpod.
-2.	In Gitpod terminal run the following commands:<br>
-    `pip3 install Flask`<br>
-    `touch app.py`<br>
-    `touch env.py`<br>
-    `touch .gitignore`<br>
-    <div align="left"><img src="static/images/readme-images/touch-app_py.png"></div>
-3.	Ensure env.py and __pycache__ are included in .gitignore
-    <div align="left"><img src="static/images/readme-images/touch-gitignore.png"></div>
-4.	Add the following to env.py:
-    <div align="left"><img src="static/images/readme-images/env-py.png"></div>
+### Making a Local Clone
+1.	Log into GitHub and locate the [Sneaker-Dadi repository](https://github.com/thirdelement/sneaker-dadi)
+2.	Under the repository name, click ‘Clone or download’.
+3.	To clone the repository using HTTPS, under ‘Clone with HTTPS’, copy the link.
+    <div align="left"><img src="media/readme/local-clone.webp"></div>
+4.	Opt Git Bash
+5.	Change the current working directory to the location where you want the cloned directory to be made.
+6.	Type git clone, and then paste the URL you copied in step 3.<br>
+`$ git clone https://github.com/thirdelement/sneaker-dadi`<br>
+7.	Click Enter.  Your local clone will be created.
 
-5.	Create a requirements.txt file for Heroku to know what apps and dependencies are required.
-    <div align="left"><img src="static/images/readme-images/pip3-requirements1.png"></div>
-6.	Create Procfile so Heroku knows which file runs the app and how to run it.
-    <div align="left"><img src="static/images/readme-images/pip3-procfile.png"></div>
+Please see [this link](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository#cloning-a-repository-to-github-desktop) for more detailed explanation.
+
+8.	Following Stripe documentation, create a Stripe account and in Developers on the API key tab find the public and secret key.
+9.	Also in Stripe create a Webhook and find the Webhook secret key.
+10.	Create an env.py file to contain the following environment variables.
+    ```console
+    os.environ.setdefault("SECRET_KEY", "<app secret key>")
+    os.environ.setdefault("DEVELOPMENT", "True")
+    os.environ.setdefault('STRIPE_PUBLIC_KEY', '<from Stripe>')
+    os.environ.setdefault('STRIPE_SECRET_KEY', '<from Stripe>')
+    os.environ.setdefault('STRIPE_WH_SECRET', '<from Stripe>')
+    ```
+11.	Create a .gitignore file ensuring *.sqlite3, *.pyc and __pycache__ are added.
+    <div align="left"><img src="media/readme/local-gitignore.webp"></div>
+12.	Install all project requirements with ‘pip install –r requirements.txt’ 
+13.	Run database migrations
+    <div align="left"><img src="media/readme/local-db-migration.webp"></div>
+14.	Load category and product fixtures in following order
+    <div align="left"><img src="media/readme/local-fixtures.webp"></div>
+15.	Create a superuser
+    <div align="left"><img src="media/readme/local-superuser.webp"></div>
+16.	Run the app 
+    <div align="left"><img src="media/readme/local-run-app.webp"></div>
+
+### Deploy to Heroku
+1.	Login to Heroku
+2.	Create new app
+    <div align="left"><img src="media/readme/heroku-new-app.webp"></div>
+3.	Add name , choose closest region and click Create app
+    <div align="left"><img src="media/readme/heroku-create-app.webp"></div>
+4.	In Resources create a new Postgres database
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
+5.	Select Hobby Dev-Free plan and click Submit Order Form
+    <div align="left"><img src="media/readme/heroku-hobby-dev.webp"></div>
+6.	In your IDE install dj_database_url and psycopg2
+    <div align="left"><img src="media/readme/heroku-dj_database.webp"></div>
+    <div align="left"><img src="media/readme/heroku-psycopg2.webp"></div>
+7.	Import dj_database_url in settings.py
+    <div align="left"><img src="media/readme/heroku-import-dj_db.webp"></div>
+8.	Replace default database with a call to dj_database_url.parse and give it the database URL from Heroku
+    ```
+    DATABASES = {
+        'default': dj_database_url.parse('your-url-goes-here')
+    }
+    ```
+9.	Run all migrations again for the Postgres database (see steps 11 to 13 in Making a Local Clone) 
+10.	Install gunicorn to act as a webserver
+    <div align="left"><img src="media/readme/heroku-gunicorn.webp"></div>
+11.	Freeze requirements
+    <div align="left"><img src="media/readme/heroku-freeze.webp"></div>
+12.	Create a Procfile to tell Heroku to create a web dyno to run gunicorn to serve the Django app.  This should contain the following:
+    <div align="left"><img src="media/readme/heroku-procfile.webp"></div>
+13.	Login to Heroku from your IDE using your API key as the password
+    <div align="left"><img src="media/readme/heroku-login.webp"></div>
+14.	Temporarily disable collectstation so Heroku will not collect static files when we deploy.
+    <div align="left"><img src="media/readme/heroku-disable-collectstatic.webp"></div>
+15.	In Settings, create the following Config Vars
+    |**Key**|**Value**|
+    |---|---|
+    |AWS_ACCESS_KEY_ID|`<AWS ACCESS KEY ID>`|
+    |AWS_SECRET_ACCESS_KEY|`<AWS SECRET ACCESS KEY>`|
+    |DATABASE_URL|`<POSTGRES DATABASE URL>`|
+    |DISABLE_COLLECTSTATIC|`1` |
+    |EMAIL_HOST_PASS|`<APP PASSWORD FROM EMAIL ACC>`|
+    |EMAIL_HOST_USER|`<EMAIL ACC>`|
+    |SECRET_KEY|`<SECRET KEY>`|
+    |STRIPE_PUBLIC_KEY|`<STRIPE PUBLIC KEY>`|
+    |STRIPE_SECRET_KEY|`<STRIPE SECRET KEY>`|
+    |STRIPE_WH_SECRET|`<STRIPE WH SECRET>`|
+    |USE_AWS|True|
+16.	Add the Heroku hostname to ALLOWED_HOSTS in settings.py
+    <div align="left"><img src="media/readme/heroku-allowed-hosts.webp"></div>
+17.	Commit & push to GitHub
+18.	Initialise your IDE with Heroku and push to it.
+    <div align="left"><img src="media/readme/heroku-ide.webp"></div>
+19.	In Heroku on the Deploy tab select GitHub as Deployment method
+    <div align="left"><img src="media/readme/heroku-deployment.webp"></div>
+20.	Search for respository and click Connect
+    <div align="left"><img src="media/readme/heroku-search-repository.webp"></div>
+21.	Click Enable Automatic Deploys
+    <div align="left"><img src="media/readme/heroku-enable-deploys.webp"></div>
+
 ### Heroku - create app
 1.	Log in to Heroku and click New, Create new app (also required to add name and region).
 2.	In the Deploy menu, Deployment method select GitHub.
-    <div align="left"><img src="static/images/readme-images/deployment-method.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 3.	Check GitHub profile is displayed then add repository name and click Connect.
-    <div align="left"><img src="static/images/readme-images/github-connect.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
     Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
 
 4.	Click Settings, Reveal Config Vars and add details from env.py:
-    <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
 6.	Enable Automatic Deploys.
-    <div align="left"><img src="static/images/readme-images/auto-deploys.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 7.	Click Deploy Branch.
-    <div align="left"><img src="static/images/readme-images/manual-deploy.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 8.	Check app was deployed ok.
-    <div align="left"><img src="static/images/readme-images/deploy-ok.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
+    
 ### Gitpod - Connect Flask to Mongodb
 1.	Install flask-pymongo which is a third party library required for Flask to communicate with Mongodb.
-    <div align="left"><img src="static/images/readme-images/pip3-pymongo.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 2.	Install dnspython in order to use the Mongo SRV connection string.
-    <div align="left"><img src="static/images/readme-images/pip3-dnspython.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 3.	Update requirements.txt and save.
-    <div align="left"><img src="static/images/readme-images/pip3-requirements2.png"></div>
+    <div align="left"><img src="media/readme/heroku-postgres.webp"></div>
 4.	Add additional imports to app.py to reflect new installations.  This includes BSON which is a JSON-like format in which Mongodb stores data.
 5.	Update connection settings in app.py.
     <div align="left"><img src="static/images/readme-images/app-config.png"></div>
