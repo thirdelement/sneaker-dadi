@@ -165,231 +165,288 @@ This document describes testing of the Sneaker Dadi site against the User Storie
 <div align="left"><img src="media/testing/story-review-delete.webp"></div>
 - When the Delete button is clicked a modal appears to confirm deletion.
 <div align="left"><img src="media/testing/story-delete-product-review.webp"></div>
+<div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
+<span id="manual"></span>
 
 ## Manual Tests
 The following items have been successfully tested on each page or component:
-### Menu bar
-- Goal Getter logo link to home page.
-- Menu bar links to correct site page.
+### Navbar
+- Sneaker Dadi logo link to home page.
+- Navbar items and drop-down menus link to correct site page.
+- Search box finds items in product title and description by keyword.
+- The search box shows an error if no search term entered.
+- The cart button is highlighted yellow if products are present and shows the correct number of items.
+- The Profile/Product Management drop-down menu shows Profile for authenticated users and Product Management for Site Owners.
+- The navbar togger is shown on smaller screen sizes and menu items display correctly.
+
+### Header
+- Shop Women’s and Shop Men’s buttons link correctly.
+- Header image, text and buttons do not degrade or overlap or smaller screens.
+
+### Footer
+- Footer dark or light colour matches header.
+- Social media links work.
+- Text and icons are centralized on all screensizes.
+
 ### Home page
-- Start Now! button links to Register for public user.
-- Start Now! button links to Add Goal for session user.
-- Find Out More! buttons link to About.
-### About
-- Start Now! button links to Register for public user.
-- Start Now! button links to Add Goal for session user.
-### Shared Goals
-- Search bar finds items via goal name and chosen course of action.
-- Search button working.
-- Each goal shows the goal name, target date, creator and content correctly.
-- Reset button resets search successfully.
-- More Info button shows goal content and collapses on second click.
-- Delete, Done and Edit buttons are available on each goal to Admin user and session user who created the goal only.
-- Delete button launches Delete modal.  
-    - Cancel on the modal returns to Shared Goals.
-    - Delete on the modal removes the goal from the site and database.  A notification is shown on Deletion.
-- Done button remove goal from page and notification shown.
-- Edit button launches Add Goal form with previous answers.
-### Log In
-- HTML validation message showing correctly on both username and password boxes.
-- Notification appears if details entered incorrectly and on successful login.
-- Register account links re-directs correctly.
-- User is logged in successfully and taken to profile.
-- Welcome message displayed on login.
-### Register
-- HTML validation message showing correctly on both username and password boxes.
-- Notification appears if details entered incorrectly and on successful login.
-- Passwords are hashed successfully.
-- Login link re-directs correctly.
-- On registering correctly user is logged in and taken to profile.
-- Welcome message displayed on login.
+#### Best Seller Carousel
+- The products displayed match those with the most quantity sold in the admin area.
+- The Sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+- The carousel shows the appropriate number of images on smaller screens with responsive card sizes.
+
+#### Showcase text, buttons & images
+- The showcase titles, texts, images and buttons are responsive and link correctly.
+
+#### Trending Right Now Carousel
+- The products displayed match those sold most recently.
+- The sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+
+### Products
+- All products are displayed correctly at different screen sizes.
+- Product number is shown correctly.
+- Sort for price, rating and name orders products correctly.
+- Back to top button works.
+- The sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+
+### Product detail
+- The ‘no image’ graphic is displayed if a product image is missing
+- Product ID, price category and description are shown correctly.
+- The sale badge, star rating, numeric rating out of five, original price with strike through and sales price are shown correctly.
+- Sizes are available and can be selected.
+- Add to Cart and Continue Shopping buttons link correctly.
+- Related Products show products from same category with the same gender first.
+- Add Review button appears for authenticated users.
+- Add Review button disappears once review added.
+- Verified Purchase appears on review if customer has previously purchased the product.
+
+### Products on sale
+- All products with the ‘On sale’ box checked are displayed.
+- All checks done as per Products page are successful.
+
+### Add Product
+- Product properties are all listed.
+- Add Product form will not submit unless all mandatory fields are completed and valid.
+- Choose File button for uploading images works ok.
+
+### Site Owner features
+- Edit and Delete links are shown on product detail page for all products in product listings.
+- Edit link displays Edit Product page.
+- Delete modal is displayed when Delete link is clicked.
+- Product successfully deletes when Delete is clicked on modal.
+- Delete button is available for all Product Reviews.
+- Delete modal is displayed with Product Review Delete link is clicked.
+- Product Review successfully deletes when Delete is clicked on modal.
+
 ### Profile
-- For new users profile is blank with links to add a goal.
-- Once goal created it is shown in My Goals In Progress.
-- More Info, Delete, Done and Edit buttons are available on each goal.
-- More Info button shows goal content and collapses on second click.
-- Delete button launches Delete modal.  
-    - Cancel on the modal returns to Shared Goals.
-    - Delete on the modal removes the goal from the site and database.  A notification is shown on Deletion.
-- Done button moves goal to My Goals Completed.
-- Edit button launches Add Goal form with previous answers.
-- Each goal in My Goals Completed has a More Info, Delete and In Progress button.
-- In Progress button moves the goal back to My Goals In Progress.
-- A non-logged receives an error and is returned to the login page.
-### Add Goal
-- The tab links open each tab
-- The Way Forward tab is disabled until the form is submitted on the Options tab.
-- A non-logged receives an error and is returned to the login page.
-#### Goal & Reality tabs
-- HTML validation messages are showing correctly for each field.
-- The Datepicker launches successfully.
-- The drop-down menus work.
-- The Next, Back and Cancel buttons work. 
-#### Options tab
-- Validation messages are showing correctly for each field.
-- Cancel and Back buttons work. 
-- Submit button takes the user to the Way Forward tab.
-- A notification is displayed on submission.
-#### Way Forward tab
-- HTML validation messages are showing correctly for each field.
-- Options are displayed correctly in the drop-down menus.
-- The Datepicker works.
-- The Meets goal switch is off by default and can be turned on.
-- The Share switch is on by default and can be turned off.
-- Cancel and Back buttons work.
-- A message is displayed if Submit is clicked when the Meets goal switch is off and the form is not submitted.
-- When Meets goal switch is on submission works.
-- If the Share switch is on, the goal is displayed in Shared Goals and removed when off.
+- Contact details and delivery address details are pre-populated from Checkout page.
+- Contact details and address can be updated via the Update Delivery Info button. 
+- Updated contact and address details are displayed on the Checkout page.
+- Order History is shown correctly.
+<div align="left"><img src="media/testing/manual-profile.webp"></div>
+
+- Reference link opens to correct order.
+- An informational notification is displayed to confirm this is a past order.
+<div align="left"><img src="media/testing/manual-past-confirmation.webp"></div>
+
+- The Back to Profile button works from the past order.
+
+### Cart
+- Displays product name, size, quantity and price correctly.
+- Unable to update quantity to below 1 and above 99 via increment/decrement buttons or manual entry.
+- Remove link removes product from cart.
+- The same product with different sizes is shown separately.
+- The sub-total for each size is correct. 
+- The sub total for the cart is correct.
+- Delivery is shown for orders below £50 and is removed above that threshold.
+- The order total shows correctly including delivery.
+- The discounted price for sale items is used.
+- Secure Checkout and Continue Shopping buttons link correctly.
+<div align="left"><img src="media/testing/manual-cart.webp"></div>
+
+### Cart
+- Pre-populated contact and address details are shown.
+- The checkbox to save address details back to the profile works.
+- A message is displayed advising the customer the correct amount will be taken from their card.
+<div align="left"><img src="media/testing/manual-complete-order.webp"></div>
+
+- The Complete Order button will not submit unless all mandatory fields are complete and valid.
+- The card payment box accepts valid card numbers only and displays an error if not.
+- The order details shown including number of items, sizes, sub-total, delivery and order total is correct.
+- Complete Order button submits form and processing graphic is displayed.
+
+### Checkout success
+- Order number, date, delivery address, contact and order details are shown correct.
+- Continue shopping button links correctly.
+- Order placed successfully notification is shown.
+<div align="left"><img src="media/testing/manual-checkout-success.webp"></div>
+
+- Order appears in Admin area.
+- Webhook attempts succeed.
+<div align="left"><img src="media/testing/manual-webhook.webp"></div>
+
+### Notifications
+- Toast notifications are shown correctly for success, informational purposes and errors.
+- Notifications show all products in the cart with the correct price and total.
+- The View Cart and Checkout buttons work on the notification.
+- The correct number of shopping items are shown in the header.
+- Notifications appear in top right corner and scroll with page.
+- Notifications are dismissed on click.
+- If more than one notification appears these are stacked.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="resp"></span>
 
 ## Responsiveness
-- As the site has been designed using Bootstrap, it adheres to the Bootstrap grid layout and breakpoints.  Additional media queries have been used to align the jumbotron, switches, buttons, and home page call-to-action. 
+- As the site has been designed using Bootstrap, it adheres to the Bootstrap grid layout and breakpoints.  Additional media queries have been used to align many aspects of the site including header, images, font-size, images, buttons, etc. 
 - The website has been tested across a broad range of physical and virtual desktop, tablet and mobile devices.  Additionally, the site has been checked on a range of browsers including Chrome, Edge, IE11 and Firefox.
 - Physical devices have included Windows Desktop PC and laptop, iPhone 8, SE, X and Samsung s10e. 
 - Virtual devices have consisted of the following on Google Chrome:
-<div align="left"><img src="static/images/readme-images/device-list.png"></div>
-
-- Some differences were found between Gitpod and Heroku that made alignment challenging when using the ‘Responsive’ option in Chrome Dev Tools.  This inconsistency disappeared when using the simulated device options.  The differences were not evident with ‘Responsive’ mode in Edge.  However, there were still alignment differences at the same width between a simulated device and ‘Responsive’ mode.  Therefore, a decision was made to align layout to simulated devices only. 
-- For example, the first screenshot below shows the simulated iPhone 6/7/8 in Chrome with width 375px where the media query for ‘margin-top: 5px’ on the Edit button has triggered.  The second screenshot shows ‘Responsive’ mode in Chrome at the same 375px width but no media query trigger for the Edit button which does not activate until 355px.
-
-#### Google Chrome simulated iPhone 6/7/8
-<div align="left"><img src="static/images/readme-images/iphone6-simulated.png"></div>
-
-#### Google Chrome Responsive mode
-<div align="left"><img src="static/images/readme-images/iphone6-responsive.png"></div>
-
-#### Media query
-<div align="left"><img src="static/images/readme-images/media-query.png"></div>
-
-- In Responsive mode, the media queries for Chrome were activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
-
-#### Gitpod
-<div align="left"><img src="static/images/readme-images/gitpod-responsive.png"></div>
-
-#### Heroku
-<div align="left"><img src="static/images/readme-images/heroku-responsive.png"></div>
-
-- The media query below shows for Gitpod only.
-<div align="left"><img src="static/images/readme-images/media-query2.png"></div>
+<div align="left"><img src="media/testing/responsive-devices.webp"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="issue"></span>
 
 ## Issues and Bugs
-1.	Unable to edit course_of_action array element.
-- Initially, there were problems updating individual array elements for course_of_action.
-- This was made to work using the index in the HTML input value and $set statement on the route:
-<div align="left"><img src="static/images/readme-images/issue1-inputvalue.png"></div>
-<div align="left"><img src="static/images/readme-images/issue1-submit.png"></div>
+1.	Unable to update size in cart.html.
+- Received MultiDictKeyError from:
+<div align="left"><img src="media/testing/bug1-multidict.webp"></div>
 
-- **Fix:** Tutor Assistance advised that the HTML input name was changed rather than using the index so that it matches the getlist statement:
-<div align="left"><img src="static/images/readme-images/issue1-name.png"></div>
+- **Fix:** Add hidden input value for size:
+<div align="left"><img src="media/testing/bug1-fix.webp"></div>
 
-- The route was updated to:
-<div align="left"><img src="static/images/readme-images/issue1-if.png"></div>
+2.	Unable to reach the cart/remove/<item_id> URL
+<div align="left"><img src="media/testing/bug2-404.webp"></div>
+<div align="left"><img src="media/testing/bug2-page-not-found.webp"></div>
 
-2.	The user preferences for switches for meet_goal and to share goal do not update.
-- On the add_goal.html page, the shared goal was checked by default:
-<div align="left"><img src="static/images/readme-images/issue2-input.png"></div>
+- Using console.log all values from JS look correct:
+<div align="left"><img src="media/testing/bug2-console-log.webp"></div>
 
-- **Fix:** This has been updated with the database value using Jinja:
-<div align="left"><img src="static/images/readme-images/issue2-input2.png"></div>
+- **Fix:** Add forward slash to end of path.
+<div align="left"><img src="media/testing/bug2-fix.webp"></div>
 
-3.	Drop-down menus require user to re-select option when editing.
-- **Fix:** Add selected value:
-<div align="left"><img src="static/images/readme-images/issue3.png"></div>
+3.	Unable to close a toast.
+- Using Bootstrap 5.0, copied the correct toast HTML and attempted to launch with jQuery, however, the toast would not dismiss.
+- With assistance from tutor support used following code:
+<div align="left"><img src="media/testing/bug3-toast-show.webp"></div>
+- The toast dismissed, however, received error on page refresh:
+<div align="left"><img src="media/testing/bug3-type-error.webp"></div>
+- **Fix:** The message started to show without the above code so removed it and added some JavaScript to set the message display to none.
+<div align="left"><img src="media/testing/bug3-fix.webp"></div>
 
-4.	On the Way Forward tab, the chosen_coa value does not show in the Edit_Goal form.
-- **Fix:** Change the ‘chosen_coa’ type from array to string.
-- In app.py replace $push which creates an array:
-<div align="left"><img src="static/images/readme-images/issue4-push.png"></div>
+4.	Unable to calculate the sub total for each product size in the message
+- Attempted to use context.py but could only receive subtotal for the last round of iteration.
+<div align="left"><img src="media/testing/bug4-loop.webp"></div>
 
-- with $set which creates a string:
-<div align="left"><img src="static/images/readme-images/issue4-submit.png"></div>
+- Researching the issue shows this can be done in the template using [django-mathfilters](https://pypi.org/project/django-mathfilters/) module.  However, it seems not best practice to work with data in the template.
+- **Fix:** After checking Django docs and reviewing Code Institute Boutique Ado videos, added `{% load cart_tools %}` at the top of the toast.   Therefore, could call cart_tools.py template tag and the calc_subtotal function. 
 
-5.	Sharing is not set by default on Edit_goal.html.
-- **Fix:** On the /add_goal route change the default share position to ‘checked’.
-<div align="left"><img src="static/images/readme-images/issue5.png"></div>
+5.	Unable to position bootstrap spinner in centre page.
+- The spinner was not aligned correctly with settings below settings from Code Institute example project:
+<div align="left"><img src="media/testing/bug5-spinner-css.webp"></div>
 
-6.	Options are not showing in the drop-down list on Way Forward tab.
-<div align="left"><img src="static/images/readme-images/issue6.png"></div>
+- The above code caused the spinner to show as follows:
+<div align="left"><img src="media/testing/bug5-browser.webp"></div>
 
-- Earlier in the build, the form was spread over four different URLs.  The database document was created by the form on the first page and updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ page when one was selected from a drop-down list.
-- Tutor support pointed out this method used several database transactions and is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, this did not enable the update of the drop-down menu on the Way Forward tab from the data entered on the Options tab.  
-- **Fix:** As a workaround, the submit button was added to the Options tab and the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled so it can be submitted.
-7.	Receive regex error when registering and/or logging in.
-<div align="left"><img src="static/images/readme-images/issue7.png"></div>
+- **Fix:** Add the settings below:
+<div align="left"><img src="media/testing/bug5-fix.webp"></div>
 
-- **Fix:** Remove the ^ and $ and add a comma between 5 and 15 (credit: [W3Schools](https://www.w3schools.com/tags/att_input_pattern.asp) and [Regexr](https://regexr.com/))
-<div align="left"><img src="static/images/readme-images/issue7-pattern1.png"></div>
-Changed to:
-<div align="left"><img src="static/images/readme-images/issue7-pattern2.png"></div>
+6.	Receive error when attempting to login after creating profile app on website and admin.
+<div align="left"><img src="media/testing/bug6-related-object.webp"></div>
 
-8.	A goal changes from shared to not shared on submission.
-- **Fix:** Update share variable to checked else unchecked.
-<div align="left"><img src="static/images/readme-images/issue8.png"></div>
+- The traceback showed the following:
+<div align="left"><img src="media/testing/bug6-traceback.webp"></div>
 
-9.	The user cannot see a regex message from a previous tab when submitting a goal.
-- **Fix:** Add a Bootstrap alert to display if user clicks on submit and form validation is not met (credit: [StackOverflow](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752))
+- Commenting out the above line enabled login with no error.
+- **Fix:** Comment out the above code so a profile is created. 
+<div align="left"><img src="media/testing/bug6-fix1.webp"></div>
 
-- JS: 
-<div align="left"><img src="static/images/readme-images/issue9.png"></div>
+- Login and set signal back to the way it was.
+<div align="left"><img src="media/testing/bug6-fix2.webp"></div>
 
-- Add_goal HTML:
-<div align="left"><img src="static/images/readme-images/issue9-valid-alert.png"></div>
+7.	The template does not pick up MEDIA_URL.
+<div align="left"><img src="media/testing/bug7-failed.webp"></div>
 
-10.	All fields have the same validate message.
-- **Fix:** Update this code:
-<div align="left"><img src="static/images/readme-images/issue10.png"></div>
+- **Fix:** Define the django.template.context_processors.media template context processor in settings.py.  See this [StackOverflow article](https://stackoverflow.com/questions/31925009/django-media-url-not-set-in-template)
+<div align="left"><img src="media/testing/bug7-fix.webp"></div>
 
-- To this:
-<div align="left"><img src="static/images/readme-images/issue10-js2.png"></div>
+8.	If the Boolean field ‘on_sale’ in the Product model is True but nothing is entered for ‘discount_percent’ the following error is displayed.
+<div align="left"><img src="media/testing/bug8-type-error.webp"></div>
 
-11.	On Edit_goal.html if a user changes their options these are not updated in the drop-down menu on the Way Forward tab.
-- **Fix:** Add a submit button on the Options tab ensuring the name is different from the button on the Way Forward tab. (credit: [StackOverflow.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form))
+- **Fix:** Add clean() method to Product model as described in this [StackOverflow article](https://stackoverflow.com/questions/13440097/django-modelform-booleanfield-required-field-is-not-working)
+<div align="left"><img src="media/testing/bug8-fix.webp"></div>
 
-- HTML:
-<div align="left"><img src="static/images/readme-images/issue11.png"></div>
+- Once fix implemented receive a form validation error:
+<div align="left"><img src="media/testing/bug8-fix2.webp"></div>
 
-- App.py:
-<div align="left"><img src="static/images/readme-images/issue11-elif.png"></div>
+9.	For style purposes attempted to configure allauth messages to display in the toast header only.  To do this implemented an if statement:
+<div align="left"><img src="media/testing/bug9-if-statement.webp"></div>
 
-12.	The notification received when validation is not met does is outside the viewport display.
-- **Fix:** Add notification in the same location as other flash messages as well as directly above submit button.
-<div align="left"><img src="static/images/readme-images/issue12.png"></div>
+- This appears to work apart from the last ‘or’ condition.
+- **Fix:** Reverse if statement to following:
+<div align="left"><img src="media/testing/bug9-fix.webp"></div>
 
-13.	If the user clicks on the Way Forward tab instead of clicking Next button their Options are not saved and so not available in the Wayforward tab drop-down menu.
+10.	Receive the following time zone error:
+<div align="left"><img src="media/testing/bug10-error.webp"></div>
 
-- **Fix:** Remove data-toggle=”tab” from the Way Forward tab so the Next button is the only option to move between tabs.
-<div align="left"><img src="static/images/readme-images/issue13.png"></div>
+- **Fix:** Set USE_TZ in settings.py to False.  See this [StackOverflow article](https://stackoverflow.com/questions/18622007/runtimewarning-datetimefield-received-a-naive-datetime)
 
-14.	Access can be gained to a user page without a session cookie.
+11.	Problem retrieving image when using values() on queryset to retrieve top selling products on index.html.
+<div align="left"><img src="media/testing/bug11-queryset.webp"></div>
 
-- **Fix:** Add a check on each route in app.py that a user is logged in. 
-<div align="left"><img src="static/images/readme-images/issue14.png"></div>
+<div align="left"><img src="media/testing/bug11-best-sellers.webp"></div>
 
-- If not re-direct them to the login page and display a message.
-<div align="left"><img src="static/images/readme-images/issue14-cannot-access.png"></div>
-15.	Adding the checked/unchecked boolean to the end of an input tag produces an error in the HTML validator.
-<div align="left"><img src="static/images/readme-images/issue15.png"></div>
+<div align="left"><img src="media/testing/bug11-inspector.webp"></div>
 
-<div align="left"><img src="static/images/readme-images/issue15-error.png"></div>
+- The URL is not accessible due to the issue described in this [StackOverflow article](https://stackoverflow.com/questions/42729979/accessing-url-of-imagefield-via-values-method-on-django-queryset)
+- With CI tutor assistance created a second queryset for adding the image.  This worked but realised the initial query returned quantity of single purchases rather than total quantity sold.
+<div align="left"><img src="media/testing/bug11-loop.webp"></div>
 
-- This was due to using the incorrect ‘unchecked’ Boolean in the URL route.
-<div align="left"><img src="static/images/readme-images/issue15-share1.png"></div>
+- **Fix:** Followed the fix in this [StackOverflow article](https://stackoverflow.com/questions/9278796/ordering-a-query-by-aggregate-sum-in-django-but-not-getting-result-as-expected)
 
-- **Fix:** This has been replaced with:
-<div align="left"><img src="static/images/readme-images/issue15-share2.png"></div>
+12.	Receive TypeError join()argument error
+<div align="left"><img src="media/testing/bug12-type-error.webp"></div>
+
+- **Fix:** Update review_rating field from CharField to IntegerField.
+<div align="left"><img src="media/testing/bug12-fix.webp"></div>
+
+13.	Unable to see existing text and rating when editing a review.
+
+- **Fix:** Add the Edit Product Review modal into the Product Review for loop and update the product_detail view as follows:
+<div align="left"><img src="media/testing/bug13-fix.webp"></div>
+
+14.	Customers' order history is accessible to anyone with the correct URL.
+
+- **Fix:** In the order_history view check if request is from the user who created the order: 
+<div align="left"><img src="media/testing/bug14-fix.webp"></div>
+
+15.	Unable to purchase product after migrating to Postgres database.
+- Receive following error when clicking ‘Complete Order’ after adding address details in check out:
+<div align="left"><img src="media/testing/bug15-data-error.webp"></div>
+
+- **Fix:** Update size in OrderLineItem from max_length 2 to 4
+<div align="left"><img src="media/testing/bug15-fix.webp"></div>
+
+16.	Carousel slides only half displaying on first load. 
+<div align="left"><img src="media/testing/bug16-carousel.webp"></div> 
+
+- After refresh the cards display normally.
+- **Fix:** Update size in OrderLineItem from max_length 2 to 4.
+<div align="left"><img src="media/testing/bug16-fix.webp"></div> 
+
+17.	Unable to disable increment/decrement buttons on cart.html
+- **Fix:** With help from CI tutors changed Ids to classes to disable input below 2 and above 99.
+<div align="left"><img src="media/testing/bug17-fix.webp"></div> 
+<div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
 
 ### Unresolved bugs
-1.	The number selected from a drop-down menu appears again in the list of options.
-<div align="left"><img src="static/images/readme-images/unresolved-1.png"></div>
+1.	Original_cart is displayed in json format in the admin area which is not user friendly.
+<div align="left"><img src="media/testing/unresolved1-cart.webp"></div> 
 
-- Possible fix: Add ‘break’ or ‘continue’ to the If statement with the Jinja Loop Controls extension. (see [Loop Controls](https://jinja.palletsprojects.com/en/2.11.x/extensions/#loop-controls)).  
-2.	The fields on the Way Forward tab show as ‘None’ until the user enters details.
-<div align="left"><img src="static/images/readme-images/unresolved-2.png"></div>
+- Installed [django-flat-json-widget](https://pypi.org/project/django-flat-json-widget/) but this could not deal with multiple key pairs and would not work if original_cart was set to read only.
+<div align="left"><img src="media/testing/unresolved1-error.webp"></div> 
 
-- Possible workaround: This ‘None’ value appears to be created on initial insert.  A validation rule could be added to force the user to change the value before submitting.
+2.	Delete ProductReview modal launches within Flickity carousel.
+<div align="left"><img src="media/testing/unresolved2.webp"></div> 
+
+- Workaround: Remove superuser options from modal.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="other"></span>
 
@@ -399,17 +456,26 @@ Changed to:
 ### Site performance
 - The Google Dev Tools Lighthouse audit for the site showed the following results:
 #### Home
-<div align="left"><img src="static/images/readme-images/perf-home.png"></div>
+<div align="left"><img src="media/testing/other-home.webp"></div> 
 
-#### Get_Goals
-<div align="left"><img src="static/images/readme-images/perf-goals.png"></div>
+#### Products
+<div align="left"><img src="media/testing/other-products.webp"></div> 
 
-#### About
-<div align="left"><img src="static/images/readme-images/perf-about.png"></div>
+#### Product_detail
+<div align="left"><img src="media/testing/other-product-detail.webp"></div> 
 
-#### Login
-<div align="left"><img src="static/images/readme-images/perf-login.png"></div>
+#### Cart
+<div align="left"><img src="media/testing/other-cart.webp"></div> 
+
+#### Checkout
+<div align="left"><img src="media/testing/other-checkout.webp"></div> 
+
+#### Checkout success
+<div align="left"><img src="media/testing/other-checkout-success.webp"></div> 
 
 #### Profile
-<div align="left"><img src="static/images/readme-images/perf-profile.png"></div>
+<div align="left"><img src="media/testing/other-profile.webp"></div> 
+
+#### Add/Edit product
+<div align="left"><img src="media/testing/other-edit.webp"></div> 
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
