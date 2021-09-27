@@ -471,7 +471,7 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
     <div align="left"><img src="media/readme/s3-policy-json.webp"></div>
 13.	Paste into Bucket policy (with slash & asterisk at end of Reource for full access) & Save changes.
 14.	Click Edit in Access Control List, check box for List access for Everyone & Save changes.
-    <div align="left"><img src="media/readme/acl.webp"></div>
+    <div align="left"><img src="media/readme/s3-acl.webp"></div>
 
 ### AWS IAM (Identity & Access Management)
 1.	Navigate to IAM, User groups, Create user group
@@ -539,7 +539,6 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
 #### Product - views
   - [Sorting nulls last using F expression](https://helperbyte.com/questions/77886/django-how-to-make-a-discount-for-the-item) 
   - [Applying F expression](https://github.com/Edb83/moose-juice/blob/master/products/views.py) 
-
   - [Number of reviews](https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s)
   - [Check whether user has ordered product previously](https://github.com/Edb83/moose-juice/blob/master/products/views.py)
 
@@ -555,7 +554,7 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
   - [Grouping conditions in Django if statement](https://stackoverflow.com/questions/23637846/grouping-conditions-in-django-template-if-statement)
 
 #### CSS
-  - [Toast opacity](https://stackoverflow.com/questions/43588876/how-can-i-add-additional-data-to-django-messages/43729673#43729673)
+  - [Toast opacity](https://stackoverflow.com/questions/17635655/setting-toastr-opacity)
   - [Keep footer at bottom of page](https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b)
   - [Remove button features from Product Delete link](https://stackoverflow.com/questions/9467504/html-make-text-clickable-without-making-it-a-hyperlink/9467534)
   - [Show down arrow on select form for size](https://stackoverflow.com/questions/31417160/drop-down-arrow-in-select-boxes-not-showing)
@@ -576,11 +575,11 @@ The images used were sourced as follows:
   - [Adidas logo](https://legal-patent.com/international-intellectual-property/adidas-3-stripe-design-likelihood-confusion-not-trefoil-logo/)
   - [Athlete-grey-sneakers](https://unsplash.com/photos/Jc-UCKGhIlU)
   - [Black-sneakers](https://unsplash.com/photos/pFzxaKhdFME)
-  - [Blue-sneaker](https://www.adidas.fr/chaussure-sl-72/EG6849.html?af_channel=Shopping_Search&af_reengagement_window=30d&c=GS-OPT-FR-Best_Performers&cm_mmc=AdieSEM_PLA_Google-_-GS-OPT-FR-Best_Performers-_-NEW%20Best%20Performing%20Products%20-%20single%20ad%20group-_-PRODUCT_GROUP&cm_mmca1=FR&cm_mmca2=&ds_agid=58700006641870291&gclid=EAIaIQobChMIzb6irNWP8wIVyMLVCh04mww5EAQYECABEgIHj_D_BwE&gclsrc=aw.ds&is_retargeting=true&pid=googleadwords_temp)
-  - [Couple-on-bench2](https://pixabay.com/illustrations/success-customer-achievement-goal-4369215/)
-  - [Orange-black-sneakers](https://pixabay.com/illustrations/people-cartoon-man-comic-fun-4879060/)
-  - [Sneakers-black-background](https://pixabay.com/vectors/rocket-rocket-launch-launch-space-4984618/)
-  - [White-sneaker-black3](https://pixabay.com/vectors/success-woman-mountain-top-concept-5836546/)
+  - [Blue-sneaker](https://www.adidas.fr/)
+  - [Couple-on-bench2](https://unsplash.com/photos/HL4MRlEyqxU)
+  - [Orange-black-sneakers](https://unsplash.com/photos/51VTQ00Z4CM)
+  - [Sneakers-black-background](https://unsplash.com/photos/bNSdIkCBJOs)
+  - [White-sneaker-black3](https://unsplash.com/photos/XwWGyrVidZE)
   - [All product images and data](https://data.world/data-hut/product-data-from-adidas)
  
 ### Acknowledgements
