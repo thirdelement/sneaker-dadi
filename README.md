@@ -44,21 +44,24 @@ Sneaker Dadi is an online shopping site for Adidas footwear.  It seeks to provid
 |4||Delete reviews |Remove inappropriate reviews|
 
 ### Design 
-A conventional Bootstrap light-coloured navbar is available on all pages.  On Desktop view, a brand logo and site name have been added on the left followed by shopping links for all products, female, male, unisex and sale.  From the right, there is the cart, sign in options and search bar.  Below this is a contrasting darker header section with hero image, call-to-action with Shop Women’s and Shop Men’s buttons.
+A conventional Bootstrap light-coloured navbar is available on all pages.  On Desktop view, a brand logo and site name have been added on the left followed by shopping links for all products, female, male, unisex and sale.  From the right, you have the cart, sign in options and search box.  Immediately below is a contrasting darker header section with hero image and call-to-action with Shop Women’s and Shop Men’s buttons.
 <div align="left"><img src="media/readme/header-get-your.webp"></div>
 
 There are four other different header sections used throughout the site. 
 
 <div align="left"><img src="media/readme/header-come-to.webp"></div>
+
 <div align="left"><img src="media/readme/header-got-sole.webp"></div>
+
 <div align="left"><img src="media/readme/header-impressed.webp"></div>
+
 <div align="left"><img src="media/readme/header-dreaming.webp"></div>
 
-The home page was created using the ‘Landing Page’ template from startbootstrap.com.  This provides an attractive and informative initial showcase for the product range.  The Best Sellers are shown using Bootstrap cards in a carousel at the top of the page in a carousel.  As with all product cards throughout the site, these show whether the product is on sale and if so show the original price with a strikethrough and the sale price in red.  The rating for each product will also be shown if given.
+The home page was created using the ‘Landing Page’ template from startbootstrap.com.  This provides an attractive and informative initial showcase for the product range.  The Best Sellers are shown using Bootstrap cards in a carousel at the top of the page.  As with all product cards throughout the site, these show whether the product is on sale and if so the original price with a strikethrough and the sale price in red.  An average star and numberic rating for each product will also be shown if given by customers.
 
 <div align="left"><img src="media/readme/home-bestsellers.webp"></div>
 
-Below Best Sellers there are some showcase images, text and link to the mentioned products.  This section shows the products in real-life situations to encourage the customer to explore the different product ranges.
+Below Best Sellers there are showcase images, text and links to product ranges.  This section shows the products in real-life situations to encourage the customer to explore what is on offer.
 
 <div align="left"><img src="media/readme/home-showcase.webp"></div>
 
@@ -74,10 +77,10 @@ A light footer is used on other pages to correspond to the light header.
 
 <div align="left"><img src="media/readme/footer-light.webp"></div>
 
-When a customer clicks on any of the navbar product links, the resulting product pages are based on the startbootstrap.com ‘Shop Homepage’ template.   The page body shows four products across on larger screens which is reduced in number for smaller devices.  The same Bootstrap cards are used as in the carousel on the home page so there is consistency.   
+When a customer clicks on any of the navbar product links, the resulting product pages are based on the startbootstrap.com ‘Shop Homepage’ template.   The page body shows four products across on larger screens which is reduced in number for smaller devices.  The same Bootstrap cards are used as in the carousel on the home page for consistency.   
 <div align="left"><img src="media/readme/products.webp"></div>
 
-The product detail page is based on the ‘Shop Item’ template also from startbootstrap.com.  The header section is removed to allow screen space for the item image.  There is a plain white background to ensure the product is the main focus.  The layout includes a product title, description, size selector , ‘Add to cart’ and ‘Continue Shopping buttons.  There is a carousel showing four images of the product from different angles.
+The product detail page is based on the ‘Shop Item’ template also from startbootstrap.com.  The header section is removed to allow screen space for the product image.  There is a plain white background to ensure the product is the main focus.  The layout includes a product title, description, size selector , ‘Add to cart’ and ‘Continue Shopping buttons.  There is a carousel showing four images of the product from different angles.
 
 <div align="left"><img src="media/readme/product_detail.webp"></div>
 
@@ -85,7 +88,7 @@ Below there is a Reviews section with the same light grey background colour as t
 
 <div align="left"><img src="media/readme/product-review.webp"></div>
 
-Followed by a Related products section showing male and female products from the same category.
+The Reviews section is followed by Related products showing male and female products from the same category.
 
 <div align="left"><img src="media/readme/related-products.webp"></div>
 
@@ -97,9 +100,9 @@ incorporating the aforementioned header and footer.
 The shopping cart, checkout and checkout success pages are along the same lines.
 
 <div align="left"><img src="media/readme/cart.webp"></div>
-
+<br>
 <div align="left"><img src="media/readme/checkout.webp"></div>
-
+<br>
 <div align="left"><img src="media/readme/checkout-success.webp"></div>
 
 ### Colour Scheme
@@ -111,11 +114,11 @@ The font color is generally dark with differences in some areas.  For example, t
 <div align="left"><img src="media/readme/verified-purchase.webp"></div>
 
 ### Buttons
-A dark button with yellow background on hover was used to take the customer forward for all purchase actions, profile and site owner product updates.  To go back in the purchase process a button with black outline with black background on hover.
+A dark button with yellow background on hover is used to take the customer forward for all purchase actions, profile and site owner product updates.  To go back in the purchase process, a button with black outline with black background on hover is used.
 
 <div align="left"><img src="media/readme/add-to-cart-button.webp"></div>
 
-A yellow button was used to Add a Review with the standard purchase button in the Add Product Review modal.
+A decision was made to use a yellow button to Add a Review so that it stands out.  The standard purchase button is located in the Add Product Review modal.
 
 <div align="left"><img src="media/readme/add-review-button.webp"></div>
 
@@ -127,11 +130,15 @@ The links from the homepage are dark buttons with a white background on hover.  
 
 <div align="left"><img src="media/readme/showcase-button.webp"></div>
 
-The usual red is used for Delete buttons with black outline for Cancel.
+A conventional red colour is used for Delete buttons with black outline for Cancel.
 
 <div align="left"><img src="media/readme/delete-button.webp"></div>
 
 Product review authors have a pen icon to launch the Edit Product Review modal.  The site owner has a trash can icon to launch the Delete Product Review modal.
+
+<div align="left"><img src="media/readme/product-review-button.webp"></div>
+
+There are two large call-to-action buttons in the header in red to attract attention.
 
 <div align="left"><img src="media/readme/header-button.webp"></div>
 
@@ -139,7 +146,7 @@ The shopping cart icon is in black outline with black background on hover.
 
 <div align="left"><img src="media/readme/cart-empty-button.webp"></div>
 
-If there are items in the cart the number is highlighted yellow.
+If there are items in the cart the quantity is highlighted yellow.
 
 <div align="left"><img src="media/readme/cart-full-button.webp"></div> 
 
@@ -147,7 +154,7 @@ The search box and profile/product management button is in grey to match the oth
 
 <div align="left"><img src="media/readme/search-box.webp"></div> 
 
-The account management button has a grey (change to black?) background on hover as it’s secondary to the cart button.
+The account management button has a grey background on hover as it’s secondary to the cart button.
 
 <div align="left"><img src="media/readme/profile-button.webp"></div> 
 
@@ -170,7 +177,7 @@ Bootstrap Icons were used for all site icons such as star ratings, chevrons, tra
 ### Wireframes 
 The wireframes for Desktop, Tablet and Mobile versions are [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/media/readme/sneaker-dadi-wireframes.pdf)
 
-These wireframes were created at the start of the project and although very similar to the resulting website include some features that were not implemented:
+These wireframes were created at the start of the project and although very similar to the resulting website includes some features that were not implemented:
   - Wish List 
   - Add to Cart button on the product card 
   - Profile menu 
@@ -178,12 +185,16 @@ These wireframes were created at the start of the project and although very simi
 ### Database model 
 The database model uses a relational structure with tables for Product, ProductReview, Order, OrderLineItem, User, UserProfile and Categories.
 
-As shoes are the only product sold, sizes are relatively straightforward and so could be held on the Product table.  The product table also holds a Boolean field to show whether the product was on sale, the discount percentage, average rating, gender and images.  The home page Best Sellers carousel is created from a query on the Product table filtering products by gender in descending order of the total sum of quantity sold for each from the OrderLineItem table.  Similarly, the Trending Right Now carousel is created from a query on the Product table filtering for products by gender ordered by descending purchase date from the Order table.
+As shoes are the only product sold, sizes are relatively straightforward and so could be held on the Product table.  The product table also holds a Boolean field to show whether the product was on sale, DecimalFields for discount percentage and average rating, CharField for gender and ImageFields for images.  
 
-The Product Review table has a foreign key to the product and user tables.  It contains a text field for user comments, a rating from 1 to 5 and a Boolean field for verified purchase.  In order to check for a verified purchase an the ‘add_review’ view checks whether the same user profile has purchased the product from the OrderLineItem table.
+The home page Best Sellers carousel is created from a query on the Product table filtering products by gender in descending order of the total sum of quantity sold for each from the OrderLineItem table.  Similarly, the Trending Right Now carousel is created from a query on the Product table filtering for products by gender ordered by descending purchase date from the Order table.
+
+The Product Review table has a foreign key to the product and user tables.  It contains a TextField for user comments, a rating from 1 to 5 and a Boolean field for verified purchase.  In order to check for a verified purchase, the ‘add_review’ view checks whether the same user profile has purchased the product from the OrderLineItem table.
 
 Initially, average_rating was calculated via a function using the ProductReview model as shown:
 <div align="left"><img src="media/readme/get-average-rating.webp"></div>
+
+This proved challenging to implement reliably across several apps and so was replaced with a field on the product model. 
 
 The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob/master/media/readme/sneaker-dadi-database-diagram.pdf)
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
@@ -201,7 +212,7 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
   - [Toasts](https://getbootstrap.com/docs/5.1/components/toasts/)
 
 - Flickity carousel
-  - [Flickity carousel](https://flickity.metafizzy.co/) was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allowed multiple frames to be displayed and has flexible configuration options.
+  - [Flickity carousel](https://flickity.metafizzy.co/) was used for the carousels on the home page and on the product detail page for related products.  Unlike the Bootstrap carousel this allows multiple frames to be displayed and has flexible configuration options.
 
 - Django-multiselectfield
   - In order for the site owner to add in size availability according to stock levels, the [Django Multiselectfield](https://pypi.org/project/django-multiselectfield/) was used.  This provides checkboxes for each size option that can be purchased.
@@ -218,34 +229,43 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
   <div align="left"><img src="media/readme/toast-error.webp"></div>
 
 - Product Reviews
-  - If they are logged in a customer can add comments and a star rating for any product.  Once created, they can edit this review but not delete.  A site owner can create and delete any review but not edit.  The average star and numeric rating out of five is shown in the product detail and product listings pages.
+  - If logged in a customer can add comments and a star rating for any product.  
+  - Once created, a customer can edit their review but not delete.  
+  - A site owner can create and delete any review but not edit.  
+  - The average star and numeric rating out of five is shown in the product detail and product listings pages.
 
 - Verified purchase
   - A product review will show as ‘verified purchase’ if the customer who has left a review has previously purchased the product.
 
 - Related products
-  - On the product detail page related products are shown in the same category.  Products for the same gender will show in the carousel first followed by the other gender and unisex.
+  - On the product detail page related products are shown in the same category.  
+  - Products for the same gender will show first in the carousel.
 
 - Best Sellers
   - On the home page the Best Sellers carousel shows the top three male and female products sold by quantity.
 
 - Trending Right Now
-  - Also on the home page the Trending Right Now carousel shows the top three distinct male and female products most recently sold.
+  - The Trending Right Now carousel shows the top three distinct male and female products most recently sold.
 
 - Sale
-  - A site owner can select whether a product is on sale with a check box and set the percent discount to the original price.  The product will then show from the Sale link on the navbar with the Sale badge, original price with a strike through and sales price.
+  - A site owner can select whether a product is on sale with a check box and set the percentage discount.  
+  - The product will then be included with other sale products from Sale link on the navbar.  
+  - Each product on sale will have a Sale badge, original price with a strike through and sales price in the product card.
 
 - Cart/Checkout/Checkout success
-  - The site has separate pages for cart, checkout and checkout success corresponding to each stage of the purchase process.  The customer is able to alter the quantity in the cart between 1 and 98.  The price for individual products, sub-total of quantity for each product size, overall cart total and order total after shipping cost is shown.
+  - The site has separate pages for cart, checkout and checkout success corresponding to each stage of the purchase process.  The customer is able to alter the quantity in the cart between 1 and 99.  The price for individual products, sub-total of quantity for each product size, overall cart total and order total after shipping cost is shown.
 
 - Checkout
-  - Name, email, phone, address and card details are required on the checkout page.  A checkbox provides an option to save the contact and address details back to the profile.
+  - Name, email, phone, address and card details are required on the checkout page.  
+  - A checkbox provides an option to save the contact and address details back to the profile.
 
 - Free shipping
-  - A purchase below £50 will incur a flat £5.95 shipping cost.  If the purchase is over the £50 threshold then the shipping cost is waived.
+  - A purchase below £50 will incur a flat £5.95 shipping cost.  
+  - The shipping cose is waived for orders over £50.
 
 - Profile
-  - Customer’s contact details and order history are saved in their profile.  Contact details can be updated on the profile or check out pages.
+  - Customer’s contact details and order history are saved in their profile.  
+  - Contact details can be updated on the profile or check out pages.
   - Security is in place to ensure only the customer who submitted the order can see the order history.
 
 - Add/Edit products
@@ -273,6 +293,7 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
 
 - Responsive on all device sizes tested
   - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
+  <br>
   - iPhone X
     <div align="left"><img src="media/readme/iphone-x.jpg"></div>
   - iPad 768px
@@ -294,7 +315,7 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
 -   Magnification on product images
 -   Use of AJAX to remove page refresh
 -   Pagination
--   Contact form.
+-   Contact form
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="tech"></span>
 
@@ -311,7 +332,7 @@ The database schema is [here.](https://github.com/thirdelement/sneaker-dadi/blob
     - Django was used to struture the site.
 ### Libraries  
 1. [jQuery](https://jquery.com/)
-    - jQuery has been used for the DatePicker, Bootstrap Tabs buttons and to check validity. 
+    - jQuery has been used for to launch toast messages, enable increment/decrement functionality in the cart, processing Stripe payments and checking country fields at check out. 
 1. [Bootstrap Icons](https://icons.getbootstrap.com/)
     - Bootstrap Icons was used for all site icons.
 ### Templates
@@ -358,7 +379,7 @@ See Test report [here.](https://github.com/thirdelement/sneaker-dadi/blob/master
 2.	Under the repository name, click ‘Clone or download’.
 3.	To clone the repository using HTTPS, under ‘Clone with HTTPS’, copy the link.
     <div align="left"><img src="media/readme/local-clone.webp"></div>
-4.	Opt Git Bash
+4.	Open Git Bash
 5.	Change the current working directory to the location where you want the cloned directory to be made.
 6.	Type git clone, and then paste the URL you copied in step 3.<br>
 `$ git clone https://github.com/thirdelement/sneaker-dadi`<br>
@@ -378,7 +399,7 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
     ```
 11.	Create a .gitignore file ensuring *.sqlite3, *.pyc and __pycache__ are added.
     <div align="left"><img src="media/readme/local-gitignore.webp"></div>
-12.	Install all project requirements with ‘pip install –r requirements.txt’ 
+12.	Install all project requirements with `pip install –r requirements.txt` 
 13.	Run database migrations
     <div align="left"><img src="media/readme/local-db-migration.webp"></div>
 14.	Load category and product fixtures in following order
@@ -418,7 +439,7 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
     <div align="left"><img src="media/readme/heroku-procfile.webp"></div>
 13.	Login to Heroku from your IDE using your API key as the password
     <div align="left"><img src="media/readme/heroku-login.webp"></div>
-14.	Temporarily disable collectstation so Heroku will not collect static files when we deploy.
+14.	Temporarily disable collectstatic so Heroku will not collect static files when we deploy.
     <div align="left"><img src="media/readme/heroku-disable-collectstatic.webp"></div>
 15.	In Settings, create the following Config Vars
     |**Key**|**Value**|
@@ -463,18 +484,18 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
     <div align="left"><img src="media/readme/s3-edit-bucket.webp"></div>
 8.	Click Policy Generator and for Principal enter * and actions add Get Object
     <div align="left"><img src="media/readme/s3-get-object.webp"></div>
-9.	Enter the ARN as above.
+9.	Enter the ARN from step 7.
 10.	Click Add statement
     <div align="left"><img src="media/readme/s3-add-statement.webp"></div>
 11.	Click Generate Policy
 12.	Copy Policy JSON Document
     <div align="left"><img src="media/readme/s3-policy-json.webp"></div>
-13.	Paste into Bucket policy (with slash & asterisk at end of Reource for full access) & Save changes.
+13.	Paste into Bucket policy (with slash & asterisk at end of Resource for full access) & Save changes.
 14.	Click Edit in Access Control List, check box for List access for Everyone & Save changes.
     <div align="left"><img src="media/readme/s3-acl.webp"></div>
 
 ### AWS IAM (Identity & Access Management)
-1.	Navigate to IAM, User groups, Create user group
+1.	In AWS navigate to IAM, User groups, Create user group
 2.	Enter a name and click Create group
     <div align="left"><img src="media/readme/iam-create-group.webp"></div>
 3.	In Policies, click Create Policy
@@ -537,7 +558,7 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
   - [Get top three distinct products](https://stackoverflow.com/questions/19283225/how-can-i-remove-duplicate-objects-in-an-order-by-query)
 
 #### Product - views
-  - [Sorting nulls last using F expression](https://helperbyte.com/questions/77886/django-how-to-make-a-discount-for-the-item) 
+  - [Sorting nulls last using F expression](https://docs.djangoproject.com/en/3.1/ref/models/expressions/#using-f-to-sort-null-values) 
   - [Applying F expression](https://github.com/Edb83/moose-juice/blob/master/products/views.py) 
   - [Number of reviews](https://www.youtube.com/watch?v=MmLRE2fCcec&t=46s)
   - [Check whether user has ordered product previously](https://github.com/Edb83/moose-juice/blob/master/products/views.py)
@@ -580,6 +601,7 @@ The images used were sourced as follows:
   - [Orange-black-sneakers](https://unsplash.com/photos/51VTQ00Z4CM)
   - [Sneakers-black-background](https://unsplash.com/photos/bNSdIkCBJOs)
   - [White-sneaker-black3](https://unsplash.com/photos/XwWGyrVidZE)
+  - [White-sneaker](https://www.laredoute.fr/pplp/100/368/373/514/cat-158125.aspx#shoppingtool=treestructureguidednavigation&srt=noSorting)
   - [All product images and data](https://data.world/data-hut/product-data-from-adidas)
  
 ### Acknowledgements
