@@ -42,17 +42,66 @@
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% for field in form %}
-                    {% if field.name != 'image1' %}
                     <div class="mb-2">
-                        {{ field | as_crispy_field }}
+                        {{ form.category | as_crispy_field }}
                     </div>
-                    {% else %}
                     <div class="mb-2">
-                        {{ field }}
+                        {{ form.product_id | as_crispy_field }}
                     </div>
-                    {% endif %}
-                    {% endfor %}
+                    <div class="mb-2">
+                        {{ form.name | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.description | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.price | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.on_sale | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.discount_percent | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.average_rating | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.size | as_crispy_field }}
+                    </div>
+                    <div class="mb-2">
+                        {{ form.gender | as_crispy_field }}
+                    </div>
+                    <div class="row">
+                        {% for field in form %}
+                        {% if field.name == 'image1' %}
+                        <div class="mb-2 form-group col-12 col-sm-6">
+                            <p class="image-margin">Image 1</p>
+                            {{ field }}
+                        </div>
+                        {% elif field.name == 'image2' %}
+                        <div class="mb-2 form-group col-12 col-sm-6">
+                            <p class="image-margin">Image 2</p>
+                            {{ field }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        {% for field in form %}
+                        {% if field.name == 'image3' %}
+                        <div class="mb-2 form-group col-12 col-sm-6">
+                            <p class="image-margin">Image 3</p>
+                            {{ field }}
+                        </div>
+                        {% elif field.name == 'image4' %}
+                        <div class="mb-2 form-group col-12 col-sm-6">
+                            <p class="image-margin">Image 4</p>
+                            {{ field }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
                     <div class="text-end">
                         <a class="btn btn-outline-dark" href="{% url 'products' %}">Cancel</a>
                         <button class="btn btn-dark" type="submit">Add Product</button>
@@ -65,10 +114,11 @@
 {% endblock %}
 {% block postloadjs %}
 {{ block.super }}
+<!-- Add message with filename for image selected -->
 <script>
     $('.new-image').change(function () {
-        var file = $('.new-image')[0].files[0];
-        $('#filename').text(`Image will be set to: ${file.name}`);
+        var file = $(this)[0].files[0];
+        $(this).parent().next().text(`Image will be set to: ${file.name}`);
     });
 </script>
 {% endblock %}
