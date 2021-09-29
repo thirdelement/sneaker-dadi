@@ -445,6 +445,13 @@ The following items have been successfully tested on each page or component:
 <div align="left"><img src="media/testing/bug17-fix.webp"></div> 
 <div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
 
+**18.	Message notification for first image only appears on add/edit product page**
+- **Fix:** With mentor assistance change the 'new-image' and 'filename' IDs to classes on the custom clearable file input page..
+<div align="left"><img src="media/testing/bug18-fix.webp"></div> 
+
+- Modify the Javascript with parent() and next() methods to get filenames for all images. 
+<div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
+
 ### Unresolved bugs
 **1.	Original_cart is displayed in json format in the admin area which is not user friendly.**
 <div align="left"><img src="media/testing/unresolved1-cart.webp"></div> 
