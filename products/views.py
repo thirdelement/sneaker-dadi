@@ -207,7 +207,8 @@ def add_review(request, product_id):
         profile = None
 
     if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to be logged in to do that.', extra_tags=' ')
+        messages.error(request, 'Sorry, you have to be logged \
+            in to do that.', extra_tags=' ')
         return redirect(reverse('product_detail', args=[product.id]))
 
     elif request.user.is_authenticated:
@@ -269,7 +270,8 @@ def edit_review(request, review_id):
     review = get_object_or_404(ProductReview, pk=review_id)
     product = review.product
     if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, you have to be logged in to do that.', extra_tags=' ')
+        messages.error(request, 'Sorry, you have to be logged in \
+            to do that.', extra_tags=' ')
         return redirect(reverse('product_detail', args=[product.id]))
 
     elif request.user.is_authenticated:
@@ -279,12 +281,14 @@ def edit_review(request, review_id):
                 form.save()
                 # Save average rating to database
                 product.save_average_rating()
-                messages.success(request, 'Your review has been updated.', extra_tags=' ')
+                messages.success(request, 'Your review has been \
+                    updated.', extra_tags=' ')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
                 messages.error(
                     request,
-                    "The review update failed.  Please check and try again.", extra_tags=' ')
+                    "The review update failed.  Please check and \
+                        try again.", extra_tags=' ')
         else:
             form = ReviewForm(instance=review)
 
