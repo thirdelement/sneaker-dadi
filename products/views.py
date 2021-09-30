@@ -107,10 +107,10 @@ def product_detail(request, product_id):
     # Get related products
     related_products_male = Product.objects.filter(
         category=product.category).exclude(
-            product_id=product.product_id).order_by('-gender')
+            product_id=product.product_id).order_by('-gender')[:8]
     related_products_female = Product.objects.filter(
         category=product.category).exclude(
-            product_id=product.product_id).order_by('gender')
+            product_id=product.product_id).order_by('gender')[:8]
     context = {
         'product': product,
         'form': form, 
