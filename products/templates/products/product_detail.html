@@ -226,10 +226,10 @@
                                 {% csrf_token %}
                                 <fieldset class="rounded px-3 mb-2">
                                     <div class="mb-2">
-                                        {{ field }}
+                                        {{ form.review_text | as_crispy_field }}
                                     </div>
                                     <div class="mb-2 col-6">
-                                        {{ field }}
+                                        {{ form.review_rating | as_crispy_field }}
                                     </div>
                                 </fieldset>
                                 <button type="submit" class="btn btn-dark float-end ms-1 me-4">Submit</button>
