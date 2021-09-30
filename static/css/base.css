@@ -426,6 +426,10 @@ input[type=number] {
   margin-bottom: 0.15rem;
 }
 
+.select-image-text {
+  font-weight: bolder;
+}
+
 /* Toast notifications ---------------------------*/
 /* Remove opacity for messages */
 /* Credit: https://stackoverflow.com/questions/17635655/setting-toastr-opacity */
