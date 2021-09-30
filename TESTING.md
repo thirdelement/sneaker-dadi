@@ -471,6 +471,8 @@ The following items have been successfully tested on each page or component:
 ## Other tests
 ### Code validation
 - PEP8 online, JSHint, W3C Markup Validation Service and CSS Validation Service were used to validate all project pages ensuring no syntax errors are present.
+- All pages passed W3C Markup Validation Service except for cart and product_detail.html which contain Duplicate ID errors.  The errors on the latter page appear to be from Crispy Forms.  There was not time to resolve these before the project submission deadline.
+
 ### Site performance
 - The Google Dev Tools Lighthouse audit for the site showed the following results:
 #### Home
