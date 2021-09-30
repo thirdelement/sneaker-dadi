@@ -35,15 +35,6 @@
                    {% else %}
                    <small class="product-text text-muted">No Rating</small>
                    {% endif %}
-                   <!-- Superuser options -->
-                {% if request.user.is_superuser %}
-                <p class="ms-3 remove-margin">
-                    <a class="small product-text" href="{% url 'edit_product' product.id %}">Edit</a> |
-                    <button type="button" class="small product-text delete-link text-danger" data-bs-toggle="modal"
-                        data-bs-target="#deleteProduct{{ product.id }}">Delete</button>
-                </p>
-                {% include 'products/includes/modals.html' %}
-                {% endif %}
                 <!-- Product price-->
                 {% if product.on_sale is True %}
                 <p class="price">
