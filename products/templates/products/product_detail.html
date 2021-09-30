@@ -226,10 +226,10 @@
                                 {% csrf_token %}
                                 <fieldset class="rounded px-3 mb-2">
                                     <div class="mb-2">
-                                        {{ form.review_text | as_crispy_field }}
+                                        {{ field }}
                                     </div>
                                     <div class="mb-2 col-6">
-                                        {{ form.review_rating | as_crispy_field }}
+                                        {{ field }}
                                     </div>
                                 </fieldset>
                                 <button type="submit" class="btn btn-dark float-end ms-1 me-4">Submit</button>
@@ -255,7 +255,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                            <a href="{% url 'delete_review' review.id %}" id="delete_review" 
+                            <a href="{% url 'delete_review' review.id %}" 
                                 class="btn btn-danger float-end font-normal">Delete</a>
                         </div>
                     </div>
