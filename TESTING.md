@@ -230,10 +230,12 @@ The following items have been successfully tested on each page or component:
 - All products with the ‘On sale’ box checked are displayed.
 - All checks done as per Products page are successful.
 
-### Add Product
+### Add/Edit Product
 - Product properties are all listed.
 - Add Product form will not submit unless all mandatory fields are completed and valid.
-- Choose File button for uploading images works ok.
+- Images can be added and removed successfully.
+- Message is displayed to notify filename to be added for all images.
+- Form validation error received when selecting 'On sale' without 'Discount percent'.
 
 ### Site Owner features
 - Edit and Delete links are shown on product detail page for all products in product listings.
@@ -446,10 +448,10 @@ The following items have been successfully tested on each page or component:
 <div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
 
 **18.	Message notification for first image only appears on add/edit product page**
-- **Fix:** With mentor assistance change the 'new-image' and 'filename' IDs to classes on the custom clearable file input page..
+- **Fix:** With mentor assistance change the 'new-image' and 'filename' IDs to classes on the custom clearable file input page.
 <div align="left"><img src="media/testing/bug18-fix.webp"></div> 
 
-- Modify the Javascript with parent() and next() methods to get filenames for all images. 
+- Modify the Javascript on add/edit product pages with parent() and next() methods to get filenames for all images. 
 <div align="left"><img src="media/testing/bug17-fix2.webp"></div> 
 
 ### Unresolved bugs
