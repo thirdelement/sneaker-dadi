@@ -167,7 +167,7 @@
                     {% if user.is_authenticated %}
                     {% if can_add_review %}
                     <span><button type="button" id="btn-review" class="btn btn-warning btn-sm mb-2 ms-2"
-                            data-bs-toggle="modal" data-bs-target="#productReview">Add Review</button></span>
+                            data-bs-toggle="modal" data-bs-target="#productReview{{ product.id }}">Add Review</button></span>
                     {% endif %}
                     {% endif %}
                 </h2>
@@ -247,7 +247,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteReviewLabel">Delete Product Review</h5>
+                            <h5 class="modal-title">Delete Product Review</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
@@ -255,7 +255,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                            <a href="{% url 'delete_review' review.id %}" id="delete_review" type="button"
+                            <a href="{% url 'delete_review' review.id %}" id="delete_review" 
                                 class="btn btn-danger float-end font-normal">Delete</a>
                         </div>
                     </div>
